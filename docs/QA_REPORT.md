@@ -8,7 +8,7 @@ Date: 2026-10-11, 04:29 to 05:20 EDT. Product code audited at HEAD `b29a485` (in
 **Verdict: FAILED.** 8 major defects, no blocker. The site is distinctive and its numbers are honest (34 of 34 spot
 checks match the artifacts), axe is clean in 56 runs, and the giant-orb and P02-confusion rules pass. It fails the gate on:
 
-- **Operational states.** 11 of 15 artifacts fail silently: no inline error, no RETRY, content just disappears (D-001).
+- **Operational states.** 10 probed artifacts fail silently: no inline error, no RETRY, content just disappears (D-001).
 - **Responsiveness.** 1024x768 collides in 7 scenes even with overlay scrollbars (D-002). With classic scrollbars the
   JS geometry runs one class below the CSS at 1024 and 768 (D-003, the P01-D-033 class). Phones: the S01 landing is
   overprinted (D-006).
@@ -26,7 +26,7 @@ machine, with load averages between 7 and 42 during capture. `uptime` is recorde
 | Visual design | PASS (with defects) | Art-directed and on-system: one Solar form per scene, serif statements over uppercase mono, and no chart chrome except the S05 lab (accepted LOW in DESIGN_AUDIT). Distinct scenes: globe, deck, years globe, regional bands, core strata, zero lab, futures brackets, chat stack, OBS, full-bleed surface (contact sheets, all 9 runs). The layout defects are logged under Responsiveness. |
 | Motion UI (6 layers) | PASS | **Intro:** the orb cools in place into cells, then the decade run 1880 to 2025 (`screenshots/1440x900/00-s00-*`). **Nav:** instant jump plus stage fade. **Scroll storytelling:** S02 deck, S04 unwrap sphere to sheet to core (`contact-sheets/*` frames 40-48). **Component:** baseline clamp, handles, ledger, OBS rotate and slice. **Data transitions:** year crossfades, baseline fades. **Micro:** RESET confirmations, disabled-chip tooltips. **Frame pacing** (§5): headed Metal p95 10.2 ms (desktop) and 10.9 ms (390 at 4x CPU). |
 | UX | **FAIL** | Keyboard journey works (§4): baseline radios skip the disabled 1850-1900 under GISTEMP, the S05 clamp offers SWITCH TO HADCRUT5, handles take Arrow/PageUp/Home/End, OBS core and globe take keys, Enter opens the inspector at the centre cell, Esc closes and returns focus, a wheel over the globe scrolls the page (19350 to 19949). Open: D-007 (OBS RETRY covered by the globe hit area), D-013 (first Tab goes into the off-screen S02 deck), D-015. |
-| Functionality and states | **FAIL** | RETRY works where it exists: ar6 (S06), the intro grid (S01), the GISTEMP grid (S03a, S04, OBS), the trend grid (S03b) and the grid sidecar (S02). Each shows an in-scene alert, RETRY re-fetches exactly once and the alert clears, at 1440 and 390. **11 artifacts fail silently** (D-001). |
+| Functionality and states | **FAIL** | RETRY works where it exists: ar6 (S06), the intro grid (S01), the GISTEMP grid (S03a, S04, OBS), the trend grid (S03b) and the grid sidecar (S02). Each shows an in-scene alert, RETRY re-fetches exactly once and the alert clears, at 1440 and 390. **10 probed artifacts fail silently** in 50 of 66 artifact-and-scene cases (D-001). |
 | AI / analytical honesty | **FAIL** | 34 on-screen numbers match facts/trends/regional/ar6/co2/validation/grid sidecars (§3). PREDICTED brackets are never joined to observations. The dotted missing lattice is distinct from the #2E2E2E neutral. "The far north (60-90N)" is used, never "Arctic Circle". Baselines are named in every °C view. Attributions are visible in S02 (sources line) and S08 (footer, including OGL and Natural Earth). Open: D-004 (tags and colour keys hidden at T and M) and D-005 (inspector series truncated). |
 | Performance | **FAIL** | Lighthouse mobile LCP was 2557, 2555 and 2556 ms. Perf was 0.96 in all three runs, CLS 0 and a11y 0.97. Desktop perf was 0.90, 1.00 and 1.00, with LCP at 486 ms. The load average was 7.0 to 9.8 (run 1 started under 8). Three identical results point to simulated throttling, not load. Grids load after first paint (FCP 36 ms against grid fetch start 85 to 112 ms). `?quality=nogl` reaches every end state. |
 | Responsiveness | **FAIL** | D, T and M are different compositions (globe-right D, stacked T, bottom-sheet M), but: D-002 (1024x768), D-003 (classic scrollbars), D-006 (S01 on phones), D-008 (sideways scroll at 768 under reduced motion), D-010 and D-011. |
@@ -43,12 +43,12 @@ Hard-rejection checks that **pass**:
 
 ### Major
 
-**P03-D-001: 11 of 15 artifacts fail silently, with no inline error and no RETRY** (major, operational states; P01-D-041 class)
+**P03-D-001: 10 probed artifacts fail silently, with no inline error and no RETRY** (major, operational states; P01-D-041 class)
 - **Files:** `site/src/scenes/S01Signal.tsx:26`, `S02Record.tsx:62-64`, `S03aYears.tsx:82-84`, `S03bRegions.tsx:35-37`, `S04Strata.tsx:36-37,67`, `S05Zero.tsx:28-30`, `S06Futures.tsx:31-32`, `S07Evidence.tsx:60-66`, `S08Surface.tsx:22-23`, `Observatory.tsx:44`, `state/bank.ts:92` (coastlines). Each of these is destructured as `const [x] = useArtifact(...)`, so the retry is dropped and the error state is never rendered.
 - **Viewports:** all of them (tested at 1440x900 and 390x844).
 - **Repro:** route `**/data/<file>` to HTTP 404, Escape, `__cso.jumpTo(<scene>)`.
 - **Expected:** every consuming scene shows its own `COULD NOT LOAD <FILE>` line and a RETRY that re-fetches once and recovers (VISUAL_DESIGN #13).
-- **Actual:** no `[role=alert]` and no RETRY, in 62 of the 64 artifact-and-scene cases.
+- **Actual:** no `[role=alert]` and no RETRY in 50 of the 66 artifact-and-scene cases probed. The silent artifacts are facts, trends, regional, co2, extremes, series_annual, changepoints, coastlines, meta, and ar6 in S02. validation.json and agreement.json use the same code path but were not probed.
   - **facts.json:** S01 loses both cards and its statement, S02 shows an empty globe with no cards, and S03b, S04, S06, S07 and S08 lose copy.
   - **trends.json:** S05 shows "LOADING TRENDS" forever.
   - **regional.json:** the S03b ledger and statement vanish.
@@ -56,7 +56,7 @@ Hard-rejection checks that **pass**:
   - When meta.json fails, the S08 attribution footer disappears.
   - The OBS trend layer shows "TREND GRID UNAVAILABLE" with no RETRY.
 - **Evidence:** `artifacts/evidence/qa/probe/errors.json` and `probe/shots/err-D-facts_json-signal.jpg`, `err-D-facts_json-record.jpg`, `err-D-trends_json-zero.jpg`, `err-D-regional_json-regions.jpg`, `err-M-*`.
-- **Verification test:** for each of the 15 artifacts and each consuming scene, fulfil 404, land on the scene, and assert three things:
+- **Verification test:** for each artifact and each consuming scene, fulfil 404, land on the scene, and assert three things:
   1. An in-viewport `[role=alert]` inside that section names the file.
   2. Clicking its RETRY causes exactly one re-request.
   3. The alert is gone afterwards.
