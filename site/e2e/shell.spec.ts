@@ -97,6 +97,8 @@ test("reduced motion renders in flow: no pinned stages, no blur, static frames",
 
 test("axe: no serious or critical violations on the intro end state and S03a", async ({ page }) => {
   await open(page);
+  // the end state: the S00 note has finished fading in (axe reads a mid-fade note against its now opaque chip as low contrast)
+  await page.waitForFunction(() => { const f = document.querySelector(".signal-foot"); return !!f && !f.classList.contains("is-waiting") && getComputedStyle(f).opacity === "1"; });
   const check = async () => {
     const results = await new AxeBuilder({ page }).analyze();
     const bad = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");

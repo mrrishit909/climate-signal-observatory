@@ -175,7 +175,7 @@ html[data-motion="off"] .menu-panel { transition: none; }
 /* ---------- honesty chips ---------- */
 .chip {
   --tag: var(--tag-observed);
-  display: inline-flex; align-items: center; gap: 8px; padding: 8px; background: #ffffff1a; color: var(--tag);
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px; background: #1a1a1a; color: var(--tag); /* L16: opaque (same look as 10% white on black), so a tag over imagery keeps its contrast */
   font: 400 13px / 1 var(--font-mono); letter-spacing: var(--tracking-label); text-transform: uppercase; white-space: nowrap;
 }
 .chip__mark { width: 7px; height: 7px; flex: none; background: var(--tag); }

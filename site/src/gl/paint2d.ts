@@ -87,7 +87,9 @@ export function paint2d(ctx: CanvasRenderingContext2D, f: Frame, data: Paint2DDa
         }
         const k = (outside ? 0.3 : 1) * f.dim;
         // 0.5px hairline only where a cell is large enough to carry it
-        const big = Math.min(x1 - x0, y1 - y0) > 7 && f.gap > 0;
+        // D-026: measured on the quad's own edges (an axis-aligned box grows for diagonal cells and drew an X-shaped band of borders)
+        const edge = Math.min(...pts.map((p, j) => { const n = pts[(j + 1) % pts.length]!; return Math.hypot(n[0] - p[0], n[1] - p[1]); }));
+        const big = edge > 7 && f.gap > 0;
         const target = rgb ? add(css(rgb, k)) : miss;
         const shrink = (p: [number, number, number]): [number, number] => {
           if (!big) return [p[0], p[1]];

@@ -740,3 +740,14 @@ html[data-motion="off"] .scene-obs .stage { height: 100vh; height: 100dvh; min-h
 @media (max-width: 767px) { .zero-rm { font-size: 11px; } .zero-result { top: calc(51% + 44px); } }
 /* D-024: the note covers the clamp where the bench would be, so the clamp's edges never strike its text */
 .zero-rm { z-index: 3 !important; background: #000; padding: 4px 0; }
+/* D-025 (hard rejection #14): attributions are 13 px minimum at 75% white on an opaque black band */
+.surface-foot, .record-sources { font-size: 13px !important; color: rgb(255 255 255 / 0.75); background: #000; padding: 6px 8px; box-sizing: border-box; }
+@media (max-width: 767px) { .surface-foot, .record-sources { padding: 4px 6px; line-height: 1.25; } .surface-text { bottom: calc(var(--nav-clear) + 112px); } }
+/* D-027: the reduced-motion regional legend staggers its edges too */
+.regions-static__legend .legend__edges { height: 24px; }
+.regions-static__legend .legend__edges span:nth-child(even) { top: 12px; }
+/* L16: the corner labels over the S00 planet get the same opaque backing as the tags */
+.wordmark, .intro-year, .surface-year { background: #000; padding: 3px 5px; }
+/* L16: the previous exchange is dimmer, never below 4.5:1 */
+.ev-ex.is-prev .ev-q { color: rgb(255 255 255 / 0.85); }
+.ev-ex.is-prev header { opacity: 1; }

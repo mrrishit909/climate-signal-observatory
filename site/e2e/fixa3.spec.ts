@@ -1,55 +1,76 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 /** P03-FIXA-003: D-021 / L16 (pixel contrast of every tag and caption), D-022 / L15 (reduced-motion figures paint), D-010, D-024. */
 type Hook = { jumpTo: (i: string, p?: number) => void; debug: () => { glFrames: number } };
 const LANDINGS: [string, number | undefined][] = [
   ["signal", 0], ["signal", 0.78], ["record", 0.14], ["years", 0.5], ["regions", 0.1], ["strata", 0.89], ["zero", 0.3],
-  ["futures", 0.42], ["futures", 0.9], ["evidence", 0.95], ["observatory", undefined], ["surface", 0.3], ["surface", 0.98],
+  ["futures", 0.42], ["futures", 0.9], ["evidence", 0.95], ["observatory", undefined], ["surface", 0.3], ["surface", 0.6], ["surface", 0.98],
 ];
 const VIEWPORTS: [number, number][] = [[1920, 1080], [1440, 900], [1280, 720], [1024, 768], [768, 1024], [390, 844], [375, 812], [360, 800]];
-/** Tags and the captions that name what a figure shows. */
-const TAGGED = ".chip, .signal-note, .s01-tag, [data-caption], .surface-caption, .phase-caption, .strata-note, .legend__miss, .fut-locked, .ev-sim";
-
-/** Max contrast between any pixel and the dominant (background) colour of a PNG, computed in the page. */
-async function seenContrast(page: Page, png: Buffer) {
-  return page.evaluate(async (b64) => {
-    const bmp = await createImageBitmap(await (await fetch(`data:image/png;base64,${b64}`)).blob());
-    const cv = new OffscreenCanvas(bmp.width, bmp.height), x = cv.getContext("2d")!;
-    x.drawImage(bmp, 0, 0);
-    const d = x.getImageData(0, 0, bmp.width, bmp.height).data, count = new Map<number, number>();
-    for (let i = 0; i < d.length; i += 4) { const k = ((d[i]! >> 3) << 10) | ((d[i + 1]! >> 3) << 5) | (d[i + 2]! >> 3); count.set(k, (count.get(k) ?? 0) + 1); }
-    const bgKey = [...count.entries()].sort((a, b) => b[1] - a[1])[0]![0];
-    const lin = (v: number) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
-    const L = (r: number, g: number, b: number) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-    const bg = L(((bgKey >> 10) & 31) * 8 + 4, ((bgKey >> 5) & 31) * 8 + 4, (bgKey & 31) * 8 + 4);
-    let best = 1;
-    for (let i = 0; i < d.length; i += 4) { const l = L(d[i]!, d[i + 1]!, d[i + 2]!); best = Math.max(best, (Math.max(l, bg) + 0.05) / (Math.min(l, bg) + 0.05)); }
-    return best;
-  }, png.toString("base64"));
-}
 
 test.describe("FIX-A3", () => {
-  test.describe.configure({ timeout: 300_000 });
+  test.describe.configure({ timeout: 600_000 });
   test.beforeEach(({ isMobile }) => { test.skip(!!isMobile, "viewports are set per test (desktop project)"); });
 
   for (const [w, h] of VIEWPORTS) {
-    test(`L16 / D-021 at ${w}x${h}: every visible tag and caption reads at 4.5:1 or better in the rendered pixels`, async ({ page }) => {
+    test(`L16 / L19 / D-021 / D-025 at ${w}x${h}: every visible text element reads at 4.5:1 or better in the rendered pixels`, async ({ page }) => {
       await page.setViewportSize({ width: w, height: h });
       await page.goto("?quality=high");
       await page.waitForFunction(() => ((window as unknown as { __cso?: Hook }).__cso?.debug().glFrames ?? 0) > 1);
       await page.keyboard.press("Escape");
       const bad: string[] = [];
+      let probed = false;
       for (const [s, p] of LANDINGS) {
         await page.evaluate(([i, q]) => (window as unknown as { __cso: Hook }).__cso.jumpTo(i as string, q as number | undefined), [s, p] as const);
         await page.waitForTimeout(s === "signal" ? 3000 : 1600); // S00: the resting frame after the intro; S01: past the cards' typing
-        const boxes = await page.evaluate(([id, sel]) => [...document.getElementById(id as string)!.querySelectorAll(sel as string)].filter((e) => {
-          for (let x: Element | null = e; x; x = x.parentElement) { const cs = getComputedStyle(x); if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05 || x.classList.contains("sr-only")) return false; }
+        // L19 self-check: a low-contrast element with a class no test names must be caught
+        if (!probed) await page.evaluate(() => { const e = document.createElement("p"); e.className = "l19-probe-unlisted"; e.textContent = "PROBE TEXT"; e.style.cssText = "position:absolute;left:40%;top:40%;margin:0;padding:6px;background:#000;color:#333;font:400 14px monospace;z-index:20"; document.querySelector("#signal .stage-content")!.appendChild(e); });
+        // L19: the list comes from the DOM: every visible element that owns a text node, in the scene and fully on screen
+        // (disabled controls are exempt from contrast, WCAG 1.4.3)
+        const boxes = await page.evaluate((id) => [...document.getElementById(id as string)!.querySelectorAll("*")].filter((e) => {
+          if (![...e.childNodes].some((n) => n.nodeType === 3 && (n.textContent ?? "").trim())) return false;
+          if (e.closest(".sr-only, .tooltip, :disabled, .is-disabled")) return false;
+          for (let x: Element | null = e; x; x = x.parentElement) {
+            const cs = getComputedStyle(x);
+            if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05) return false;
+            if (x.parentElement instanceof HTMLDetailsElement && !x.parentElement.open && x.tagName !== "SUMMARY") return false;
+          }
+          // a word still mid-reveal (WordReveal scrub below full opacity) is the transition itself, not resting text
+          if (e.classList.contains("wr-word") && Number(getComputedStyle(e).opacity) < 0.99) return false;
           const r = e.getBoundingClientRect();
+          // wholly inside every clipping ancestor (a scrolled list's cut-off line is not on screen)
+          for (let x = e.parentElement; x; x = x.parentElement) {
+            const cs = getComputedStyle(x);
+            if (cs.overflowX === "visible" && cs.overflowY === "visible") continue;
+            const c = x.getBoundingClientRect();
+            if (r.left < c.left - 0.5 || r.right > c.right + 0.5 || r.top < c.top - 0.5 || r.bottom > c.bottom + 0.5) return false;
+          }
           return r.width > 4 && r.height > 4 && r.left >= 0 && r.top >= 0 && r.right <= innerWidth && r.bottom <= innerHeight;
-        }).map((e) => { const r = e.getBoundingClientRect(); return { x: r.left, y: r.top, width: r.width, height: r.height, label: `${e.className.toString().split(" ")[0]} "${(e.textContent ?? "").trim().slice(0, 30)}"` }; }), [s, TAGGED] as const);
-        for (const b of boxes) {
-          const c = await seenContrast(page, await page.screenshot({ clip: { x: b.x, y: b.y, width: b.width, height: b.height } }));
-          if (c < 4.5) bad.push(`${s}@${p ?? "-"}: ${b.label} ${c.toFixed(2)}:1`);
+        }).map((e) => { const r = e.getBoundingClientRect(); return { x: r.left, y: r.top, width: r.width, height: r.height, label: `${e.tagName.toLowerCase()}.${(e.getAttribute("class") ?? "").split(" ")[0]} "${(e.textContent ?? "").trim().slice(0, 30)}"` }; }), s);
+        // one viewport shot per landing; every box is measured from it in the page
+        const shot = (await page.screenshot()).toString("base64");
+        const seen = await page.evaluate(async ([b64, list]) => {
+          const bmp = await createImageBitmap(await (await fetch(`data:image/png;base64,${b64}`)).blob());
+          const cv = new OffscreenCanvas(bmp.width, bmp.height), x = cv.getContext("2d")!, k = bmp.width / innerWidth;
+          x.drawImage(bmp, 0, 0);
+          const lin = (v: number) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+          const L = (r: number, g: number, b: number) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+          return (list as { x: number; y: number; width: number; height: number }[]).map((b) => {
+            const d = x.getImageData(Math.round(b.x * k), Math.round(b.y * k), Math.max(1, Math.round(b.width * k)), Math.max(1, Math.round(b.height * k))).data, count = new Map<number, number>();
+            for (let i = 0; i < d.length; i += 4) { const q = ((d[i]! >> 3) << 10) | ((d[i + 1]! >> 3) << 5) | (d[i + 2]! >> 3); count.set(q, (count.get(q) ?? 0) + 1); }
+            const bgKey = [...count.entries()].sort((a, c) => c[1] - a[1])[0]![0];
+            const bg = L(((bgKey >> 10) & 31) * 8 + 4, ((bgKey >> 5) & 31) * 8 + 4, (bgKey & 31) * 8 + 4);
+            let best = 1;
+            for (let i = 0; i < d.length; i += 4) { const l = L(d[i]!, d[i + 1]!, d[i + 2]!); best = Math.max(best, (Math.max(l, bg) + 0.05) / (Math.min(l, bg) + 0.05)); }
+            return best;
+          });
+        }, [shot, boxes] as const);
+        boxes.forEach((b, i) => { if (seen[i]! < 4.5) bad.push(`${s}@${p ?? "-"}: ${b.label} ${seen[i]!.toFixed(2)}:1`); });
+        if (!probed) {
+          probed = true;
+          expect(bad.some((x) => x.includes("l19-probe-unlisted")), "the DOM-built list catches an unlisted low-contrast element").toBe(true);
+          bad.splice(0, bad.length, ...bad.filter((x) => !x.includes("l19-probe-unlisted")));
+          await page.evaluate(() => document.querySelector(".l19-probe-unlisted")?.remove());
         }
       }
       expect(bad).toEqual([]);
