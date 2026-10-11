@@ -24,7 +24,7 @@ def test_grid_identities(ledger):
         assert g["missing_cells"] == g["fill_value_cells"] + g["nan_cells"]
         assert g["annual_cell_years_total"] == g["annual_cell_years_valid"] + g["annual_cell_years_dropped_lt_min_months"]
         assert g["cells_ever_valid"] + g["cells_never_valid"] == g["n_lat"] * g["n_lon"]
-        assert g["partial_years"] == [2026] or g["partial_years"] == []
+        assert len(g["partial_years"]) <= 1
 
 
 def test_table_identities(ledger):

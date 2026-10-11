@@ -52,3 +52,13 @@ top-level field to OBSERVED / DERIVED / PREDICTED / SIMULATED (SYNTHETIC unused)
 `regional.land_ocean.grid_land_mask` adds land-cell vs ocean-cell means from the grids (approximate). Latitude bands have edges on multiples of 10 degrees.
 
 Full per-artifact field lists are in the JSON Schemas; `tests/test_contracts.py` validates every produced artifact against them.
+
+## Design data requests (DR-1 to DR-10): status
+All supported and shipped; deviations from the request text are listed here rather than approximated.
+- DR-1 `grid_gistemp_2deg_intro.*`: shipped (about 68 KB gz). DR-2 `coastlines.json`: Natural Earth 110m (public domain), 26 KB gz (67 KB raw), source URL, sha256 and fetch time in `meta.sources` and `raw_manifest.json`; URLs track the upstream `master` branch (not pinned), the recorded sha256 is the version.
+- DR-3 cell trend grids: shipped; no multiple-testing correction; slopes beyond +/-1.27 C/decade are clipped and counted.
+- DR-4 zonal fixture and `analytics/zonal.py`: shipped (20% row rule). DR-5 band series in `trends.json` plus the four S03b facts and `n_bands_warmed_beyond_uncertainty_1975_latest`: shipped.
+- DR-6 rank facts and AR6 land/ocean facts: shipped; AR6 values are tagged OBSERVED because they are IPCC-assessed values for 2011-2020 (observed period), cited with the PDF page; scenario ranges stay PREDICTED.
+- DR-7: bands on multiples of 10 degrees. The `arctic` band is therefore 60N-90N, not the Arctic Circle; copy must not say "Arctic Circle".
+- DR-9 `land_fraction.json`: JSON integers (5.6 KB gz), not an Int8 binary. DR-10: fixed fact keys `gistemp_ytd_mean_1951_1980` / `hadcrut5_ytd_mean_1850_1900` with the year and month count inside the value; partial-year means are not comparable with full-year means.
+- Client note: `.i8.bin.gz` files are pre-compressed; if a dev server adds Content-Encoding, check for the 1f 8b magic bytes before piping through DecompressionStream.

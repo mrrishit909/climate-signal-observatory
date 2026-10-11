@@ -250,7 +250,7 @@ def regional(c: Ctx) -> dict:
                    "min_valid_area_share": MIN_VALID_AREA,
                    "method": ("Cell annual anomalies are rebased per cell (offset = cell mean of annual values over the baseline, >= 80% of reference years required), "
                               "then averaged with cos(latitude) weights over the observed cells of the band. A band-year with < 40% of its area observed is null. Band edges are multiples of 10 degrees (whole cells on both grids).")},
-                  {"bands": "DERIVED", "rows": "DERIVED", "land_ocean": "OBSERVED/DERIVED/PREDICTED"})
+                  {"bands": "DERIVED", "rows": "DERIVED", "land_ocean": "OBSERVED/DERIVED"})
 
 
 def extremes(c: Ctx) -> dict:

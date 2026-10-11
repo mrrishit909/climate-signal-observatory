@@ -53,3 +53,10 @@ def test_every_tag_field_is_a_known_tag(art):
     for n, a in art.items():
         for k, v in a["tags"].items():
             assert all(t in {"OBSERVED", "DERIVED", "PREDICTED", "SIMULATED", "SYNTHETIC"} for t in v.split("/")), (n, k)
+
+
+def test_every_field_has_a_tag():
+    for f in PUBLIC.glob("*.json"):
+        d = json.loads(f.read_text())
+        missing = [k for k in d if k not in ("schema_version", "tags") and k not in d["tags"]]
+        assert not missing, (f.name, missing)

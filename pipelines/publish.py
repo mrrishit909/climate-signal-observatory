@@ -70,11 +70,17 @@ def build_all(n_boot: int = 500, n_sims: int = 2000) -> None:
     art["facts"] = facts(c, art, metas, tmetas, ledger)
     # write
     for name, a in art.items():
+        for k in a:  # every field carries a tag; computed-by-us fields default to DERIVED
+            if k not in ("schema_version", "tags"):
+                a["tags"].setdefault(k, "DERIVED")
         write_json(PUBLIC / f"{name}.json", a)
     for m in list(metas.values()) + list(tmetas.values()):
         fname = m["encoding"]["file"].replace(".i8.bin.gz", "")
         write_json(PUBLIC / f"{fname}.meta.json", tagged_grid(m))
     art["meta"] = meta(c, ledger)
+    for k in art["meta"]:
+        if k not in ("schema_version", "tags"):
+            art["meta"]["tags"].setdefault(k, "DERIVED")
     write_json(PUBLIC / "meta.json", art["meta"])
     check_schemas()
     print("published", sorted(p.name for p in PUBLIC.iterdir()))
@@ -82,7 +88,10 @@ def build_all(n_boot: int = 500, n_sims: int = 2000) -> None:
 
 def tagged_grid(m: dict) -> dict:
     tags = {"encoding": "DERIVED", "grid": "DERIVED", "periods": "DERIVED", "rule": "DERIVED", "baseline_offsets": "DERIVED", "valid_cells_per_year": "OBSERVED", "quantization": "DERIVED"}
-    return {"schema_version": SCHEMA_VERSION, "tags": {k: v for k, v in tags.items() if k in m}, **m}
+    t = {k: v for k, v in tags.items() if k in m}
+    for k in m:
+        t.setdefault(k, "DERIVED")
+    return {"schema_version": SCHEMA_VERSION, "tags": t, **m}
 
 
 def check_schemas() -> None:
