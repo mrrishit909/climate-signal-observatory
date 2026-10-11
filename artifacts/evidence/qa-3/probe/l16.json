@@ -1,0 +1,1834 @@
+[
+ {
+  "vp": "1920x1080",
+  "state": "s00end@l",
+  "file": "1920x1080-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.46
+ },
+ {
+  "vp": "1920x1080",
+  "state": "signal@0.78",
+  "file": "1920x1080-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.06
+ },
+ {
+  "vp": "1920x1080",
+  "state": "signal@0.78",
+  "file": "1920x1080-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.79
+ },
+ {
+  "vp": "1920x1080",
+  "state": "signal@0.78",
+  "file": "1920x1080-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.2
+ },
+ {
+  "vp": "1920x1080",
+  "state": "record@0.14",
+  "file": "1920x1080-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.31
+ },
+ {
+  "vp": "1920x1080",
+  "state": "years@0.5",
+  "file": "1920x1080-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.5
+ },
+ {
+  "vp": "1920x1080",
+  "state": "years@0.5",
+  "file": "1920x1080-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.35",
+  "file": "1920x1080-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.35",
+  "file": "1920x1080-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.89",
+  "file": "1920x1080-strata-0.89-0.png",
+  "text": "5 \u00b7 176 LAYERS, OLDEST AT THE BOTTOM",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.89",
+  "file": "1920x1080-strata-0.89-1.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.89",
+  "file": "1920x1080-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.89",
+  "file": "1920x1080-strata-0.89-3.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.44
+ },
+ {
+  "vp": "1920x1080",
+  "state": "zero@0.3",
+  "file": "1920x1080-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.51
+ },
+ {
+  "vp": "1920x1080",
+  "state": "zero@0.3",
+  "file": "1920x1080-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.88
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.42",
+  "file": "1920x1080-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.42",
+  "file": "1920x1080-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.42",
+  "file": "1920x1080-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.9",
+  "file": "1920x1080-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.9",
+  "file": "1920x1080-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.9",
+  "file": "1920x1080-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.3",
+  "file": "1920x1080-evidence-0.3-0.png",
+  "text": "OBSERVED \u00b7 AR6.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.85
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.3",
+  "file": "1920x1080-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.44
+ },
+ {
+  "vp": "1920x1080",
+  "state": "observatory@l",
+  "file": "1920x1080-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.3",
+  "file": "1920x1080-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP V4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.3",
+  "file": "1920x1080-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.83
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.98",
+  "file": "1920x1080-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.91
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.98",
+  "file": "1920x1080-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.54
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.98",
+  "file": "1920x1080-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 2.75
+ },
+ {
+  "vp": "1440x900",
+  "state": "s00end@l",
+  "file": "1440x900-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.46
+ },
+ {
+  "vp": "1440x900",
+  "state": "signal@0.78",
+  "file": "1440x900-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.06
+ },
+ {
+  "vp": "1440x900",
+  "state": "signal@0.78",
+  "file": "1440x900-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.79
+ },
+ {
+  "vp": "1440x900",
+  "state": "signal@0.78",
+  "file": "1440x900-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.2
+ },
+ {
+  "vp": "1440x900",
+  "state": "record@0.14",
+  "file": "1440x900-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.31
+ },
+ {
+  "vp": "1440x900",
+  "state": "years@0.5",
+  "file": "1440x900-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.5
+ },
+ {
+  "vp": "1440x900",
+  "state": "years@0.5",
+  "file": "1440x900-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.35",
+  "file": "1440x900-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.35",
+  "file": "1440x900-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.89",
+  "file": "1440x900-strata-0.89-0.png",
+  "text": "5 \u00b7 176 LAYERS, OLDEST AT THE BOTTOM",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.89",
+  "file": "1440x900-strata-0.89-1.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.89",
+  "file": "1440x900-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.89",
+  "file": "1440x900-strata-0.89-3.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.44
+ },
+ {
+  "vp": "1440x900",
+  "state": "zero@0.3",
+  "file": "1440x900-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.17
+ },
+ {
+  "vp": "1440x900",
+  "state": "zero@0.3",
+  "file": "1440x900-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.11
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.42",
+  "file": "1440x900-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.42",
+  "file": "1440x900-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.42",
+  "file": "1440x900-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.9",
+  "file": "1440x900-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.9",
+  "file": "1440x900-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.9",
+  "file": "1440x900-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.3",
+  "file": "1440x900-evidence-0.3-0.png",
+  "text": "OBSERVED \u00b7 AR6.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.85
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.3",
+  "file": "1440x900-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.44
+ },
+ {
+  "vp": "1440x900",
+  "state": "observatory@l",
+  "file": "1440x900-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.3",
+  "file": "1440x900-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP V4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.3",
+  "file": "1440x900-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.14
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.98",
+  "file": "1440x900-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.62
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.98",
+  "file": "1440x900-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.92
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.98",
+  "file": "1440x900-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 2.62
+ },
+ {
+  "vp": "1280x720",
+  "state": "s00end@l",
+  "file": "1280x720-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.46
+ },
+ {
+  "vp": "1280x720",
+  "state": "signal@0.78",
+  "file": "1280x720-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.06
+ },
+ {
+  "vp": "1280x720",
+  "state": "signal@0.78",
+  "file": "1280x720-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.79
+ },
+ {
+  "vp": "1280x720",
+  "state": "signal@0.78",
+  "file": "1280x720-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.2
+ },
+ {
+  "vp": "1280x720",
+  "state": "record@0.14",
+  "file": "1280x720-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.31
+ },
+ {
+  "vp": "1280x720",
+  "state": "years@0.5",
+  "file": "1280x720-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 6.06
+ },
+ {
+  "vp": "1280x720",
+  "state": "years@0.5",
+  "file": "1280x720-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1280x720",
+  "state": "regions@0.35",
+  "file": "1280x720-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1280x720",
+  "state": "regions@0.35",
+  "file": "1280x720-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "1280x720",
+  "state": "strata@0.89",
+  "file": "1280x720-strata-0.89-0.png",
+  "text": "5 \u00b7 176 LAYERS, OLDEST AT THE BOTTOM",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1280x720",
+  "state": "strata@0.89",
+  "file": "1280x720-strata-0.89-1.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1280x720",
+  "state": "strata@0.89",
+  "file": "1280x720-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1280x720",
+  "state": "strata@0.89",
+  "file": "1280x720-strata-0.89-3.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.44
+ },
+ {
+  "vp": "1280x720",
+  "state": "zero@0.3",
+  "file": "1280x720-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.97
+ },
+ {
+  "vp": "1280x720",
+  "state": "zero@0.3",
+  "file": "1280x720-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.88
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.42",
+  "file": "1280x720-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.42",
+  "file": "1280x720-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.42",
+  "file": "1280x720-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.9",
+  "file": "1280x720-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.9",
+  "file": "1280x720-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "1280x720",
+  "state": "futures@0.9",
+  "file": "1280x720-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1280x720",
+  "state": "evidence@0.3",
+  "file": "1280x720-evidence-0.3-0.png",
+  "text": "OBSERVED \u00b7 AR6.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.85
+ },
+ {
+  "vp": "1280x720",
+  "state": "evidence@0.3",
+  "file": "1280x720-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.44
+ },
+ {
+  "vp": "1280x720",
+  "state": "observatory@l",
+  "file": "1280x720-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "1280x720",
+  "state": "surface@0.3",
+  "file": "1280x720-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP V4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1280x720",
+  "state": "surface@0.3",
+  "file": "1280x720-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.39
+ },
+ {
+  "vp": "1280x720",
+  "state": "surface@0.98",
+  "file": "1280x720-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.97
+ },
+ {
+  "vp": "1280x720",
+  "state": "surface@0.98",
+  "file": "1280x720-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.54
+ },
+ {
+  "vp": "1280x720",
+  "state": "surface@0.98",
+  "file": "1280x720-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 2.53
+ },
+ {
+  "vp": "1024x768",
+  "state": "s00end@l",
+  "file": "1024x768-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1024x768",
+  "state": "signal@0.78",
+  "file": "1024x768-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.06
+ },
+ {
+  "vp": "1024x768",
+  "state": "signal@0.78",
+  "file": "1024x768-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.79
+ },
+ {
+  "vp": "1024x768",
+  "state": "signal@0.78",
+  "file": "1024x768-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.2
+ },
+ {
+  "vp": "1024x768",
+  "state": "record@0.14",
+  "file": "1024x768-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.85
+ },
+ {
+  "vp": "1024x768",
+  "state": "years@0.5",
+  "file": "1024x768-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 6.06
+ },
+ {
+  "vp": "1024x768",
+  "state": "years@0.5",
+  "file": "1024x768-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.35",
+  "file": "1024x768-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.7
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.35",
+  "file": "1024x768-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.89",
+  "file": "1024x768-strata-0.89-0.png",
+  "text": "5 \u00b7 176 LAYERS, OLDEST AT THE BOTTOM",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.91
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.89",
+  "file": "1024x768-strata-0.89-1.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.03
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.89",
+  "file": "1024x768-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.89",
+  "file": "1024x768-strata-0.89-3.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.44
+ },
+ {
+  "vp": "1024x768",
+  "state": "zero@0.3",
+  "file": "1024x768-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.74
+ },
+ {
+  "vp": "1024x768",
+  "state": "zero@0.3",
+  "file": "1024x768-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.88
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.42",
+  "file": "1024x768-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.14
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.42",
+  "file": "1024x768-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.42",
+  "file": "1024x768-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.9",
+  "file": "1024x768-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.14
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.9",
+  "file": "1024x768-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.02
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.9",
+  "file": "1024x768-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.3",
+  "file": "1024x768-evidence-0.3-0.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 5.78
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.3",
+  "file": "1024x768-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 META.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.17
+ },
+ {
+  "vp": "1024x768",
+  "state": "observatory@l",
+  "file": "1024x768-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.08
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.3",
+  "file": "1024x768-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP V4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.86
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.3",
+  "file": "1024x768-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.66
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.98",
+  "file": "1024x768-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.83
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.98",
+  "file": "1024x768-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.54
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.98",
+  "file": "1024x768-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 2.98
+ },
+ {
+  "vp": "768x1024",
+  "state": "s00end@l",
+  "file": "768x1024-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.09
+ },
+ {
+  "vp": "768x1024",
+  "state": "signal@0.78",
+  "file": "768x1024-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.06
+ },
+ {
+  "vp": "768x1024",
+  "state": "signal@0.78",
+  "file": "768x1024-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.79
+ },
+ {
+  "vp": "768x1024",
+  "state": "signal@0.78",
+  "file": "768x1024-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.61
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.14",
+  "file": "768x1024-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.19
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.5",
+  "file": "768x1024-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.71
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.5",
+  "file": "768x1024-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.35",
+  "file": "768x1024-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.11
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.35",
+  "file": "768x1024-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "file": "768x1024-strata-0.89-0.png",
+  "text": "5 \u00b7 176 LAYERS, OLDEST AT THE BOTTOM",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 5.85
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "file": "768x1024-strata-0.89-1.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.3
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "file": "768x1024-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.88
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "file": "768x1024-strata-0.89-3.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.44
+ },
+ {
+  "vp": "768x1024",
+  "state": "zero@0.3",
+  "file": "768x1024-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.62
+ },
+ {
+  "vp": "768x1024",
+  "state": "zero@0.3",
+  "file": "768x1024-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.42",
+  "file": "768x1024-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.42",
+  "file": "768x1024-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.42",
+  "file": "768x1024-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.9",
+  "file": "768x1024-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 5.07
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.9",
+  "file": "768x1024-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.32
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.9",
+  "file": "768x1024-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.3",
+  "file": "768x1024-evidence-0.3-0.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 5.78
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.3",
+  "file": "768x1024-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 META.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.17
+ },
+ {
+  "vp": "768x1024",
+  "state": "observatory@l",
+  "file": "768x1024-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.3",
+  "file": "768x1024-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP V4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.3",
+  "file": "768x1024-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.5
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.98",
+  "file": "768x1024-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.7
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.98",
+  "file": "768x1024-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.0
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.98",
+  "file": "768x1024-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.55
+ },
+ {
+  "vp": "390x844",
+  "state": "s00end@l",
+  "file": "390x844-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.98
+ },
+ {
+  "vp": "390x844",
+  "state": "signal@0.78",
+  "file": "390x844-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.26
+ },
+ {
+  "vp": "390x844",
+  "state": "signal@0.78",
+  "file": "390x844-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.85
+ },
+ {
+  "vp": "390x844",
+  "state": "signal@0.78",
+  "file": "390x844-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 5.58
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.14",
+  "file": "390x844-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 6.19
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.5",
+  "file": "390x844-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 6.06
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.5",
+  "file": "390x844-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.35",
+  "file": "390x844-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.32
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.35",
+  "file": "390x844-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.23
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.89",
+  "file": "390x844-strata-0.89-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.3
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.89",
+  "file": "390x844-strata-0.89-1.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.89",
+  "file": "390x844-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.99
+ },
+ {
+  "vp": "390x844",
+  "state": "zero@0.3",
+  "file": "390x844-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.62
+ },
+ {
+  "vp": "390x844",
+  "state": "zero@0.3",
+  "file": "390x844-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.06
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.42",
+  "file": "390x844-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.33
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.42",
+  "file": "390x844-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.35
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.42",
+  "file": "390x844-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.9",
+  "file": "390x844-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.33
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.9",
+  "file": "390x844-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.35
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.9",
+  "file": "390x844-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.3",
+  "file": "390x844-evidence-0.3-0.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.44
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.3",
+  "file": "390x844-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 META.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.17
+ },
+ {
+  "vp": "390x844",
+  "state": "observatory@l",
+  "file": "390x844-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.3",
+  "file": "390x844-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP V4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.73
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.3",
+  "file": "390x844-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.66
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.98",
+  "file": "390x844-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.45
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.98",
+  "file": "390x844-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.17
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.98",
+  "file": "390x844-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.72
+ },
+ {
+  "vp": "375x812",
+  "state": "s00end@l",
+  "file": "375x812-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.98
+ },
+ {
+  "vp": "375x812",
+  "state": "signal@0.78",
+  "file": "375x812-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 4.93
+ },
+ {
+  "vp": "375x812",
+  "state": "signal@0.78",
+  "file": "375x812-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.85
+ },
+ {
+  "vp": "375x812",
+  "state": "signal@0.78",
+  "file": "375x812-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 5.58
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.14",
+  "file": "375x812-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.54
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.5",
+  "file": "375x812-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 6.06
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.5",
+  "file": "375x812-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.35",
+  "file": "375x812-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.43
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.35",
+  "file": "375x812-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.23
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.89",
+  "file": "375x812-strata-0.89-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.3
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.89",
+  "file": "375x812-strata-0.89-1.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.89",
+  "file": "375x812-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.99
+ },
+ {
+  "vp": "375x812",
+  "state": "zero@0.3",
+  "file": "375x812-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.62
+ },
+ {
+  "vp": "375x812",
+  "state": "zero@0.3",
+  "file": "375x812-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.06
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.42",
+  "file": "375x812-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.47
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.42",
+  "file": "375x812-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.58
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.42",
+  "file": "375x812-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.9",
+  "file": "375x812-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.47
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.9",
+  "file": "375x812-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.58
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.9",
+  "file": "375x812-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.3",
+  "file": "375x812-evidence-0.3-0.png",
+  "text": "OBSERVED \u00b7 AR6.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.52
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.3",
+  "file": "375x812-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.44
+ },
+ {
+  "vp": "375x812",
+  "state": "observatory@l",
+  "file": "375x812-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.3",
+  "file": "375x812-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP V4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.3",
+  "file": "375x812-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.77
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.98",
+  "file": "375x812-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 8.65
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.98",
+  "file": "375x812-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.17
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.98",
+  "file": "375x812-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.82
+ },
+ {
+  "vp": "360x800",
+  "state": "s00end@l",
+  "file": "360x800-s00end-l-0.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.98
+ },
+ {
+  "vp": "360x800",
+  "state": "signal@0.78",
+  "file": "360x800-signal-0.78-0.png",
+  "text": "OBSERVED \u00b7 PLANET",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 5.73
+ },
+ {
+  "vp": "360x800",
+  "state": "signal@0.78",
+  "file": "360x800-signal-0.78-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.85
+ },
+ {
+  "vp": "360x800",
+  "state": "signal@0.78",
+  "file": "360x800-signal-0.78-2.png",
+  "text": "OBSERVED \u00b7 NOAA GML",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 5.58
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.14",
+  "file": "360x800-record-0.14-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 SIDECAR",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 7.31
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.5",
+  "file": "360x800-years-0.5-0.png",
+  "text": "DERIVED",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 6.06
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.5",
+  "file": "360x800-years-0.5-1.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.35",
+  "file": "360x800-regions-0.35-0.png",
+  "text": "DERIVED \u00b7 CELL TRENDS SINCE 1975 \u00b7 12730",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.65
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.35",
+  "file": "360x800-regions-0.35-1.png",
+  "text": "DERIVED \u00b7 BAND MEANS \u00b7 AR(1) 95% CI",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.23
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.89",
+  "file": "360x800-strata-0.89-0.png",
+  "text": "OBSERVED \u00b7 CELLS \u00b7 GISTEMP v4 \u00b7 1951-198",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.3
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.89",
+  "file": "360x800-strata-0.89-1.png",
+  "text": "DERIVED \u00b7 LAYERS = ZONAL MEANS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.0
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.89",
+  "file": "360x800-strata-0.89-2.png",
+  "text": "DERIVED \u00b7 SPINE",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.99
+ },
+ {
+  "vp": "360x800",
+  "state": "zero@0.3",
+  "file": "360x800-zero-0.3-0.png",
+  "text": "OBSERVED \u00b7 SERIES \u00b7 GISTEMP v4 \u00b7 1951-19",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 10.62
+ },
+ {
+  "vp": "360x800",
+  "state": "zero@0.3",
+  "file": "360x800-zero-0.3-1.png",
+  "text": "DERIVED \u00b7 TREND, AR(1) CI, LOESS",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 5.06
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.42",
+  "file": "360x800-futures-0.42-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.72
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.42",
+  "file": "360x800-futures-0.42-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.75
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.42",
+  "file": "360x800-futures-0.42-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.9",
+  "file": "360x800-futures-0.9-0.png",
+  "text": "PREDICTED \u00b7 IPCC AR6 ASSESSED RANGES, NO",
+  "color": "rgb(143, 162, 255)",
+  "contrast": 4.72
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.9",
+  "file": "360x800-futures-0.9-1.png",
+  "text": "DERIVED \u00b7 HADCRUT5 REBASED TO 1850-1900 ",
+  "color": "rgb(88, 184, 225)",
+  "contrast": 4.75
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.9",
+  "file": "360x800-futures-0.9-2.png",
+  "text": "OBSERVED \u00b7 HADCRUT5 95% RANGE (STIPPLE)",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.94
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.3",
+  "file": "360x800-evidence-0.3-0.png",
+  "text": "OBSERVED \u00b7 AR6.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 6.52
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.3",
+  "file": "360x800-evidence-0.3-1.png",
+  "text": "DERIVED \u00b7 AGREEMENT.JSON",
+  "color": "rgb(0, 0, 0)",
+  "contrast": 10.44
+ },
+ {
+  "vp": "360x800",
+  "state": "observatory@l",
+  "file": "360x800-observatory-l-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP v4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 11.06
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.3",
+  "file": "360x800-surface-0.3-0.png",
+  "text": "OBSERVED \u00b7 GISTEMP V4 \u00b7 1951-1980",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 12.09
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.3",
+  "file": "360x800-surface-0.3-1.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.94
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.98",
+  "file": "360x800-surface-0.98-0.png",
+  "text": "OBSERVED 2025: +1.19 \u00b0C ABOVE 1951-1980 ",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 9.46
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.98",
+  "file": "360x800-surface-0.98-1.png",
+  "text": "OBSERVED",
+  "color": "rgb(255, 255, 255)",
+  "contrast": 13.17
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.98",
+  "file": "360x800-surface-0.98-2.png",
+  "text": "DATA: NASA GISS GISTEMP v4 \u00b7 MET OFFICE ",
+  "color": "rgba(255, 255, 255, 0.5)",
+  "contrast": 3.99
+ }
+]

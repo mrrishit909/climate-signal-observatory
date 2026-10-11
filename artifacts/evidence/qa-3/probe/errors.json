@@ -1,0 +1,2154 @@
+[
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "signal",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 797.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "signal"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 780,
+    "section": "signal"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "strata",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "strata"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "facts.json",
+  "scene": "surface",
+  "hit": {
+   "idx": 0,
+   "x": 875.765625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "surface"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "surface"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "trends.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 879.921875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "trends.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 879.921875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "trends.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 879.921875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "regional.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 888.2421875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD REGIONAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "regional.json",
+  "scene": "observatory",
+  "hit": {
+   "idx": 0,
+   "x": 478.2890625,
+   "y": 278.359375,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD REGIONAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 262,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "ar6.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 867.4453125,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 2,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": 13289,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "ar6.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 424.6953125,
+   "y": 507.453125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 491,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "co2.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 867.4453125,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CO2.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "co2.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 867.4453125,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CO2.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "extremes.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 888.2421875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD EXTREMES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "series_annual.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 909.046875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "series_annual.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 909.046875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "series_annual.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 909.046875,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "changepoints.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 904.8828125,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CHANGEPOINTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg_intro.i8.bin.gz",
+  "scene": "signal",
+  "hit": {
+   "idx": 0,
+   "x": 971.4453125,
+   "y": 797.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "signal"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG_INTRO.I8.BIN.GZ (HTTP 404)RETRY",
+    "inView": true,
+    "top": 780,
+    "section": "signal"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 499.5703125,
+   "y": 720.546875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 704,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 4745,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 14378,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "strata",
+  "hit": {
+   "idx": 1,
+   "x": 499.5703125,
+   "y": 486.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -4899,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 470,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 8100,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "observatory",
+  "hit": {
+   "idx": 2,
+   "x": 499.5703125,
+   "y": 219.859375,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -12796,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -7180,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 203,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_trends_gistemp_2deg.i8.bin.gz",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 129.8046875,
+   "y": 638,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_TRENDS_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 592,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "coastlines.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 896.5625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD COASTLINES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "coastlines.json",
+  "scene": "observatory",
+  "hit": {
+   "idx": 0,
+   "x": 494.9296875,
+   "y": 278.359375,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD COASTLINES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 262,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "meta.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 871.6015625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "meta.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 871.6015625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "meta.json",
+  "scene": "surface",
+  "hit": {
+   "idx": 0,
+   "x": 871.6015625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "surface"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "surface"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg.meta.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 582.7734375,
+   "y": 421.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 2,
+  "retryInViewport": true,
+  "visibleRetries": 4,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 405,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 3152,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 7868,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 17501,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 3152,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 7868,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 17501,
+    "section": "observatory"
+   }
+  ]
+ },
+ {
+  "vp": "D",
+  "file": "grid_gistemp_2deg.meta.json",
+  "scene": "years",
+  "hit": {
+   "idx": 1,
+   "x": 499.5703125,
+   "y": 720.546875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 2,
+  "retryInViewport": true,
+  "visibleRetries": 4,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": -1170,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 704,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 4745,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 14378,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": -1170,
+    "section": "record"
+   }
+  ]
+ },
+ {
+  "vp": "D",
+  "file": "validation.json",
+  "scene": "strata",
+  "hit": {
+   "idx": 0,
+   "x": 896.5625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD VALIDATION.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "strata"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "validation.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 896.5625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD VALIDATION.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "D",
+  "file": "agreement.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 892.40625,
+   "y": 38.796875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AGREEMENT.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "signal",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 733.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "signal"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 688,
+    "section": "signal"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "strata",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "strata"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "facts.json",
+  "scene": "surface",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "surface"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD FACTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "surface"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "trends.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "trends.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "trends.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD TRENDS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "regional.json",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD REGIONAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "regional.json",
+  "scene": "observatory",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 178.28125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD REGIONAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 133,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "ar6.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 2,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": 12212,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "ar6.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 49.8046875,
+   "y": 255.3125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AR6.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 210,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "co2.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CO2.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "co2.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CO2.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "extremes.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD EXTREMES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "series_annual.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "series_annual.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "series_annual.json",
+  "scene": "futures",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "futures"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD SERIES_ANNUAL.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "futures"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "changepoints.json",
+  "scene": "zero",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "zero"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD CHANGEPOINTS.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "zero"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg_intro.i8.bin.gz",
+  "scene": "signal",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 733.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "signal"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG_INTRO.I8.BIN.GZ (HTTP 404)RETRY",
+    "inView": true,
+    "top": 654,
+    "section": "signal"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 49.8046875,
+   "y": 590.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 551,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 4043,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 13376,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "strata",
+  "hit": {
+   "idx": 1,
+   "x": 49.8046875,
+   "y": 79.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -4703,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 34,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 7489,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg.i8.bin.gz",
+  "scene": "observatory",
+  "hit": {
+   "idx": 2,
+   "x": 49.8046875,
+   "y": 128.984375,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 3,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -12109,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": -7140,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 83,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_trends_gistemp_2deg.i8.bin.gz",
+  "scene": "regions",
+  "hit": {
+   "idx": 0,
+   "x": 55.8046875,
+   "y": 658.3125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "regions"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_TRENDS_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 596,
+    "section": "regions"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "coastlines.json",
+  "scene": "years",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD COASTLINES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "years"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "coastlines.json",
+  "scene": "observatory",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 195.171875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "observatory"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD COASTLINES.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 133,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "meta.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "record"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "meta.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "meta.json",
+  "scene": "surface",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "surface"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "surface"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg.meta.json",
+  "scene": "record",
+  "hit": {
+   "idx": 0,
+   "x": 49.8046875,
+   "y": 442.375,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "record"
+  },
+  "hitsBefore": 2,
+  "retryInViewport": true,
+  "visibleRetries": 4,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 380,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 2847,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 6972,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 16305,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 2847,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 6972,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 16305,
+    "section": "observatory"
+   }
+  ]
+ },
+ {
+  "vp": "M",
+  "file": "grid_gistemp_2deg.meta.json",
+  "scene": "years",
+  "hit": {
+   "idx": 1,
+   "x": 49.8046875,
+   "y": 590.203125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "years"
+  },
+  "hitsBefore": 2,
+  "retryInViewport": true,
+  "visibleRetries": 4,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": -1097,
+    "section": "record"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": true,
+    "top": 551,
+    "section": "years"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 4043,
+    "section": "strata"
+   },
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG (HTTP 404)RETRY",
+    "inView": false,
+    "top": 13376,
+    "section": "observatory"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": [
+   {
+    "text": "COULD NOT LOAD GRID_GISTEMP_2DEG.META.JSON (HTTP 404)RETRY",
+    "inView": false,
+    "top": -1097,
+    "section": "record"
+   }
+  ]
+ },
+ {
+  "vp": "M",
+  "file": "validation.json",
+  "scene": "strata",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "strata"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD VALIDATION.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "strata"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "validation.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 84.578125,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD VALIDATION.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ },
+ {
+  "vp": "M",
+  "file": "agreement.json",
+  "scene": "evidence",
+  "hit": {
+   "idx": 0,
+   "x": 61.8046875,
+   "y": 67.6875,
+   "covered": false,
+   "topEl": "BUTTON.btn-square",
+   "section": "evidence"
+  },
+  "hitsBefore": 1,
+  "retryInViewport": true,
+  "visibleRetries": 1,
+  "alertsBefore": [
+   {
+    "text": "COULD NOT LOAD AGREEMENT.JSON (HTTP 404)RETRY",
+    "inView": true,
+    "top": 22,
+    "section": "evidence"
+   }
+  ],
+  "refetches": 1,
+  "recovered": true,
+  "alertsAfter": []
+ }
+]

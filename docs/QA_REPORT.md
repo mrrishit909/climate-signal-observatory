@@ -442,3 +442,126 @@ Considered and not logged:
 - **Contact sheets:** `1440x900`, `1024x768` and `768x1024` were read in full. `390x844`, `360x800` and the classic pair were read through the composite sheets.
 - **Full resolution:** 1440 `s01-01`, `s03a-01`, `s05-01`, `s06-02`, `s07-01`, `s04-04`, `obs-04`, `s08-01`, `s08-02`, `00-s00-t2500`. 1024 `s01-00`, `s03a-00`, `s05-00`, `s06-01`, `s07-01`, `obs-00`, `obs-02`, `s08-02`. 390 `s01-01`, `s03a-01`, `s03b-01`, `s04-04`, `s05-01`, `s05-04`, `s06-02`, `obs-04`, `s02-00/01/02`, `00-s00-end`. 360: 16 frames incl. `00-s00-end`, `s02-00`, `s05-00`, `s08-02`. 375 `s02-00`. 768 `s01-01`, `s02-01`. Classic: 12 pairs at 1024 and 12 at 768. Probe shots: `err-D-facts_json-signal`, `s00end-390/768/1440`, `ring-1440-84/85/86`, `rm-obs-768/1024/390/1440`, `col-1024x768-observatory-l`, `col-390x844-evidence-0.05`, `col-768x1024r-observatory-l`, `col-360x800r-zero-0.3`.
 - **Commit size:** to keep the commit near 30 MB, non-S00 frames at 1440, 768 and 390 are committed at 70% scale (JPEG q50). Lighthouse JSON is gzipped and the HTML reports are dropped.
+
+---
+
+# Pass 3 (task P03-QA-004)
+
+**Scope.**
+- Re-run against HEAD `6488c80` (FIX-A3), from a fresh `npm run build`, served on 4321 by `site/tests/serve.mjs`.
+- 2026-10-11, 09:33 to 10:45 EDT. Same reviewer, who built none of this site. No product code changed.
+- Evidence: `artifacts/evidence/qa-3/` (19 MB). Probes are in `artifacts/evidence/qa-3/probe/`; every probe path below is relative to that folder.
+
+**Probe changes since pass 2.**
+- **RETRY clicks are now real pointer input** (L12): `page.mouse.click` at desktop, `touchscreen.tap` at phones. The old `button.click()` fallback is gone.
+- **`rm-overflow.mjs` compares against the configured viewport width** (L14).
+- **New `lessons.mjs` covers three lessons:**
+  - **L16:** clips every visible tag and caption at 13 landings x 8 viewports. `contrast.py` estimates contrast from the pixels.
+  - **L17:** opens each panel, then jumps to every other scene.
+  - **L18:** samples every frame (requestAnimationFrame) of the S03a and S05 baseline toggles after a real pointer click. It checks each visible baseline-bearing text node. The S05 `.invariance` line, which names both baselines on purpose ("slope under A = slope under B"), is excluded.
+
+**Lighthouse.** Not re-run. The build grew 0.8 KB gz since pass 2:
+- JS: 110.37 to 111.01 KB.
+- CSS: 14.31 to 14.38 KB.
+- HTML: 1.21 to 1.26 KB.
+
+Pass-2 figures still stand: mobile LCP 1956 to 1968 ms, perf 0.98, a11y 1.00.
+
+**Verdict: FAILED.** All three pass-2 majors (D-020, D-021, D-022) are closed, along with D-010, D-023 and D-024. D-017 is accepted by ruling. One major remains, found by the new L16 pixel probe: **D-025**, the S08 attribution footer at 2.5 to 4.0:1 over the bright cell surface.
+
+I missed D-025 in passes 1 and 2. It was visible in my pass-1 frame `qa/screenshots/1440x900/s08-02-p60.jpg`, but no probe measured it until L16. Everything else in the gate passes.
+
+## P3.1 Release gate (pass 3)
+
+| Row | Result | Measured evidence |
+|---|---|---|
+| Visual design | PASS | **Contact sheets:** all 10 runs (7 viewports, 1280x720, both classic). **Orb:** minR equals G0 and is monotonic everywhere (e.g. 1280x720 G0 448). S08 p0.6 radius is at least the half-diagonal (881 vs 734 at 1280x720; 526 vs 440 at 360). **D-017 dissolve:** now stays on the legend's colours (`screenshots/1440x900/00-s00-t2500.jpg`), accepted by ruling. **P02 pair:** recomposed (`p02-vs-p03-open-close-*`), not confusable. |
+| Motion UI | PASS | Unchanged. Pass-2 frame pacing stands. **L18:** 0 mixed frames in 22 sampled toggles (`l18.json`). The 390 reduced-motion S03a radios sit below the fold in flow layout, so they were not sampled. |
+| UX | PASS | **Keyboard:** the journey is unchanged and passes (`keyboard.json`). **Nav:** 0 blocked at every landing, normal and reduced (`navblock.json`). **L17:** the OBS inspector closes on every scene change at 1440, 768 and 390 (27 of 27). The S05 MORE CONTROLS sheet and the mobile menu keep `aria-expanded` across a programmatic jump, but the sheet is absolute inside `#zero` and never enters another scene's viewport (checked at 768 and 390). The menu closes on its own item clicks and on outside taps. |
+| Functionality and states | PASS | **Real pointer:** `errors.json` shows 72 of 72 artifact-and-scene cases at 1440 and 390 with an in-scene alert. RETRY is the top element at its centre in all 72, recovers after exactly 1 re-fetch, and is clicked by `mouse.click` or `touchscreen.tap`. **D-020 closed:** the S01 desktop error now sits above the nav, clear of the hero (`shots/err-D-facts_json-signal.jpg`). **D-022 closed:** reduced-motion OBS paints at 1440x900 and 390x844 (`rm-landings.json`), and every other reduced-motion figure paints. |
+| AI / analytical honesty | **FAIL** (D-025) | **Numbers:** unchanged since pass 2 (copy and artifacts untouched apart from layout). **Tags:** no hidden tags (`chips.json`). The inspector draws the full series (`recheck.json`). **D-021 closed:** the phone S00 OBSERVED tag measures 12.0:1 at 390, 375 and 360, and 7.1 to 12.1:1 elsewhere (`l16.json`). **L16, 229 clips:** every honesty tag passes on computed colours. The DERIVED `#58b8e1` and PREDICTED `#8fa2ff` chips on their `#1a1a1a`-equivalent backing are about 7.4 to 7.7:1. The 27 low pixel estimates for those chips (4.0 to 4.4) are anti-aliasing artefacts of 11 px text. **Open:** the S08 attribution footer measures 2.5 to 4.0:1 in 16 of 16 clips (D-025). |
+| Performance | PASS | Lighthouse not re-run (growth under 2 KB gz). Pass-2: mobile LCP 1956 to 1968 ms, perf 0.98, a11y 1.00, CLS 0. |
+| Responsiveness | PASS | **Classic scrollbars (L1):** `__cso.classes()` js equals css in every shot, classic included (clientWidth 1009 and 753). **1280x720 (L2):** clean. **Overflow (L5/L14):** `rm-overflow.json` shows 0 overflow against the configured width at 1440, 768, 390, 375 and 360, normal and reduced. **Phones (L11):** `collide.json` and `collide-reduced.json` have no visible text collisions at 360, 375 or 390. The only hits are hidden text under the fixed nav, plus a 3 px touch between the "-0.05" and "+0.05" legend edge labels. **D-010 closed:** the S05 key is above the plot and the "-0.5 °C" label is clear of the series (`screenshots/390x844/s05-01-p30.jpg`, `360x800/s05-00-p30.jpg`). **D-024 closed:** no reduced-motion S05 collision. **D-022 768 rail:** now below the planet (`shots/rm-obs-768.jpg`). |
+| Professional quality | PASS | `pytest`: 80 passed. `typecheck`, `lint`: clean. `npm test`: 130 passed. `npm run e2e --workers 1` (load 13 to 36): 195 passed, 59 skipped (project-scoped `test.skip(isMobile …)`), 0 failed, 0 flaky, so no serial rerun was needed. axe (wcag2a/aa, 21a/aa): 0 violations in 62 runs (1440 and 390, normal and reduced, all landings and nav jumps). |
+| GitHub, Deployment, Portfolio | BLOCKED | Out of scope for QA. |
+
+## P3.2 Register status from my pass-3 frames
+
+| ID | Pass 2 | Pass 3 | Evidence |
+|---|---|---|---|
+| D-020 S01 desktop error under hero | major | **CLOSED** | `errors.json` (72 of 72: not covered, real-pointer RETRY recovers), `shots/err-D-facts_json-signal.jpg` |
+| D-021 phone S00 tag under scrim | major | **CLOSED** | `l16.json` (s00end: 12.0:1 at the phone sizes), `screenshots/390x844/00-s00-end.jpg` |
+| D-022 reduced-motion OBS empty; 768 rail overprint | major | **CLOSED** | `rm-landings.json` (obs-static 1440x900, 390x844), `shots/rm-obs-{768,1024,390,1440}.jpg` |
+| D-010 S05 labels | minor | **CLOSED** (the narrow-layout "0.0 °C" line label is accepted by ruling) | `screenshots/390x844/s05-01-p30.jpg`, `1024x768/s05-00-p30.jpg` |
+| D-017 decade-run hues | minor | **ACCEPTED** (ruling: speckled on-legend dissolve) | `screenshots/1440x900/00-s00-t2500.jpg` |
+| D-023 S08 entry dead zone | minor | **CLOSED** | The core now rides into S08 (`shots/ring300-1440-{85,85.5}.jpg`, debug rects present). One thin limb arc still appears in contact-sheet frame 85 (`contact-sheets/1440x900.jpg`), but it was not reproducible at 300 ms or 2.5 s settles. Noted, not logged. |
+| D-024 reduced-motion S05 note collision | minor | **CLOSED** | `collide-reduced.json` (no zero-scene hits) |
+| D-001..D-019 | | Closed or accepted as in pass 2; no regressions seen | |
+
+## P3.3 QA_LESSONS L1-L18
+
+| # | Result | Evidence |
+|---|---|---|
+| L1 | PASS | `screenshots/*.json` `appClasses`, classic 1009/753 px |
+| L2 | PASS | 1024x768 and 1280x720 collide entries: hidden text only |
+| L3 | PASS | `chips.json`: no tag hidden at 360 to 768 |
+| L4 | PASS | 72 of 72 in-scene alerts, exactly one re-fetch |
+| L5 | PASS | `rm-overflow.json`: 0 overflow, normal and reduced |
+| L6 | PASS | Mobile LCP 1.96 s (pass 2; build +0.8 KB gz) |
+| L7 | PASS | `collide*.json` `tiny`: nothing visible under 11 px |
+| L8 | PASS | No corner/pill overlaps at 768, 390, 375 or 360 |
+| L9 | PASS | RETRY top-of-stack in 72 of 72; OBS globe no longer covers controls |
+| L10 | PASS | Unchanged copy; universal claims bound to facts |
+| L11 | PASS | No visible collisions at 360x800, 375x812 or 390x844, normal and reduced |
+| L12 | PASS | Real `mouse.click`/`touchscreen.tap` RETRY in all 72 states; nav top-of-stack at every landing |
+| L13 | PASS (n/a for labels) | Every axis, year and legend label is DOM or SVG text, so it is inside the collision probe. The canvases draw only cells and strata. |
+| L14 | PASS | Overflow compared with the configured viewport width (`rm-overflow.json` `configuredW`) |
+| L15 | PASS | `rm-landings.json`: every reduced-motion figure has non-zero size, including OBS |
+| L16 | **FAIL** (D-025) | `l16.json`: tags pass; the S08 attribution footer is 2.5 to 4.0:1 |
+| L17 | PASS | `l17.json`: the inspector closes; the S05 sheet is scene-local; nav top-of-stack after every jump |
+| L18 | PASS | `l18.json`: 0 mixed frames. The S05 axis label, clamp label and series chip swap together; at 150 ms after the click all three show the new baseline. |
+
+## P3.4 Defect register (pass 3, open items)
+
+### Major
+
+**P03-D-025: The S08 attribution footer is unreadable over the bright cell surface** (major, accessibility and licensing; L16; VISUAL_DESIGN hard rejection #14 "50% white under 13px"; present since pass 1, missed until the L16 pixel probe)
+- **File:** `site/src/styles/scenes.css:493` and `:506`. `.surface-foot` is 12 px (11 px on phones) in `--text-muted` (`rgba(255,255,255,0.5)`), drawn straight over the S08 full-bleed cell surface. It has no backing.
+- **Viewports:** all 8 measured: 1920, 1440, 1280, 1024, 768, 390, 375, 360. It is worst on desktop at p0.98, where the surface behind the footer is gold.
+- **Repro:** `__cso.jumpTo('surface', 0.98)` (or 0.3), then sample the footer box.
+- **Expected:** at least 4.5:1 (WCAG 1.4.3). The footer carries the required attributions (NASA GISTEMP, Met Office HadCRUT5 under OGL v3, NOAA GML, IPCC AR6 citation, Natural Earth).
+- **Actual:**
+  - Pixel contrast is 2.53 (1280x720), 2.62 (1440x900), 2.75 (1920x1080) and 2.98 (1024x768) at p0.98, and 3.1 to 4.0 elsewhere. All 16 S08 footer clips are below 4.5.
+  - axe cannot see this, because the background is a canvas.
+- **Evidence:** `probe/l16.json` (state `surface@0.98` / `surface@0.3`, text "DATA: NASA GISS GISTEMP v4 …"), `screenshots/1440x900/s08-02-p60.jpg`, `screenshots/1280x720/s08-02-p98.jpg`.
+- **Verification test:** the builder's L16 contrast test should also cover `.surface-foot` (and `.record-sources`) at every S08 landing and viewport. Assert at least 4.5:1, for example by giving it an opaque backing (as the tags have) or a darker scrim under the footer band.
+
+### Minor and notes (known limitations if D-025 is fixed)
+
+- **P03-D-026: Reduced-motion static planet grid lines.**
+  - The reduced-motion static planet (OBS and the nogl/static painter) draws cell borders in an X-shaped band across the disc, rather than evenly or not at all.
+  - It is cosmetic only: the cells and the missing-cell dots are correct.
+  - **Evidence:** `shots/rm-obs-1440.jpg`, `rm-obs-768.jpg`.
+- **P03-D-027: Phone trend legend edge labels touch.**
+  - The "-0.05" and "+0.05" edge labels touch by 3 px at 360 to 768 (S03b, reduced motion).
+  - **Evidence:** `collide-reduced.json`.
+- **Note: `.record-sources` (S02) uses 11 px at 50% white on black.**
+  - That is about 5.3:1, which passes WCAG but is a literal breach of hard rejection #14's wording.
+  - I'd recommend a design ruling on whether #14 means contrast (passes) or the literal size-and-opacity rule.
+- **Note: one transient limb arc between OBS and S08.**
+  - Seen in one contact-sheet frame. Not reproducible at a 300 ms settle (D-023 row).
+
+## P3.5 Frames read in pass 3
+
+- **Contact sheets (in full):** `390x844` and the bottom third of `1440x900`.
+- **Contact sheets (via composites):** `768x1024` and `1024x768`, read through `classic-vs-overlay-*.jpg`.
+- **Full-resolution, from `screenshots/`:**
+  - 390: `00-s00-end`, `s01-01`, `s05-01`, `s06-02`, `obs-04`
+  - 360: `00-s00-end`, `s05-00`
+  - 375: `s08-00`
+  - 1280: `s01-00`, `s03a-00`, `s05-00`, `s06-01`, `obs-02`, `s07-01`
+  - 1440: `00-s00-t2500`, `s08-02`
+- **Probe shots:** `err-D-facts_json-signal`, `rm-obs-{768,1440,390}`, `ring300-1440-{84,85,85.5}`.
+- **Classic against overlay:** 12 pairs at 768 and 12 at 1024.
+- **L16 footer and chip clips:** the 1280, 1440 and 390 footers, plus the S03b chips.
+- **Commit size:** non-S00 screenshots are committed at 60% scale (q50), S00 frames at q45, and contact sheets at 75% (q50).

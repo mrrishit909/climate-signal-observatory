@@ -1,0 +1,578 @@
+[
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "1440x900",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "768x1024",
+  "panel": "menu",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "inspector",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": false,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "s05-more",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "signal",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "record",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "years",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "regions",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "strata",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "zero",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "futures",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "evidence",
+  "stillOpen": true,
+  "navTopOfStack": true
+ },
+ {
+  "vp": "390x844",
+  "panel": "menu",
+  "opened": true,
+  "dest": "surface",
+  "stillOpen": true,
+  "navTopOfStack": true
+ }
+]

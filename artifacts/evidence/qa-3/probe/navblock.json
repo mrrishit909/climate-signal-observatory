@@ -1,0 +1,242 @@
+[
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "signal",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "record",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "years",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "regions",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "strata",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "zero",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "futures",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "evidence",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "observatory",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "surface",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "signal",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "record",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "years",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "regions",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "strata",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "zero",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "futures",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "evidence",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "observatory",
+  "blocked": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "surface",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "signal",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "record",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "years",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "regions",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "strata",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "zero",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "futures",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "evidence",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "observatory",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "surface",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "signal",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "record",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "years",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "regions",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "strata",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "zero",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "futures",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "evidence",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "observatory",
+  "blocked": []
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "surface",
+  "blocked": []
+ }
+]
