@@ -356,7 +356,7 @@ function StaticObs({ year, source, baseline, version }: { year: number; source: 
   const o = obs.use();
   useEffect(() => {
     if (!ref.current) return;
-    paintStatic(ref.current, (L, dpr) => {
+    const draw = () => paintStatic(ref.current!, (L, dpr) => {
       const d = L.obs;
       const f = planetFrame(L, dpr, d, faceQuat(o.lon0, o.lat0), source, year, baseline);
       const g = bank.grids.get(source);
@@ -376,6 +376,10 @@ function StaticObs({ year, source, baseline, version }: { year: number; source: 
       else if (o.region && typeof o.region === "object") f.band = [o.region.lat0, o.region.lat1, 1];
       return [f, { orb: null, halo: null, outline: null, limb: { disc: d, alpha: 0.24 } }];
     });
+    // L15 / D-022: paint on mount and on every resize (the canvas is sized by the 100dvh stage)
+    draw();
+    addEventListener("resize", draw);
+    return () => removeEventListener("resize", draw);
   }, [year, source, baseline, version, o]);
   return <canvas ref={ref} className="obs-static" role="img" aria-label={`Observatory planet, ${year}, ${source}, vs ${baseline}`} />;
 }

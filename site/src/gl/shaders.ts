@@ -123,9 +123,10 @@ void main() {
   if (u_s1 <= 0.0 && v_z < 0.0) discard; // back hemisphere of the sphere
   ivec2 t = ivec2(v_cell.y, v_cell.x);
   int oA = texelFetch(u_offA, t, 0).r, oB = texelFetch(u_offB, t, 0).r;
-  vec3 a = mix(cell(u_layerA, oA), cell(u_layerA, oB), u_baseMix);
-  vec3 c = a;
-  if (u_mix > 0.0) c = mix(a, mix(cell(u_layerB, oA), cell(u_layerB, oB), u_baseMix), u_mix);
+  // D-017: crossfades dissolve cell by cell (each cell flips at its own threshold) so every pixel stays on a legend bin
+  vec2 hs = fract(sin(vec2(dot(vec2(t), vec2(12.9898, 78.233)), dot(vec2(t), vec2(39.3468, 11.135)))) * 43758.5453);
+  int oX = hs.y < u_baseMix ? oB : oA;
+  vec3 c = cell(hs.x < u_mix ? u_layerB : u_layerA, oX);
   if (u_mode != 0) {
     vec3 m = c;
     int bB = texelFetch(u_grid, ivec3(t, u_layerB), 0).r;

@@ -441,13 +441,19 @@ function surfaceFrame(p: number, now: number, L: Layout, dpr: number): [Frame | 
 export const echoLive = () => echoAt >= 0;
 
 /** Each frame: which scene owns the viewport, and its Frame. */
+let enterDy = 0;
 function build(now: number, L: Layout, dpr: number): [Frame | null, Overlay, string] {
   // OBS is in normal flow: whenever it holds the middle of the viewport it owns the planet, offset with the section
+  enterDy = 0;
   const obsEl = document.getElementById("observatory");
   if (obsEl) {
     const r = obsEl.getBoundingClientRect();
     if (r.top < L.h * 0.5 && r.bottom > L.h * 0.5) return [...obsFrame(now, L, dpr, r.top), "observatory"];
   }
+  // D-023: while S08 scrolls in under the OBS section (its stage not yet pinned), its first frame rides with the stage
+  const s8 = document.getElementById("surface")?.getBoundingClientRect().top ?? 0;
+  enterDy = s8 > 0.5 && s8 < L.h ? s8 : 0;
+  if (enterDy) return [...surfaceFrame(0, now, L, dpr), "surface"];
   const loc = locate(SCENE_IDS);
   const id = loc?.id ?? "signal";
   const p = loc ? loc.p : 0;
@@ -545,9 +551,11 @@ function frame(now: number) {
   // intro radius stats (MOTION_SYSTEM test 15): the disc the renderer actually uses, every frame
   const [f, o, id] = build(now, L, dpr);
   debug.scene = id;
+  const shift = enterDy ? `translateY(${enterDy.toFixed(1)}px)` : "";
+  for (const c of [orbCanvas, glCanvas]) if (c && c.style.transform !== shift) c.style.transform = shift;
   // the drawn figure, for layout tests: the sphere disc while it is a sphere, the core's box once it stands
   debug.figure = { discs: [], rects: [] };
-  if (f && f.cells.length && f.cellAlpha > 0.05 && f.u.s1 === 0 && f.dim > 0.3) debug.figure.discs.push([...f.u.sphere]);
+  if (f && f.cells.length && f.cellAlpha > 0.05 && f.u.s1 === 0 && f.dim > 0.3) debug.figure.discs.push([f.u.sphere[0]!, f.u.sphere[1]! + enterDy, f.u.sphere[2]!]);
   if (f?.core && f.core.alpha > 0.05) {
     const v = f.core.v, n = v.length / 4;
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
@@ -557,7 +565,7 @@ function frame(now: number) {
       const bx = t >= 1 ? [lie[i * 4]!, lie[i * 4 + 1]!, lie[i * 4]! + lie[i * 4 + 2]!, lie[i * 4 + 1]! + lie[i * 4 + 3]!] : [v[i * 4]!, v[i * 4 + 1]!, v[i * 4]! + v[i * 4 + 2]!, v[i * 4 + 1]! + v[i * 4 + 3]!];
       x0 = Math.min(x0, bx[0]!); y0 = Math.min(y0, bx[1]!); x1 = Math.max(x1, bx[2]!); y1 = Math.max(y1, bx[3]!);
     }
-    if (x1 > x0 && (f.core.bench === 0 || f.core.bench === 1)) debug.figure.rects.push([x0, y0, x1, y1]);
+    if (x1 > x0 && (f.core.bench === 0 || f.core.bench === 1)) debug.figure.rects.push([x0, y0 + enterDy, x1, y1 + enterDy]);
   }
   const r = o.orb?.disc.r ?? (f ? f.u.sphere[2] : 0);
   debug.radius = r;

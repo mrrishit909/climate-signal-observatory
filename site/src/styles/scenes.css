@@ -727,3 +727,16 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
 .regions-text .seg-ctl__row--scroll { flex-wrap: wrap; overflow: visible; }
 /* tablet: the readout's tag takes a full row instead of a 150px column */
 @media (min-width: 768px) and (max-width: 1023px) { .years-readout > .chip { grid-column: 1 / -1; grid-row: auto; max-width: none; white-space: nowrap; } }
+
+/* ---- P03-FIXA-003 ---- */
+/* D-021 / L16: the S00 tag and caption sit above the phone scrim (z 1), on its dark end */
+.signal-foot { z-index: 2; }
+/* D-022 / L15: the reduced-motion observatory keeps its 100dvh stage, so the static planet and core have a size and the rail sits where it does with motion */
+html[data-motion="off"] .scene-obs .stage { height: 100vh; height: 100dvh; min-height: 100dvh; overflow: hidden; }
+.obs-static { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+/* D-020: the S01 errors sit above the nav, clear of the hero headline (static h1, z 3) at every composition */
+#signal .scene-errors { top: auto; bottom: calc(var(--nav-clear) + 12px); }
+/* D-024: the reduced-motion note takes the bench's place; phones: the result block follows the raised bench */
+@media (max-width: 767px) { .zero-rm { font-size: 11px; } .zero-result { top: calc(51% + 44px); } }
+/* D-024: the note covers the clamp where the bench would be, so the clamp's edges never strike its text */
+.zero-rm { z-index: 3 !important; background: #000; padding: 4px 0; }

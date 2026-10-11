@@ -148,6 +148,26 @@ export function S05Zero({ def }: { def: SceneDef }) {
   const reset = () => { lab.set({ ...LAB_DEFAULT }); setClimate({ ...DEFAULTS, announce: "" }); setNote(""); setSwitchOffer(false); setResetOk(true); setTimeout(() => setResetOk(false), 1200); };
   const tag = anomalyTag(c.source, c.baseline);
   const hz = [-0.5, 0, 1].filter((v) => v > dom[0]! && v < dom[1]!);
+  const hzText = (v: number) => (v === 0 ? `0.0 °C = ${c.baseline} MEAN` : `${v > 0 ? "+" : ""}${fixed(v, 1)} °C`);
+  /** D-010: an inside label takes the plot corner (start or end, above or below its line) that the drawn series (both products) crosses least. */
+  const hzPlace = (v: number, text = hzText(v)): { anchor: "start" | "end"; dy: number; n: number } => {
+    const w = text.length * 6.8 + 6;
+    const hits = (x0: number, x1: number, top: number, bot: number) => {
+      let n = 0;
+      for (const src of ["gistemp", "hadcrut5"] as Source[]) ser(src)?.values[REF]?.forEach((u, i) => {
+        const X = x(1850 + i), Y = u === null ? NaN : y(u + adj(src)) + ty;
+        if (X >= x0 - 2 && X <= x1 + 2 && Y >= top && Y <= bot) n++;
+      });
+      return n;
+    };
+    const opts = [
+      { anchor: "start" as const, dy: -3, n: hits(B.x0, B.x0 + w, y(v) - 16, y(v) + 1) },
+      { anchor: "end" as const, dy: -3, n: hits(B.x1 - w, B.x1, y(v) - 16, y(v) + 1) },
+      { anchor: "start" as const, dy: 13, n: hits(B.x0, B.x0 + w, y(v) - 1, y(v) + 16) },
+      { anchor: "end" as const, dy: 13, n: hits(B.x1 - w, B.x1, y(v) - 1, y(v) + 16) },
+    ];
+    return opts.reduce((m, o) => (o.n < m.n ? o : m));
+  };
   const hRef = ser("hadcrut5");
 
   return (
@@ -165,9 +185,18 @@ export function S05Zero({ def }: { def: SceneDef }) {
         {hz.map((v) => (
           <g key={v} className="hairline">
             <line x1={B.x0} x2={B.x1} y1={y(v)} y2={y(v)} />
-            <text x={inside ? B.x0 + 2 : B.x0 - 8} y={inside ? y(v) - 3 : y(v) + 4} textAnchor={inside ? "start" : "end"}>{v === 0 ? `0.0 °C = ${c.baseline} MEAN` : `${v > 0 ? "+" : ""}${fixed(v, 1)} °C`}</text>
+            {inside ? (() => {
+              // a long zero label that no corner keeps clear shortens to 0.0 °C; its full definition moves to the key above the plot
+              const full = hzPlace(v), short = v === 0 && full.n > 0;
+              const q = short ? hzPlace(v, "0.0 °C") : full;
+              return <text x={q.anchor === "start" ? B.x0 + 2 : B.x1 - 2} y={y(v) + q.dy} textAnchor={q.anchor} data-hz={v}>{short ? "0.0 °C" : hzText(v)}</text>;
+            })()
+              : <text x={B.x0 - 8} y={y(v) + 4} textAnchor="end" data-hz={v}>{hzText(v)}</text>}
           </g>
         ))}
+        {inside && hz.includes(0) && hzPlace(0).n > 0 ? (
+          <text x={cx > (B.x0 + B.x1) / 2 ? B.x0 + 2 : B.x1 - 2} y={Y0 - 12} textAnchor={cx > (B.x0 + B.x1) / 2 ? "start" : "end"} data-hz="key">{hzText(0)}</text>
+        ) : null}
         <g className="series" style={{ transform: `translateY(${ty.toFixed(2)}px)` }}>
           {hRef?.ci_lo?.[REF] && hRef.ci_hi?.[REF] ? (
             <path className="stipple-band" d={(() => {
@@ -289,7 +318,7 @@ export function S05Zero({ def }: { def: SceneDef }) {
           <button type="button" className="text-btn" onClick={reset}>{resetOk ? "RESET ✓" : "RESET"}</button>
         </div>
       </div>
-      {!motion ? <p className="state-line state-line--muted zero-rm">THE BENCH IS DRAWN ONLY WITH MOTION ON; EVERY CONTROL ABOVE STILL UPDATES THE SERIES AND THE TREND.</p> : null}
+      {!motion ? <p className="state-line state-line--muted zero-rm" style={{ top: B.y0 }}>THE BENCH IS DRAWN ONLY WITH MOTION ON; EVERY CONTROL ABOVE STILL UPDATES THE SERIES AND THE TREND.</p> : null}
     </Track>
   );
 }

@@ -32,7 +32,19 @@ for (const [scene, p, files] of CASES) for (const file of files) {
     await expect(alert).toBeInViewport();
     const before = hits;
     block = false;
-    await alert.getByRole("button", { name: "RETRY" }).click(); // no force: nothing may cover it (L9)
+    // L12 / D-020: the RETRY is the top element at its centre, and a real pointer click there (not locator.click) retries
+    const btn = alert.getByRole("button", { name: "RETRY" });
+    await expect(btn).toBeInViewport();
+    const hit = await btn.evaluate((b) => {
+      const r = b.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, t = document.elementFromPoint(x, y);
+      const h1 = document.getElementById("hero-title"), a = b.closest("[role=alert]")!.getBoundingClientRect(), hr = h1?.getBoundingClientRect();
+      const onHero = !!hr && hr.width > 0 && getComputedStyle(h1!).visibility !== "hidden" && Number(getComputedStyle(h1!).opacity) > 0.05
+        && Math.min(a.right, hr.right) > Math.max(a.left, hr.left) && Math.min(a.bottom, hr.bottom) > Math.max(a.top, hr.top);
+      return { x, y, top: !!t && b.contains(t), onHero };
+    });
+    expect(hit.top, "elementFromPoint at the RETRY centre is the button").toBe(true);
+    expect(hit.onHero, "the alert does not overlap the visible hero headline").toBe(false);
+    await page.mouse.click(hit.x, hit.y);
     // the alert first gives way to RETRYING, so wait for the re-request to land, then for the scene to settle
     await expect.poll(() => hits - before, { timeout: 20000 }).toBeGreaterThanOrEqual(1);
     await expect(page.locator(`#${scene}`).getByText(`RETRYING ${stem(file)}`)).toHaveCount(0, { timeout: 20000 });
