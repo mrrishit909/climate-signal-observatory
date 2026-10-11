@@ -1,6 +1,6 @@
 # Testing (data layer)
 
-`uv run pytest -q` (62 tests, about 5 s after `uv run python -m pipelines.run_all`).
+`uv run pytest -q` (79 tests, about 6 s after `uv run python -m pipelines.run_all`).
 
 | File | Covers |
 |---|---|
@@ -8,6 +8,7 @@
 | `tests/test_baselines.py` | known-value baseline conversion on synthetic series with analytic answers; composition; missing stays missing; unavailable baseline refused; grid offsets; weighted means |
 | `tests/test_trends.py` | line recovery, HAC equals statsmodels, autocorrelation widens intervals, coverage simulation ordering, piecewise break recovery, LOESS band |
 | `tests/test_quality.py` | ranges, null handling by source start year, baseline switch is a constant shift equal to the recorded offset, CI sanity, cross-source alignment, extremes calibration, Arctic amplification, change-point labelling, CO2 association-only, AR6 values vs PDF, grid binary vs sidecar (counts, orientation, hash), size budget, facts match artifacts, file hashes |
+| `tests/test_requests.py` | intro layers equal full-grid layers; cell-trend grid parity with `ols_trend` on sampled cells and counts; zonal fixture parity with `analytics/zonal.py` and the 20% rule; coastlines well-formed; land fraction on known places; land warms faster than ocean; band edges and band trends; design-requested facts |
 | `tests/test_reconciliation.py` | missing-cell identities and an independent netCDF4 recount of valid cells for both grids, CSV sentinel recount, raw hashes |
 
 Slow tests need `data/raw` (re-create with `uv run python -m pipelines.run_all --fetch`).

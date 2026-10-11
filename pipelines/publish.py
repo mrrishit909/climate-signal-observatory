@@ -35,6 +35,8 @@ SOURCE_INFO = {
     "noaa_co2_mlo_monthly": ("NOAA GML Mauna Loa monthly CO2", "GML trends file", None, "OBSERVED", "Freely available; citation requested. Formal public-domain statement unverified.",
                              "Lan, X., Tans, P. and Thoning, K.W.: Trends in globally-averaged CO2 determined from NOAA Global Monitoring Laboratory measurements, doi:10.15138/9N0H-ZH07"),
     "noaa_co2_global_monthly": ("NOAA GML global marine-surface monthly CO2", "GML trends file", None, "OBSERVED", "As above.", "Lan, Tans and Thoning, doi:10.15138/9N0H-ZH07"),
+    "ne_110m_coastline": ("Natural Earth 110m coastline", "Natural Earth 110m (GitHub nvkelso/natural-earth-vector master)", None, "OBSERVED", "Public domain (naturalearthdata.com terms of use).", "Made with Natural Earth. Free vector and raster map data at naturalearthdata.com."),
+    "ne_110m_land": ("Natural Earth 110m land polygons", "Natural Earth 110m (GitHub nvkelso/natural-earth-vector master)", None, "OBSERVED", "Public domain (naturalearthdata.com terms of use).", "Made with Natural Earth. Free vector and raster map data at naturalearthdata.com."),
     "ipcc_ar6_wgi_spm_pdf": ("IPCC AR6 WGI Summary for Policymakers (Table SPM.1, A.1.2)", "AR6 WGI 2021 SPM final", "1850-1900", "PREDICTED",
                              "Licence page unverifiable (HTTP 403). Only short factual values quoted with page citation.", "IPCC, 2021: Summary for Policymakers. In: Climate Change 2021: The Physical Science Basis. Cambridge University Press."),
 }
@@ -47,22 +49,29 @@ def build_all(n_boot: int = 500, n_sims: int = 2000) -> None:
     art: dict[str, dict] = {}
     art["series_annual"] = build.series_annual(c)
     art["series_monthly"] = build.series_monthly(c)
-    art["trends"] = build.trends(c, n_boot)
     art["regional"] = build.regional(c)
+    art["trends"] = build.trends(c, n_boot, art["regional"])
     art["extremes"] = build.extremes(c)
     art["changepoints"] = build.changepoints(c)
     art["agreement"] = build.agreement(c)
     art["co2"] = build.co2(c)
     art["ar6"] = build.ar6(c)
+    art["coastlines"] = build.coastlines_art()
+    art["land_fraction"] = build.land_fraction_art(c)
+    art["regional"]["land_ocean"]["grid_land_mask"] = {
+        "rule": "Grid cells with land fraction >= 50% (Natural Earth 110m, land_fraction.json) are land, the rest ocean; cos(lat)-weighted mean of observed cells; null if < 40% of the class area is observed. APPROXIMATE: GISTEMP and HadCRUT5 cells blend land stations and SST, and coastal cells mix both.",
+        "land_fraction_threshold_pct": 50, "years": [int(y) for y in c.years], "sources": build.land_ocean_from_grid(c, art["land_fraction"])}
     metas = build.grids(c, PUBLIC)
+    tmetas = build.grid_trends(c, PUBLIC)
+    art["zonal_fixture"] = build.zonal_fixture(c, PUBLIC)
     ledger = json.loads((MANIFESTS / "cleaning_ledger.json").read_text())
     art["reconciliation"] = reconciliation(ledger)
-    art["validation"] = validation(c, art, metas, ledger, n_sims)
-    art["facts"] = facts(c, art, metas, ledger)
+    art["validation"] = validation(c, art, metas, tmetas, ledger, n_sims)
+    art["facts"] = facts(c, art, metas, tmetas, ledger)
     # write
     for name, a in art.items():
         write_json(PUBLIC / f"{name}.json", a)
-    for gid, m in metas.items():
+    for m in list(metas.values()) + list(tmetas.values()):
         fname = m["encoding"]["file"].replace(".i8.bin.gz", "")
         write_json(PUBLIC / f"{fname}.meta.json", tagged_grid(m))
     art["meta"] = meta(c, ledger)
@@ -72,13 +81,14 @@ def build_all(n_boot: int = 500, n_sims: int = 2000) -> None:
 
 
 def tagged_grid(m: dict) -> dict:
-    return {"schema_version": SCHEMA_VERSION, "tags": {"encoding": "DERIVED", "baseline_offsets": "DERIVED", "valid_cells_per_year": "OBSERVED", "quantization": "DERIVED"}, **m}
+    tags = {"encoding": "DERIVED", "grid": "DERIVED", "periods": "DERIVED", "rule": "DERIVED", "baseline_offsets": "DERIVED", "valid_cells_per_year": "OBSERVED", "quantization": "DERIVED"}
+    return {"schema_version": SCHEMA_VERSION, "tags": {k: v for k, v in tags.items() if k in m}, **m}
 
 
 def check_schemas() -> None:
     for f in PUBLIC.glob("*.json"):
         stem = f.stem
-        schema_name = "grid_meta" if stem.endswith(".meta") else stem
+        schema_name = ("grid_trends_meta" if stem.startswith("grid_trends_") else "grid_meta") if stem.endswith(".meta") else stem
         sp = CONTRACTS / f"{schema_name}.schema.json"
         errs = list(Draft202012Validator(json.loads(sp.read_text())).iter_errors(json.loads(f.read_text())))
         if errs:
@@ -127,7 +137,7 @@ def ar6_text_check() -> dict:
     return {"values_checked": n, "all_found_in_pdf_page": bool(ok)}
 
 
-def validation(c, art, metas, ledger, n_sims) -> dict:
+def validation(c, art, metas, tmetas, ledger, n_sims) -> dict:
     checks = []
     def add(name, expected, actual, tol):
         checks.append({"name": name, "expected": float(expected), "actual": float(actual), "tol": float(tol), "pass": bool(abs(actual - expected) <= tol)})
@@ -167,6 +177,8 @@ def validation(c, art, metas, ledger, n_sims) -> dict:
     # 6. encoding roundtrip
     enc = {}
     for gid, m in metas.items():
+        if gid.endswith("intro"):
+            continue
         src = "gistemp" if gid.startswith("gistemp") else "hadcrut5"
         raw = gzip.decompress((PUBLIC / m["encoding"]["file"]).read_bytes())
         arr = np.frombuffer(raw, np.int8).reshape(m["years"]["n"], m["grid"]["n_lat"], m["grid"]["n_lon"])
@@ -189,7 +201,8 @@ def validation(c, art, metas, ledger, n_sims) -> dict:
     cons("series_annual: every values array has len(years)", all(len(v) == ny for s in art["series_annual"]["series"] for v in s["values"].values()), f"len(years)={ny}")
     cons("series_monthly: every values array has n_months", all(len(v) == art["series_monthly"]["n_months"] for s in art["series_monthly"]["series"] for v in s["values"].values()), f"n={art['series_monthly']['n_months']}")
     cons("GISTEMP never gets a 1850-1900 baseline", all("1850-1900" not in s["values"] for s in art["series_annual"]["series"] if s["source"].startswith("NASA")), "GISTEMP starts 1880")
-    cons("grid sizes within 1.5 MB gzip total", sum(m["encoding"]["gz_bytes"] for m in metas.values()) < 1_500_000, str(sum(m["encoding"]["gz_bytes"] for m in metas.values())))
+    tot = sum(m["encoding"]["gz_bytes"] for m in list(metas.values()) + list(tmetas.values()))
+    cons("all grid binaries (anomaly, intro, trend) within 1.5 MB gzip total", tot < 1_500_000, str(tot))
     cons("no value outside +/-12.7 C was clipped in grid encoding", all(m["quantization"]["clipped_cells"] == 0 for m in metas.values()), "clipped_cells == 0")
     return {"schema_version": SCHEMA_VERSION, "tags": {"baseline_conversion": "DERIVED", "grid_vs_official_global": "DERIVED", "grid_encoding": "DERIVED", "trend_ci_simulation": "SIMULATED",
                                                       "ar6_text_check": "DERIVED", "internal_consistency": "DERIVED"},
@@ -203,7 +216,8 @@ def validation(c, art, metas, ledger, n_sims) -> dict:
 
 # --------------------------------------------------------------------------------------------- facts
 
-def facts(c, art, metas, ledger) -> dict:
+def facts(c, art, metas, tmetas, ledger) -> dict:
+    arr_ = lambda v: np.array([np.nan if x is None else x for x in v], float)
     yrs = c.years
     F = {}
     def put(k, v, unit, tag, src, note=None):
@@ -271,7 +285,45 @@ def facts(c, art, metas, ledger) -> dict:
     put("extremes_area_share_above_p95_reference_mean", r(np.nanmean(ev[(yrs >= 1951) & (yrs <= 1980)]), 3), "share", "DERIVED", "extremes", "In-sample share in the reference years (about 0.067, since 2 of 30 reference years exceed the interpolated 95th percentile); the value to compare the latest year against.")
     cp = next(x for x in art["changepoints"]["results"] if x["series_id"] == "gistemp_glb")
     put("changepoint_gistemp_selected_breaks", {"breaks": cp["selected_breaks"], "k": cp["selected_k"], "status": "EXPLORATORY"}, "year", "DERIVED", "changepoints", "Exploratory; see caveat.")
-    put("grid_artifact_gzip_bytes_total", int(sum(m["encoding"]["gz_bytes"] for m in metas.values())), "bytes", "DERIVED", "grid_gistemp_2deg.meta")
+    put("grid_artifact_gzip_bytes_total", int(sum(m["encoding"]["gz_bytes"] for m in list(metas.values()) + list(tmetas.values()))), "bytes", "DERIVED", "grid_gistemp_2deg.meta",
+        "All grid binaries: anomaly grids, the decadal intro subset and the cell trend grids.")
+    # ---- latitude bands, land vs ocean, ranks, year-to-date (data requests from the design)
+    def bfit(band):
+        s_ = next(x for x in art["trends"]["series"] if x["series_id"] == f"gistemp_band_{band}")
+        return next(x for x in s_["fits"] if x["period"] == "1975_latest")
+    bands = [b["id"] for b in art["regional"]["bands"]]
+    gl75 = tr("gistemp_glb", "1975_latest")["slope_per_decade"]
+    put("arctic_to_global_trend_ratio_1975_latest", r(bfit("arctic")["slope_per_decade"] / gl75, 2), "ratio", "DERIVED", "trends",
+        "GISTEMP 60N-90N band slope divided by the published GISTEMP global slope, 1975 to the latest complete year.")
+    npos = sum(bfit(b)["ci_ar1"][0] > 0 for b in bands)
+    put("n_bands_warmed_beyond_uncertainty_1975_latest", int(npos), "count of 5", "DERIVED", "trends", "Bands whose AR(1)-adjusted 95% interval lower bound is above zero.")
+    put("band_trends_all_positive_1975_latest", bool(npos == len(bands)), "boolean", "DERIVED", "trends", "True when all five bands have the lower bound of the AR(1)-adjusted interval above zero.")
+    ant = next(x for x in art["regional"]["rows"] if x["source"] == "gistemp" and x["band"] == "antarctic")
+    vs_ = arr_(ant["valid_area_share"])
+    first = next((int(yv) for yv, v_ in zip(yrs, vs_) if np.isfinite(v_) and v_ >= 0.5), None)
+    put("south_band_first_year_valid_share_ge_50pct", first if first is not None else "never", "year", "DERIVED", "regional", "First year at least half of the 60S-90S band's area has an annual GISTEMP value.")
+    lo_ = art["regional"]["land_ocean"]
+    gap = arr_(lo_["gap_land_minus_landocean"]["1951-1980"])
+    put("land_minus_landocean_gap_latest_decade", r(np.nanmean(gap[-10:]), 3), "degC", "DERIVED", "regional",
+        "Mean of (GISTEMP land-only minus land-ocean) over the last 10 complete years, 1951-1980 baseline. Not an ocean series.")
+    for src, sid_ in (("gistemp", "gistemp_glb"), ("hadcrut5", "hadcrut5_glb")):
+        a_ = c.annual(sid_, "1951-1980")
+        ok_ = np.isfinite(a_)
+        rank = int((a_[ok_] > a_[-1]).sum()) + 1
+        put(f"latest_year_rank_{src}", {"year": last, "rank": rank, "of": int(ok_.sum())}, "rank (1 = warmest)", "DERIVED", "series_annual")
+    for q, key in (("land_surface_temperature_change", "ar6_published_land_2011_2020"), ("ocean_surface_temperature_change", "ar6_published_ocean_2011_2020")):
+        o = next(x for x in art["ar6"]["observed_published"] if x["quantity"] == q)
+        put(key, {"best_estimate": o["best_estimate_c"], "low": o["assessed_low_c"], "high": o["assessed_high_c"], "page_pdf": o["page_pdf"]}, "degC", "OBSERVED", "ar6",
+            "Assessed value in IPCC AR6 WGI SPM A.1.2, relative to 1850-1900.")
+    ytd_year = core.Y0 + c.n_months // 12
+    for src, sid_, b in (("gistemp", "gistemp_glb", "1951-1980"), ("hadcrut5", "hadcrut5_glb", "1850-1900")):
+        m_ = c.monthly(sid_, b)[(ytd_year - core.Y0) * 12:]
+        n_ = int(np.isfinite(m_).sum())
+        mean_ = r(np.nanmean(m_), 3) if n_ else None
+        key = "gistemp_ytd_mean_1951_1980" if src == "gistemp" else "hadcrut5_ytd_mean_1850_1900"
+        put(key, {"year": ytd_year, "months": n_, "mean_anomaly": mean_}, "degC", "DERIVED", "series_monthly",
+            "Partial-year mean of monthly anomalies (each month rebased by its own calendar-month offset). Not comparable one-to-one with full-year means.")
+        put(f"{src}_ytd_months", n_, "months", "OBSERVED", "series_monthly")
     return {"schema_version": SCHEMA_VERSION, "tags": {"facts": "OBSERVED/DERIVED"}, "facts": F}
 
 

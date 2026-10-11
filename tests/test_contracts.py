@@ -19,7 +19,7 @@ def test_artifact_validates(f):
     if f == "none":
         pytest.skip("no artifacts")
     stem = f[:-5]
-    schema = "grid_meta" if stem.endswith(".meta") else stem
+    schema = ("grid_trends_meta" if stem.startswith("grid_trends_") else "grid_meta") if stem.endswith(".meta") else stem
     data = json.loads((PUBLIC / f).read_text())
     errs = list(Draft202012Validator(json.loads((CONTRACTS / f"{schema}.schema.json").read_text())).iter_errors(data))
     assert not errs, f"{f}: {errs[0].message} at {list(errs[0].path)[:5]}"
@@ -28,9 +28,9 @@ def test_artifact_validates(f):
 def test_every_schema_has_an_artifact():
     arts = {p.stem for p in PUBLIC.glob("*.json")}
     for n in SCHEMAS:
-        if n != "grid_meta":
+        if n not in ("grid_meta", "grid_trends_meta"):
             assert n in arts, n
-    assert {"grid_gistemp_2deg.meta", "grid_hadcrut5_5deg.meta"} <= arts
+    assert {"grid_gistemp_2deg.meta", "grid_hadcrut5_5deg.meta", "grid_gistemp_2deg_intro.meta", "grid_trends_gistemp_2deg.meta", "grid_trends_hadcrut5_5deg.meta"} <= arts
 
 
 def test_facts_complete_and_tagged(art):

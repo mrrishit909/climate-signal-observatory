@@ -34,6 +34,11 @@ top-level field to OBSERVED / DERIVED / PREDICTED / SIMULATED (SYNTHETIC unused)
 | `reconciliation.json` | reconciliation | source | missing-cell accounting (total = valid + missing), sentinel counts, partial years | OBSERVED |
 | `grid_gistemp_2deg.meta.json` + `grid_gistemp_2deg.i8.bin.gz` | grid_meta | year x lat x lon | annual anomaly grid, 1951-1980 native | OBSERVED |
 | `grid_hadcrut5_5deg.meta.json` + `grid_hadcrut5_5deg.i8.bin.gz` | grid_meta | year x lat x lon | annual anomaly grid, 1961-1990 native | OBSERVED |
+| `grid_gistemp_2deg_intro.meta.json` + `.i8.bin.gz` | grid_meta | decade layers | same encoding, years 1880, 1890, ..., 2020 and the latest complete year (`years.list`), offsets from the full record | OBSERVED |
+| `grid_trends_gistemp_2deg.*` / `grid_trends_hadcrut5_5deg.*` | grid_trends_meta | [slope, significant] x period x lat x lon | per-cell OLS slope (0.01 C/decade Int8) and AR(1) significance for 1880, 1951, 1975, 1991 to latest | DERIVED |
+| `zonal_fixture.json` | zonal_fixture | source x baseline x year | per-row means, row valid share, global grid mean with the 20% row rule, for browser parity tests | DERIVED |
+| `coastlines.json` | coastlines | polyline | Natural Earth 110m coastline as flat lon/lat coordinates plus start indices | OBSERVED |
+| `land_fraction.json` | land_fraction | cell | land percent per cell on both grids (Natural Earth 110m) | DERIVED |
 
 ## Grid encoding
 - Binary = gzip of a C-order Int8 array `[year][lat][lon]`, rows north to south, columns west to east, value = round(anomaly / 0.1 degC), -128 = missing.
@@ -43,5 +48,7 @@ top-level field to OBSERVED / DERIVED / PREDICTED / SIMULATED (SYNTHETIC unused)
   Decode: `value_c = byte * 0.1; rebased = value_c - offset * 0.01`.
 - Trade-off: 0.1 C steps give a worst-case quantization error of 0.05 C (typical cell annual noise is >0.3 C), and a 2 degree grid keeps real structure while the gzip stays near 0.6 MB (146 years x 16,200 cells = 2.4 M bytes raw). A 4 degree version would be about 0.2 MB but loses coastal and island detail. Both grids together are under 1.5 MB.
 - Year-major layout compresses better (0.60 MB) than cell-major (0.86 MB) for the 2 degree grid, and delta coding made it worse (0.69 MB): measured, not assumed.
+
+`regional.land_ocean.grid_land_mask` adds land-cell vs ocean-cell means from the grids (approximate). Latitude bands have edges on multiples of 10 degrees.
 
 Full per-artifact field lists are in the JSON Schemas; `tests/test_contracts.py` validates every produced artifact against them.

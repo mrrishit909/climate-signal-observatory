@@ -28,6 +28,7 @@ MANIFEST = ROOT / "data" / "manifests" / "raw_manifest.json"
 GIS = "https://data.giss.nasa.gov"
 HAD = "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis"
 GML = "https://gml.noaa.gov/webdata/ccgg/trends/co2"
+NE = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson"
 AR6 = "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf"
 
 # (group, id, url, relative dest)
@@ -46,6 +47,8 @@ SOURCES = [
     ("hadcrut", "hadcrut5_sh_annual", f"{HAD}/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.southern_hemisphere.annual.csv", "hadcrut5/sh.annual.csv"),
     ("co2", "noaa_co2_mlo_monthly", f"{GML}/co2_mm_mlo.csv", "noaa/co2_mm_mlo.csv"),
     ("co2", "noaa_co2_global_monthly", f"{GML}/co2_mm_gl.csv", "noaa/co2_mm_gl.csv"),
+    ("natural_earth", "ne_110m_coastline", f"{NE}/ne_110m_coastline.geojson", "natural_earth/ne_110m_coastline.geojson"),
+    ("natural_earth", "ne_110m_land", f"{NE}/ne_110m_land.geojson", "natural_earth/ne_110m_land.geojson"),
     ("ar6", "ipcc_ar6_wgi_spm_pdf", AR6, "ipcc/IPCC_AR6_WGI_SPM_final.pdf"),
 ]
 
@@ -91,7 +94,7 @@ def fetch(url: str, dest: Path, prev: dict | None, retries: int = 4) -> dict:
 
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--only", default="gistemp,hadcrut,co2,ar6")
+    ap.add_argument("--only", default="gistemp,hadcrut,co2,ar6,natural_earth")
     a = ap.parse_args(argv)
     only = set(a.only.split(","))
     man = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}

@@ -13,6 +13,7 @@ is the vintage. Byte counts for the Met Office CSVs are of the decoded body (the
 | hadcrut5_glb/nh/sh monthly + annual | `analysis/diagnostics/*summary_series.{global,northern_hemisphere,southern_hemisphere}.{monthly,annual}.csv` | series with 95% CI | CSV | 1961-1990 | OGL v3 | OBSERVED |
 | noaa_co2_mlo / gl | NOAA GML `co2_mm_mlo.csv` (1958-03..), `co2_mm_gl.csv` (1979-01..) | CO2 association | CSV, ppm | n/a | Freely available; GML asks for citation (Lan, Tans, Thoning, doi 10.15138/9N0H-ZH07). Formal public-domain statement UNVERIFIED | OBSERVED |
 | ipcc_ar6_spm | IPCC AR6 WGI Summary for Policymakers PDF, Table SPM.1 (PDF p.18, printed p.14) and A.1.2 (PDF p.9, printed p.5) | assessed warming ranges, published observed warming | PDF 3.7 MB, transcribed to `data/reference/*.csv` | 1850-1900 | AR6 licence page returned 403 and could not be verified; only short factual values are quoted, each with page citation. A test re-extracts the PDF text to confirm every transcribed value | PREDICTED (by IPCC, not by us) |
+| ne_110m_coastline / ne_110m_land | Natural Earth 110m, GeoJSON from github.com/nvkelso/natural-earth-vector (140 KB each) | coastlines, land fraction per cell | GeoJSON | n/a | Public domain (terms page quoted: "All versions of Natural Earth raster + vector map data found on this website are in the public domain") | OBSERVED |
 
 URLs: see `pipelines/ingestion/fetch.py` (single source of truth) and `research/P03-sources.md` in the workspace.
 

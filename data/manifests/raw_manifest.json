@@ -105,6 +105,22 @@
   "skipped": true,
   "url": "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf"
  },
+ "ne_110m_coastline": {
+  "bytes": 139907,
+  "last_modified": null,
+  "retrieved_at": "2026-10-11T02:34:05+00:00",
+  "sha256": "851f581ff5ffb844deed8ae1a9ce22e3c4bb3d74fa342cadb5d8e39b41ae7c3c",
+  "skipped": false,
+  "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_coastline.geojson"
+ },
+ "ne_110m_land": {
+  "bytes": 138160,
+  "last_modified": null,
+  "retrieved_at": "2026-10-11T02:34:05+00:00",
+  "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+  "skipped": false,
+  "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson"
+ },
  "noaa_co2_global_monthly": {
   "bytes": 24763,
   "last_modified": "Fri, 09 Oct 2026 19:23:07 GMT",

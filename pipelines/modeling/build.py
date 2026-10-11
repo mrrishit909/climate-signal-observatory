@@ -9,7 +9,7 @@ import math
 import numpy as np
 
 from analytics import core, stats
-from pipelines.common import BASE_YEARS, BASELINES, INTERIM, MIN_MONTHS_CELL_YEAR, MIN_REF_SHARE, REFERENCE, SCHEMA_VERSION
+from pipelines.common import RAW, BASE_YEARS, BASELINES, INTERIM, MIN_MONTHS_CELL_YEAR, MIN_REF_SHARE, REFERENCE, SCHEMA_VERSION
 from analytics.core import Y0, to_list
 
 SERIES = [  # id, label, source, region, domain, native baseline
@@ -22,7 +22,7 @@ SERIES = [  # id, label, source, region, domain, native baseline
     ("hadcrut5_sh", "HadCRUT5 Southern Hemisphere", "hadcrut5", "sh", "land_ocean", "1961-1990"),
 ]
 SRC_NAME = {"gistemp": "NASA GISTEMP v4", "hadcrut5": "HadCRUT5 5.2.0.0"}
-TAGS_BASE = lambda **kw: dict(kw)
+RAW_NE = RAW / "natural_earth"
 
 
 def tagged(d: dict, tags: dict) -> dict:
@@ -125,17 +125,17 @@ def series_monthly(c: Ctx) -> dict:
 PERIODS = [("full", None), ("1880_latest", 1880), ("1900_latest", 1900), ("1951_latest", 1951), ("1975_latest", 1975), ("1991_latest", 1991)]
 
 
-def trends(c: Ctx, n_boot: int = 500) -> dict:
+def trends(c: Ctx, n_boot: int = 500, reg: dict | None = None) -> dict:
     last = c.last_year
     periods = [{"id": "1850_latest", "start": 1850, "end": last}] + [{"id": pid, "start": s, "end": last} for pid, s in PERIODS if s]
     res = []
-    for sid, label, *_ in SERIES:
-        a = c.native_annual(sid)
+
+    def fits_for(a, min_share):
         fits = []
         for p in periods:
             sel = (c.years >= p["start"]) & (c.years <= p["end"])
             x, y = c.years[sel].astype(float), a[sel]
-            if not np.isfinite(y).all():
+            if np.isfinite(y).sum() < math.ceil(min_share * len(y)) or np.isfinite(y).sum() < 10:
                 continue
             t = stats.ols_trend(x, y)
             span = p["end"] - p["start"]
@@ -144,7 +144,15 @@ def trends(c: Ctx, n_boot: int = 500) -> dict:
                          "ci_naive": [round(v * 10, 4) for v in t["ci_naive"]], "ci_ar1": [round(v * 10, 4) for v in t["ci_ar1"]],
                          "ci_hac": [round(v * 10, 4) for v in t["ci_hac"]], "total_change_c": round(t["slope"] * span, 3),
                          "total_change_ci_ar1": [round(v * span, 3) for v in t["ci_ar1"]]})
-        res.append({"series_id": sid, "label": label, "fits": fits})
+        return fits
+
+    for sid, label, *_ in SERIES:
+        res.append({"series_id": sid, "label": label, "fits": fits_for(c.native_annual(sid), 1.0)})
+    if reg is not None:  # latitude-band series (observed band-years only; at least 80% of the period's years needed)
+        names = {b["id"]: b["label"] for b in reg["bands"]}
+        for row in reg["rows"]:
+            a = np.array([np.nan if v is None else v for v in row["values"]["1951-1980"]])
+            res.append({"series_id": f"{row['source']}_band_{row['band']}", "label": f"{SRC_NAME[row['source']]}, {names[row['band']]}", "fits": fits_for(a, 0.8)})
     loess, rolling = [], []
     for sid in ("gistemp_glb", "hadcrut5_glb"):
         a = c.native_annual(sid)
@@ -177,9 +185,10 @@ def trends(c: Ctx, n_boot: int = 500) -> dict:
 
 
 def _bands():
-    edges = [("arctic", "Arctic, 66.5N to 90N", 66.5, 90.0), ("n_mid", "Northern mid-latitudes, 30N to 66.5N", 30.0, 66.5),
-             ("low", "Low latitudes, 30S to 30N", -30.0, 30.0), ("s_mid", "Southern mid-latitudes, 66.5S to 30S", -66.5, -30.0),
-             ("antarctic", "Antarctic, 90S to 66.5S", -90.0, -66.5)]
+    # edges are multiples of 10 degrees so they coincide with whole cells on both the 2 degree and the 5 degree grid
+    edges = [("arctic", "Northern high latitudes, 60N to 90N", 60.0, 90.0), ("n_mid", "Northern mid-latitudes, 30N to 60N", 30.0, 60.0),
+             ("low", "Low latitudes, 30S to 30N", -30.0, 30.0), ("s_mid", "Southern mid-latitudes, 60S to 30S", -60.0, -30.0),
+             ("antarctic", "Southern high latitudes, 90S to 60S", -90.0, -60.0)]
     return [{"id": i, "label": l, "lat_min": a, "lat_max": b, "area_share_of_globe": round((math.sin(math.radians(b)) - math.sin(math.radians(a))) / 2, 4)}
             for i, l, a, b in edges]
 
@@ -240,7 +249,7 @@ def regional(c: Ctx) -> dict:
     return tagged({"years": [int(y) for y in c.years], "baselines": ["1951-1980", "1991-2020"], "bands": bands, "rows": rows, "land_ocean": land_ocean,
                    "min_valid_area_share": MIN_VALID_AREA,
                    "method": ("Cell annual anomalies are rebased per cell (offset = cell mean of annual values over the baseline, >= 80% of reference years required), "
-                              "then averaged with cos(latitude) weights over the observed cells of the band. A band-year with < 40% of its area observed is null.")},
+                              "then averaged with cos(latitude) weights over the observed cells of the band. A band-year with < 40% of its area observed is null. Band edges are multiples of 10 degrees (whole cells on both grids).")},
                   {"bands": "DERIVED", "rows": "DERIVED", "land_ocean": "OBSERVED/DERIVED/PREDICTED"})
 
 
@@ -513,46 +522,197 @@ def _encode(ann_ny_nlat_nlon: np.ndarray):
     return out, clipped
 
 
+def _grid_meta(gid, src, prod, native, step, fname, ann_n, yrs_all, layer_years, lat_n, lon, clip_note=""):
+    sel = np.isin(yrs_all, layer_years)
+    layers = ann_n[sel]
+    q, clipped = _encode(layers)
+    dec = np.where(q == -128, np.nan, q * 0.1)
+    err = np.abs(dec - layers)
+    err = err[np.isfinite(err)]
+    raw = q.tobytes()
+    gz = gzip.compress(raw, 9, mtime=0)
+    w = core.lat_weights(lat_n)
+    valid = np.isfinite(layers)
+    offs = {}
+    for b in BASELINES:
+        off = core.grid_offsets(ann_n, yrs_all, b)  # offsets always from the FULL record, even for the intro subset
+        nv = int(np.isfinite(off).sum())
+        if nv == 0:
+            continue
+        offs[b] = {"unit_degC_per_unit": 0.01, "min_reference_share": MIN_REF_SHARE, "n_valid_cells": nv,
+                   "values": [None if not np.isfinite(v) else int(round(v / 0.01)) for v in off.reshape(-1)]}
+    ys = [int(v) for v in yrs_all[sel]]
+    meta = {
+        "id": gid, "source": SRC_NAME[src], "product": prod, "native_baseline": native, "units": "degC",
+        "encoding": {"dtype": "int8", "scale_degC_per_unit": 0.1, "missing_value": -128, "valid_range": [-127, 127],
+                     "layout": "C-order [layer][lat][lon]; layer order = years.list; lat rows north to south, lon columns west to east", "row_order": "north_to_south", "lon_order": "west_to_east",
+                     "file": f"{fname}.i8.bin.gz", "compression": "gzip", "uncompressed_bytes": len(raw), "gz_bytes": len(gz),
+                     "sha256_uncompressed": hashlib.sha256(raw).hexdigest(),
+                     "decode": "bytes = DecompressionStream('gzip'); v = Int8Array[(layer * n_lat + row) * n_lon + col]; v === -128 ? missing : celsius = v * 0.1 - offset_int * 0.01 (offset from baseline_offsets, null = unavailable)"},
+        "grid": {"n_lat": len(lat_n), "n_lon": len(lon), "lat_step_deg": step, "lon_step_deg": step, "lat_first_center": float(lat_n[0]), "lon_first_center": float(lon[0])},
+        "years": {"first": ys[0], "last": ys[-1], "n": len(ys), "list": ys},
+        "aggregation": {"annual_rule": "mean of the monthly anomalies of a calendar year, requiring >= 9 valid months per cell; complete calendar years only", "min_months_per_cell_year": MIN_MONTHS_CELL_YEAR},
+        "valid_cells_per_year": [int(v) for v in valid.sum((1, 2))],
+        "valid_area_share_per_year": [round(float((v * w[:, None]).sum() / (np.ones_like(v) * w[:, None]).sum()), 4) for v in valid],
+        "baseline_offsets": offs,
+        "quantization": {"max_abs_error_c": round(float(err.max()), 4), "mean_abs_error_c": round(float(err.mean()), 5), "clipped_cells": clipped,
+                         "tradeoff": ("0.1 C Int8 steps: worst-case 0.05 C error vs typical cell-year noise above 0.3 C. 2 degree (GISTEMP) keeps coastlines and islands; a 4 degree grid would be about 3x smaller but blur them. "
+                                      "Year-major order gzips better than cell-major; delta coding was worse (measured)." + clip_note)},
+    }
+    return meta, gz
+
+
+def _src_grid(c: Ctx, src: str):
+    ann, yrs, lat, lon = grid_set(c)[src]
+    order = np.argsort(-lat)  # north to south
+    return ann[:, order, :], yrs, lat[order], lon
+
+
+GRID_DEFS = (("gistemp_2deg", "gistemp", "NASA GISTEMP v4 gistemp1200_GHCNv4_ERSSTv5", "1951-1980", 2.0, "grid_gistemp_2deg"),
+             ("hadcrut5_5deg", "hadcrut5", "HadCRUT5 5.2.0.0 analysis ensemble mean", "1961-1990", 5.0, "grid_hadcrut5_5deg"))
+
+
 def grids(c: Ctx, out_dir) -> dict:
-    """Write grid binaries + sidecar metas to out_dir. Returns {id: meta}."""
+    """Write grid binaries (full record, plus a decadal intro subset for GISTEMP) to out_dir. Returns {id: meta}."""
     metas = {}
-    for gid, src, prod, native, step, fname in (("gistemp_2deg", "gistemp", "NASA GISTEMP v4 gistemp1200_GHCNv4_ERSSTv5", "1951-1980", 2.0, "grid_gistemp_2deg"),
-                                                ("hadcrut5_5deg", "hadcrut5", "HadCRUT5 5.2.0.0 analysis ensemble mean", "1961-1990", 5.0, "grid_hadcrut5_5deg")):
-        ann, yrs, lat, lon = grid_set(c)[src]
-        order = np.argsort(-lat)  # north to south
-        ann_n, lat_n = ann[:, order, :], lat[order]
-        q, clipped = _encode(ann_n)
-        dec = np.where(q == -128, np.nan, q * 0.1)
-        err = np.abs(dec - ann_n)
-        err = err[np.isfinite(err)]
-        raw = q.tobytes()
-        gz = gzip.compress(raw, 9, mtime=0)
+    for gid, src, prod, native, step, fname in GRID_DEFS:
+        ann_n, yrs, lat_n, lon = _src_grid(c, src)
+        meta, gz = _grid_meta(gid, src, prod, native, step, fname, ann_n, yrs, yrs, lat_n, lon)
         (out_dir / f"{fname}.i8.bin.gz").write_bytes(gz)
-        w = core.lat_weights(lat_n)[None, :, None]
-        valid = np.isfinite(ann_n)
-        offs = {}
-        for b in BASELINES:
-            off = core.grid_offsets(ann_n, yrs, b)
-            nv = int(np.isfinite(off).sum())
-            if nv == 0:
-                continue
-            offs[b] = {"unit_degC_per_unit": 0.01, "min_reference_share": MIN_REF_SHARE, "n_valid_cells": nv,
-                       "values": [None if not np.isfinite(v) else int(round(v / 0.01)) for v in off.reshape(-1)]}
-        metas[gid] = {
-            "id": gid, "source": SRC_NAME[src], "product": prod, "native_baseline": native, "units": "degC",
-            "encoding": {"dtype": "int8", "scale_degC_per_unit": 0.1, "missing_value": -128, "valid_range": [-127, 127],
-                         "layout": "C-order [year][lat][lon]; lat rows north to south, lon columns west to east", "row_order": "north_to_south", "lon_order": "west_to_east",
-                         "file": f"{fname}.i8.bin.gz", "compression": "gzip", "uncompressed_bytes": len(raw), "gz_bytes": len(gz),
-                         "sha256_uncompressed": hashlib.sha256(raw).hexdigest(),
-                         "decode": "bytes = DecompressionStream('gzip'); v = Int8Array[(yi * n_lat + row) * n_lon + col]; v === -128 ? missing : celsius = v * 0.1 - offset_int * 0.01 (offset from baseline_offsets, null = unavailable)"},
-            "grid": {"n_lat": len(lat_n), "n_lon": len(lon), "lat_step_deg": step, "lon_step_deg": step, "lat_first_center": float(lat_n[0]), "lon_first_center": float(lon[0])},
-            "years": {"first": int(yrs[0]), "last": int(yrs[-1]), "n": len(yrs)},
-            "aggregation": {"annual_rule": "mean of the monthly anomalies of a calendar year, requiring >= 9 valid months per cell; complete calendar years only", "min_months_per_cell_year": MIN_MONTHS_CELL_YEAR},
-            "valid_cells_per_year": [int(v) for v in valid.sum((1, 2))],
-            "valid_area_share_per_year": [round(float((v * w[0]).sum() / (np.ones_like(v) * w[0]).sum()), 4) for v in valid],
-            "baseline_offsets": offs,
-            "quantization": {"max_abs_error_c": round(float(err.max()), 4), "mean_abs_error_c": round(float(err.mean()), 5), "clipped_cells": clipped,
-                             "tradeoff": ("0.1 C Int8 steps: worst-case 0.05 C error vs typical cell-year noise above 0.3 C. 2 degree (GISTEMP) keeps coastlines and islands; a 4 degree grid would be about 3x smaller but blur them. "
-                                          "Year-major order gzips better than cell-major; delta coding was worse (measured).")},
+        metas[gid] = meta
+    ann_n, yrs, lat_n, lon = _src_grid(c, "gistemp")
+    intro_years = [y for y in range(1880, c.last_year, 10)] + [c.last_year]
+    meta, gz = _grid_meta("gistemp_2deg_intro", "gistemp", GRID_DEFS[0][2] + " (decadal subset for the intro)", "1951-1980", 2.0, "grid_gistemp_2deg_intro",
+                          ann_n, yrs, np.array(intro_years), lat_n, lon)
+    (out_dir / "grid_gistemp_2deg_intro.i8.bin.gz").write_bytes(gz)
+    metas["gistemp_2deg_intro"] = meta
+    return metas
+
+
+# ------------------------------------------------------------------------------------------------ cell trend grids (DR-3)
+
+TREND_PERIODS = (("1880_latest", 1880), ("1951_latest", 1951), ("1975_latest", 1975), ("1991_latest", 1991))
+
+
+def grid_trends(c: Ctx, out_dir) -> dict:
+    """Per-cell OLS slope (0.01 degC/decade, Int8) and AR(1)-adjusted significance for each standard period. Same function as the global trends."""
+    metas = {}
+    for gid, src, prod, native, step, fname in GRID_DEFS:
+        ann_n, yrs, lat_n, lon = _src_grid(c, src)
+        nl, no = ann_n.shape[1:]
+        slopes = np.full((len(TREND_PERIODS), nl, no), -128, np.int8)
+        sig = np.zeros((len(TREND_PERIODS), nl, no), np.int8)
+        periods, clipped = [], 0
+        for pi, (pid, y0) in enumerate(TREND_PERIODS):
+            sel = (yrs >= y0) & (yrs <= c.last_year)
+            x = yrs[sel].astype(float)
+            need = math.ceil(MIN_REF_SHARE * len(x))
+            sub = ann_n[sel].astype(np.float64)
+            nvalid = np.isfinite(sub).sum(0)
+            n_ok = n_sig = 0
+            for i in range(nl):
+                for j in range(no):
+                    if nvalid[i, j] < need:
+                        continue
+                    t = stats.ols_trend(x, sub[:, i, j])
+                    v = t["slope"] * 10 / 0.01
+                    if abs(round(v)) > 127:
+                        clipped += 1
+                    slopes[pi, i, j] = int(np.clip(round(v), -127, 127))
+                    lo, hi = t["ci_ar1"]
+                    sig[pi, i, j] = 1 if (lo > 0 or hi < 0) else 0
+                    n_ok += 1
+                    n_sig += int(sig[pi, i, j])
+            periods.append({"id": pid, "start": int(x[0]), "end": int(x[-1]), "n_years": len(x), "min_valid_years": need, "n_valid_cells": int(n_ok), "n_significant_cells": int(n_sig)})
+        raw = np.stack([slopes, sig]).tobytes()
+        gz = gzip.compress(raw, 9, mtime=0)
+        tname = fname.replace("grid_", "grid_trends_")
+        (out_dir / f"{tname}.i8.bin.gz").write_bytes(gz)
+        metas[tname] = {
+            "id": tname, "source": SRC_NAME[src], "product": prod, "units": "degC_per_decade",
+            "encoding": {"dtype": "int8", "slope_scale_degC_per_decade_per_unit": 0.01, "missing_value": -128, "valid_range": [-127, 127],
+                         "layers": ["slope", "significant"], "layout": "C-order [layer][period][lat][lon]; layer 0 = slope, layer 1 = significant (1/0; 0 where slope is missing); period order = periods; rows north to south, columns west to east",
+                         "file": f"{tname}.i8.bin.gz", "compression": "gzip", "uncompressed_bytes": len(raw), "gz_bytes": len(gz), "sha256_uncompressed": hashlib.sha256(raw).hexdigest(),
+                         "decode": "slope_degC_per_decade = byte * 0.01 (byte === -128 means insufficient data)"},
+            "grid": {"n_lat": nl, "n_lon": no, "lat_step_deg": step, "lon_step_deg": step, "lat_first_center": float(lat_n[0]), "lon_first_center": float(lon[0])},
+            "periods": periods, "clipped_cells": int(clipped),
+            "rule": ("A cell needs at least 80% of the period's annual values (stored annual cell means, unquantized) to get a slope. The slope is the same OLS used for the global series (analytics.stats.ols_trend). "
+                     "significant = the AR(1)-adjusted 95% interval (effective sample size from the cell's residual lag-1 autocorrelation) excludes zero. Many cells are tested at once, so some significant cells are expected by chance; no multiple-testing correction is applied."),
         }
     return metas
+
+
+# ------------------------------------------------------------------------------------------------ zonal fixture (DR-4)
+
+def zonal_fixture(c: Ctx, out_dir) -> dict:
+    from analytics import zonal
+    years = [1900, 1980, c.last_year]
+    out = {}
+    for gid, src, prod, native, step, fname in GRID_DEFS:
+        ann_n, yrs, lat_n, lon = _src_grid(c, src)
+        q, _ = _encode(ann_n)
+        per_base = {}
+        for b in BASELINES:
+            off = core.grid_offsets(ann_n, yrs, b)
+            # offsets as shipped (0.01 C integers) so the fixture matches what the browser decodes
+            off_int = np.where(np.isfinite(off), np.round(off / 0.01), np.nan)
+            if not np.isfinite(off_int).any():
+                per_base[b] = {"available": False, "years": {}}
+                continue
+            ys = {}
+            for y in years:
+                v = zonal.decode(q[int(np.where(yrs == y)[0][0])], off_int)
+                rm, share, gm = zonal.zonal(v, lat_n)
+                ys[str(y)] = {"row_mean": [None if not np.isfinite(x) else round(float(x), 6) for x in rm], "row_valid_share": [round(float(x), 6) for x in share],
+                              "global_mean": round(gm, 6)}
+            per_base[b] = {"available": True, "years": ys}
+        out[src] = {"grid_id": gid, "n_lat": len(lat_n), "lat_centers": [float(x) for x in lat_n], "baselines": per_base}
+    return {"schema_version": SCHEMA_VERSION, "tags": {"sources": "DERIVED", "rule": "DERIVED"},
+            "rule": ("cell = byte*0.1 - offset_int*0.01 (missing if byte == -128 or offset null); row_valid_share = valid cells / n_lon; row_mean = mean of valid cells or null when row_valid_share < min_row_valid; "
+                     "global_mean = cos(latitude) weighted mean over all valid cells (the row rule is not applied). Reference implementation: analytics/zonal.py"),
+            "min_row_valid": zonal.MIN_ROW_VALID, "tolerance": 1e-6, "years": years, "sources": out}
+
+
+# ------------------------------------------------------------------------------------------------ coastlines and land fraction (DR-2, DR-9)
+
+def coastlines_art() -> dict:
+    from analytics import geo
+    starts, coords = geo.coastlines(RAW_NE / "ne_110m_coastline.geojson")
+    return {"schema_version": SCHEMA_VERSION, "tags": {"coords": "OBSERVED"},
+            "source": {"name": "Natural Earth 110m coastline", "url": "https://www.naturalearthdata.com/", "license": "public domain (https://www.naturalearthdata.com/about/terms-of-use/)",
+                       "file": "ne_110m_coastline.geojson"},
+            "layout": "coords = [lon0, lat0, lon1, lat1, ...] in degrees (2 decimals); polyline i spans coordinate pairs starts[i] .. starts[i+1]-1 (the last to the end). Do not join polylines.",
+            "n_lines": len(starts), "n_points": len(coords) // 2, "starts": starts, "coords": coords}
+
+
+def land_fraction_art(c: Ctx) -> dict:
+    from analytics import geo
+    out = {}
+    for gid, src, prod, native, step, fname in GRID_DEFS:
+        _, _, lat_n, lon = _src_grid(c, src)
+        lf = geo.land_fraction(RAW_NE / "ne_110m_land.geojson", lat_n, lon, step, 8 if step <= 2 else 10)
+        out[gid] = {"n_lat": len(lat_n), "n_lon": len(lon), "row_order": "north_to_south", "lon_order": "west_to_east", "scale": "percent of cell area (rounded)",
+                    "values": [int(round(v * 100)) for v in lf.reshape(-1)]}
+    return {"schema_version": SCHEMA_VERSION, "tags": {"grids": "DERIVED"},
+            "source": {"name": "Natural Earth 110m land polygons", "url": "https://www.naturalearthdata.com/", "license": "public domain (https://www.naturalearthdata.com/about/terms-of-use/)"},
+            "method": "Share of an 8 x 8 (2 degree cell) or 10 x 10 (5 degree cell) grid of sample points inside the land polygons (even-odd ray casting). A coarse 110m mask: coastal cells and small islands are approximate.",
+            "grids": out}
+
+
+def land_ocean_from_grid(c: Ctx, lf: dict, thr: int = 50) -> dict:
+    """Land-cell vs ocean-cell means from the grids (cells with land fraction >= thr are land, the rest ocean). An approximation, labelled so."""
+    res = {}
+    for gid, src, *_ in GRID_DEFS:
+        ann_n, yrs, lat_n, lon = _src_grid(c, src)
+        lfa = np.array(lf["grids"][gid]["values"]).reshape(len(lat_n), len(lon))
+        w = np.cos(np.deg2rad(lat_n))[:, None] * np.ones(len(lon))
+        land = lfa >= thr
+        per = {}
+        for b in ("1951-1980", "1991-2020"):
+            rb, _ = core.rebase_grid(ann_n, yrs, b)
+            land_m, land_s = core.weighted_mean(rb.reshape(len(yrs), -1), (w * land).reshape(-1), MIN_VALID_AREA)  # weight 0 outside the mask
+            oc_m, oc_s = core.weighted_mean(rb.reshape(len(yrs), -1), (w * ~land).reshape(-1), MIN_VALID_AREA)
+            per[b] = {"land": to_list(_onto_axis(c, yrs, land_m)), "ocean": to_list(_onto_axis(c, yrs, oc_m))}
+        res[src] = {"land_cell_area_share": round(float((w * land).sum() / w.sum()), 4), "values": per,
+                    "land_valid_area_share_latest": round(float(land_s[-1]), 3), "ocean_valid_area_share_latest": round(float(oc_s[-1]), 3)}
+    return res

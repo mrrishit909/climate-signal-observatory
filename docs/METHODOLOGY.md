@@ -24,8 +24,11 @@ Every step is implemented in `analytics/` and `pipelines/modeling/build.py`, and
 - Rolling 30-year slopes with the same AR(1) interval.
 
 ## 4. Regional summaries and land vs land-ocean
-- Five latitude bands (66.5N-90N, 30-66.5N, 30S-30N, 66.5S-30S, 90S-66.5S). Cell-rebased anomalies, cos(lat) weights over observed cells; a band-year with less than 40% observed area is null; the observed area share is published beside every value.
+- Five latitude bands with edges on multiples of 10 degrees so they coincide with whole cells on both grids (60N-90N, 30-60N, 30S-30N, 60-30S, 90-60S). Cell-rebased anomalies, cos(lat) weights over observed cells; a band-year with less than 40% observed area is null; the observed area share is published beside every value.
 - Land-only (GISTEMP station series) vs land-ocean (blended) are two GISTEMP products. The difference is not an ocean series. AR6 published land and ocean values are shown only as labelled context.
+
+- Band trends are in `trends.json` as `gistemp_band_*` and `hadcrut5_band_*` (at least 80% of the period's years observed). GISTEMP 60N-90N warmed 2.8 times as fast as the globe over 1975-2025; all five bands warmed beyond their AR(1)-adjusted uncertainty. The 60S-90S band first had half its area observed in 1956.
+- Land vs ocean from the grids: cells with Natural Earth 110m land fraction >= 50% are land. Since 1975 land warms about 0.32 C/decade and ocean about 0.17 in both products (approximation: cells blend land stations and SST).
 
 ## 5. Extremes frequency
 - Per cell, the 95th/5th percentile of its own annual anomalies over a reference period (1951-1980, alternatively 1991-2020; >= 24 valid years). Metric = cos(lat)-weighted share of observed area above/below it, plus fixed +1 and +2 C (vs 1951-1980).
@@ -47,4 +50,6 @@ Every step is implemented in `analytics/` and `pipelines/modeling/build.py`, and
 - Table SPM.1 and A.1.2 values transcribed to `data/reference/*.csv`; `validation.ar6_text_check` re-extracts the PDF page and finds all 57 numbers. HadCRUT5 rebased to 1850-1900 gives 1.12 C for 2011-2020 against AR6's assessed 1.09 [0.95, 1.20] C (inside the range; AR6 is a multi-dataset assessment).
 
 ## 10. Grid artifacts
-See `DATA_CONTRACTS.md`. Quantization max error 0.05 C (tested), no clipping, 0.76 MB gzip for both grids.
+See `DATA_CONTRACTS.md`. Quantization max error 0.05 C (tested), no clipping, 0.76 MB gzip for the two anomaly grids; 0.86 MB for every grid binary (anomaly, decadal intro subset, cell trends).
+- Cell trends: per cell and period (1880, 1951, 1975, 1991 to 2025) the same `ols_trend` as the global series, at least 80% of years valid, Int8 in 0.01 C/decade (about 0.2% of cell-periods exceed +/-1.27 C/decade and are clipped, counted in the sidecar), plus the AR(1) significance flag. No multiple-testing correction.
+- Zonal rule (browser parity): row mean of valid cells only when at least 20% of the row is observed; reference `analytics/zonal.py`, fixture `zonal_fixture.json`.
