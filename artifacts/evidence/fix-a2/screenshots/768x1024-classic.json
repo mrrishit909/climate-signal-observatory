@@ -12,7 +12,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 64,
+   "glFrames": 65,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -30,7 +30,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 120,
+   "glFrames": 123,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -48,7 +48,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 178,
+   "glFrames": 180,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -66,7 +66,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 235,
+   "glFrames": 238,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -84,7 +84,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 292,
+   "glFrames": 296,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -102,7 +102,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 596,
+   "glFrames": 612,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -120,7 +120,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "signal",
-   "glFrames": 863,
+   "glFrames": 882,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -137,7 +137,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "record",
-   "glFrames": 1072,
+   "glFrames": 1090,
    "chips": [
     "OBSERVED · GISTEMP v4 SIDECAR",
     "OBSERVED · GRID SIDECARS"
@@ -153,7 +153,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 1340,
+   "glFrames": 1358,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -169,7 +169,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 1488,
+   "glFrames": 1507,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -185,7 +185,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 1587,
+   "glFrames": 1606,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -201,7 +201,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 1866,
+   "glFrames": 1886,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -217,7 +217,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 2146,
+   "glFrames": 2166,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -233,7 +233,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 2440,
+   "glFrames": 2460,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS"
@@ -249,7 +249,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 2734,
+   "glFrames": 2753,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS",
@@ -266,7 +266,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 2959,
+   "glFrames": 2974,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -282,7 +282,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 3073,
+   "glFrames": 3086,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -298,7 +298,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 3320,
+   "glFrames": 3331,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -315,7 +315,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 3566,
+   "glFrames": 3575,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -332,7 +332,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 3566,
+   "glFrames": 3575,
    "chips": [
     "DERIVED · AGREEMENT.JSON",
     "DERIVED · META.JSON"
@@ -348,7 +348,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 3566,
+   "glFrames": 3575,
    "chips": [
     "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
     "SIMULATED",
@@ -365,7 +365,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 3909,
+   "glFrames": 3915,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980"
    ]
@@ -380,7 +380,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 4094,
+   "glFrames": 4099,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980"
    ]
@@ -395,7 +395,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 4246,
+   "glFrames": 4252,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980",
     "DERIVED · CELL TREND"
@@ -411,7 +411,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "surface",
-   "glFrames": 4468,
+   "glFrames": 4473,
    "chips": [
     "OBSERVED · CELLS · GISTEMP V4 · 1951-198"
    ]
@@ -426,7 +426,7 @@
    "cssClass": "T",
    "radius": 762.6339882276425,
    "scene": "surface",
-   "glFrames": 4653,
+   "glFrames": 4667,
    "chips": [
     "OBSERVED · GISTEMP V4 · 1951-1980"
    ]
@@ -441,7 +441,7 @@
    "cssClass": "T",
    "radius": 762.6339882276425,
    "scene": "surface",
-   "glFrames": 4969,
+   "glFrames": 4986,
    "chips": [
     "OBSERVED"
    ]
@@ -456,7 +456,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 5228,
+   "glFrames": 5244,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -472,7 +472,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 5321,
+   "glFrames": 5332,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"

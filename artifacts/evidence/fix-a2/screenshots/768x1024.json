@@ -48,7 +48,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 174,
+   "glFrames": 175,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -84,7 +84,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 289,
+   "glFrames": 290,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -102,7 +102,7 @@
    "cssClass": "T",
    "radius": 620.544,
    "scene": "signal",
-   "glFrames": 603,
+   "glFrames": 596,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -120,7 +120,7 @@
    "cssClass": "T",
    "radius": 209.72212446990665,
    "scene": "signal",
-   "glFrames": 799,
+   "glFrames": 791,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -138,7 +138,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "signal",
-   "glFrames": 1066,
+   "glFrames": 1058,
    "chips": [
     "OBSERVED · PLANET",
     "OBSERVED · GISTEMP v4 · 1951-1980",
@@ -155,7 +155,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "record",
-   "glFrames": 1273,
+   "glFrames": 1266,
    "chips": [
     "OBSERVED · GISTEMP v4 SIDECAR"
    ]
@@ -170,7 +170,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "record",
-   "glFrames": 1480,
+   "glFrames": 1474,
    "chips": [
     "OBSERVED · GISTEMP v4 SIDECAR",
     "OBSERVED · GRID SIDECARS"
@@ -186,7 +186,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "record",
-   "glFrames": 1687,
+   "glFrames": 1682,
    "chips": [
     "OBSERVED · GISTEMP v4 SIDECAR",
     "OBSERVED · GRID SIDECARS",
@@ -204,7 +204,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 1954,
+   "glFrames": 1950,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -220,7 +220,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 2221,
+   "glFrames": 2218,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -236,7 +236,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 2489,
+   "glFrames": 2485,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -252,7 +252,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 2637,
+   "glFrames": 2634,
    "chips": [
     "DERIVED",
     "DERIVED · GISTEMP v4 REBASED TO 1991-202"
@@ -268,7 +268,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 2941,
+   "glFrames": 2938,
    "chips": [
     "DERIVED",
     "DERIVED · HADCRUT5 REBASED TO 1991-2020"
@@ -284,7 +284,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 3089,
+   "glFrames": 3086,
    "chips": [
     "DERIVED",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900"
@@ -300,7 +300,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 3393,
+   "glFrames": 3390,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -316,7 +316,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 3492,
+   "glFrames": 3488,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -332,7 +332,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 3640,
+   "glFrames": 3636,
    "chips": [
     "DERIVED",
     "DERIVED",
@@ -349,7 +349,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "years",
-   "glFrames": 3787,
+   "glFrames": 3783,
    "chips": [
     "DERIVED",
     "OBSERVED · GISTEMP v4 · 1951-1980"
@@ -365,7 +365,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 4067,
+   "glFrames": 4063,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -381,7 +381,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 4347,
+   "glFrames": 4342,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -397,7 +397,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 4626,
+   "glFrames": 4621,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -413,7 +413,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 4904,
+   "glFrames": 4899,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -429,7 +429,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 5124,
+   "glFrames": 5119,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -445,7 +445,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 5271,
+   "glFrames": 5266,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1991 · 10877",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -461,7 +461,7 @@
    "cssClass": "T",
    "radius": 184.32,
    "scene": "regions",
-   "glFrames": 5418,
+   "glFrames": 5413,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975 · 12730",
     "DERIVED · BAND MEANS · AR(1) 95% CI"
@@ -477,7 +477,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 5710,
+   "glFrames": 5705,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS"
@@ -493,7 +493,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 6000,
+   "glFrames": 5996,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS"
@@ -509,7 +509,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 6292,
+   "glFrames": 6288,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS"
@@ -525,7 +525,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 6584,
+   "glFrames": 6579,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS"
@@ -541,7 +541,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 6875,
+   "glFrames": 6870,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS",
@@ -558,7 +558,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "strata",
-   "glFrames": 7167,
+   "glFrames": 7162,
    "chips": [
     "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
     "DERIVED · LAYERS = ZONAL MEANS",
@@ -575,7 +575,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 7388,
+   "glFrames": 7382,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -591,7 +591,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 7606,
+   "glFrames": 7601,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -607,7 +607,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 7825,
+   "glFrames": 7821,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -623,7 +623,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 7973,
+   "glFrames": 7967,
    "chips": [
     "DERIVED · SERIES · GISTEMP v4 REBASED TO",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -639,7 +639,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 8084,
+   "glFrames": 8078,
    "chips": [
     "DERIVED · SERIES · GISTEMP v4 REBASED TO",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -655,7 +655,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 8231,
+   "glFrames": 8225,
    "chips": [
     "DERIVED · SERIES · GISTEMP v4 REBASED TO",
     "DERIVED · TREND, AR(1) CI, LOESS",
@@ -672,7 +672,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 8354,
+   "glFrames": 8349,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -688,7 +688,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 8599,
+   "glFrames": 8593,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -705,7 +705,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 8842,
+   "glFrames": 8837,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -722,7 +722,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 9085,
+   "glFrames": 9080,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -739,7 +739,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 9197,
+   "glFrames": 9192,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -756,7 +756,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 9309,
+   "glFrames": 9303,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -773,7 +773,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "futures",
-   "glFrames": 9384,
+   "glFrames": 9379,
    "chips": [
     "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
     "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
@@ -790,7 +790,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 9384,
+   "glFrames": 9379,
    "chips": [
     "OBSERVED · AR6.JSON"
    ]
@@ -805,7 +805,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 9384,
+   "glFrames": 9379,
    "chips": [
     "DERIVED · AGREEMENT.JSON",
     "DERIVED · META.JSON"
@@ -821,7 +821,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 9384,
+   "glFrames": 9379,
    "chips": [
     "DERIVED · RECONCILIATION.JSON",
     "DERIVED · CHANGEPOINTS.JSON"
@@ -837,7 +837,7 @@
    "cssClass": "T",
    "radius": 0,
    "scene": "evidence",
-   "glFrames": 9384,
+   "glFrames": 9379,
    "chips": [
     "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
     "SIMULATED",
@@ -854,7 +854,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 9724,
+   "glFrames": 9718,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980"
    ]
@@ -869,7 +869,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 9990,
+   "glFrames": 9985,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980"
    ]
@@ -884,7 +884,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 10282,
+   "glFrames": 10276,
    "chips": [
     "DERIVED · CELL TRENDS SINCE 1975"
    ]
@@ -899,7 +899,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 10466,
+   "glFrames": 10460,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980"
    ]
@@ -914,7 +914,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 10616,
+   "glFrames": 10610,
    "chips": [
     "OBSERVED · GISTEMP v4 · 1951-1980",
     "DERIVED · CELL TREND"
@@ -930,7 +930,7 @@
    "cssClass": "T",
    "radius": 220.16,
    "scene": "observatory",
-   "glFrames": 10703,
+   "glFrames": 10698,
    "chips": []
   },
   {
@@ -943,7 +943,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "surface",
-   "glFrames": 10924,
+   "glFrames": 10919,
    "chips": [
     "OBSERVED · CELLS · GISTEMP V4 · 1951-198"
    ]
@@ -958,7 +958,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "surface",
-   "glFrames": 11106,
+   "glFrames": 11102,
    "chips": [
     "OBSERVED · CELLS · GISTEMP V4 · 1951-198"
    ]
@@ -973,7 +973,7 @@
    "cssClass": "T",
    "radius": 762.6339882276425,
    "scene": "surface",
-   "glFrames": 11290,
+   "glFrames": 11286,
    "chips": [
     "OBSERVED · GISTEMP V4 · 1951-1980"
    ]
@@ -988,7 +988,7 @@
    "cssClass": "T",
    "radius": 762.6339882276425,
    "scene": "surface",
-   "glFrames": 11606,
+   "glFrames": 11602,
    "chips": [
     "OBSERVED"
    ]
@@ -1003,7 +1003,7 @@
    "cssClass": "T",
    "radius": 762.6339882276425,
    "scene": "surface",
-   "glFrames": 11922,
+   "glFrames": 11918,
    "chips": [
     "OBSERVED"
    ]
@@ -1018,7 +1018,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 12179,
+   "glFrames": 12175,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -1034,7 +1034,7 @@
    "cssClass": "T",
    "radius": 279.552,
    "scene": "zero",
-   "glFrames": 12268,
+   "glFrames": 12262,
    "chips": [
     "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
     "DERIVED · TREND, AR(1) CI, LOESS"
@@ -1049,7 +1049,6 @@
    1880,
    1930,
    1990,
-   1930,
    1940,
    1950,
    1960,
