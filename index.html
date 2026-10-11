@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-motion="on">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff7a1f'/%3E%3C/svg%3E" />
+    <title>Climate Signal Observatory</title>
+    <meta name="description" content="The planet is keeping a record: 146 years of measured surface temperature anomalies from NASA GISTEMP and the Met Office HadCRUT5, unwrapped from a globe into a core of yearly layers." />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/climate-signal-observatory/assets/newsreader-display-BuhMXx6-.woff2" />
+    <script>
+      // Before first paint: motion preference (OS or in-site session override) and gallery flag.
+      (function () {
+        var d = document.documentElement, o = null;
+        try { o = sessionStorage.getItem("cso.motion"); } catch (e) {}
+        var rm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+        d.setAttribute("data-motion", o === "on" || o === "off" ? o : rm ? "off" : "on");
+        if (/[?&]gallery(=|&|$)/.test(location.search)) d.classList.add("is-gallery");
+      })();
+    </script>
+    <script type="module" crossorigin src="/climate-signal-observatory/assets/index-BMIhR6sU.js"></script>
+    <link rel="stylesheet" crossorigin href="/climate-signal-observatory/assets/index-h27l-wXu.css">
+  </head>
+  <body>
+    <main id="main">
+      <!-- S00/S01 is static HTML so the LCP headline paints before any JS (MOTION_SYSTEM 2). -->
+      <section id="signal" class="track track--pinned scene scene-signal" aria-labelledby="hero-title" style="--track-h: 200vh" data-static-track>
+        <div class="stage">
+          <div class="stage-content" data-stage-content>
+            <p class="wordmark" data-intro-corner>CLIMATE SIGNAL OBSERVATORY</p>
+            <p class="intro-year tnum" data-intro-corner aria-hidden="true"><span data-intro-year></span></p>
+            <h1 id="hero-title" class="hero-title wr" data-hero data-scene-heading tabindex="-1"><span class="wr-word">The</span> <span class="wr-word">planet</span> <span class="wr-word">is</span> <span class="wr-word">keeping</span> <span class="wr-word">a</span> <span class="wr-word">record.</span></h1>
+            <div id="signal-portal"></div>
+          </div>
+        </div>
+      </section>
+      <div id="root"></div>
+    </main>
+  </body>
+</html>
