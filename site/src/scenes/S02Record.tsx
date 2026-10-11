@@ -50,7 +50,7 @@ function Baselines({ last, offset }: { last: number; offset: string }) {
       {rows.map(([id, a, b, hatched], i) => (
         <div key={id} className={`bl-row ${hatched ? "is-hatched" : ""}`} style={{ ["--i" as string]: i }}>
           <span className="bl-bracket" style={{ left: `${x(a)}%`, width: `${x(b) - x(a)}%` }} />
-          <span className="bl-label" style={{ left: `${x(a)}%` }}>{id}{hatched ? " · NOT FOR GISTEMP" : ""}{id === "1991-2020" ? ` · ${offset} °C` : ""}</span>
+          <span className="bl-label" style={a > 1950 ? { right: `${100 - x(b)}%` } : { left: `${x(a)}%` }}>{id}{hatched ? " · NOT FOR GISTEMP" : ""}{id === "1991-2020" ? ` · ${offset} °C` : ""}</span>
         </div>
       ))}
       <div className="bl-axis"><span>1850</span><span>{last}</span></div>

@@ -105,7 +105,7 @@ export interface StrataOpts { source: Source; base: Baseline; spine: number; lat
 /** S04 at progress p: re-centre, unwrap, collapse, turn, build, spine. Returns null pieces while data loads. */
 export function strataFrame(L: Layout, dpr: number, p: number, o: StrataOpts) {
   const e0 = easeSymmetric(windowed(p, S04.recentre[0], S04.recentre[1]));
-  const disc = discLerp(L.G1s, L.G1, e0);
+  const disc = discLerp(L.G1m, L.G1, e0);
   const f = baseFrame(L, dpr, disc, FACE_ZERO); // S03b hands over already facing (0, 0)
   const axis = bank.axis(), cur = axis.length - 1, year = axis[cur]!;
   const s1 = o.nogl ? 1 : easeSymmetric(windowed(p, S04.unwrap[0], S04.unwrap[1]));

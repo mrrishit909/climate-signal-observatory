@@ -45,13 +45,14 @@ function Scatter({ xs, ys, label }: { xs: number[]; ys: number[]; label: string 
 }
 function CiBars({ rows }: { rows: [string, [number, number]][] }) {
   const a = Math.min(...rows.map((r) => r[1][0])), b = Math.max(...rows.map((r) => r[1][1]));
-  const x = (v: number) => 30 + ((v - a) / (b - a)) * 66;
+  const x = (v: number) => ((v - a) / (b - a)) * 100;
+  // labels are HTML so they keep the 11px floor at any figure scale (L7)
   return (
-    <svg className="mini" viewBox="0 0 100 40" role="img" aria-label="Three 95% intervals for the 1975 to latest GISTEMP trend">
+    <div className="mini mini-ci-rows" role="img" aria-label="Three 95% intervals for the 1975 to latest GISTEMP trend">
       {rows.map(([n, [lo, hi]], i) => (
-        <g key={n}><text x={0} y={i * 13 + 9} className="mini-t">{n}</text><rect x={x(lo)} y={i * 13 + 4} width={x(hi) - x(lo)} height={5} className={`mini-ci-bar mini-ci-bar--${i}`} /></g>
+        <div key={n} className="mini-ci-row"><span className="mini-t">{n}</span><svg viewBox="0 0 100 5" preserveAspectRatio="none" aria-hidden="true"><rect x={x(lo)} y={0} width={x(hi) - x(lo)} height={5} className={`mini-ci-bar mini-ci-bar--${i}`} /></svg></div>
       ))}
-    </svg>
+    </div>
   );
 }
 

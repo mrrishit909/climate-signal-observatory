@@ -41,8 +41,6 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
     // D-006: past p 0.3 the S01 block carries the planet's tag itself, so the S00 note steps aside instead of printing over the cards
     const s = stepState(cardStep.current, p, [0.6]);
     if (s !== cardStep.current) { cardStep.current = s; setCards((k) => (s ? Math.abs(k) + 1 : -Math.abs(k))); }
-    // D-006: once the cards are in, they carry the planet's tag, so the S00 note steps aside instead of printing over them
-    document.querySelector(".signal-foot")?.classList.toggle("is-s01", !motion || s > 0);
   });
   const s01 = facts.status === "ready" ? copyS01(facts.data) : null;
 
@@ -86,7 +84,7 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
       ) : null}
       <SceneErrors active={active === "signal" || active === null} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "coastlines.json", state: coast, retry: retryC }, { file: "grid_gistemp_2deg_intro.i8.bin.gz", state: grid, retry }]} />
       <p className="sr-only">{copy.alt}</p>
-      <div className={`signal-foot ${introPlaying ? "is-waiting" : ""}`}>
+      <div className={`signal-foot ${introPlaying ? "is-waiting" : ""} ${cards > 0 || !motion ? "is-s01" : ""}`}>
         <p className="state-line nogl-only">{copy.noGl}</p>
         <p className="signal-note"><HonestyChip tag="OBSERVED" /> <span>{copy.note}</span></p>
       </div>

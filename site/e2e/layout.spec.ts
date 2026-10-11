@@ -29,6 +29,8 @@ async function audit(page: Page, scene: string): Promise<Report> {
       for (let e: Element | null = el; e; e = e.parentElement) {
         const cs = getComputedStyle(e);
         if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05 || e.classList.contains("sr-only")) return false;
+        // the body of a closed <details> is not rendered, only its summary
+        if (e.parentElement instanceof HTMLDetailsElement && !e.parentElement.open && e.tagName !== "SUMMARY") return false;
       }
       return true;
     };

@@ -256,13 +256,15 @@ function yearsFrame(p: number, now: number, L: Layout, dpr: number): [Frame | nu
   srcFade.set(c.source, now, quality.tier === "high" ? DUR.panel : 0, easeSmooth);
   const hand = easeSymmetric(windowed(p, 0.92, 1));
   const q = slerp(openFace(now), FACE_NORTH, hand);
-  const f = baseFrame(L, dpr, L.G1s, q);
+  // phones: the planet rises from the record's G1s to G1m over the first steps of the scrub
+  const disc = discLerp(L.G1s, L.G1m, easeSymmetric(windowed(p, 0, 0.08)));
+  const f = baseFrame(L, dpr, disc, q);
   f.cells = cellLayers();
   modeTw.retarget(yearsStore.get().plus2 ? 1 : 0, now, quality.tier === "high" ? DUR.standard : 0);
   modeTw.update(now);
   if (modeTw.value > 0) { f.mode = 2; f.modeMix = modeTw.value; }
   debug.lastYear = yearFade.shown;
-  return [f, { ...NONE, halo: { disc: L.G1s, alpha: 0.06 }, limb: { disc: L.G1s, alpha: 0.24 } }];
+  return [f, { ...NONE, halo: { disc, alpha: 0.06 }, limb: { disc, alpha: 0.24 } }];
 }
 
 function bandLat(id: BandId | null): [number, number] | null {
@@ -282,7 +284,7 @@ function regionsFrame(p: number, now: number, L: Layout, dpr: number): [Frame | 
   const hand = easeSymmetric(windowed(p, 0.92, 1));
   const q = slerp(regionRot.value(now), FACE_ZERO, hand);
   const { source, baseline } = latestLook();
-  const f = planetFrame(L, dpr, L.G1s, q, source, bank.axis().at(-1)!, baseline);
+  const f = planetFrame(L, dpr, L.G1m, q, source, bank.axis().at(-1)!, baseline);
   const layers = bank.trendLayers(source, st.period);
   modeTw.retarget(layers ? 1 : 0, now, quality.tier === "high" ? DUR.panel : 0);
   modeTw.update(now);
@@ -293,7 +295,7 @@ function regionsFrame(p: number, now: number, L: Layout, dpr: number): [Frame | 
   bandTw.update(now);
   if (lat2) lastBand = lat2;
   f.band = [lastBand[0], lastBand[1], bandTw.value * (1 - hand)];
-  return [f, { ...NONE, halo: { disc: L.G1s, alpha: 0.06 }, limb: { disc: L.G1s, alpha: 0.24 } }];
+  return [f, { ...NONE, halo: { disc: L.G1m, alpha: 0.06 }, limb: { disc: L.G1m, alpha: 0.24 } }];
 }
 let lastBand: [number, number] = [60, 90];
 

@@ -36,6 +36,8 @@ export function S05Zero({ def }: { def: SceneDef }) {
   const [sheet, setSheet] = useState(false);
   const L = layout(vp.w, vp.h);
   const B = L.bench, n = 176, bw = (B.x1 - B.x0) / n;
+  // phones, tablets and short or compact desktops write the value labels inside the plot, so the text column keeps its width
+  const inside = L.cls !== "D" || L.w < 1280 || L.h < 820;
   const x = (year: number) => B.x0 + (year - 1850 + 0.5) * bw;
   const first = c.source === "gistemp" ? 1880 : 1850, last = 2025;
 
@@ -163,7 +165,7 @@ export function S05Zero({ def }: { def: SceneDef }) {
         {hz.map((v) => (
           <g key={v} className="hairline">
             <line x1={B.x0} x2={B.x1} y1={y(v)} y2={y(v)} />
-            <text x={L.cls === "M" ? B.x0 + 2 : B.x0 - 8} y={L.cls === "M" ? y(v) - 3 : y(v) + 4} textAnchor={L.cls === "M" ? "start" : "end"}>{v === 0 ? `0.0 °C = ${c.baseline} MEAN` : `${v > 0 ? "+" : ""}${fixed(v, 1)} °C`}</text>
+            <text x={inside ? B.x0 + 2 : B.x0 - 8} y={inside ? y(v) - 3 : y(v) + 4} textAnchor={inside ? "start" : "end"}>{v === 0 ? `0.0 °C = ${c.baseline} MEAN` : `${v > 0 ? "+" : ""}${fixed(v, 1)} °C`}</text>
           </g>
         ))}
         <g className="series" style={{ transform: `translateY(${ty.toFixed(2)}px)` }}>

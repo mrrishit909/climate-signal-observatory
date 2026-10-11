@@ -123,7 +123,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
           {facts.status === "ready" && showSpine && c.source === "gistemp" ? top10(facts.data).map((y) => (
             <span key={`t${y}`} className="core-top10" style={{ top: slotY(y) + k.H / 2, left: k.spine[1] + 4 }} />
           )) : null}
-          {facts.status === "ready" && showSpine && c.source === "gistemp" ? <span className="core-top10-label" style={{ top: slotY(axis.at(-1)! - 6), left: k.spine[1] + 60 }}>◂ TEN WARMEST</span> : null}
+          {facts.status === "ready" && showSpine && c.source === "gistemp" ? <span className="core-top10-label" style={{ top: slotY(axis.at(-1)! - 6), left: k.spine[1] + (L.cls === "M" ? 14 : 60), maxWidth: L.w - k.spine[1] - (L.cls === "M" ? 22 : 68) }}>◂ TEN WARMEST</span> : null}
           {c.source === "gistemp" && copy ? <span className="core-begins" style={{ top: slotY(1865), left: (k.x0 + k.x1) / 2 }}>{copy.begins}</span> : null}
         </div>
       ) : null}

@@ -36,7 +36,8 @@ export function S06Futures({ def }: { def: SceneDef }) {
   const groupRef = useRef<SVGGElement>(null);
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const L = layout(vp.w, vp.h);
-  const ax = L.cls === "D" ? { x0: 0.528 * vp.w, x1: 0.933 * vp.w, y0: 0.094 * vp.h, y1: 0.906 * vp.h }
+  // short desktops: the value axis and its unit stay above the nav (h - 116)
+  const ax = L.cls === "D" ? { x0: 0.528 * vp.w, x1: 0.933 * vp.w, y0: 0.094 * vp.h, y1: vp.h < 820 ? vp.h - 116 : 0.906 * vp.h }
     : L.cls === "T" ? { x0: 96, x1: vp.w - 48, y0: 0.33 * vp.h, y1: 0.84 * vp.h }
     : { x0: 56, x1: vp.w - 20, y0: 0.27 * vp.h, y1: 0.68 * vp.h };
   const xv = (v: number) => ax.x0 + ((v - VMIN) / (VMAX - VMIN)) * (ax.x1 - ax.x0);

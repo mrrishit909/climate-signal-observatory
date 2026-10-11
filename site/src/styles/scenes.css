@@ -75,7 +75,7 @@ html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; ov
 /* ---------- legend: one direct 11-swatch strip, edges written under it ---------- */
 .legend { display: flex; flex-direction: column; gap: 4px; width: 330px; max-width: 100%; }
 .legend__swatches { display: grid; grid-template-columns: repeat(11, 1fr); gap: 2px; height: 10px; }
-.legend__edges { position: relative; height: 12px; font: 400 10px / 1 var(--font-mono); color: #fff; }
+.legend__edges { position: relative; height: 12px; font: 400 11px / 1 var(--font-mono); color: #fff; }
 .legend__edges span { position: absolute; top: 0; left: calc(var(--i) * 100% / 11); translate: -50% 0; }
 .legend__miss { margin: 6px 0 0; display: flex; gap: 8px; align-items: center; font: 400 13px / 1 var(--font-mono); letter-spacing: var(--tracking-label); }
 .legend__unit { color: var(--text-muted); }
@@ -305,7 +305,7 @@ html[data-motion="off"] .scene-regions .stage-content { display: flex; flex-dire
 .zero-text { left: var(--margin); top: 88px; width: 400px; display: flex; flex-direction: column; gap: 14px; }
 .zero-plot { inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 .zero-plot .hairline line { stroke: rgb(255 255 255 / 0.25); stroke-width: 1; }
-.zero-plot text { fill: #fff; font: 400 11px var(--font-mono); letter-spacing: 0.04em; }
+.zero-plot text { fill: #fff; font: 400 11px var(--font-mono); letter-spacing: 0.04em; paint-order: stroke; stroke: #000; stroke-width: 3px; stroke-linejoin: round; }
 .zero-plot .series { transition: transform var(--motion-panel) var(--ease-smooth); }
 .zero-plot .giss-line { fill: none; stroke: #fff; stroke-width: 1.5; }
 .zero-plot .giss-pt { fill: #fff; }
@@ -376,7 +376,7 @@ html[data-motion="off"] .scene-zero .stage { height: 100dvh; min-height: 100dvh;
 .fut-text .scene-statement { font-size: 52px; animation: statement-in var(--motion-panel) var(--ease-smooth) both; }
 .fut-callout { margin: 0; font-size: 32px; line-height: 1.05; color: #fff; }
 .fut-chip { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.fut-chip__sub { font-size: 10px; opacity: 0.75; white-space: nowrap; }
+.fut-chip__sub { font-size: 11px; opacity: 0.75; white-space: nowrap; }
 .fut-locked, .fut-source { margin: 0; font: 400 12px / 1.35 var(--font-mono); letter-spacing: var(--tracking-label); color: var(--text-muted); }
 .fut-locked { color: #fff; }
 .fut-chips { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
@@ -412,7 +412,7 @@ html[data-motion="off"] .scene-zero .stage { height: 100dvh; min-height: 100dvh;
   .fut-scen { position: absolute; left: -8px; right: -8px; top: calc(100dvh - 20px - var(--nav-clear) - 64px); }
   .fut-scen .seg-ctl__row { scroll-snap-type: x mandatory; }
   .fut-scen .chip-btn { scroll-snap-align: start; }
-  .fut-chips .chip { font-size: 10px; }
+  .fut-chips .chip { font-size: 11px; }
 }
 html[data-motion="off"] .scene-futures .stage { height: 100dvh; min-height: 100dvh; }
 
@@ -437,14 +437,17 @@ html[data-motion="off"] .scene-futures .stage { height: 100dvh; min-height: 100d
 .mini { width: 100%; max-width: 460px; height: 90px; display: block; }
 .mini--sq { height: 110px; width: 110px; }
 .mini-pair { display: flex; gap: 16px; }
-.mini-pair figure { margin: 0; display: flex; flex-direction: column; gap: 2px; font-size: 10px; }
+.mini-pair figure { margin: 0; display: flex; flex-direction: column; gap: 2px; font-size: 11px; }
 .mini-zero { stroke: rgb(0 0 0 / 0.4); stroke-width: 0.5; vector-effect: non-scaling-stroke; }
 .mini-bar { fill: #000; transform-origin: 50% 50%; animation: grow-y var(--motion-panel) var(--ease-premium) both; animation-delay: calc(var(--i) * 2ms); }
 @keyframes grow-y { from { transform: scaleY(0); } }
 .mini-line { fill: none; stroke: #2a6fa8; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .mini-ci { fill: none; stroke: #2a6fa8; stroke-width: 1; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
 .mini-pt { fill: #000; animation: fade-in var(--motion-panel) linear both; animation-delay: calc(var(--i) * 10ms); }
-.mini-t { font: 400 4px var(--font-mono); fill: #000; }
+.mini-ci-rows { display: flex; flex-direction: column; gap: 6px; aspect-ratio: auto !important; height: auto !important; }
+.mini-ci-row { display: grid; grid-template-columns: 64px 1fr; align-items: center; gap: 8px; }
+.mini-ci-row svg { width: 100%; height: 8px; display: block; }
+.mini-t { font: 400 11px / 1 var(--font-mono); color: #000; }
 .mini-ci-bar { fill: #000; }
 .mini-ci-bar--1 { fill: #2a6fa8; }
 .ev-side { right: var(--margin); top: 96px; width: 300px; display: flex; flex-direction: column; gap: 16px; font: 400 12px / 1.35 var(--font-mono); letter-spacing: var(--tracking-label); }
@@ -500,7 +503,7 @@ html[data-motion="off"] .ev-ex { display: flex !important; transform: none; }
   .surface-caption { font-size: 12px; }
   .link-btn { padding: 12px 0; font-size: 13px; }
   .surface-links { gap: 0; }
-  .surface-foot { font-size: 10px; }
+  .surface-foot { font-size: 11px; }
 }
 html[data-motion="off"] .scene-surface .stage { height: 100dvh; min-height: 100dvh; overflow: hidden; }
 
@@ -543,7 +546,7 @@ html[data-motion="off"] .scene-surface .stage { height: 100dvh; min-height: 100d
 .inspector__now { fill: #fff; }
 .inspector__line-t { margin: 0; font: 400 12px / 1.3 var(--font-mono); letter-spacing: var(--tracking-label); }
 .inspector__tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.inspector__tags .chip { font-size: 10px; padding: 4px 6px; }
+.inspector__tags .chip { font-size: 11px; padding: 4px 6px; }
 @media (max-width: 1023px) {
   .obs-head { left: var(--margin); right: var(--margin); top: auto; bottom: calc(100% - 0.352 * 100% + 0.273 * 100% + 16px); width: auto; }
   .obs-head { top: 24px; bottom: auto; }
@@ -587,7 +590,7 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
   .fut-chip__sub { display: none; }
   .fut-scen { top: calc(100dvh - 20px - var(--nav-clear) - 84px); left: 0; right: 0; }
   .fut-scen .chip-btn { padding: 9px 7px; font-size: 11px; }
-  .fut-chips .chip { font-size: 10px; padding: 4px 5px; white-space: normal; }
+  .fut-chips .chip { font-size: 11px; padding: 4px 5px; white-space: normal; }
   .zero-more { position: static; align-self: flex-start; padding: 6px 0; }
 }
 /* narrow phones: the corner button must clear the centred 160px menu pill (pill right edge = 50% + 80px) */
@@ -596,7 +599,7 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
 /* ---- P03-FIXA-002 ---- */
 /* D-006: the S01 block sits above the phone scrim; the S00 note gives way to the S01 tag */
 .s01 { z-index: 3 !important; }
-.signal-foot.is-s01 { opacity: 0; visibility: hidden; transition: opacity var(--motion-standard) linear, visibility 0s linear var(--motion-standard); }
+.signal-foot.is-s01 .signal-note { opacity: 0; visibility: hidden; transition: opacity var(--motion-standard) linear, visibility 0s linear var(--motion-standard); }
 .s01-tag { position: static !important; margin: 0; max-width: 400px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font: 400 12px / 1.3 var(--font-mono); letter-spacing: var(--tracking-label); }
 .s01-tag .chip { font-size: 11px; padding: 4px 6px; }
 @media (max-width: 1023px) { .s01-cards { flex-wrap: wrap; } .s01-tag { flex-basis: 100%; max-width: none; } }
@@ -625,3 +628,86 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
   .strata-foot .chip, .strata-foot .strata-note .chip { font-size: 11px; padding: 3px 5px; }
   .zero-result { top: calc(54% + 40px); }
 }
+
+/* ---- L2 compact desktop: 1024-1279 wide (narrow text columns, the figures moved right in geometry.ts) ---- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .s01-statement { width: 380px; }
+  .s01-cards .note, .s01-tag { width: 380px; max-width: 380px; }
+  .years-text, .years-controls, .years-readout { width: 400px; }
+  .regions-text { width: 400px; }
+  .strata-text, .strata-foot, .strata-loading { width: 380px; }
+  .zero-text { width: 320px; }
+  .zero-controls { width: 320px; }
+  .fut-text { width: 380px; }
+  .ev-stack { left: var(--margin); width: min(500px, calc(100vw - 2 * var(--margin) - 324px)); }
+  .obs-head { width: 400px; }
+  .obs-line { font-size: 32px; }
+  .obs-rail { right: calc(17.4vw + 16px); width: 260px; }
+}
+/* ---- L2 short desktop: under 820 high (smaller display type, blocks start higher, readouts end above the nav) ---- */
+@media (min-width: 1024px) and (max-height: 819px) {
+  .scene-statement, .strata-text .scene-statement, .regions-text .scene-statement { font-size: 44px; }
+  .scene-body, .regions-text .scene-body { font-size: 14px; }
+  .s01-statement { top: 128px; font-size: 40px; }
+  .s01-cards { top: 318px; gap: 6px; }
+  .s01-cards .note { padding: 12px 14px; gap: 6px; }
+  .s01-cards .note__body { font-size: 14px; }
+  .years-text { top: 64px; gap: 10px; }
+  .years-controls { top: 236px; gap: 6px; }
+  .years-readout { top: 410px; gap: 3px; }
+  .readout-year { font-size: 40px; }
+  .readout-line { font-size: 13px; }
+  .readout-line--sm { font-size: 12px; }
+  .years-readout .legend { margin-top: 4px; }
+  .regions-text { top: 56px; gap: 8px; }
+  .ledger button { padding: 4px 8px; }
+  .strata-text { top: 64px; gap: 12px; }
+  .zero-text { top: 64px; gap: 10px; }
+  .zero-controls { top: 268px; gap: 6px; }
+  .zero-result { top: calc(67% + 48px); }
+  .result-line { font-size: 15px; }
+  .fut-text { top: 64px; gap: 10px; }
+  .fut-callout { font-size: 26px; }
+  .ev-title { top: 48px; font-size: 36px; }
+  /* the older exchange scrolls away under the title instead of printing over it */
+  .ev-stack { height: calc(100% - 200px); overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px); mask-image: linear-gradient(to bottom, transparent 0, #000 40px); }
+  .surface-text { top: 112px; gap: 16px; }
+  .surface-para { font-size: 32px; }
+  .surface-caption { font-size: 13px; }
+}
+/* L3 + L7: the ten regional edges at 11px alternate between two rows so neighbours never touch */
+.regions-text .legend__edges { height: 24px; }
+.regions-text .legend__edges span:nth-child(even) { top: 12px; }
+
+/* ---- L2 tablet (768-1023) ---- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* the regional title sits between the ledger block and the planet (G1s T top = 59% of the stage) */
+  .regions-title { top: calc(59% - 44px); }
+  /* the controls may wrap to two lines below 790px (classic scrollbars), so the readout starts under the second line */
+  .years-readout { top: 372px; }
+  /* the rail runs from the margin to the docked core as a two-column grid, groups wrap instead of scrolling */
+  .obs-rail { width: auto; right: calc(16.7% + 16px); top: calc(60% + 16px); bottom: auto; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: row; gap: 8px 16px; overflow: visible; }
+  .obs-rail .seg-ctl__row { flex-wrap: wrap; }
+  .ev-stack { height: calc(100% - 400px); bottom: calc(var(--nav-clear) + 232px); }
+}
+/* ---- L2 phones ---- */
+@media (max-width: 767px) {
+  .years-readout > .chip { max-width: none; white-space: nowrap; }
+  .regions-text .seg-ctl__row--scroll { flex-wrap: wrap; overflow: visible; }
+  .strata-foot { top: auto; bottom: calc(var(--nav-clear) + 4px); }
+  .surface-text { bottom: calc(var(--nav-clear) + 80px); }
+  .cell-anatomy__fields { margin-bottom: 6px; }
+}
+@media (max-width: 767px) {
+  /* the previous answer collapses to its header and tag (L3: the tag stays), the stack ends above the receipt */
+  .ev-ex.is-prev { display: flex; }
+  .ev-ex.is-prev .ev-q, .ev-ex.is-prev .ev-a > :not(header):not(.ev-tag) { display: none; }
+  .ev-ex.is-prev .ev-a { padding: 8px 12px; gap: 4px; }
+  .ev-stack { bottom: calc(var(--nav-clear) + 176px); height: calc(100% - var(--nav-clear) - 240px); overflow: hidden; }
+  .ev-limits ul { max-height: 56px; }
+}
+/* L5: a disabled chip's explanation opens leftwards from the last chip of a row, and never wider than the screen */
+.chip-btn__why { max-width: min(260px, calc(100vw - 32px)); }
+.seg-ctl__row > .chip-btn:last-child:not(:first-child) .chip-btn__why { left: auto; right: 0; }
+/* L5: the handles' 16px touch halos at the bench's right end must not widen the page */
+.scene-zero .stage, html[data-motion="off"] .scene-zero .stage { overflow-x: clip; }
