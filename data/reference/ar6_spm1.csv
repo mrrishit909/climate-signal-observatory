@@ -1,0 +1,16 @@
+scenario,period,best_estimate_c,very_likely_low_c,very_likely_high_c,baseline,source_page_pdf,source_page_printed,source_url
+SSP1-1.9,2021-2040,1.5,1.2,1.7,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP1-1.9,2041-2060,1.6,1.2,2.0,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP1-1.9,2081-2100,1.4,1.0,1.8,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP1-2.6,2021-2040,1.5,1.2,1.8,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP1-2.6,2041-2060,1.7,1.3,2.2,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP1-2.6,2081-2100,1.8,1.3,2.4,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP2-4.5,2021-2040,1.5,1.2,1.8,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP2-4.5,2041-2060,2.0,1.6,2.5,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP2-4.5,2081-2100,2.7,2.1,3.5,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP3-7.0,2021-2040,1.5,1.2,1.8,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP3-7.0,2041-2060,2.1,1.7,2.6,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP3-7.0,2081-2100,3.6,2.8,4.6,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP5-8.5,2021-2040,1.6,1.3,1.9,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP5-8.5,2041-2060,2.4,1.9,3.0,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+SSP5-8.5,2081-2100,4.4,3.3,5.7,1850-1900,18,14,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf

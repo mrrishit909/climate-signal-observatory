@@ -1,0 +1,242 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "baselines": {
+   "items": {
+    "enum": [
+     "1850-1900",
+     "1951-1980",
+     "1991-2020"
+    ]
+   },
+   "minItems": 3,
+   "type": "array"
+  },
+  "conversions": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "from": {
+      "type": "string"
+     },
+     "method": {
+      "type": "string"
+     },
+     "monthly_offsets_c": {
+      "items": {
+       "type": "number"
+      },
+      "maxItems": 12,
+      "minItems": 12,
+      "type": "array"
+     },
+     "n_years_per_month": {
+      "items": {
+       "type": "integer"
+      },
+      "maxItems": 12,
+      "minItems": 12,
+      "type": "array"
+     },
+     "offset_c": {
+      "type": "number"
+     },
+     "series": {
+      "type": "string"
+     },
+     "to": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "series",
+     "from",
+     "to",
+     "offset_c",
+     "monthly_offsets_c",
+     "n_years_per_month",
+     "method"
+    ],
+    "type": "object"
+   },
+   "minItems": 10,
+   "type": "array"
+  },
+  "partial_year_excluded": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "series": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "ci_hi": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "items": {
+          "type": [
+           "number",
+           "null"
+          ]
+         },
+         "type": "array"
+        },
+        "minProperties": 1,
+        "propertyNames": {
+         "enum": [
+          "1850-1900",
+          "1951-1980",
+          "1991-2020"
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "ci_lo": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "items": {
+          "type": [
+           "number",
+           "null"
+          ]
+         },
+         "type": "array"
+        },
+        "minProperties": 1,
+        "propertyNames": {
+         "enum": [
+          "1850-1900",
+          "1951-1980",
+          "1991-2020"
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "ci_note": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "domain": {
+      "enum": [
+       "land_ocean",
+       "land_only"
+      ]
+     },
+     "first_year": {
+      "type": "integer"
+     },
+     "id": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "last_year": {
+      "type": "integer"
+     },
+     "native_baseline": {
+      "enum": [
+       "1951-1980",
+       "1961-1990"
+      ]
+     },
+     "region": {
+      "enum": [
+       "global",
+       "nh",
+       "sh"
+      ]
+     },
+     "source": {
+      "type": "string"
+     },
+     "values": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "source",
+     "region",
+     "domain",
+     "native_baseline",
+     "first_year",
+     "last_year",
+     "values",
+     "ci_lo",
+     "ci_hi",
+     "ci_note"
+    ],
+    "type": "object"
+   },
+   "minItems": 7,
+   "type": "array"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "years": {
+   "items": {
+    "maximum": 2100,
+    "minimum": 1850,
+    "type": "integer"
+   },
+   "minItems": 100,
+   "type": "array"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "years",
+  "baselines",
+  "partial_year_excluded",
+  "series",
+  "conversions"
+ ],
+ "title": "series_annual",
+ "type": "object"
+}

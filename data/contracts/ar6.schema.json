@@ -1,0 +1,224 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "observed_derived": {
+   "additionalProperties": false,
+   "properties": {
+    "difference_vs_ar6_2011_2020": {
+     "type": "number"
+    },
+    "gistemp_comparison_not_available": {
+     "type": "string"
+    },
+    "hadcrut5_rebased_1850_1900": {
+     "additionalProperties": false,
+     "properties": {
+      "latest_year": {
+       "type": "number"
+      },
+      "latest_year_value": {
+       "type": "number"
+      },
+      "mean_2001_2020": {
+       "type": "number"
+      },
+      "mean_2005_2024": {
+       "type": "number"
+      },
+      "mean_2011_2020": {
+       "type": "number"
+      },
+      "mean_2015_2024": {
+       "type": "number"
+      }
+     },
+     "required": [
+      "mean_2011_2020",
+      "mean_2001_2020",
+      "mean_2015_2024",
+      "mean_2005_2024",
+      "latest_year",
+      "latest_year_value"
+     ],
+     "type": "object"
+    },
+    "note": {
+     "type": "string"
+    },
+    "within_ar6_assessed_range_2011_2020": {
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "note",
+    "hadcrut5_rebased_1850_1900",
+    "difference_vs_ar6_2011_2020",
+    "within_ar6_assessed_range_2011_2020",
+    "gistemp_comparison_not_available"
+   ],
+   "type": "object"
+  },
+  "observed_published": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "assessed_high_c": {
+      "type": "number"
+     },
+     "assessed_low_c": {
+      "type": "number"
+     },
+     "baseline": {
+      "type": "string"
+     },
+     "best_estimate_c": {
+      "type": "number"
+     },
+     "page_pdf": {
+      "type": "integer"
+     },
+     "period": {
+      "type": "string"
+     },
+     "quantity": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "quantity",
+     "period",
+     "best_estimate_c",
+     "assessed_low_c",
+     "assessed_high_c",
+     "baseline",
+     "page_pdf"
+    ],
+    "type": "object"
+   },
+   "maxItems": 4,
+   "minItems": 4,
+   "type": "array"
+  },
+  "scenarios": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "ghg_description": {
+      "type": "string"
+     },
+     "id": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "rows": {
+      "items": {
+       "additionalProperties": false,
+       "properties": {
+        "best_estimate_c": {
+         "type": "number"
+        },
+        "period": {
+         "type": "string"
+        },
+        "very_likely_high_c": {
+         "type": "number"
+        },
+        "very_likely_low_c": {
+         "type": "number"
+        }
+       },
+       "required": [
+        "period",
+        "best_estimate_c",
+        "very_likely_low_c",
+        "very_likely_high_c"
+       ],
+       "type": "object"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "ghg_description",
+     "rows"
+    ],
+    "type": "object"
+   },
+   "maxItems": 5,
+   "minItems": 5,
+   "type": "array"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "source": {
+   "additionalProperties": false,
+   "properties": {
+    "averaging": {
+     "type": "string"
+    },
+    "baseline": {
+     "const": "1850-1900"
+    },
+    "license_note": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "page_pdf": {
+     "type": "integer"
+    },
+    "page_printed": {
+     "type": "integer"
+    },
+    "table": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "name",
+    "url",
+    "table",
+    "page_pdf",
+    "page_printed",
+    "license_note",
+    "baseline",
+    "averaging"
+   ],
+   "type": "object"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "tags_note": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "source",
+  "scenarios",
+  "observed_published",
+  "observed_derived",
+  "tags_note"
+ ],
+ "title": "ar6",
+ "type": "object"
+}

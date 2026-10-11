@@ -1,0 +1,108 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "definition": {
+   "type": "string"
+  },
+  "metrics": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "area_share": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "expected_share_in_reference": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "id": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "reference": {
+      "type": "string"
+     },
+     "source": {
+      "enum": [
+       "gistemp",
+       "hadcrut5"
+      ]
+     },
+     "valid_area_share": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "source",
+     "reference",
+     "area_share",
+     "expected_share_in_reference",
+     "valid_area_share"
+    ],
+    "type": "object"
+   },
+   "minItems": 6,
+   "type": "array"
+  },
+  "min_reference_years": {
+   "type": "integer"
+  },
+  "n_cells_with_reference": {
+   "type": "integer"
+  },
+  "reference_period": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "years": {
+   "items": {
+    "maximum": 2100,
+    "minimum": 1850,
+    "type": "integer"
+   },
+   "minItems": 100,
+   "type": "array"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "definition",
+  "reference_period",
+  "years",
+  "min_reference_years",
+  "n_cells_with_reference",
+  "metrics"
+ ],
+ "title": "extremes",
+ "type": "object"
+}

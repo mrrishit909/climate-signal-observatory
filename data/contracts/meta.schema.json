@@ -1,0 +1,147 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "artifact_files": {
+   "additionalProperties": {
+    "additionalProperties": false,
+    "properties": {
+     "bytes": {
+      "type": "integer"
+     },
+     "gzip_bytes": {
+      "type": "integer"
+     },
+     "sha256": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "bytes",
+     "gzip_bytes",
+     "sha256"
+    ],
+    "type": "object"
+   },
+   "type": "object"
+  },
+  "baseline_notes": {
+   "type": "string"
+  },
+  "baselines": {
+   "items": {
+    "enum": [
+     "1850-1900",
+     "1951-1980",
+     "1991-2020"
+    ]
+   },
+   "minItems": 3,
+   "type": "array"
+  },
+  "generated_at": {
+   "type": "string"
+  },
+  "limitations": {
+   "items": {
+    "type": "string"
+   },
+   "minItems": 5,
+   "type": "array"
+  },
+  "pipeline_version": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "sources": {
+   "additionalProperties": {
+    "additionalProperties": true,
+    "properties": {
+     "bytes": {
+      "type": "integer"
+     },
+     "citation": {
+      "type": "string"
+     },
+     "last_modified": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "license_note": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "native_baseline": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "retrieved_at": {
+      "type": "string"
+     },
+     "sha256": {
+      "type": "string"
+     },
+     "tag": {
+      "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "version": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "name",
+     "version",
+     "url",
+     "license_note",
+     "citation",
+     "bytes",
+     "sha256",
+     "last_modified",
+     "retrieved_at",
+     "native_baseline",
+     "tag"
+    ],
+    "type": "object"
+   },
+   "minProperties": 8,
+   "type": "object"
+  },
+  "tag_legend": {
+   "type": "object"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "pipeline_version",
+  "generated_at",
+  "sources",
+  "baselines",
+  "baseline_notes",
+  "artifact_files",
+  "tag_legend",
+  "limitations"
+ ],
+ "title": "meta",
+ "type": "object"
+}

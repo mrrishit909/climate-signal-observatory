@@ -1,0 +1,215 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "co2": {
+   "additionalProperties": false,
+   "properties": {
+    "global_interpolated_rows": {
+     "type": "integer"
+    },
+    "global_rows": {
+     "type": "integer"
+    },
+    "mlo_interpolated_rows": {
+     "type": "integer"
+    },
+    "mlo_measured_rows": {
+     "type": "integer"
+    },
+    "mlo_rows": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "mlo_rows",
+    "mlo_interpolated_rows",
+    "mlo_measured_rows",
+    "global_rows",
+    "global_interpolated_rows"
+   ],
+   "type": "object"
+  },
+  "downsampling": {
+   "additionalProperties": false,
+   "properties": {
+    "gistemp_2deg_cells": {
+     "type": "integer"
+    },
+    "note": {
+     "type": "string"
+    },
+    "published_cells": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "gistemp_2deg_cells",
+    "published_cells",
+    "note"
+   ],
+   "type": "object"
+  },
+  "grids": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "annual_cell_years_dropped_lt_min_months": {
+      "type": "integer"
+     },
+     "annual_cell_years_total": {
+      "type": "integer"
+     },
+     "annual_cell_years_valid": {
+      "type": "integer"
+     },
+     "cells_ever_valid": {
+      "type": "integer"
+     },
+     "cells_never_valid": {
+      "type": "integer"
+     },
+     "complete_years": {
+      "type": "integer"
+     },
+     "fill_value_cells": {
+      "type": "integer"
+     },
+     "first_month": {
+      "type": "string"
+     },
+     "last_month": {
+      "type": "string"
+     },
+     "missing_cells": {
+      "type": "integer"
+     },
+     "missing_share": {
+      "type": "number"
+     },
+     "n_lat": {
+      "type": "integer"
+     },
+     "n_lon": {
+      "type": "integer"
+     },
+     "n_time": {
+      "type": "integer"
+     },
+     "nan_cells": {
+      "type": "integer"
+     },
+     "partial_years": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array"
+     },
+     "source": {
+      "type": "string"
+     },
+     "total_cells": {
+      "type": "integer"
+     },
+     "valid_cells": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "source",
+     "n_time",
+     "n_lat",
+     "n_lon",
+     "total_cells",
+     "valid_cells",
+     "missing_cells",
+     "fill_value_cells",
+     "nan_cells",
+     "missing_share",
+     "first_month",
+     "last_month",
+     "complete_years",
+     "partial_years",
+     "annual_cell_years_total",
+     "annual_cell_years_valid",
+     "annual_cell_years_dropped_lt_min_months",
+     "cells_ever_valid",
+     "cells_never_valid"
+    ],
+    "type": "object"
+   },
+   "maxItems": 2,
+   "minItems": 2,
+   "type": "array"
+  },
+  "invariant": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "tables": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "file": {
+      "type": "string"
+     },
+     "months_expected": {
+      "type": "integer"
+     },
+     "months_missing": {
+      "type": "integer"
+     },
+     "months_valid": {
+      "type": "integer"
+     },
+     "partial_year_rows": {
+      "type": "integer"
+     },
+     "rows": {
+      "type": "integer"
+     },
+     "sentinel_values": {
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "source",
+     "file",
+     "rows",
+     "months_expected",
+     "months_valid",
+     "months_missing",
+     "sentinel_values",
+     "partial_year_rows"
+    ],
+    "type": "object"
+   },
+   "minItems": 8,
+   "type": "array"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "invariant",
+  "grids",
+  "tables",
+  "co2",
+  "downsampling"
+ ],
+ "title": "reconciliation",
+ "type": "object"
+}

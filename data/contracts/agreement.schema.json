@@ -1,0 +1,346 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "annual": {
+   "additionalProperties": false,
+   "properties": {
+    "diff_gistemp_minus_hadcrut5": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "gistemp": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "hadcrut5": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "stats": {
+     "additionalProperties": {
+      "additionalProperties": false,
+      "properties": {
+       "corr": {
+        "type": "number"
+       },
+       "corr_first_differences": {
+        "type": "number"
+       },
+       "max_abs_diff": {
+        "type": "number"
+       },
+       "max_abs_diff_year": {
+        "type": "integer"
+       },
+       "mean_diff": {
+        "type": "number"
+       },
+       "n": {
+        "type": "integer"
+       },
+       "rmsd": {
+        "type": "number"
+       },
+       "trend_gap_per_decade": {
+        "type": "number"
+       },
+       "trend_gistemp_per_decade": {
+        "type": "number"
+       },
+       "trend_hadcrut5_per_decade": {
+        "type": "number"
+       }
+      },
+      "required": [
+       "n",
+       "mean_diff",
+       "rmsd",
+       "max_abs_diff",
+       "max_abs_diff_year",
+       "corr",
+       "corr_first_differences",
+       "trend_gistemp_per_decade",
+       "trend_hadcrut5_per_decade",
+       "trend_gap_per_decade"
+      ],
+      "type": "object"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    }
+   },
+   "required": [
+    "gistemp",
+    "hadcrut5",
+    "diff_gistemp_minus_hadcrut5",
+    "stats"
+   ],
+   "type": "object"
+  },
+  "baseline_used": {
+   "type": "string"
+  },
+  "by_decade": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "decade": {
+      "type": "integer"
+     },
+     "mean_diff": {
+      "type": "number"
+     },
+     "n": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "decade",
+     "mean_diff",
+     "n"
+    ],
+    "type": "object"
+   },
+   "minItems": 10,
+   "type": "array"
+  },
+  "common_period": {
+   "items": {
+    "type": "integer"
+   },
+   "maxItems": 2,
+   "minItems": 2,
+   "type": "array"
+  },
+  "coverage_matched": {
+   "additionalProperties": false,
+   "properties": {
+    "baseline": {
+     "type": "string"
+    },
+    "box_deg": {
+     "type": "integer"
+    },
+    "corr": {
+     "type": "number"
+    },
+    "diff": {
+     "items": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "type": "array"
+    },
+    "gistemp_common": {
+     "items": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "type": "array"
+    },
+    "hadcrut5_common": {
+     "items": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "type": "array"
+    },
+    "mean_diff": {
+     "type": "number"
+    },
+    "min_valid_share_in_box": {
+     "type": "number"
+    },
+    "n_common_boxes_mean": {
+     "type": "number"
+    },
+    "note": {
+     "type": "string"
+    },
+    "rmsd": {
+     "type": "number"
+    }
+   },
+   "required": [
+    "box_deg",
+    "min_valid_share_in_box",
+    "n_common_boxes_mean",
+    "baseline",
+    "gistemp_common",
+    "hadcrut5_common",
+    "diff",
+    "rmsd",
+    "corr",
+    "mean_diff",
+    "note"
+   ],
+   "type": "object"
+  },
+  "hemispheres": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "baseline": {
+      "type": "string"
+     },
+     "corr": {
+      "type": "number"
+     },
+     "mean_diff": {
+      "type": "number"
+     },
+     "region": {
+      "enum": [
+       "nh",
+       "sh"
+      ]
+     },
+     "rmsd": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "region",
+     "baseline",
+     "rmsd",
+     "corr",
+     "mean_diff"
+    ],
+    "type": "object"
+   },
+   "maxItems": 2,
+   "minItems": 2,
+   "type": "array"
+  },
+  "monthly": {
+   "additionalProperties": false,
+   "properties": {
+    "baseline": {
+     "type": "string"
+    },
+    "corr": {
+     "type": "number"
+    },
+    "diff": {
+     "items": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "type": "array"
+    },
+    "rmsd": {
+     "type": "number"
+    },
+    "start": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "baseline",
+    "start",
+    "diff",
+    "rmsd",
+    "corr"
+   ],
+   "type": "object"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "years": {
+   "items": {
+    "maximum": 2100,
+    "minimum": 1850,
+    "type": "integer"
+   },
+   "minItems": 100,
+   "type": "array"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "baseline_used",
+  "common_period",
+  "years",
+  "annual",
+  "by_decade",
+  "coverage_matched",
+  "hemispheres",
+  "monthly"
+ ],
+ "title": "agreement",
+ "type": "object"
+}

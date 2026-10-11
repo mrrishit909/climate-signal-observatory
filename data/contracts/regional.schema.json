@@ -1,0 +1,281 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "bands": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "area_share_of_globe": {
+      "type": "number"
+     },
+     "id": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "lat_max": {
+      "type": "number"
+     },
+     "lat_min": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "lat_min",
+     "lat_max",
+     "area_share_of_globe"
+    ],
+    "type": "object"
+   },
+   "minItems": 5,
+   "type": "array"
+  },
+  "baselines": {
+   "items": {
+    "enum": [
+     "1850-1900",
+     "1951-1980",
+     "1991-2020"
+    ]
+   },
+   "minItems": 3,
+   "type": "array"
+  },
+  "land_ocean": {
+   "additionalProperties": false,
+   "properties": {
+    "ar6_land_2011_2020": {
+     "additionalProperties": false,
+     "properties": {
+      "baseline": {
+       "type": "string"
+      },
+      "best_estimate_c": {
+       "type": "number"
+      },
+      "high_c": {
+       "type": "number"
+      },
+      "low_c": {
+       "type": "number"
+      },
+      "source_page_pdf": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "best_estimate_c",
+      "low_c",
+      "high_c",
+      "baseline",
+      "source_page_pdf"
+     ],
+     "type": "object"
+    },
+    "ar6_ocean_2011_2020": {
+     "additionalProperties": false,
+     "properties": {
+      "baseline": {
+       "type": "string"
+      },
+      "best_estimate_c": {
+       "type": "number"
+      },
+      "high_c": {
+       "type": "number"
+      },
+      "low_c": {
+       "type": "number"
+      },
+      "source_page_pdf": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "best_estimate_c",
+      "low_c",
+      "high_c",
+      "baseline",
+      "source_page_pdf"
+     ],
+     "type": "object"
+    },
+    "gap_land_minus_landocean": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "land_ocean": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "land_only": {
+     "additionalProperties": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "minProperties": 1,
+     "propertyNames": {
+      "enum": [
+       "1850-1900",
+       "1951-1980",
+       "1991-2020"
+      ]
+     },
+     "type": "object"
+    },
+    "note": {
+     "type": "string"
+    },
+    "years": {
+     "items": {
+      "maximum": 2100,
+      "minimum": 1850,
+      "type": "integer"
+     },
+     "minItems": 100,
+     "type": "array"
+    }
+   },
+   "required": [
+    "note",
+    "years",
+    "land_only",
+    "land_ocean",
+    "gap_land_minus_landocean",
+    "ar6_land_2011_2020",
+    "ar6_ocean_2011_2020"
+   ],
+   "type": "object"
+  },
+  "rows": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "band": {
+      "type": "string"
+     },
+     "native_baseline": {
+      "type": "string"
+     },
+     "source": {
+      "enum": [
+       "gistemp",
+       "hadcrut5"
+      ]
+     },
+     "valid_area_share": {
+      "items": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "type": "array"
+     },
+     "values": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     }
+    },
+    "required": [
+     "source",
+     "band",
+     "values",
+     "valid_area_share",
+     "native_baseline"
+    ],
+    "type": "object"
+   },
+   "minItems": 10,
+   "type": "array"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "years": {
+   "items": {
+    "maximum": 2100,
+    "minimum": 1850,
+    "type": "integer"
+   },
+   "minItems": 100,
+   "type": "array"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "years",
+  "baselines",
+  "bands",
+  "rows",
+  "land_ocean"
+ ],
+ "title": "regional",
+ "type": "object"
+}

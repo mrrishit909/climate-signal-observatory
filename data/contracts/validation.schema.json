@@ -1,0 +1,290 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "ar6_text_check": {
+   "additionalProperties": false,
+   "properties": {
+    "all_found_in_pdf_page": {
+     "type": "boolean"
+    },
+    "values_checked": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "values_checked",
+    "all_found_in_pdf_page"
+   ],
+   "type": "object"
+  },
+  "baseline_conversion": {
+   "additionalProperties": false,
+   "properties": {
+    "known_value_checks": {
+     "items": {
+      "additionalProperties": false,
+      "properties": {
+       "actual": {
+        "type": "number"
+       },
+       "expected": {
+        "type": "number"
+       },
+       "name": {
+        "type": "string"
+       },
+       "pass": {
+        "type": "boolean"
+       },
+       "tol": {
+        "type": "number"
+       }
+      },
+      "required": [
+       "name",
+       "expected",
+       "actual",
+       "tol",
+       "pass"
+      ],
+      "type": "object"
+     },
+     "minItems": 3,
+     "type": "array"
+    }
+   },
+   "required": [
+    "known_value_checks"
+   ],
+   "type": "object"
+  },
+  "grid_encoding": {
+   "additionalProperties": false,
+   "properties": {
+    "gistemp": {
+     "additionalProperties": false,
+     "properties": {
+      "clipped_cells": {
+       "type": "integer"
+      },
+      "max_abs_error_c": {
+       "type": "number"
+      },
+      "mean_abs_error_c": {
+       "type": "number"
+      },
+      "roundtrip_ok": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "max_abs_error_c",
+      "mean_abs_error_c",
+      "clipped_cells",
+      "roundtrip_ok"
+     ],
+     "type": "object"
+    },
+    "hadcrut5": {
+     "additionalProperties": false,
+     "properties": {
+      "clipped_cells": {
+       "type": "integer"
+      },
+      "max_abs_error_c": {
+       "type": "number"
+      },
+      "mean_abs_error_c": {
+       "type": "number"
+      },
+      "roundtrip_ok": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "max_abs_error_c",
+      "mean_abs_error_c",
+      "clipped_cells",
+      "roundtrip_ok"
+     ],
+     "type": "object"
+    }
+   },
+   "required": [
+    "gistemp",
+    "hadcrut5"
+   ],
+   "type": "object"
+  },
+  "grid_vs_official_global": {
+   "additionalProperties": false,
+   "properties": {
+    "gistemp": {
+     "additionalProperties": false,
+     "properties": {
+      "baseline": {
+       "type": "string"
+      },
+      "corr": {
+       "type": "number"
+      },
+      "max_abs_diff": {
+       "type": "number"
+      },
+      "mean_diff": {
+       "type": "number"
+      },
+      "n_years": {
+       "type": "integer"
+      },
+      "rmsd": {
+       "type": "number"
+      }
+     },
+     "required": [
+      "baseline",
+      "n_years",
+      "mean_diff",
+      "rmsd",
+      "max_abs_diff",
+      "corr"
+     ],
+     "type": "object"
+    },
+    "hadcrut5": {
+     "additionalProperties": false,
+     "properties": {
+      "baseline": {
+       "type": "string"
+      },
+      "corr": {
+       "type": "number"
+      },
+      "max_abs_diff": {
+       "type": "number"
+      },
+      "mean_diff": {
+       "type": "number"
+      },
+      "n_years": {
+       "type": "integer"
+      },
+      "rmsd": {
+       "type": "number"
+      }
+     },
+     "required": [
+      "baseline",
+      "n_years",
+      "mean_diff",
+      "rmsd",
+      "max_abs_diff",
+      "corr"
+     ],
+     "type": "object"
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "gistemp",
+    "hadcrut5",
+    "note"
+   ],
+   "type": "object"
+  },
+  "internal_consistency": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "detail": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "pass": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "name",
+     "pass",
+     "detail"
+    ],
+    "type": "object"
+   },
+   "minItems": 5,
+   "type": "array"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "trend_ci_simulation": {
+   "additionalProperties": false,
+   "properties": {
+    "coverage_ar1": {
+     "type": "number"
+    },
+    "coverage_hac": {
+     "type": "number"
+    },
+    "coverage_naive": {
+     "type": "number"
+    },
+    "n_sims": {
+     "type": "integer"
+    },
+    "n_years": {
+     "type": "integer"
+    },
+    "note": {
+     "type": "string"
+    },
+    "phi": {
+     "type": "number"
+    },
+    "tag": {
+     "const": "SIMULATED"
+    },
+    "true_slope_per_decade": {
+     "type": "number"
+    }
+   },
+   "required": [
+    "note",
+    "n_sims",
+    "n_years",
+    "phi",
+    "true_slope_per_decade",
+    "coverage_naive",
+    "coverage_ar1",
+    "coverage_hac",
+    "tag"
+   ],
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "baseline_conversion",
+  "grid_vs_official_global",
+  "grid_encoding",
+  "trend_ci_simulation",
+  "ar6_text_check",
+  "internal_consistency"
+ ],
+ "title": "validation",
+ "type": "object"
+}

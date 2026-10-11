@@ -1,0 +1,5 @@
+quantity,period,best_estimate_c,assessed_low_c,assessed_high_c,baseline,source_page_pdf,source_page_printed,source_url
+global_surface_temperature_change,2001-2020,0.99,0.84,1.10,1850-1900,9,5,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+global_surface_temperature_change,2011-2020,1.09,0.95,1.20,1850-1900,9,5,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+land_surface_temperature_change,2011-2020,1.59,1.34,1.83,1850-1900,9,5,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf
+ocean_surface_temperature_change,2011-2020,0.88,0.68,1.01,1850-1900,9,5,https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf

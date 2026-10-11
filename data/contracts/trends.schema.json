@@ -1,0 +1,350 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "loess": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "band_hi": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     },
+     "band_lo": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     },
+     "block_len": {
+      "type": "integer"
+     },
+     "fit": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     },
+     "frac": {
+      "type": "number"
+     },
+     "n_boot": {
+      "type": "integer"
+     },
+     "series_id": {
+      "type": "string"
+     },
+     "span_years": {
+      "type": "number"
+     },
+     "years": {
+      "items": {
+       "maximum": 2100,
+       "minimum": 1850,
+       "type": "integer"
+      },
+      "minItems": 100,
+      "type": "array"
+     }
+    },
+    "required": [
+     "series_id",
+     "frac",
+     "span_years",
+     "n_boot",
+     "block_len",
+     "years",
+     "fit",
+     "band_lo",
+     "band_hi"
+    ],
+    "type": "object"
+   },
+   "minItems": 2,
+   "type": "array"
+  },
+  "method": {
+   "additionalProperties": false,
+   "properties": {
+    "ar1_adjustment": {
+     "type": "string"
+    },
+    "hac": {
+     "type": "string"
+    },
+    "loess": {
+     "type": "string"
+    },
+    "loess_band": {
+     "type": "string"
+    },
+    "naive": {
+     "type": "string"
+    },
+    "primary_ci": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "primary_ci",
+    "ar1_adjustment",
+    "hac",
+    "naive",
+    "loess",
+    "loess_band"
+   ],
+   "type": "object"
+  },
+  "periods": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "end": {
+      "type": "integer"
+     },
+     "id": {
+      "type": "string"
+     },
+     "start": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "id",
+     "start",
+     "end"
+    ],
+    "type": "object"
+   },
+   "minItems": 5,
+   "type": "array"
+  },
+  "rolling": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "ci_ar1_hi": {
+      "items": {
+       "type": "number"
+      },
+      "type": "array"
+     },
+     "ci_ar1_lo": {
+      "items": {
+       "type": "number"
+      },
+      "type": "array"
+     },
+     "end_year": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array"
+     },
+     "series_id": {
+      "type": "string"
+     },
+     "slope_per_decade": {
+      "items": {
+       "type": "number"
+      },
+      "type": "array"
+     },
+     "window_years": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "series_id",
+     "window_years",
+     "end_year",
+     "slope_per_decade",
+     "ci_ar1_lo",
+     "ci_ar1_hi"
+    ],
+    "type": "object"
+   },
+   "minItems": 2,
+   "type": "array"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "series": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "fits": {
+      "items": {
+       "additionalProperties": false,
+       "properties": {
+        "ci_ar1": {
+         "items": {
+          "type": "number"
+         },
+         "maxItems": 2,
+         "minItems": 2,
+         "type": "array"
+        },
+        "ci_hac": {
+         "items": {
+          "type": "number"
+         },
+         "maxItems": 2,
+         "minItems": 2,
+         "type": "array"
+        },
+        "ci_naive": {
+         "items": {
+          "type": "number"
+         },
+         "maxItems": 2,
+         "minItems": 2,
+         "type": "array"
+        },
+        "end": {
+         "type": "integer"
+        },
+        "intercept_c": {
+         "type": "number"
+        },
+        "lag1_autocorr_resid": {
+         "type": "number"
+        },
+        "n": {
+         "type": "integer"
+        },
+        "n_eff": {
+         "type": "number"
+        },
+        "period": {
+         "type": "string"
+        },
+        "r2": {
+         "type": "number"
+        },
+        "slope_per_decade": {
+         "type": "number"
+        },
+        "start": {
+         "type": "integer"
+        },
+        "total_change_c": {
+         "type": "number"
+        },
+        "total_change_ci_ar1": {
+         "items": {
+          "type": "number"
+         },
+         "maxItems": 2,
+         "minItems": 2,
+         "type": "array"
+        }
+       },
+       "required": [
+        "period",
+        "start",
+        "end",
+        "n",
+        "slope_per_decade",
+        "intercept_c",
+        "r2",
+        "lag1_autocorr_resid",
+        "n_eff",
+        "ci_naive",
+        "ci_ar1",
+        "ci_hac",
+        "total_change_c",
+        "total_change_ci_ar1"
+       ],
+       "type": "object"
+      },
+      "minItems": 5,
+      "type": "array"
+     },
+     "label": {
+      "type": "string"
+     },
+     "series_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "series_id",
+     "label",
+     "fits"
+    ],
+    "type": "object"
+   },
+   "minItems": 2,
+   "type": "array"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "unit": {
+   "const": "degC_per_decade"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "unit",
+  "method",
+  "periods",
+  "series",
+  "loess",
+  "rolling"
+ ],
+ "title": "trends",
+ "type": "object"
+}

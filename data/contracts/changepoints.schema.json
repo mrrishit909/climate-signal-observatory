@@ -1,0 +1,193 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "caveat": {
+   "type": "string"
+  },
+  "method": {
+   "additionalProperties": false,
+   "properties": {
+    "autocorrelation_note": {
+     "type": "string"
+    },
+    "block_len": {
+     "type": "integer"
+    },
+    "max_breaks": {
+     "type": "integer"
+    },
+    "min_segment_years": {
+     "type": "integer"
+    },
+    "model": {
+     "type": "string"
+    },
+    "n_boot": {
+     "type": "integer"
+    },
+    "selection": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "model",
+    "min_segment_years",
+    "max_breaks",
+    "selection",
+    "n_boot",
+    "block_len",
+    "autocorrelation_note"
+   ],
+   "type": "object"
+  },
+  "results": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "break_ci_95": {
+      "items": {
+       "items": {
+        "type": "number"
+       },
+       "maxItems": 2,
+       "minItems": 2,
+       "type": "array"
+      },
+      "type": "array"
+     },
+     "candidates": {
+      "items": {
+       "additionalProperties": false,
+       "properties": {
+        "bic": {
+         "type": "number"
+        },
+        "breaks": {
+         "items": {
+          "type": "integer"
+         },
+         "type": "array"
+        },
+        "k": {
+         "type": "integer"
+        },
+        "slopes_per_decade": {
+         "items": {
+          "type": "number"
+         },
+         "type": "array"
+        },
+        "sse": {
+         "type": "number"
+        }
+       },
+       "required": [
+        "k",
+        "breaks",
+        "sse",
+        "bic",
+        "slopes_per_decade"
+       ],
+       "type": "object"
+      },
+      "minItems": 2,
+      "type": "array"
+     },
+     "end": {
+      "type": "integer"
+     },
+     "fit": {
+      "additionalProperties": {
+       "items": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "type": "array"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+       "enum": [
+        "1850-1900",
+        "1951-1980",
+        "1991-2020"
+       ]
+      },
+      "type": "object"
+     },
+     "selected_breaks": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array"
+     },
+     "selected_k": {
+      "type": "integer"
+     },
+     "selected_slopes_per_decade": {
+      "items": {
+       "type": "number"
+      },
+      "type": "array"
+     },
+     "series_id": {
+      "type": "string"
+     },
+     "start": {
+      "type": "integer"
+     },
+     "years": {
+      "items": {
+       "maximum": 2100,
+       "minimum": 1850,
+       "type": "integer"
+      },
+      "minItems": 100,
+      "type": "array"
+     }
+    },
+    "required": [
+     "series_id",
+     "start",
+     "end",
+     "candidates",
+     "selected_k",
+     "selected_breaks",
+     "selected_slopes_per_decade",
+     "break_ci_95",
+     "fit",
+     "years"
+    ],
+    "type": "object"
+   },
+   "minItems": 2,
+   "type": "array"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "status": {
+   "const": "EXPLORATORY"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "status",
+  "caveat",
+  "method",
+  "results"
+ ],
+ "title": "changepoints",
+ "type": "object"
+}

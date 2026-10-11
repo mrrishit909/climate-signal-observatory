@@ -1,0 +1,261 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "aggregation": {
+   "additionalProperties": false,
+   "properties": {
+    "annual_rule": {
+     "type": "string"
+    },
+    "min_months_per_cell_year": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "annual_rule",
+    "min_months_per_cell_year"
+   ],
+   "type": "object"
+  },
+  "baseline_offsets": {
+   "additionalProperties": {
+    "additionalProperties": false,
+    "properties": {
+     "min_reference_share": {
+      "type": "number"
+     },
+     "n_valid_cells": {
+      "type": "integer"
+     },
+     "unit_degC_per_unit": {
+      "type": "number"
+     },
+     "values": {
+      "items": {
+       "type": [
+        "integer",
+        "null"
+       ]
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "unit_degC_per_unit",
+     "min_reference_share",
+     "n_valid_cells",
+     "values"
+    ],
+    "type": "object"
+   },
+   "minProperties": 1,
+   "propertyNames": {
+    "enum": [
+     "1850-1900",
+     "1951-1980",
+     "1991-2020"
+    ]
+   },
+   "type": "object"
+  },
+  "encoding": {
+   "additionalProperties": false,
+   "properties": {
+    "compression": {
+     "const": "gzip"
+    },
+    "decode": {
+     "type": "string"
+    },
+    "dtype": {
+     "const": "int8"
+    },
+    "file": {
+     "type": "string"
+    },
+    "gz_bytes": {
+     "type": "integer"
+    },
+    "layout": {
+     "type": "string"
+    },
+    "lon_order": {
+     "const": "west_to_east"
+    },
+    "missing_value": {
+     "const": -128
+    },
+    "row_order": {
+     "const": "north_to_south"
+    },
+    "scale_degC_per_unit": {
+     "type": "number"
+    },
+    "sha256_uncompressed": {
+     "type": "string"
+    },
+    "uncompressed_bytes": {
+     "type": "integer"
+    },
+    "valid_range": {
+     "items": {
+      "type": "integer"
+     },
+     "maxItems": 2,
+     "minItems": 2,
+     "type": "array"
+    }
+   },
+   "required": [
+    "dtype",
+    "scale_degC_per_unit",
+    "missing_value",
+    "valid_range",
+    "layout",
+    "row_order",
+    "lon_order",
+    "file",
+    "compression",
+    "uncompressed_bytes",
+    "gz_bytes",
+    "sha256_uncompressed",
+    "decode"
+   ],
+   "type": "object"
+  },
+  "grid": {
+   "additionalProperties": false,
+   "properties": {
+    "lat_first_center": {
+     "type": "number"
+    },
+    "lat_step_deg": {
+     "type": "number"
+    },
+    "lon_first_center": {
+     "type": "number"
+    },
+    "lon_step_deg": {
+     "type": "number"
+    },
+    "n_lat": {
+     "type": "integer"
+    },
+    "n_lon": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "n_lat",
+    "n_lon",
+    "lat_step_deg",
+    "lon_step_deg",
+    "lat_first_center",
+    "lon_first_center"
+   ],
+   "type": "object"
+  },
+  "id": {
+   "type": "string"
+  },
+  "native_baseline": {
+   "type": "string"
+  },
+  "product": {
+   "type": "string"
+  },
+  "quantization": {
+   "additionalProperties": false,
+   "properties": {
+    "clipped_cells": {
+     "type": "integer"
+    },
+    "max_abs_error_c": {
+     "type": "number"
+    },
+    "mean_abs_error_c": {
+     "type": "number"
+    },
+    "tradeoff": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "max_abs_error_c",
+    "mean_abs_error_c",
+    "clipped_cells",
+    "tradeoff"
+   ],
+   "type": "object"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "source": {
+   "type": "string"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "units": {
+   "const": "degC"
+  },
+  "valid_area_share_per_year": {
+   "items": {
+    "type": "number"
+   },
+   "type": "array"
+  },
+  "valid_cells_per_year": {
+   "items": {
+    "type": "integer"
+   },
+   "type": "array"
+  },
+  "years": {
+   "additionalProperties": false,
+   "properties": {
+    "first": {
+     "type": "integer"
+    },
+    "last": {
+     "type": "integer"
+    },
+    "n": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "first",
+    "last",
+    "n"
+   ],
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "id",
+  "source",
+  "product",
+  "native_baseline",
+  "units",
+  "encoding",
+  "grid",
+  "years",
+  "aggregation",
+  "valid_cells_per_year",
+  "valid_area_share_per_year",
+  "baseline_offsets",
+  "quantization"
+ ],
+ "title": "grid_meta",
+ "type": "object"
+}
