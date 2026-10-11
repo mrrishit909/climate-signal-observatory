@@ -265,6 +265,20 @@ The plan's "radial year ring around the globe" collides with P01 (a ring of mark
 
 DESIGN_AUDIT should check items 1, 2 and 4 when P06 and P07 are designed.
 
+**P02 as actually selected.** P02's `docs/VISUAL_DESIGN.md` appeared while this document was being finished, so I checked it then:
+
+- **P02's identity:** it chose "The Valley", a rectilinear depth valley with an Electric **price orb** that is giant in S00, contracts to a floor marker and grows back in S08.
+- **What differs from P03:**
+  - geometry: our sphere and vertical core versus their straight walls on a horizon floor
+  - accent: Solar-primary versus Electric-primary
+- **One near-echo to watch:** both sites open and close on an orb. Ours is distinguished because:
+  - The P03 orb is **Solar** and becomes a **sphere filled with measured cells**. P02's stays a flat Electric glow that shrinks to a marker.
+  - P03's return is preceded by the core folding back into the planet, with no horizon line.
+  - P03 never shows the orb at 164vw. G0 is at most 200px in radius.
+
+  DESIGN_AUDIT (after P02) should confirm this reads differently in the two contact sheets.
+- **Outdated wording in P02:** P02's document still lists "P03 (year ring)" among the radial claims. That plan item is dropped here.
+
 **Why A gets 4, not 5, for feasibility.** The full 2-degree annual grid (146 x 16,200 Int8 values) is 2.4 MB raw and about 0.6 MB gzip (contract figure). It must stay off the LCP path. It is fetched after first paint, and the intro must work before it arrives (DR-1: a small intro subset). That is solvable, but it is the main performance risk.
 
 ### Selection: A, "The Core Sample", with two grafts
@@ -451,6 +465,7 @@ There are no spinners and no artificial delays anywhere.
       - `RANK {{k}} OF {{n}} COMPLETE YEARS`
       - `CO2 {{ppm}} PPM · MAUNA LOA`
       - `MEASURED AREA {{pct}}%`
+      - `{{x}}% OF MEASURED AREA ABOVE ITS OWN {{baseline}} 95TH PERCENTILE ({{expected}}% EXPECTED)`. This comes from `extremes.metrics[id = {source}_above_p95_{baseline}].area_share[year]` and `expected_share_in_reference`, tagged DERIVED. Under 1850-1900 (no such metric) the line reads `NO EXTREMES REFERENCE FOR 1850-1900`.
       - the 11-swatch legend
     - **The year track:** a 1px vertical line at x 1392, y 98-802, using the same year-to-y mapping as the core K1. A 12px white square marks the current year. It is a quiet preview of the core: vertical time, oldest at the bottom.
   - **T:** text and controls at the top (y 72-380), the planet below (c 384, 680, r 270), and the readout as a 2-column block at y 400-520.
@@ -479,11 +494,12 @@ There are no spinners and no artificial delays anywhere.
 - **Interactions** (all visitor-set parameters, interaction 2):
   - **BASELINE:** 3 values. 1850-1900 is disabled under GISTEMP with the tooltip `GISTEMP BEGINS IN 1880: NO 1850-1900 BASELINE`.
   - **SOURCE:** 2 values. Switching to GISTEMP while 1850-1900 is active snaps the baseline to 1951-1980 and announces it (`aria-live`: `BASELINE SET TO 1951-1980: GISTEMP HAS NO 1850-1900`).
-  - **+2 °C CELLS:** valid cells at +2.0 °C or more under the *active* baseline get a 1px white inner outline. Other cells dim to 35%. The readout adds `{{pct}}% OF MEASURED AREA AT +2 °C OR MORE` (area-weighted, computed from the rendered cells).
+  - **+2 °C CELLS:** valid cells at +2.0 °C or more under the *active* baseline get a 1px white inner outline. Other cells dim to 35%. The readout adds `{{pct}}% OF MEASURED AREA AT +2 °C OR MORE` (area-weighted, computed from the rendered cells). Under 1951-1980, a Vitest test checks this client share against `extremes.metrics[{source}_ge_2C_1951-1980].area_share`.
   - Arrow Up/Down on the focused globe step the year by scrolling the track.
+- **Stepped extremes note** (p 0.85, once the latest years are on screen): a 13px line under the readout, in its own sentence, `IN {{facts.latest_complete_year}}, {{facts.extremes_area_share_above_p95_latest_year}}% OF THE MEASURED SURFACE WAS WARMER THAN ITS OWN 1-IN-20 YEAR OF 1951-1980. BY CHANCE YOU WOULD EXPECT ABOUT {{facts.extremes_area_share_above_p95_reference_mean}}%.` Tagged DERIVED. Annual means only, not heatwaves.
 - **Transition to S03b.** At p 0.92-1, the planet's drift stops and it settles to the S03b state-1 rotation (scrubbed). The year locks to the latest complete year.
 - **States.**
-  - **Empty:** a cell with a `null` offset under the chosen baseline renders as the missing lattice. If more than 60% of the measured area is lost that way, the readout adds `MANY CELLS HAVE NO {{baseline}} REFERENCE`. For HadCRUT5 at 1850-1900 this is expected and is the honest picture.
+  - **Empty:** a cell with a `null` offset under the chosen baseline renders as the missing lattice. If more than 60% of the measured area is lost that way, the readout adds `MANY CELLS HAVE NO {{baseline}} REFERENCE`. For HadCRUT5 at 1850-1900 this is expected and is the honest picture: only `grid_hadcrut5_5deg.meta.baseline_offsets["1850-1900"].n_valid_cells` (929 of 2,592 in the 2026-10-10 artifacts) have enough reference years.
   - **CO2 before 1959:** `NOT MEASURED AT MAUNA LOA (RECORD BEGINS 1958)`.
   - **Reset:** a `RESET` text button appears when any control differs from the default (GISTEMP, 1951-1980, +2 off).
 
@@ -555,7 +571,7 @@ There are no spinners and no artificial delays anywhere.
   - `facts.json`
   - `validation.grid_vs_official_global` (footnote)
 - **Footnote** (13px, persistent once the spine shows): `SPINE = MEAN OF THE GRID CELLS SHOWN. NASA'S OFFICIAL GLOBAL SERIES DIFFERS BY AT MOST {{validation.grid_vs_official_global.gistemp.max_abs_diff}} °C.`
-- **Insight.** A planet can be read as a record. The record warms upward. The north edge of the recent strata glows brightest (amplification, visible without a chart), and the oldest layers carry gaps at the poles. They are far sparser under HadCRUT5, which does not spread stations over 1200 km.
+- **Insight.** A planet can be read as a record. The record warms upward. The north edge of the recent strata glows brightest (amplification, visible without a chart), and the oldest layers carry gaps at the poles. Under HadCRUT5 they are far sparser: `grid_hadcrut5_5deg.meta.valid_area_share_per_year[1850]` is 46% in the 2026-10-10 artifacts. `meta.json` notes that GISTEMP's higher early coverage comes from its 1200 km station smoothing, not from our processing.
 - **Tags.** Cells OBSERVED (native) or DERIVED (rebased), strata DERIVED (zonal means), spine DERIVED.
 - **Transition to S05.** The core turns 90 degrees anticlockwise and slides to K3 (the bench), keyed per stratum. The series band fades in above it.
 - **States.**
@@ -722,7 +738,7 @@ There are no spinners and no artificial delays anywhere.
 - **Layers:**
   - **ANOMALY:** the anomaly bins.
   - **TREND:** DR-3 trend bins with the significance stipple.
-  - **+2 °C:** as in S03a.
+  - **+2 °C:** as in S03a, and the readout strip adds the S03a p95 extremes line from `extremes.json` for the active source and baseline.
   - **COVERAGE:** valid cells in white at 30%, missing as the lattice, with the readout `MEASURED AREA {{pct}}%`.
 - **MAP view.** The sheet (G2) replaces the sphere with the same cells and no rotation. It is useful for seeing both poles at once. The transition is the unwrap itself, played time-based (1200ms).
 - **Data:** all grid and series artifacts, already loaded.
@@ -964,7 +980,7 @@ Rules:
 
 1. Chip `RECORD 01 · THE CELL`.
    - Title: **"A cell, not a thermometer."**
-   - Body: `STATIONS ON LAND AND SHIPS AND BUOYS AT SEA, BLENDED BY NASA INTO 2° SQUARES. EACH SQUARE HOLDS ONE NUMBER PER YEAR: HOW MUCH WARMER OR COOLER IT WAS THAN ITS OWN 1951-1980 NORMAL.`
+   - Body (sourced from `meta.sources` for GISTEMP: GHCNv4 stations plus ERSSTv5 sea surface): `STATIONS ON LAND AND SHIPS AND BUOYS AT SEA, BLENDED BY NASA INTO 2° SQUARES. EACH SQUARE HOLDS ONE NUMBER PER YEAR: HOW MUCH WARMER OR COOLER IT WAS THAN ITS OWN 1951-1980 NORMAL.`
 2. Chip `RECORD 02 · TWO AGENCIES`.
    - Title: **"Two agencies, two methods."**
    - Body: `NASA GISTEMP: 2° SQUARES FROM 1880. MET OFFICE HADCRUT5: 5° SQUARES FROM 1850. DIFFERENT METHODS, DIFFERENT GAPS. WE SHOW BOTH AND WHERE THEY DISAGREE.`
@@ -973,7 +989,7 @@ Rules:
    - Body: `MOVING THE ZERO FROM 1951-1980 TO 1991-2020 SUBTRACTS {{facts.baseline_offset_1951_1980_to_1991_2020_gistemp}} °C FROM EVERY GISTEMP YEAR. THE WARMING TREND DOES NOT CHANGE.`
 4. Chip `RECORD 04 · THE GAPS`.
    - Title: **"Gaps stay gaps."**
-   - Body: `IN 1880, {{facts.gistemp_valid_area_share_first_year}}% OF THE SURFACE HAD A VALUE IN NASA'S RECORD, MOSTLY THANKS TO 1200 KM SMOOTHING. IN {{facts.latest_complete_year}}, {{facts.gistemp_valid_area_share_latest_year}}%. THE GAPS SIT AT THE POLES. WE NEVER FILL A MISSING SQUARE. IT STAYS DOTTED.`
+   - Body: `IN 1880, {{facts.gistemp_valid_area_share_first_year}}% OF THE SURFACE HAD A VALUE IN NASA'S RECORD, WHICH SPREADS EACH STATION'S SIGNAL UP TO 1200 KM. THE MET OFFICE RECORD, WITHOUT THAT SMOOTHING, COVERED {{hadcrut5_share_1880}}%. WE NEVER FILL A MISSING SQUARE. IT STAYS DOTTED.` (`hadcrut5_share_1880` = `grid_hadcrut5_5deg.meta.valid_area_share_per_year` at 1880. The 1200 km statement is sourced from `meta.json`'s GISTEMP note.)
 
 ### S03a
 
@@ -1018,7 +1034,7 @@ Rules:
 
 ### S07 Evidence (objection, then answer)
 
-1. `CITIES ARE HOTTER. ISN'T THIS JUST URBAN HEAT?` / `THE OCEAN HAS NO CITIES AND IT WARMED TOO: +{{ar6.observed_published[ocean].best_estimate_c}} °C ({{low}} TO {{high}}) IN 2011-2020 VS 1850-1900, AS ASSESSED BY THE IPCC.`
+1. `CITIES ARE HOTTER. ISN'T THIS JUST URBAN HEAT?` / `THE OCEAN HAS NO CITIES AND IT WARMED TOO: {{ar6.observed_published[ocean].best_estimate_c}} °C ({{low}} TO {{high}}) IN 2011-2020 VS 1850-1900, AS ASSESSED BY THE IPCC.`
 2. `DO THE TWO AGENCIES EVEN AGREE?` / `YEAR TO YEAR, CORRELATION {{facts.gistemp_hadcrut5_annual_corr}}, TYPICAL GAP {{facts.gistemp_hadcrut5_annual_rmsd}} °C. THEIR LONG-RUN TRENDS DIFFER BY {{facts.gistemp_hadcrut5_trend_gap_1880_latest}} °C PER DECADE. WE SHOW THE DISAGREEMENT, NOT AN AVERAGE.`
 3. `THE NUMBER WAS DIFFERENT LAST TIME I LOOKED.` / `TWO REASONS. THE ZERO: EVERY ANOMALY IS RELATIVE TO A CHOSEN PERIOD, AND WE NAME IT EVERYWHERE. THE VINTAGE: AGENCIES REVISE PAST MONTHS. THIS SITE USES FILES DATED {{meta.sources.gistemp.last_modified}}.`
 4. `WHAT ABOUT THE PLACES NOBODY MEASURED?` / `{{facts.gistemp_missing_cells_total_share}}% OF ALL SQUARE-MONTHS IN NASA'S GRID ARE MISSING. THEY STAY MISSING. AVERAGES USE MEASURED SQUARES ONLY, AND THE MEASURED SHARE IS ALWAYS SHOWN.` (CHECK: the fact's `note` confirms it counts cell-months, else say `SQUARES`.)
@@ -1068,6 +1084,8 @@ EXISTS means the value is in a contracted artifact today. DR means a data reques
 | Agreement diff series | `agreement.json` | EXISTS |
 | AR6 rows, observed published and derived 20-year means, page refs | `ar6.json` | EXISTS |
 | Band values and measured share | `regional.json` | EXISTS (band edges: DR-7) |
+| Extremes readout and note | `extremes.metrics[]` (`id`, `area_share`, `expected_share_in_reference`), `facts.extremes_area_share_above_p95_latest_year`, `facts.extremes_area_share_above_p95_reference_mean` | EXISTS |
+| HadCRUT5 coverage numbers (S02 card 4, S04, S03a empty state) | `grid_hadcrut5_5deg.meta.json` `valid_area_share_per_year`, `baseline_offsets["1850-1900"].n_valid_cells` | EXISTS |
 | Spine footnote max diff | `validation.grid_vs_official_global.gistemp.max_abs_diff` | EXISTS |
 | CI-coverage simulation | `validation.trend_ci_simulation.coverage_ar1` | EXISTS |
 | Receipt hashes, file dates | `meta.artifact_files`, `meta.sources.*.last_modified` | EXISTS |
