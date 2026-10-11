@@ -9,6 +9,7 @@ dependencies = [
     "netCDF4>=1.7.2",
     "numpy>=2.0.0",
     "polars>=1.0.0",
+    "pypdf>=6.20.0",
     "pytest>=8.0.0",
     "requests>=2.32.0",
     "scipy>=1.14.0",
