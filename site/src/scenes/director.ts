@@ -131,7 +131,7 @@ let tierChecked = false;
 let started = false;
 let losses = 0;
 export const glLosses = () => losses;
-export const debug = { radius: 0, scene: "", glFrames: 0, lastYear: 0, phase: 0 };
+export const debug = { radius: 0, scene: "", glFrames: 0, lastYear: 0, phase: 0, coreAlpha: 0 };
 
 function dprFor(cls: string) {
   const d = devicePixelRatio || 1;
@@ -347,7 +347,9 @@ function benchFrame(L: Layout, dpr: number, source: Source, base: Baseline, t: n
 function futuresFrame(p: number, L: Layout, dpr: number): [Frame | null, Overlay] {
   const { source, baseline } = getClimate();
   const e = easeSymmetric(windowed(p, 0, 0.12));
-  const f = benchFrame(L, dpr, source, baseline, 1 - e, 1 - 0.85 * e);
+  // the core stands up, dims, then leaves entirely once its spine has become positions (p 0.30): S06 text and chips stay clear
+  const f = benchFrame(L, dpr, source, baseline, 1 - e, (1 - 0.85 * e) * (1 - windowed(p, 0.24, 0.34)));
+  debug.coreAlpha = f?.core?.alpha ?? 0;
   if (f?.core) for (let i = 0; i < L.core.n; i++) f.core.spine[i * 4 + 1] = HIDDEN;
   return [f, NONE];
 }

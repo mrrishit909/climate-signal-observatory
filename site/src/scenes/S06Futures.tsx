@@ -36,8 +36,8 @@ export function S06Futures({ def }: { def: SceneDef }) {
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const L = layout(vp.w, vp.h);
   const ax = L.cls === "D" ? { x0: 0.528 * vp.w, x1: 0.933 * vp.w, y0: 0.094 * vp.h, y1: 0.906 * vp.h }
-    : L.cls === "T" ? { x0: 96, x1: vp.w - 48, y0: 0.215 * vp.h, y1: 0.86 * vp.h }
-    : { x0: 56, x1: vp.w - 16, y0: 0.2 * vp.h, y1: 0.76 * vp.h };
+    : L.cls === "T" ? { x0: 96, x1: vp.w - 48, y0: 0.33 * vp.h, y1: 0.84 * vp.h }
+    : { x0: 56, x1: vp.w - 20, y0: 0.27 * vp.h, y1: 0.68 * vp.h };
   const xv = (v: number) => ax.x0 + ((v - VMIN) / (VMAX - VMIN)) * (ax.x1 - ax.x0);
   const yt = (year: number) => ax.y1 - ((year - 1850) / (2100 - 1850)) * (ax.y1 - ax.y0);
 
@@ -114,8 +114,9 @@ export function S06Futures({ def }: { def: SceneDef }) {
             {[0, 1, 2, 3, 4, 5, 6].map((v) => <text key={v} x={xv(v)} y={ax.y1 + 24} textAnchor="middle">{v === 0 ? "0" : `+${v}`}</text>)}
             <text x={ax.x1} y={ax.y1 + 40} textAnchor="end">°C VS 1850-1900</text>
             {[1850, 1900, 1950, 2000, 2050, 2100].map((yy) => <text key={yy} x={ax.x0 - 8} y={yt(yy) + 4} textAnchor="end">{yy}</text>)}
-            {[1.5, 2].map((v) => <g key={v}><line className="paris" x1={xv(v)} x2={xv(v)} y1={ax.y0} y2={ax.y1} /><text x={xv(v)} y={ax.y0 - 6} textAnchor="middle">{fixed(v, 1)} °C</text></g>)}
-            <text x={xv(1.75)} y={ax.y0 - 20} textAnchor="middle" className="paris-cap">{copy.paris}</text>
+            {/* 1.5 to the left of its line, 2.0 to the right: the two labels never meet */}
+            {[1.5, 2].map((v) => <g key={v}><line className="paris" x1={xv(v)} x2={xv(v)} y1={ax.y0} y2={ax.y1} /><text x={xv(v) + (v < 2 ? -4 : 4)} y={ax.y0 - 6} textAnchor={v < 2 ? "end" : "start"}>{fixed(v, 1)} °C</text></g>)}
+            <text x={ax.x0} y={L.cls === "D" ? ax.y0 - 24 : ax.y1 + 58} textAnchor="start" className="paris-cap">{L.cls === "M" ? copy.parisShort : `DOTTED LINES: ${copy.paris}`}</text>
           </g>
           <g ref={groupRef} className="fut-observed" aria-hidden="true">
             {model.observed.map((o) => o.lo !== null && o.hi !== null ? <rect key={`ci${o.year}`} className="fut-ci" x={xv(o.lo)} y={yt(o.year) - 0.6} width={Math.max(1, xv(o.hi) - xv(o.lo))} height={1.2} fill="url(#fut-stipple)" /> : null)}
@@ -124,7 +125,8 @@ export function S06Futures({ def }: { def: SceneDef }) {
             {model.assessed ? (
               <g className="fut-assessed">
                 <path d={`M${xv(model.assessed.low)},${yt(model.assessed.y1) + 6}V${yt(model.assessed.y1)}H${xv(model.assessed.high)}V${yt(model.assessed.y1) + 6}`} />
-                <text x={xv(model.assessed.high) + 6} y={yt(model.assessed.y1) + 4}>ASSESSED · IPCC AR6 2001-2020</text>
+                {/* below the 20-year bars and right of the bracket's high end, clear of every mark */}
+                <text x={xv(model.assessed.high) + 6} y={yt(model.assessed.y0 - 3) + 10}>{L.cls === "M" ? copy.assessedShort : copy.assessed}</text>
               </g>
             ) : null}
           </g>
@@ -147,7 +149,7 @@ export function S06Futures({ def }: { def: SceneDef }) {
                 <text className="fut-wlabel" x={ax.x1} y={yt(Number(w.slice(5))) - 4} textAnchor="end">{w}</text>
               </g>
             ))}
-            <text className="fut-gap" x={ax.x1} y={(yt(2061) + yt(2080)) / 2} textAnchor="end">{copy.gap}</text>
+            <text className="fut-gap" x={L.cls === "M" ? ax.x0 : ax.x1} y={(yt(2061) + yt(2080)) / 2 + 4} textAnchor={L.cls === "M" ? "start" : "end"}>{copy.gap}</text>
           </g>
         </svg>
       ) : null}

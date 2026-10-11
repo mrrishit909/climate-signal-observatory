@@ -155,6 +155,9 @@ export function copyS06(page: number) {
     source: `IPCC AR6 WG1 SPM TABLE SPM.1 (PRINTED PAGE ${page}). VERY LIKELY RANGE = 90-100% PROBABILITY. RELATIVE TO 1850-1900.`,
     locked: "1850-1900 (LOCKED: AR6 BASELINE)",
     paris: "LEVELS NAMED IN THE PARIS AGREEMENT (20-YEAR MEANS)",
+    parisShort: "DOTTED: 1.5 / 2.0 °C PARIS LEVELS",
+    assessed: "ASSESSED · IPCC AR6 2001-2020",
+    assessedShort: "ASSESSED · AR6",
     gap: "2061-2080 NOT IN TABLE SPM.1",
   };
 }

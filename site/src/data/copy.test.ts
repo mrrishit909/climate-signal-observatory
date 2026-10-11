@@ -100,7 +100,7 @@ describe("Stage B copy numbers are artifact values", () => {
     "0.1", "128", // grid sidecar encoding: scale_degC_per_unit and missing_value
     // design literals: baseline names, AR6 table periods, the very likely 90-100% definition, Paris levels, product versions, the 1200 km GISTEMP smoothing radius
     "1850", "1900", "1951", "1980", "1991", "2020", "1975", "1880", "2011", "2021", "2040", "2041", "2060", "2061", "2080", "2081", "2100", "90", "100", "1.5", "2", "1200", "4",
-    "5.2", "0.0", "20", "3", "1", "5", "10", "95", "30", "15", "6", "12", "2010", "04", "03", "02", "01",
+    "5.2", "0.0", "2.0", "2001", "20", "3", "1", "5", "10", "95", "30", "15", "6", "12", "2010", "04", "03", "02", "01",
   ]);
   const texts = [
     ...Object.values(copyS01(f)),

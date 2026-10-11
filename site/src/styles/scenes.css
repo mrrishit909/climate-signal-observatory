@@ -571,3 +571,21 @@ html[data-motion="off"] .scene-surface .stage { height: 100dvh; min-height: 100d
 /* reduced motion: S01 has no scrub, so the hero sits above the statement instead of over it */
 html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 56px; }
 @media (max-width: 767px) { html[data-motion="off"] .hero-title { top: 48px; font-size: 32px; } html[data-motion="off"] .s01-statement { top: 160px; } }
+
+/* ---- P03-FIX-A1: S06 recomposed at D/T/M, S05 M controls ---- */
+.fut-scen .seg-ctl__row--scroll { flex-wrap: wrap; overflow: visible; }
+.fut-text { width: 480px; }
+.fut-plot text, .zero-plot text { paint-order: stroke; stroke: #000; stroke-width: 3px; stroke-linejoin: round; }
+@media (max-width: 1023px) {
+  .fut-text { width: auto; }
+  .fut-chips .chip:not(:first-child) { display: none; }
+}
+@media (max-width: 767px) {
+  .fut-chip__sub { display: none; }
+  .fut-scen { top: calc(100dvh - 20px - var(--nav-clear) - 84px); left: 0; right: 0; }
+  .fut-scen .chip-btn { padding: 9px 7px; font-size: 11px; }
+  .fut-chips .chip { font-size: 10px; padding: 4px 5px; white-space: normal; }
+  .zero-more { position: static; align-self: flex-start; padding: 6px 0; }
+}
+/* narrow phones: the corner button must clear the centred 160px menu pill (pill right edge = 50% + 80px) */
+@media (max-width: 767px) { .corner-btn { right: 8px; max-width: min(96px, calc(50vw - 80px - 8px - 8px)); padding: 6px 4px; } }
