@@ -1,0 +1,36 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv python install 3.12
+      - run: uv sync --python 3.12 --frozen
+      # data/raw and data/interim are gitignored and absent in CI. The 4 tests that
+      # re-read the raw netCDF/CSV files (tests/test_reconciliation.py, @slow) skip themselves
+      # via skipif when data/raw is missing; the `slow` marker is not applied, so no -m filter is needed.
+      - run: uv run pytest -q
+
+  site:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      # Playwright e2e intentionally not run here (needs browsers and WebGL; verified locally against the production build)
