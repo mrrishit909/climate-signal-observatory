@@ -22,14 +22,16 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewp
   const half = Math.hypot(w, h) / 2;
   // G0: D 560/900, T 620/1024, M 510/844 of the height; on M also at least the half-diagonal (frame is all planet)
   const G0: Disc = cls === "D" ? { cx: w / 2, cy: h / 2, r: 0.622 * h } : cls === "T" ? { cx: w / 2, cy: h / 2, r: 0.606 * h } : { cx: w / 2, cy: h / 2, r: Math.max(0.605 * h, half + 2) };
-  const G1s: Disc = cls === "D" ? { cx: 0.694 * w, cy: 0.522 * h, r: 0.356 * h } : cls === "T" ? { cx: w / 2, cy: 0.664 * h, r: 0.264 * h } : { cx: w / 2, cy: 0.5 * h, r: Math.min(0.385 * w, 0.178 * h) };
+  const G1s: Disc = cls === "D" ? { cx: 0.694 * w, cy: 0.522 * h, r: 0.356 * h } : cls === "T" ? { cx: w / 2, cy: 0.74 * h, r: 0.21 * h } : { cx: w / 2, cy: 0.45 * h, r: Math.min(0.385 * w, 0.178 * h) };
   const G1: Disc = cls === "D" ? { cx: w / 2, cy: h / 2, r: 0.322 * h } : cls === "T" ? { cx: w / 2, cy: 0.44 * h, r: 0.273 * h } : { cx: w / 2, cy: 0.391 * h, r: Math.min(0.41 * w, 0.19 * h) };
   const sheetW = cls === "D" ? 0.75 * w : 0.917 * w;
   const sheet = { cx: w / 2, cy: (cls === "D" ? 0.478 : cls === "T" ? 0.508 : 0.45) * h, k: sheetW / (2 * EE_XMAX), width: sheetW };
-  const H = Math.min(cls === "M" ? 3 : 4, Math.max(1, Math.floor((0.8 * h) / n)));
-  const cw = cls === "D" ? 220 : cls === "T" ? 200 : 150;
+  // live stages use integer stratum heights (3.2); small static figures (reduced motion) scale fractionally
+  const figure = h < 600 && cls !== "M" || h < 500;
+  const H = figure ? (0.8 * h) / n : Math.min(cls === "M" ? 3 : 4, Math.max(1, Math.floor((0.8 * h) / n)));
+  const cw = figure ? Math.min(0.45 * w, (cls === "D" ? 220 : 200) * (h / 900)) : cls === "D" ? 220 : cls === "T" ? 200 : 150;
   const x0 = Math.round(w / 2 - cw / 2), total = n * H;
-  const y0 = Math.round(cls === "M" ? 0.114 * h : (h - total) / 2 - (cls === "T" ? 10 : 0));
+  const y0 = figure ? (h - total) / 2 : Math.round(cls === "M" ? 0.114 * h : (h - total) / 2 - (cls === "T" ? 10 : 0));
   const sw = cls === "M" ? 8 : 12;
   return {
     cls, w, h, G0, G1s, G1, sheet, strip: cls === "D" ? 24 : cls === "T" ? 20 : 16,

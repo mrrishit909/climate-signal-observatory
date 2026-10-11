@@ -7,7 +7,13 @@
 import { fetchJson, LoadError } from "./loader";
 import { isGridMeta, type GridMeta } from "./types";
 
-export async function fetchBytes(url: string, onProgress: (loaded: number, total: number | null) => void, fetchImpl: typeof fetch = fetch) {
+/**
+ * fetch + stream reader with real byte progress. Content-Length counts the
+ * bytes on the wire; when a server adds Content-Encoding (vite preview does for
+ * .gz) the stream yields inflated bytes, so the sidecar's uncompressed size is
+ * the honest total instead.
+ */
+export async function fetchBytes(url: string, onProgress: (loaded: number, total: number | null) => void, fetchImpl: typeof fetch = fetch, inflatedTotal: number | null = null) {
   let res: Response;
   try {
     res = await fetchImpl(url);
@@ -16,7 +22,7 @@ export async function fetchBytes(url: string, onProgress: (loaded: number, total
   }
   if (!res.ok) throw new LoadError(`HTTP ${res.status}`);
   const len = Number(res.headers.get("content-length"));
-  const total = !res.headers.get("content-encoding") && len > 0 ? len : null;
+  const total = res.headers.get("content-encoding") ? inflatedTotal : len > 0 ? len : null;
   if (!res.body) return new Uint8Array(await res.arrayBuffer());
   const reader = res.body.getReader();
   const chunks: Uint8Array[] = [];
@@ -68,7 +74,7 @@ export function gridReader(metaFile: string) {
     const metaUrl = url.replace(/[^/]+$/, metaFile);
     const meta = await fetchJson(metaUrl, () => {}, fetchImpl);
     if (!isGridMeta(meta)) throw new LoadError("SCHEMA MISMATCH");
-    const bytes = await fetchBytes(url, onProgress, fetchImpl);
+    const bytes = await fetchBytes(url, onProgress, fetchImpl, meta.encoding.uncompressed_bytes);
     return { meta, data: await decodeGrid(bytes, meta) };
   };
 }

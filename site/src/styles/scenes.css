@@ -27,7 +27,7 @@ html[data-motion="off"] .planet-layer, html.is-gallery .planet-layer { display: 
 .wordmark { left: var(--gutter); }
 .intro-year { right: var(--gutter); }
 .hero-title {
-  margin: 0; left: 50%; top: 50%; width: min(11.5em, calc(100vw - 2 * var(--margin))); translate: -50% -50%; transform-origin: 50% 0;
+  z-index: 3 !important; margin: 0; left: 50%; top: 50%; width: min(11.5em, calc(100vw - 2 * var(--margin))); translate: -50% -50%; transform-origin: 50% 0;
   font-family: var(--font-display); font-weight: 400; font-optical-sizing: auto; font-size: 96px; line-height: 1; letter-spacing: -0.02em; text-align: center; text-wrap: balance;
 }
 .hero-title:focus { outline: none; }
@@ -74,9 +74,8 @@ html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; ov
 /* ---------- legend: one direct 11-swatch strip, edges written under it ---------- */
 .legend { display: flex; flex-direction: column; gap: 4px; width: 330px; max-width: 100%; }
 .legend__swatches { display: grid; grid-template-columns: repeat(11, 1fr); gap: 2px; height: 10px; }
-.legend__edges { display: grid; grid-template-columns: repeat(11, 1fr); font: 400 11px / 1 var(--font-mono); color: #fff; }
-.legend__edges span { transform: translateX(calc(100% - 50%)); text-align: center; }
-.legend__edges span:first-child { grid-column: 1; }
+.legend__edges { position: relative; height: 12px; font: 400 10px / 1 var(--font-mono); color: #fff; }
+.legend__edges span { position: absolute; top: 0; left: calc(var(--i) * 100% / 11); translate: -50% 0; }
 .legend__miss { margin: 6px 0 0; display: flex; gap: 8px; align-items: center; font: 400 13px / 1 var(--font-mono); letter-spacing: var(--tracking-label); }
 .legend__unit { color: var(--text-muted); }
 .lattice-swatch { width: 24px; height: 10px; background: var(--lattice); box-shadow: 0 0 0 1px var(--line); }
@@ -99,7 +98,7 @@ html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; ov
   .years-readout { left: var(--margin); right: var(--margin); top: 326px; width: auto; display: grid; grid-template-columns: auto 1fr; column-gap: 24px; row-gap: 2px; align-items: baseline; }
   .years-readout > :not(.readout-year) { grid-column: 2; }
   .readout-year { grid-row: 1 / span 3; font-size: 48px; }
-  .years-readout .legend, .years-readout > .chip { grid-column: 1 / -1; }
+  .years-readout .legend, .years-readout > .chip { grid-column: 1 / -1; justify-self: start; }
   .year-track { display: none; }
 }
 @media (max-width: 767px) {
@@ -110,12 +109,13 @@ html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; ov
   .years-controls .seg-ctl__row { flex-wrap: nowrap; }
   .years-controls .chip-btn { flex: 1; padding: 11px 4px; font-size: 12px; }
   .years-controls .text-btn { position: absolute; right: 0; top: -28px; }
-  .years-readout { top: 588px; left: 16px; right: 16px; display: flex; flex-direction: column; gap: 3px; }
+  .years-readout { top: auto; bottom: calc(var(--nav-clear) + 92px); left: 16px; right: 16px; display: flex; flex-direction: column; gap: 3px; }
+  .years-readout .state-error { gap: 6px; }
   .readout-year { font-size: 32px; grid-row: auto; }
   .readout-line { font-size: 12px; }
   .years-readout > .readout-line:nth-of-type(3), .years-readout > .readout-line:nth-of-type(4), .years-readout > .readout-line--sm { display: none; }
   .years-readout .legend { display: none; }
-  .years-readout > .chip { position: absolute; top: -488px; left: 0; margin: 0; font-size: 11px; padding: 6px; }
+  .years-readout > .chip { margin: 2px 0 0; font-size: 11px; padding: 5px 6px; }
 }
 html[data-motion="off"] .scene-years .stage-content > * { position: relative; left: auto; right: auto; top: auto; bottom: auto; }
 html[data-motion="off"] .scene-years .stage-content { display: flex; flex-direction: column; gap: 24px; padding: 96px var(--margin) 120px; }
@@ -139,7 +139,7 @@ html[data-motion="off"] .scene-years .stage-content { display: flex; flex-direct
 .core-labels > * { position: absolute; font: 400 13px / 1 var(--font-mono); letter-spacing: var(--tracking-label); }
 .core-year { translate: 0 -50%; }
 .core-axis { color: var(--text-muted); }
-.core-begins { translate: 0 -50%; color: var(--text-muted); text-align: right; }
+.core-begins { translate: -50% -50%; padding: 4px 6px; background: #000; white-space: nowrap; font-size: 11px !important; }
 .strata-foot { left: var(--margin); bottom: calc(var(--nav-clear) + 24px); width: 440px; display: flex; flex-direction: column; gap: 10px; opacity: 0; transition: opacity var(--motion-standard) linear; }
 .strata-foot.is-in { opacity: 1; }
 .strata-note { margin: 0; font: 400 13px / 1.35 var(--font-mono); letter-spacing: var(--tracking-label); text-transform: uppercase; animation: fade-in var(--motion-standard) linear both; }
@@ -147,6 +147,7 @@ html[data-motion="off"] .scene-years .stage-content { display: flex; flex-direct
   .strata-text { left: var(--margin); right: var(--margin); top: 40px; width: auto; gap: 8px; }
   .strata-text .scene-statement { font-size: 32px; }
   .strata-chips { flex-direction: row; flex-wrap: wrap; }
+  .strata-chips .chip { font-size: 11px; padding: 5px 6px; }
   .strata-loading { top: auto; bottom: calc(var(--nav-clear) + 140px); left: var(--margin); right: var(--margin); width: auto; }
   .strata-foot { left: var(--margin); right: var(--margin); width: auto; bottom: calc(var(--nav-clear) + 8px); }
 }
@@ -154,10 +155,12 @@ html[data-motion="off"] .scene-years .stage-content { display: flex; flex-direct
   .strata-text { top: auto; bottom: calc(var(--nav-clear) + 8px); left: 12px; right: 12px; padding: 12px 14px; gap: 6px; background: rgb(22 22 22 / 0.94); border-radius: var(--radius-card); }
   .strata-text .scene-statement { font-size: 22px; }
   .strata-chips .chip { font-size: 11px; padding: 5px 6px; }
-  .strata-foot { bottom: auto; top: 640px; left: 16px; right: 16px; gap: 6px; }
-  .scene-strata .strata-foot.is-in ~ .strata-text { display: none; }
+  .strata-foot { bottom: auto; top: 654px; left: 16px; right: 16px; gap: 6px; }
+  /* landed: the card gives way to the source toggle and notes; the statement moves above the core */
+  .strata-text.is-landed { top: 34px; bottom: auto; padding: 0; background: none; }
+  .strata-text.is-landed .strata-chips, .strata-text.is-landed .phase-caption { display: none; }
+  .strata-loading { top: 34px !important; }
   .strata-note { font-size: 11px; }
-  .strata-loading { bottom: auto; top: 640px; }
 }
 html[data-motion="off"] .scene-strata .stage-content > * { position: relative; left: auto; right: auto; top: auto; bottom: auto; opacity: 1; width: auto; }
 html[data-motion="off"] .scene-strata .stage-content { display: flex; flex-direction: column; gap: 24px; padding: 96px var(--margin) 120px; }

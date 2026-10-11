@@ -61,7 +61,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="From planet to record" className="scene scene-strata">
-      <div className="strata-text">
+      <div className={`strata-text ${landed && ready ? "is-landed" : ""}`}>
         <h2 id="strata-title" tabIndex={-1} data-scene-heading className="scene-statement" key={showSpine ? "s2" : "s1"}>
           {copy ? (showSpine ? copy.s2 : copy.s1) : def.title}
         </h2>
@@ -85,11 +85,11 @@ export function S04Strata({ def }: { def: SceneDef }) {
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: k.x0 }}>S</span>
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: (k.x0 + k.x1) / 2 - 8 }}>EQ</span>
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: k.x1 - 8 }}>N</span>
-          {c.source === "gistemp" && copy ? <span className="core-begins" style={{ top: slotY(1865), right: vp.w - k.x0 + 12 }}>{copy.begins}</span> : null}
+          {c.source === "gistemp" && copy ? <span className="core-begins" style={{ top: slotY(1865), left: (k.x0 + k.x1) / 2 }}>{copy.begins}</span> : null}
         </div>
       ) : null}
-      <div className={`strata-foot ${landed ? "is-in" : ""}`}>
-        {landed ? (
+      <div className={`strata-foot ${landed && ready ? "is-in" : ""}`}>
+        {landed && ready ? (
           <div className="seg-ctl" role="radiogroup" aria-label="SOURCE">
             <span className="seg-ctl__label" aria-hidden="true">SOURCE</span>
             <div className="seg-ctl__row">

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent } from "react";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
 import { ArtifactStatus } from "../components/StateUI";
@@ -66,7 +66,7 @@ export function Legend() {
   return (
     <div className="legend" aria-label="Anomaly bins in degrees C">
       <div className="legend__swatches">{BINS.map((b) => <span key={b.id} style={{ background: b.color }} title={b.label} />)}</div>
-      <div className="legend__edges" aria-hidden="true">{EDGE_LABELS.map((e) => <span key={e}>{e}</span>)}</div>
+      <div className="legend__edges" aria-hidden="true">{EDGE_LABELS.map((e, i) => <span key={e} style={{ "--i": i + 1 } as CSSProperties}>{e}</span>)}</div>
       <p className="legend__miss"><span className="lattice-swatch" aria-hidden="true" /> NOT MEASURED <span className="legend__unit">°C VS THE CHOSEN NORMAL</span></p>
     </div>
   );

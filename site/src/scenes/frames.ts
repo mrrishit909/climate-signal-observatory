@@ -103,6 +103,8 @@ export function strataFrame(L: Layout, dpr: number, p: number, o: StrataOpts) {
   const geomGrid = g ? bank.grids.get(g) : bank.grids.get(o.source);
   const nLat = geomGrid?.geom.nLat ?? 90, step = geomGrid?.geom.step ?? 2;
   const ys = full ? strataYs(L, p, cur) : new Float32Array(L.core.n).fill(HIDDEN);
+  // once landed, the current year's stratum is drawn from the same zonal texture over the merged strip
+  if (full && s3 >= 1) ys[cur] = L.core.y0 + (L.core.n - 1 - cur) * L.core.H;
   const spineYs = new Float32Array(L.core.n).fill(HIDDEN);
   if (full && o.spine > 0) for (let i = 0; i < L.core.n; i++) if (i <= o.spine * L.core.n - 0.5) spineYs[i] = L.core.y0 + (L.core.n - 1 - i) * L.core.H;
   f.core = {

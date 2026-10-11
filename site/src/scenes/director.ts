@@ -8,7 +8,7 @@
  */
 import { Globe } from "../gl/globe";
 import { paint2d } from "../gl/paint2d";
-import { faceQuat, slerp } from "../gl/projection";
+import { EE_XMAX, faceQuat, slerp } from "../gl/projection";
 import type { CellLayer, Frame, GridKey } from "../gl/frame";
 import { addFrame } from "../motion/loop";
 import { Tween } from "../motion/tween";
@@ -376,7 +376,20 @@ function frame(now: number) {
   ctx.setTransform(orbDpr, 0, 0, orbDpr, 0, 0);
   drawOverlay(ctx, o, w, h);
   if (quality.tier === "nogl") {
-    if (f && f.cells.length && !(intro.playing && o.orb)) paint2d(ctx, { ...f, dpr: orbDpr }, paintData);
+    // NO-WEBGL tier (9.2): the orb stays an orb in S00-S02; the record is drawn as flat Equal Earth maps
+    if (!f || o.orb) return;
+    drawOverlay(ctx, { ...NONE, outline: o.outline }, w, h); // a flat map has no limb or halo
+    const [cx, cy, r] = f.u.sphere;
+    if (id === "signal" || id === "record") {
+      drawOverlay(ctx, { ...NONE, orb: { disc: { cx, cy, r }, alpha: f.dim, cool: 1, glow: 1.06, body: 1 } }, w, h);
+      return;
+    }
+    if (id !== "strata") {
+      const width = Math.min(2.4 * r, w - 32);
+      f.u.s1 = 1;
+      f.u.sheet = [cx, cy, width / (2 * EE_XMAX)];
+    }
+    if (f.cells.length) paint2d(ctx, { ...f, dpr: orbDpr }, paintData);
     return;
   }
   sync(f);
