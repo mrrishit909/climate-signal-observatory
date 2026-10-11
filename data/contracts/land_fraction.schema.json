@@ -1,0 +1,133 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "grids": {
+   "additionalProperties": false,
+   "properties": {
+    "gistemp_2deg": {
+     "additionalProperties": false,
+     "properties": {
+      "lon_order": {
+       "const": "west_to_east"
+      },
+      "n_lat": {
+       "type": "integer"
+      },
+      "n_lon": {
+       "type": "integer"
+      },
+      "row_order": {
+       "const": "north_to_south"
+      },
+      "scale": {
+       "type": "string"
+      },
+      "values": {
+       "items": {
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "n_lat",
+      "n_lon",
+      "row_order",
+      "lon_order",
+      "scale",
+      "values"
+     ],
+     "type": "object"
+    },
+    "hadcrut5_5deg": {
+     "additionalProperties": false,
+     "properties": {
+      "lon_order": {
+       "const": "west_to_east"
+      },
+      "n_lat": {
+       "type": "integer"
+      },
+      "n_lon": {
+       "type": "integer"
+      },
+      "row_order": {
+       "const": "north_to_south"
+      },
+      "scale": {
+       "type": "string"
+      },
+      "values": {
+       "items": {
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "n_lat",
+      "n_lon",
+      "row_order",
+      "lon_order",
+      "scale",
+      "values"
+     ],
+     "type": "object"
+    }
+   },
+   "required": [
+    "gistemp_2deg",
+    "hadcrut5_5deg"
+   ],
+   "type": "object"
+  },
+  "method": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "source": {
+   "additionalProperties": false,
+   "properties": {
+    "license": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "name",
+    "url",
+    "license"
+   ],
+   "type": "object"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "source",
+  "method",
+  "grids"
+ ],
+ "title": "land_fraction",
+ "type": "object"
+}

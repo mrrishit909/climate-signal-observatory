@@ -1,0 +1,189 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "clipped_cells": {
+   "type": "integer"
+  },
+  "encoding": {
+   "additionalProperties": false,
+   "properties": {
+    "compression": {
+     "const": "gzip"
+    },
+    "decode": {
+     "type": "string"
+    },
+    "dtype": {
+     "const": "int8"
+    },
+    "file": {
+     "type": "string"
+    },
+    "gz_bytes": {
+     "type": "integer"
+    },
+    "layers": {
+     "items": {
+      "type": "string"
+     },
+     "maxItems": 2,
+     "minItems": 2,
+     "type": "array"
+    },
+    "layout": {
+     "type": "string"
+    },
+    "missing_value": {
+     "const": -128
+    },
+    "sha256_uncompressed": {
+     "type": "string"
+    },
+    "slope_scale_degC_per_decade_per_unit": {
+     "type": "number"
+    },
+    "uncompressed_bytes": {
+     "type": "integer"
+    },
+    "valid_range": {
+     "items": {
+      "type": "integer"
+     },
+     "maxItems": 2,
+     "minItems": 2,
+     "type": "array"
+    }
+   },
+   "required": [
+    "dtype",
+    "slope_scale_degC_per_decade_per_unit",
+    "missing_value",
+    "valid_range",
+    "layers",
+    "layout",
+    "file",
+    "compression",
+    "uncompressed_bytes",
+    "gz_bytes",
+    "sha256_uncompressed",
+    "decode"
+   ],
+   "type": "object"
+  },
+  "grid": {
+   "additionalProperties": false,
+   "properties": {
+    "lat_first_center": {
+     "type": "number"
+    },
+    "lat_step_deg": {
+     "type": "number"
+    },
+    "lon_first_center": {
+     "type": "number"
+    },
+    "lon_step_deg": {
+     "type": "number"
+    },
+    "n_lat": {
+     "type": "integer"
+    },
+    "n_lon": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "n_lat",
+    "n_lon",
+    "lat_step_deg",
+    "lon_step_deg",
+    "lat_first_center",
+    "lon_first_center"
+   ],
+   "type": "object"
+  },
+  "id": {
+   "type": "string"
+  },
+  "periods": {
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "end": {
+      "type": "integer"
+     },
+     "id": {
+      "type": "string"
+     },
+     "min_valid_years": {
+      "type": "integer"
+     },
+     "n_significant_cells": {
+      "type": "integer"
+     },
+     "n_valid_cells": {
+      "type": "integer"
+     },
+     "n_years": {
+      "type": "integer"
+     },
+     "start": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "id",
+     "start",
+     "end",
+     "n_years",
+     "min_valid_years",
+     "n_valid_cells",
+     "n_significant_cells"
+    ],
+    "type": "object"
+   },
+   "maxItems": 4,
+   "minItems": 4,
+   "type": "array"
+  },
+  "product": {
+   "type": "string"
+  },
+  "rule": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "source": {
+   "type": "string"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "units": {
+   "const": "degC_per_decade"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "id",
+  "source",
+  "product",
+  "units",
+  "encoding",
+  "grid",
+  "periods",
+  "clipped_cells",
+  "rule"
+ ],
+ "title": "grid_trends_meta",
+ "type": "object"
+}

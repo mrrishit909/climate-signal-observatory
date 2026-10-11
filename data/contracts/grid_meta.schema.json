@@ -227,6 +227,13 @@
     "last": {
      "type": "integer"
     },
+    "list": {
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 1,
+     "type": "array"
+    },
     "n": {
      "type": "integer"
     }
@@ -234,7 +241,8 @@
    "required": [
     "first",
     "last",
-    "n"
+    "n",
+    "list"
    ],
    "type": "object"
   }

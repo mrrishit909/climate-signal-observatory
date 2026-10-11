@@ -1,0 +1,76 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "coords": {
+   "items": {
+    "type": "number"
+   },
+   "minItems": 100,
+   "type": "array"
+  },
+  "layout": {
+   "type": "string"
+  },
+  "n_lines": {
+   "type": "integer"
+  },
+  "n_points": {
+   "type": "integer"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "source": {
+   "additionalProperties": false,
+   "properties": {
+    "file": {
+     "type": "string"
+    },
+    "license": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "name",
+    "url",
+    "license",
+    "file"
+   ],
+   "type": "object"
+  },
+  "starts": {
+   "items": {
+    "type": "integer"
+   },
+   "minItems": 1,
+   "type": "array"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "source",
+  "layout",
+  "n_lines",
+  "n_points",
+  "starts",
+  "coords"
+ ],
+ "title": "coastlines",
+ "type": "object"
+}

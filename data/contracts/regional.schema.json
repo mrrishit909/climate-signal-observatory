@@ -124,6 +124,163 @@
      },
      "type": "object"
     },
+    "grid_land_mask": {
+     "additionalProperties": false,
+     "properties": {
+      "land_fraction_threshold_pct": {
+       "type": "integer"
+      },
+      "rule": {
+       "type": "string"
+      },
+      "sources": {
+       "additionalProperties": false,
+       "properties": {
+        "gistemp": {
+         "additionalProperties": false,
+         "properties": {
+          "land_cell_area_share": {
+           "type": "number"
+          },
+          "land_valid_area_share_latest": {
+           "type": "number"
+          },
+          "ocean_valid_area_share_latest": {
+           "type": "number"
+          },
+          "values": {
+           "additionalProperties": {
+            "additionalProperties": false,
+            "properties": {
+             "land": {
+              "items": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "type": "array"
+             },
+             "ocean": {
+              "items": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "type": "array"
+             }
+            },
+            "required": [
+             "land",
+             "ocean"
+            ],
+            "type": "object"
+           },
+           "minProperties": 1,
+           "propertyNames": {
+            "enum": [
+             "1850-1900",
+             "1951-1980",
+             "1991-2020"
+            ]
+           },
+           "type": "object"
+          }
+         },
+         "required": [
+          "land_cell_area_share",
+          "land_valid_area_share_latest",
+          "ocean_valid_area_share_latest",
+          "values"
+         ],
+         "type": "object"
+        },
+        "hadcrut5": {
+         "additionalProperties": false,
+         "properties": {
+          "land_cell_area_share": {
+           "type": "number"
+          },
+          "land_valid_area_share_latest": {
+           "type": "number"
+          },
+          "ocean_valid_area_share_latest": {
+           "type": "number"
+          },
+          "values": {
+           "additionalProperties": {
+            "additionalProperties": false,
+            "properties": {
+             "land": {
+              "items": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "type": "array"
+             },
+             "ocean": {
+              "items": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "type": "array"
+             }
+            },
+            "required": [
+             "land",
+             "ocean"
+            ],
+            "type": "object"
+           },
+           "minProperties": 1,
+           "propertyNames": {
+            "enum": [
+             "1850-1900",
+             "1951-1980",
+             "1991-2020"
+            ]
+           },
+           "type": "object"
+          }
+         },
+         "required": [
+          "land_cell_area_share",
+          "land_valid_area_share_latest",
+          "ocean_valid_area_share_latest",
+          "values"
+         ],
+         "type": "object"
+        }
+       },
+       "required": [
+        "gistemp",
+        "hadcrut5"
+       ],
+       "type": "object"
+      },
+      "years": {
+       "items": {
+        "maximum": 2100,
+        "minimum": 1850,
+        "type": "integer"
+       },
+       "minItems": 100,
+       "type": "array"
+      }
+     },
+     "required": [
+      "rule",
+      "land_fraction_threshold_pct",
+      "years",
+      "sources"
+     ],
+     "type": "object"
+    },
     "land_ocean": {
      "additionalProperties": {
       "items": {
@@ -184,7 +341,8 @@
     "land_ocean",
     "gap_land_minus_landocean",
     "ar6_land_2011_2020",
-    "ar6_ocean_2011_2020"
+    "ar6_ocean_2011_2020",
+    "grid_land_mask"
    ],
    "type": "object"
   },

@@ -31,6 +31,110 @@
      ],
      "type": "object"
     },
+    "ar6_published_land_2011_2020": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "ar6_published_ocean_2011_2020": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "arctic_to_global_trend_ratio_1975_latest": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "band_trends_all_positive_1975_latest": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
     "baseline_offset_1951_1980_to_1991_2020_gistemp": {
      "additionalProperties": false,
      "properties": {
@@ -473,6 +577,58 @@
      ],
      "type": "object"
     },
+    "gistemp_ytd_mean_1951_1980": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "gistemp_ytd_months": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
     "grid_artifact_gzip_bytes_total": {
      "additionalProperties": false,
      "properties": {
@@ -577,6 +733,84 @@
      ],
      "type": "object"
     },
+    "hadcrut5_ytd_mean_1850_1900": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "hadcrut5_ytd_months": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "land_minus_landocean_gap_latest_decade": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
     "latest_complete_year": {
      "additionalProperties": false,
      "properties": {
@@ -630,6 +864,110 @@
      "type": "object"
     },
     "latest_month_hadcrut5": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "latest_year_rank_gistemp": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "latest_year_rank_hadcrut5": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "n_bands_warmed_beyond_uncertainty_1975_latest": {
+     "additionalProperties": false,
+     "properties": {
+      "note": {
+       "type": "string"
+      },
+      "source_artifact": {
+       "type": "string"
+      },
+      "tag": {
+       "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+       "type": "string"
+      },
+      "unit": {
+       "type": "string"
+      },
+      "value": {}
+     },
+     "required": [
+      "value",
+      "unit",
+      "tag",
+      "source_artifact"
+     ],
+     "type": "object"
+    },
+    "south_band_first_year_valid_share_ge_50pct": {
      "additionalProperties": false,
      "properties": {
       "note": {
@@ -951,7 +1289,20 @@
     "extremes_area_share_above_p95_latest_year",
     "extremes_area_share_above_p95_reference_mean",
     "changepoint_gistemp_selected_breaks",
-    "grid_artifact_gzip_bytes_total"
+    "grid_artifact_gzip_bytes_total",
+    "arctic_to_global_trend_ratio_1975_latest",
+    "land_minus_landocean_gap_latest_decade",
+    "south_band_first_year_valid_share_ge_50pct",
+    "band_trends_all_positive_1975_latest",
+    "n_bands_warmed_beyond_uncertainty_1975_latest",
+    "latest_year_rank_gistemp",
+    "latest_year_rank_hadcrut5",
+    "ar6_published_land_2011_2020",
+    "ar6_published_ocean_2011_2020",
+    "gistemp_ytd_mean_1951_1980",
+    "gistemp_ytd_months",
+    "hadcrut5_ytd_mean_1850_1900",
+    "hadcrut5_ytd_months"
    ],
    "type": "object"
   },

@@ -1,0 +1,215 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "properties": {
+  "min_row_valid": {
+   "type": "number"
+  },
+  "rule": {
+   "type": "string"
+  },
+  "schema_version": {
+   "const": "v1"
+  },
+  "sources": {
+   "additionalProperties": false,
+   "properties": {
+    "gistemp": {
+     "additionalProperties": false,
+     "properties": {
+      "baselines": {
+       "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+         "available": {
+          "type": "boolean"
+         },
+         "years": {
+          "additionalProperties": {
+           "additionalProperties": false,
+           "properties": {
+            "global_mean": {
+             "type": "number"
+            },
+            "row_mean": {
+             "items": {
+              "type": [
+               "number",
+               "null"
+              ]
+             },
+             "type": "array"
+            },
+            "row_valid_share": {
+             "items": {
+              "type": "number"
+             },
+             "type": "array"
+            }
+           },
+           "required": [
+            "row_mean",
+            "row_valid_share",
+            "global_mean"
+           ],
+           "type": "object"
+          },
+          "type": "object"
+         }
+        },
+        "required": [
+         "available",
+         "years"
+        ],
+        "type": "object"
+       },
+       "minProperties": 1,
+       "propertyNames": {
+        "enum": [
+         "1850-1900",
+         "1951-1980",
+         "1991-2020"
+        ]
+       },
+       "type": "object"
+      },
+      "grid_id": {
+       "type": "string"
+      },
+      "lat_centers": {
+       "items": {
+        "type": "number"
+       },
+       "type": "array"
+      },
+      "n_lat": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "grid_id",
+      "n_lat",
+      "lat_centers",
+      "baselines"
+     ],
+     "type": "object"
+    },
+    "hadcrut5": {
+     "additionalProperties": false,
+     "properties": {
+      "baselines": {
+       "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+         "available": {
+          "type": "boolean"
+         },
+         "years": {
+          "additionalProperties": {
+           "additionalProperties": false,
+           "properties": {
+            "global_mean": {
+             "type": "number"
+            },
+            "row_mean": {
+             "items": {
+              "type": [
+               "number",
+               "null"
+              ]
+             },
+             "type": "array"
+            },
+            "row_valid_share": {
+             "items": {
+              "type": "number"
+             },
+             "type": "array"
+            }
+           },
+           "required": [
+            "row_mean",
+            "row_valid_share",
+            "global_mean"
+           ],
+           "type": "object"
+          },
+          "type": "object"
+         }
+        },
+        "required": [
+         "available",
+         "years"
+        ],
+        "type": "object"
+       },
+       "minProperties": 1,
+       "propertyNames": {
+        "enum": [
+         "1850-1900",
+         "1951-1980",
+         "1991-2020"
+        ]
+       },
+       "type": "object"
+      },
+      "grid_id": {
+       "type": "string"
+      },
+      "lat_centers": {
+       "items": {
+        "type": "number"
+       },
+       "type": "array"
+      },
+      "n_lat": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "grid_id",
+      "n_lat",
+      "lat_centers",
+      "baselines"
+     ],
+     "type": "object"
+    }
+   },
+   "required": [
+    "gistemp",
+    "hadcrut5"
+   ],
+   "type": "object"
+  },
+  "tags": {
+   "additionalProperties": {
+    "pattern": "^(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC)(/(OBSERVED|DERIVED|PREDICTED|SIMULATED|SYNTHETIC))*$",
+    "type": "string"
+   },
+   "minProperties": 1,
+   "type": "object"
+  },
+  "tolerance": {
+   "type": "number"
+  },
+  "years": {
+   "items": {
+    "type": "integer"
+   },
+   "maxItems": 3,
+   "minItems": 3,
+   "type": "array"
+  }
+ },
+ "required": [
+  "schema_version",
+  "tags",
+  "rule",
+  "min_row_valid",
+  "tolerance",
+  "years",
+  "sources"
+ ],
+ "title": "zonal_fixture",
+ "type": "object"
+}

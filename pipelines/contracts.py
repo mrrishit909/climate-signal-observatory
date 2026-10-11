@@ -64,6 +64,9 @@ FACT_KEYS = [
     "gistemp_valid_area_share_first_year", "gistemp_valid_area_share_latest_year", "gistemp_missing_cells_total_share",
     "extremes_area_share_above_p95_latest_year", "extremes_area_share_above_p95_reference_mean",
     "changepoint_gistemp_selected_breaks", "grid_artifact_gzip_bytes_total",
+    "arctic_to_global_trend_ratio_1975_latest", "land_minus_landocean_gap_latest_decade", "south_band_first_year_valid_share_ge_50pct",
+    "band_trends_all_positive_1975_latest", "n_bands_warmed_beyond_uncertainty_1975_latest", "latest_year_rank_gistemp", "latest_year_rank_hadcrut5",
+    "ar6_published_land_2011_2020", "ar6_published_ocean_2011_2020", "gistemp_ytd_mean_1951_1980", "gistemp_ytd_months", "hadcrut5_ytd_mean_1850_1900", "hadcrut5_ytd_months",
 ]
 
 SCHEMAS = {
@@ -103,7 +106,7 @@ SCHEMAS = {
             "series_id": S, "label": S,
             "fits": arr(obj({
                 "period": S, "start": I, "end": I, "n": I, "slope_per_decade": N, "intercept_c": N, "r2": N, "lag1_autocorr_resid": N, "n_eff": N,
-                "ci_naive": PCI, "ci_ar1": PCI, "ci_hac": PCI, "total_change_c": N, "total_change_ci_ar1": PCI}), lo=5)}), lo=2),
+                "ci_naive": PCI, "ci_ar1": PCI, "ci_hac": PCI, "total_change_c": N, "total_change_ci_ar1": PCI}), lo=1)}), lo=2),
         "loess": arr(obj({
             "series_id": S, "frac": N, "span_years": N, "n_boot": I, "block_len": I, "years": YEARS,
             "fit": by_base(CI), "band_lo": by_base(CI), "band_hi": by_base(CI)}), lo=2),
@@ -120,7 +123,10 @@ SCHEMAS = {
         "land_ocean": obj({
             "note": S, "years": YEARS, "land_only": by_base(CI), "land_ocean": by_base(CI), "gap_land_minus_landocean": by_base(CI),
             "ar6_land_2011_2020": obj({"best_estimate_c": N, "low_c": N, "high_c": N, "baseline": S, "source_page_pdf": I}),
-            "ar6_ocean_2011_2020": obj({"best_estimate_c": N, "low_c": N, "high_c": N, "baseline": S, "source_page_pdf": I})}),
+            "ar6_ocean_2011_2020": obj({"best_estimate_c": N, "low_c": N, "high_c": N, "baseline": S, "source_page_pdf": I}),
+            "grid_land_mask": obj({"rule": S, "land_fraction_threshold_pct": I, "years": YEARS,
+                                   "sources": obj({src: obj({"land_cell_area_share": N, "land_valid_area_share_latest": N, "ocean_valid_area_share_latest": N,
+                                                              "values": by_base(obj({"land": CI, "ocean": CI}))}) for src in ("gistemp", "hadcrut5")})})}),
     }),
 
     "extremes": top("extremes", {
@@ -211,13 +217,33 @@ SCHEMAS = {
             "file": S, "compression": {"const": "gzip"}, "uncompressed_bytes": I, "gz_bytes": I, "sha256_uncompressed": S,
             "decode": S}),
         "grid": obj({"n_lat": I, "n_lon": I, "lat_step_deg": N, "lon_step_deg": N, "lat_first_center": N, "lon_first_center": N}),
-        "years": obj({"first": I, "last": I, "n": I}),
+        "years": obj({"first": I, "last": I, "n": I, "list": arr(I, lo=1)}),
         "aggregation": obj({"annual_rule": S, "min_months_per_cell_year": I}),
         "valid_cells_per_year": arr(I), "valid_area_share_per_year": arr(N),
         "baseline_offsets": by_base(obj({"unit_degC_per_unit": N, "min_reference_share": N, "n_valid_cells": I, "values": arr(IN)})),
         "quantization": obj({"max_abs_error_c": N, "mean_abs_error_c": N, "clipped_cells": I, "tradeoff": S}),
     }),
 }
+
+_GRID = obj({"n_lat": I, "n_lon": I, "lat_step_deg": N, "lon_step_deg": N, "lat_first_center": N, "lon_first_center": N})
+SCHEMAS["grid_trends_meta"] = top("grid_trends_meta", {
+    "id": S, "source": S, "product": S, "units": {"const": "degC_per_decade"},
+    "encoding": obj({"dtype": {"const": "int8"}, "slope_scale_degC_per_decade_per_unit": N, "missing_value": {"const": -128}, "valid_range": arr(I, 2),
+                     "layers": arr(S, 2), "layout": S, "file": S, "compression": {"const": "gzip"}, "uncompressed_bytes": I, "gz_bytes": I, "sha256_uncompressed": S, "decode": S}),
+    "grid": _GRID,
+    "periods": arr(obj({"id": S, "start": I, "end": I, "n_years": I, "min_valid_years": I, "n_valid_cells": I, "n_significant_cells": I}), 4),
+    "clipped_cells": I, "rule": S})
+SCHEMAS["zonal_fixture"] = top("zonal_fixture", {
+    "rule": S, "min_row_valid": N, "tolerance": N, "years": arr(I, 3),
+    "sources": obj({src: obj({"grid_id": S, "n_lat": I, "lat_centers": arr(N), "baselines": by_base(obj({
+        "available": B, "years": {"type": "object", "additionalProperties": obj({"row_mean": arr(NN), "row_valid_share": arr(N), "global_mean": N})}}))}) for src in ("gistemp", "hadcrut5")})})
+SCHEMAS["coastlines"] = top("coastlines", {
+    "source": obj({"name": S, "url": S, "license": S, "file": S}), "layout": S, "n_lines": I, "n_points": I,
+    "starts": arr(I, lo=1), "coords": arr(N, lo=100)})
+SCHEMAS["land_fraction"] = top("land_fraction", {
+    "source": obj({"name": S, "url": S, "license": S}), "method": S,
+    "grids": obj({gid: obj({"n_lat": I, "n_lon": I, "row_order": {"const": "north_to_south"}, "lon_order": {"const": "west_to_east"}, "scale": S,
+                            "values": arr({"type": "integer", "minimum": 0, "maximum": 100})}) for gid in ("gistemp_2deg", "hadcrut5_5deg")})})
 
 
 def build() -> None:
