@@ -30,6 +30,9 @@
      "label": {
       "type": "string"
      },
+     "n_cells_with_reference": {
+      "type": "integer"
+     },
      "reference": {
       "type": "string"
      },
@@ -56,7 +59,8 @@
      "reference",
      "area_share",
      "expected_share_in_reference",
-     "valid_area_share"
+     "valid_area_share",
+     "n_cells_with_reference"
     ],
     "type": "object"
    },
@@ -64,9 +68,6 @@
    "type": "array"
   },
   "min_reference_years": {
-   "type": "integer"
-  },
-  "n_cells_with_reference": {
    "type": "integer"
   },
   "reference_period": {
@@ -100,7 +101,6 @@
   "reference_period",
   "years",
   "min_reference_years",
-  "n_cells_with_reference",
   "metrics"
  ],
  "title": "extremes",

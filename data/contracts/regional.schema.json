@@ -42,7 +42,7 @@
      "1991-2020"
     ]
    },
-   "minItems": 3,
+   "minItems": 2,
    "type": "array"
   },
   "land_ocean": {
@@ -188,6 +188,12 @@
    ],
    "type": "object"
   },
+  "method": {
+   "type": "string"
+  },
+  "min_valid_area_share": {
+   "type": "number"
+  },
   "rows": {
    "items": {
     "additionalProperties": false,
@@ -272,6 +278,8 @@
   "tags",
   "years",
   "baselines",
+  "min_valid_area_share",
+  "method",
   "bands",
   "rows",
   "land_ocean"

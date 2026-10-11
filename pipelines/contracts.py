@@ -112,7 +112,7 @@ SCHEMAS = {
     }),
 
     "regional": top("regional", {
-        "years": YEARS, "baselines": arr(BASE_PROP, lo=3),
+        "years": YEARS, "baselines": arr(BASE_PROP, lo=2), "min_valid_area_share": N, "method": S,
         "bands": arr(obj({"id": S, "label": S, "lat_min": N, "lat_max": N, "area_share_of_globe": N}), lo=5),
         "rows": arr(obj({
             "source": {"enum": ["gistemp", "hadcrut5"]}, "band": S, "values": by_base(CI),
@@ -125,10 +125,10 @@ SCHEMAS = {
 
     "extremes": top("extremes", {
         "definition": S, "reference_period": S, "years": YEARS,
-        "min_reference_years": I, "n_cells_with_reference": I,
+        "min_reference_years": I,
         "metrics": arr(obj({
             "id": S, "label": S, "source": {"enum": ["gistemp", "hadcrut5"]}, "reference": S,
-            "area_share": CI, "expected_share_in_reference": NN, "valid_area_share": CI}), lo=6),
+            "area_share": CI, "expected_share_in_reference": NN, "valid_area_share": CI, "n_cells_with_reference": I}), lo=6),
     }),
 
     "changepoints": top("changepoints", {
@@ -165,7 +165,7 @@ SCHEMAS = {
         "temperature_annual": by_base(CI), "temperature_series_id": S,
         "monthly": obj({"start": S, "mlo_ppm": CI, "mlo_deseasonalized_ppm": CI, "mlo_interpolated": arr({"type": ["boolean", "null"]}), "global_ppm": CI}),
         "association": obj({
-            "years_used": arr(I, lo=10), "exclusion_rule": S,
+            "co2_series_used": S, "years_used": arr(I, lo=10), "exclusion_rule": S,
             "levels": obj({"n": I, "corr": N, "slope_c_per_ppm": N, "slope_ci_ar1": PCI, "r2": N, "lag1_autocorr_resid": N}),
             "first_differences": obj({"n": I, "corr": N, "slope_c_per_ppm": N, "slope_ci_ar1": PCI}),
             "detrended": obj({"n": I, "corr": N}), "interpretation": S}),

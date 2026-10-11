@@ -14,6 +14,9 @@
   "association": {
    "additionalProperties": false,
    "properties": {
+    "co2_series_used": {
+     "type": "string"
+    },
     "detrended": {
      "additionalProperties": false,
      "properties": {
@@ -111,6 +114,7 @@
     }
    },
    "required": [
+    "co2_series_used",
     "years_used",
     "exclusion_rule",
     "levels",
