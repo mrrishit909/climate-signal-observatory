@@ -1,0 +1,324 @@
+[
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 28,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 30,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 97,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 96,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "scene": "years",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 3,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "scene": "years",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 31,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 35,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 31,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 52,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 52,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 97,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 96,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "scene": "years",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 4,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "scene": "years",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 31,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 36,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 31,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 53,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "scene": "years",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 71,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 97,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 97,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "scene": "years",
+  "to": "1991-2020",
+  "error": "no visible radio"
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "scene": "years",
+  "to": "1951-1980",
+  "error": "no visible radio"
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1951-1980",
+  "to": "1991-2020",
+  "frames": 36,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1991-2020"
+  ],
+  "applied": "1991-2020"
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "scene": "zero",
+  "from": "1991-2020",
+  "to": "1951-1980",
+  "frames": 31,
+  "mixedFrames": 0,
+  "firstMixed": null,
+  "final": [
+   "1951-1980"
+  ],
+  "applied": "1951-1980"
+ }
+]

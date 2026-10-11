@@ -1,0 +1,1359 @@
+[
+ {
+  "vp": "390x844",
+  "state": "signal@0.78",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,584)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,584)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,584)",
+   "\"426.07\" x \"MODELLED.\" (48x3px @24,691)",
+   "\"PPM\" x \"MODELLED.\" (16x3px @80,691)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.14",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.45",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"1991-2020\" x \"RECORD\" (28x7px @180,797)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.82",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x17px @69,803)",
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x2px @69,818)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.5",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.96",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.1",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"Nowhere is cooling\" x \"REGIONS\" (9x3px @203,817)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.35",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"CI INCLUDES 0\" x \"REGIONS\" (24x13px @188,801)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.6",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"-0.05\" x \"REGIONS\" (29x14px @150,806)",
+   "\"+0.05\" x \"REGIONS\" (33x3px @180,818)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.85",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.45",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.89",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "zero@0.3",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.42",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.9",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.05",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"EVIDENCE\" (67x4px @40,792)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"REPLAY INTRO\" (27x16px @40,792)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"REPLAY INTRO\" (18x2px @40,792)",
+   "\"TRENDS.JSON\" x \"EVIDENCE\" (60x2px @132,818)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.3",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.6",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x5px @30,795)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (33x14px @30,795)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (25x3px @30,795)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x11px @30,810)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (17x13px @30,810)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.95",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL",
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "observatory@landing",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.6",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.98",
+  "cw": 390,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "signal@0.78",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,552)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,552)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,552)",
+   "\"426.07\" x \"NOT\" (24x3px @24,659)",
+   "\"426.07\" x \"MODELLED.\" (16x3px @24,659)",
+   "\"PPM\" x \"MODELLED.\" (24x3px @80,659)",
+   "\"OF\" x \"MODELLED.\" (16x3px @111,659)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.14",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" x \"RECORD\" (10x6px @62,763)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.45",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"1991-2020\" x \"RECORD\" (28x6px @173,783)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.82",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x7px @62,760)",
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x13px @62,776)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.5",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.96",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.1",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.35",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"-0.1\" x \"REGIONS\" (3x6px @123,764)",
+   "\"+0.05\" x \"REGIONS\" (25x6px @180,764)",
+   "\"+0.6\" x \"REPLAY INTRO\" (16x13px @303,764)",
+   "\"+0.6\" x \"REPLAY INTRO\" (8x4px @303,764)",
+   "\"CI INCLUDES 0\" x \"REGIONS\" (17x9px @188,780)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.6",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"-0.05\" x \"REGIONS\" (33x8px @150,781)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.85",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.45",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.89",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "zero@0.3",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.42",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.9",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.05",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"REPLAY INTRO\" (28x12px @151,755)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"EVIDENCE\" (67x14px @40,774)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"REPLAY INTRO\" (5x2px @40,774)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.3",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.6",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x6px @30,782)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.95",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL",
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "observatory@landing",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.6",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.98",
+  "cw": 375,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "signal@0.78",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,540)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,540)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,540)",
+   "\"426.07\" x \"NOT\" (24x3px @24,647)",
+   "\"426.07\" x \"MODELLED.\" (16x3px @24,647)",
+   "\"PPM\" x \"MODELLED.\" (24x3px @80,647)",
+   "\"OF\" x \"MODELLED.\" (16x3px @111,647)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.14",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" x \"RECORD\" (50x6px @54,751)",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" x \"RECORD\" (10x14px @54,762)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.45",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.82",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"REPLAY INTRO\" (4x7px @54,736)",
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x10px @54,751)",
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x10px @54,767)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.5",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.96",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.1",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.35",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"-0.1\" x \"REGIONS\" (10x11px @122,757)",
+   "\"+0.05\" x \"REGIONS\" (19x11px @178,757)",
+   "\"+0.6\" x \"REPLAY INTRO\" (26x8px @301,757)",
+   "\"+0.6\" x \"REPLAY INTRO\" (21x9px @301,757)",
+   "\"TOO FEW YEARS\" x \"REGIONS\" (9x4px @48,773)",
+   "\"CI INCLUDES 0\" x \"REGIONS\" (9x4px @188,773)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.6",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"-0.05\" x \"REGIONS\" (33x5px @149,772)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.85",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.45",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.89",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "zero@0.3",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.42",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.9",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.05",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\"SIMULATED\" x \"EVIDENCE\" (2x11px @62,765)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"EVIDENCE\" (50x12px @151,765)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.3",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.6",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [
+   "\")\" x \"EVIDENCE\" (6x11px @133,756)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.95",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL",
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "observatory@landing",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.6",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.98",
+  "cw": 360,
+  "appClasses": {
+   "js": "M",
+   "css": "M"
+  },
+  "tiny": [],
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "signal@0.78",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [
+   "\"THE\" x \"ABOVE\" (29x3px @66,492)",
+   "\"PLANET\" x \"ABOVE\" (10x3px @105,492)",
+   "\"PLANET\" x \"ITS\" (29x3px @105,492)",
+   "\"AVERAGED\" x \"1951-1980\" (78x3px @173,492)",
+   "\"+1.19\" x \"NORMAL.\" (49x3px @261,492)",
+   "\"°C\" x \"NORMAL.\" (10x3px @320,492)",
+   "\"426.07\" x \"MEASURED,\" (59x3px @415,492)",
+   "\"PPM\" x \"MEASURED,\" (20x3px @484,492)",
+   "\"OF\" x \"NOT\" (20x3px @523,492)",
+   "\"CO2\" x \"MODELLED.\" (29x3px @552,492)",
+   "\"IN\" x \"MODELLED.\" (20x3px @591,492)",
+   "\"THE\" x \"MODELLED.\" (19x3px @620,492)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.14",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" x \"RECORD\" (50x12px @248,975)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.45",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.82",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x11px @248,974)",
+   "\"IN 1880, 83% OF THE SURFACE HAD A VALUE \" x \"RECORD\" (50x10px @248,991)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.5",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.96",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.1",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.35",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.6",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [
+   "\"Nowhere is cooling\" x \"REPLAY INTRO\" (9x15px @459,985)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.85",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.45",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "zero@0.3",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.42",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.9",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.05",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.3",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.6",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"EVIDENCE\" (67x9px @90,975)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"REPLAY INTRO\" (9x10px @90,975)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"EVIDENCE\" (67x7px @90,993)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.95",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL",
+   "\"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" in UL"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "state": "observatory@landing",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.6",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.98",
+  "cw": 768,
+  "appClasses": {
+   "js": "T",
+   "css": "T"
+  },
+  "tiny": [],
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ }
+]

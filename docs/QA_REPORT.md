@@ -565,3 +565,108 @@ I missed D-025 in passes 1 and 2. It was visible in my pass-1 frame `qa/screensh
 - **Classic against overlay:** 12 pairs at 768 and 12 at 1024.
 - **L16 footer and chip clips:** the 1280, 1440 and 390 footers, plus the S03b chips.
 - **Commit size:** non-S00 screenshots are committed at 60% scale (q50), S00 frames at q45, and contact sheets at 75% (q50).
+
+---
+
+# Pass 4 (task P03-QA-005, narrow final)
+
+**Scope.**
+- Re-ran QA against HEAD `db9b5e9` (FIX-A4). Built fresh with `npm run build` and served on 4321.
+- 2026-10-11, 11:38 to 12:45 EDT. The reviewer is the same as before and built none of this site. No product code was changed.
+- Evidence is in `artifacts/evidence/qa-4/` (4.8 MB). Probe paths are relative to `probe/`.
+
+**Lighthouse.**
+- Not re-run. The build grew 0.9 KB gzipped since pass 2:
+  - JS 110.37 to 111.04
+  - CSS 14.31 to 14.47
+  - HTML 1.21 to 1.26
+- Mobile LCP of 1.96 s (pass 2) stands.
+
+**Probes new in pass 4.**
+- **`l19.mjs` / `l19-contrast.py` (L16 + L19).**
+  - The box list is built from the DOM. It takes every visible element that owns a non-empty text node, with no selector list. It skips sr-only text and the content of closed `<details>`, because Chrome keeps boxes for that content but never paints it.
+  - Each element's contrast is measured from the pixels of my own full-frame screenshots: (p99+.05)/(p50+.05) for light text, (p50+.05)/(p01+.05) for dark text. The threshold is 4.5, or 3.0 for text of 24 px and up.
+  - Coverage: 14 states at 8 viewports, including S02 p0.14 and S08 p0.3, 0.6 and 0.98.
+- **The ghost-floor sweep.**
+  - Viewports: 1440, 1280, 768, 390 and 360.
+  - First, `jumpTo('surface')` (the path the nav uses).
+  - Then a natural scroll through the S08 track at 41 points. At each point it records the effective opacity (the product of every ancestor's opacity) of each word in view.
+
+**Verdict: PASSED.** No blocker or major remains, and every measured row passes. The minors and notes below are known limitations.
+
+## P4.1 Release gate (pass 4)
+
+| Row | Result | Measured evidence |
+|---|---|---|
+| Visual design | PASS | Composition is unchanged apart from the footer bands (`screens/*-surface-*.jpg`). D-026 is closed: the reduced-motion static planet now draws hairlines as a central patch, matching the GL view (`shots/rm-obs-768.jpg`, `rm-obs-1440.jpg`). |
+| Motion UI | PASS | **L18:** 0 mixed frames in 22 sampled baseline toggles (`l18.json`). **Ghost floor:** see the honesty row. |
+| UX | PASS | **Keyboard:** the first Tab stops are nav items. Enter opens the inspector and Esc returns focus to the globe. A wheel over the globe scrolls the page (19350 to 19948). On mobile, Esc closes the pill and returns focus to it (`keyboard.json`). **navblock:** 0 blocked. **L17:** the inspector closes on all 27 scene changes. The S05 sheet and the mobile menu keep `aria-expanded` after a programmatic jump but stay scene-local, as in pass 3. |
+| Functionality and states | PASS | **Real-pointer RETRY:** 72 of 72 cases. RETRY is the top element at its centre, gets one re-fetch, and recovers (`errors.json`). **Reduced motion:** every figure paints, OBS included at 1440x900 and 390x844 (`rm-landings.json`). |
+| AI / analytical honesty | PASS | **L16/L19:** 3,757 painted text elements measured. Every non-ghost element clears its threshold except 4 S07 limitation lines. Those score 1.0 to 1.33 because they sit fully under the OBS rail at the OBS landing (`l19.json`, frame checked), so they are not painted. **D-025 closed:** S08 `.surface-foot` measures 11.3:1 or better in 24 of 24 samples (S08 p0.3/0.6/0.98 at 8 viewports), and S02 `.record-sources` measures 10.9:1 or better in 8 of 8. Both are 13 px at 75% white on a black band. **Ghost floor:** all 92 ghost-word samples below 4.5 sit at exactly 0.55 opacity (the floor). In the natural-scroll sweep, every settled scroll point has every visible word at 0.55 or above. **Tags:** none hidden (`chips.json`). The inspector still draws the full series (`recheck.json`). |
+| Performance | PASS | Not re-run (growth under 2 KB gz). Mobile LCP 1956 to 1968 ms (pass 2). |
+| Responsiveness | PASS | **Collisions** (`collide*.json`, normal at 8 viewports, reduced, classic): no visible text collisions and nothing under 11 px. **Overflow:** 0 sideways overflow against the configured viewport width in 100 checks (`rm-overflow.json`). **D-027 closed** for reduced motion. See D-028 for a 3x3 px residue. |
+| Professional quality | PASS | `pytest` 80 passed. `typecheck` and `lint` clean. `npm test` 130 passed. `npx playwright test --workers 1` (load 9.5 to 30): 195 passed, 59 skipped (project-scoped), 0 failed, 0 flaky, so no serial rerun was needed. axe: 0 violations in 62 runs (1440 and 390, normal and reduced, every landing plus nav jumps). |
+| GitHub / Deployment / Portfolio | BLOCKED | Out of scope for QA. |
+
+## P4.2 Register (pass 4)
+
+| ID | Pass 3 | Pass 4 | Evidence |
+|---|---|---|---|
+| D-025 S08 attribution footer contrast | major | **CLOSED** | Footer at least 11.3:1 (24/24) and sources line at least 10.9:1 (8/8), computed from the `l19-boxes.json` boxes on my screenshots. Frames: `screens/1440x900-surface-0.98.jpg`, `screens/360x800-surface-0.98.jpg`. |
+| D-026 static-planet hairlines | minor | **CLOSED** | `shots/rm-obs-768.jpg`, `rm-obs-1440.jpg` |
+| D-027 reduced-motion legend edge labels | minor | **CLOSED** (reduced motion) | `collide-reduced.json`: no legend-label collision. The only remaining hits are legend text under the fixed nav while scrolling in reduced-motion flow. |
+| D-001..D-024 | closed / accepted | No regressions | Errors, chips, collisions, overflow, reduced-motion figures, L17, L18, navblock, keyboard and axe as above |
+
+### Minors and notes (known limitations)
+
+- **P03-D-028 (minor, new).**
+  - In normal motion the S03b trend legend's "-0.05" and "+0.05" edge labels touch by 3x3 px at 1024x768 and 768x1024 with classic scrollbars (`collide-classic.json`).
+  - The overlap is under one glyph width and both labels stay legible. It is the same class as D-027, which the builder fixed for reduced motion only.
+- **Ghost-floor transient (note, not a defect).**
+  - When the S08 track crosses p of about 0.37, the paragraph block fades in over about 450 ms as a time-based entrance, from 0 to the 0.55 ghost floor.
+  - Measured at 1440: 0.157 at 150 ms, 0.393 at 300 ms, 0.55 from 600 ms on. 390 gave the same curve.
+  - Every settled scroll point is at or above the floor, so the ruling holds wherever a frame can rest. This is the entrance fade every block-level fade-in has.
+- **S08 landing (note for the coordinator).**
+  - S08 has no nav item. `jumpTo('surface')`, the path the nav and deep links use, lands at p 0.3. There the paragraph has not started (every word at opacity 0) and the frame shows the planet, its OBSERVED tag and the attribution band (`shots/s08-jump-1440.jpg`).
+  - So no landing is half-revealed (D-006 holds). But the paragraph is not "fully resolved" at landing either: it is simply not on screen yet, and it scrubs in from p 0.4 to 0.75.
+  - If the ruling requires the paragraph to be resolved on arrival, the S08 landing would need to move to p 0.75 or later.
+- **Carried forward:**
+  - A thin limb arc between OBS and S08 appeared in one pass-3 contact-sheet frame and was not reproducible.
+  - The literal wording of #14 is now moot for the footers (13 px at 75%).
+
+## P4.3 QA_LESSONS
+
+| # | Result | Evidence |
+|---|---|---|
+| L1 | PASS | Classic-scrollbar collision run (`collide-classic.json`) |
+| L2 | PASS | 1024x768 and 1280x720: clean |
+| L3 | PASS | `chips.json` |
+| L4 | PASS | 72/72 in-scene alerts |
+| L5 | PASS | `rm-overflow.json` |
+| L6 | PASS | Mobile LCP 1.96 s (pass 2) |
+| L7 | PASS | `tiny` empty |
+| L8 | PASS | No corner/pill overlaps |
+| L9 | PASS | RETRY top of stack 72/72 |
+| L10 | PASS | Copy unchanged |
+| L11 | PASS | 360/375/390, normal and reduced |
+| L12 | PASS | Real mouse/touch RETRY; navblock 0 |
+| L13 | PASS | Labels are DOM/SVG |
+| L14 | PASS | Overflow measured against the configured width |
+| L15 | PASS | `rm-landings.json` |
+| L16 | PASS | `l19.json` (with the measured footers) |
+| L17 | PASS | `l17.json` |
+| L18 | PASS | `l18.json` |
+| L19 | PASS | The contrast box list is DOM-built (`l19.mjs collect()`). The collision probe walks every text node under each section plus the fixed nav, pill and corner button, with no hand-enumerated selectors. |
+| L20 | n/a | No time-of-day data on this site |
+
+## P4.4 Frames read in pass 4
+
+- 1440 `surface-0.98`
+- 390 `surface-0.6`, `record-0.14`
+- 360 `surface-0.98`
+- `s08-jump-1440`
+- `rm-obs-768`, `rm-obs-1440` (crop)
+- 1440 `evidence-0.3` (receipt crop, used to confirm that closed-`<details>` text is unpainted)
+- 1024 `observatory-l` (rail crop)
+
+The S08, S02, S00, S01 and OBS landing frames at all 8 viewports are committed under `screens/` at 67% scale.
