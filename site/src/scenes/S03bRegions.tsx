@@ -88,7 +88,7 @@ export function S03bRegions({ def }: { def: SceneDef }) {
   const move = (e: PointerEvent) => {
     const d = drag.current;
     if (!d) return;
-    const k = 90 / L.G1m.r;
+    const k = 90 / L.G1r.r;
     regions.set({ drag: { lon: d.lon - (e.clientX - d.x) * k, lat: Math.max(-85, Math.min(85, d.lat + (e.clientY - d.y) * k)) } });
   };
   const up = () => { drag.current = null; releaseT.current = window.setTimeout(() => { if (!regions.get().override) regions.set({ drag: null }); }, 1500); };
@@ -139,7 +139,7 @@ export function S03bRegions({ def }: { def: SceneDef }) {
       {state ? <p className="regions-title serif" key={`t${step}`} aria-live="polite">{st.override ? (ledger?.find((l) => l.id === st.override)?.label ?? "") : state.title}</p> : null}
       {motion ? (
         <div className="globe-hit" role="group" tabIndex={0} aria-label="Globe: Left and Right turn to the next latitude band; drag to rotate" onKeyDown={key}
-          style={{ left: L.G1m.cx - L.G1m.r, top: L.G1m.cy - L.G1m.r, width: 2 * L.G1m.r, height: 2 * L.G1m.r }}
+          style={{ left: L.G1r.cx - L.G1r.r, top: L.G1r.cy - L.G1r.r, width: 2 * L.G1r.r, height: 2 * L.G1r.r }}
           onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} />
       ) : (
         <StaticRegions period={st.period} source={c.source} copyTitles={copy?.states.map((s) => s.title) ?? []} legend={legend} />

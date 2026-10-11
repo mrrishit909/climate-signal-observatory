@@ -39,7 +39,7 @@ export function S06Futures({ def }: { def: SceneDef }) {
   // short desktops: the value axis and its unit stay above the nav (h - 116)
   const ax = L.cls === "D" ? { x0: 0.528 * vp.w, x1: 0.933 * vp.w, y0: 0.094 * vp.h, y1: vp.h < 820 ? vp.h - 116 : 0.906 * vp.h }
     : L.cls === "T" ? { x0: 96, x1: vp.w - 48, y0: 0.33 * vp.h, y1: 0.84 * vp.h }
-    : { x0: 56, x1: vp.w - 20, y0: 0.27 * vp.h, y1: 0.68 * vp.h };
+    : { x0: 56, x1: vp.w - 20, y0: 0.3 * vp.h, y1: 0.69 * vp.h }; // phones: below the three 11px tags (L7)
   const xv = (v: number) => ax.x0 + ((v - VMIN) / (VMAX - VMIN)) * (ax.x1 - ax.x0);
   const yt = (year: number) => ax.y1 - ((year - 1850) / (2100 - 1850)) * (ax.y1 - ax.y0);
 

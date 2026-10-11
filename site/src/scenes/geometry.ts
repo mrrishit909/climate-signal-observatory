@@ -12,8 +12,10 @@ export interface Layout {
   h: number;
   G0: Disc; // oversized orb / planet (S00, S01 start): at least 120vh
   G1s: Disc; // planet aside (S01-S03b)
-  /** S03a/S03b planet: on phones it rises and shrinks so the readout and the regional card sit under it, not on it; G1s elsewhere */
+  /** S03a planet: on phones it rises to sit just under the headline so the readout fits below it; G1s elsewhere */
   G1m: Disc;
+  /** S03b planet: on phones it also shrinks so the regional card sits under it; G1s elsewhere */
+  G1r: Disc;
   G1: Disc; // planet centred (S04 start)
   sheet: { cx: number; cy: number; k: number; width: number };
   strip: number; // collapsed strip width
@@ -39,7 +41,8 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = typeo
   // L2: from 1024 to 1279 the 400px text column needs the planet pulled right and down in size (compact desktop)
   const g1r = cls === "D" && w < 1280 ? Math.min(0.356 * h, (w - 520) / 2 - 12) : 0.356 * h;
   const G1s: Disc = cls === "D" ? { cx: w < 1280 ? w - g1r - 24 : 0.694 * w, cy: 0.522 * h, r: g1r } : cls === "T" ? { cx: w / 2, cy: 0.77 * h, r: 0.18 * h } : { cx: w / 2, cy: 0.45 * h, r: Math.min(0.385 * w, 0.178 * h) };
-  const G1m: Disc = cls === "M" ? { cx: w / 2, cy: 0.3 * h, r: Math.min(0.36 * w, 0.15 * h) } : G1s;
+  const G1m: Disc = cls === "M" ? { cx: w / 2, cy: Math.max(0.3 * h, 136 + G1s.r), r: G1s.r } : G1s;
+  const G1r: Disc = cls === "M" ? { cx: w / 2, cy: 0.3 * h, r: Math.min(0.36 * w, 0.15 * h) } : G1s;
   const G1: Disc = cls === "D" ? { cx: w / 2, cy: h / 2, r: 0.322 * h } : cls === "T" ? { cx: w / 2, cy: 0.44 * h, r: 0.273 * h } : { cx: w / 2, cy: 0.391 * h, r: Math.min(0.41 * w, 0.19 * h) };
   const sheetW = cls === "D" ? 0.75 * w : 0.917 * w;
   const sheet = { cx: w / 2, cy: (cls === "D" ? 0.478 : cls === "T" ? 0.508 : 0.45) * h, k: sheetW / (2 * EE_XMAX), width: sheetW };
@@ -66,7 +69,7 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = typeo
   const obs: Disc = cls === "D" ? { cx: Math.min(0.4 * w, railLeft - obsR - 16), cy: h - 100 - obsR, r: obsR } : cls === "T" ? { cx: w / 2, cy: 0.385 * h, r: 0.215 * h } : { cx: w / 2, cy: 0.391 * h, r: Math.min(0.41 * w, 0.19 * h) };
   const G5: Disc = { cx: w / 2, cy: h / 2, r: 1.2 * half };
   return {
-    cls, w, h, G0, G1s, G1m, G1, sheet, bench, dock, obs, G5, strip: cls === "D" ? 24 : cls === "T" ? 20 : 16,
+    cls, w, h, G0, G1s, G1m, G1r, G1, sheet, bench, dock, obs, G5, strip: cls === "D" ? 24 : cls === "T" ? 20 : 16,
     core: { x0, x1: x0 + cw, y0, H, n, spine: [x0 + cw + 4, x0 + cw + 4 + sw] },
   };
 }

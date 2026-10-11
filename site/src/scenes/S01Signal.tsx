@@ -52,8 +52,10 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
     const s = easeSymmetric(windowed(p, 0, 0.4));
     const cls = viewportClass(innerWidth);
     const k = cls === "D" ? 44 / 96 : cls === "T" ? 36 / 64 : 28 / 40;
-    const top = cls === "D" ? 120 : 64;
-    h.style.transform = s > 0 ? `translateY(${(-(h.offsetTop - top) * s).toFixed(1)}px) scale(${lerp(1, k, s).toFixed(4)})` : "";
+    // D-018: land the headline's visible top (D and T are centred with translate -50%, M is not) at 24px (D, T) or 64px (M)
+    const visTop = h.offsetTop - (cls === "M" ? 0 : h.offsetHeight / 2);
+    const top = cls === "M" ? 64 : 24;
+    h.style.transform = s > 0 ? `translateY(${((top - visTop) * s).toFixed(1)}px) scale(${lerp(1, k, s).toFixed(4)})` : "";
   });
 
   useEffect(() => {
@@ -77,8 +79,8 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
           <WordReveal as="p" className="s01-statement" text={s01.statement} mode={motion ? { kind: "scrub", track: "signal", from: 0.35, to: 0.75 } : { kind: "value", t: 1 }} />
           <div className={`s01-cards ${cards > 0 || !motion ? "is-in" : ""}`}>
             <p className="s01-tag"><HonestyChip tag="OBSERVED" detail="PLANET" /> <span>{copy.note}</span></p>
-            <NotificationCard from={s01.card1Head} when="" body={s01.card1Body} playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="GISTEMP v4 · 1951-1980" />} />
-            <NotificationCard from={s01.card2Head} when="" body={s01.card2Body} variant="blue" playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="NOAA GML" />} />
+            <NotificationCard from={s01.card1Head} when="" body={s01.card1Body} playKey={motion && cards > 0 && active === "signal" ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="GISTEMP v4 · 1951-1980" />} />
+            <NotificationCard from={s01.card2Head} when="" body={s01.card2Body} variant="blue" playKey={motion && cards > 0 && active === "signal" ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="NOAA GML" />} />
           </div>
         </div>
       ) : null}

@@ -13,6 +13,7 @@ import { bank } from "../state/bank";
 import { faceQuat } from "../gl/projection";
 import { echoLive, paintStatic, surface } from "./director";
 import { planetFrame } from "./frames";
+import { getClimate, subscribeClimate } from "../state/climate";
 import type { SceneDef } from "../app/scenes";
 
 const REPO = "https://github.com/mrrishit909/climate-signal-observatory";
@@ -27,7 +28,10 @@ export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => v
   const [echo, setEcho] = useState(0);
   const [links, setLinks] = useState(0);
   const [captionOn, setCaptionOn] = useState(false);
-  const eRef = useRef(0), lRef = useRef(0);
+  const eRef = useRef(0), lRef = useRef(0), fRef = useRef(0);
+  // D-012: the cells on screen carry their tag from the first frame: the folding core (shared look) before p 0.3, then the GISTEMP surface
+  const [folding, setFolding] = useState(1);
+  const look = useSyncExternalStore(subscribeClimate, getClimate);
   const scrim = useRef<HTMLDivElement>(null);
   const text = useRef<HTMLDivElement>(null);
   const counter = useRef<HTMLSpanElement>(null);
@@ -36,6 +40,8 @@ export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => v
     if (text.current) text.current.style.opacity = !motion || p > 0.36 ? "1" : "0";
     const e = stepState(eRef.current, p, [0.75]);
     if (e !== eRef.current) { eRef.current = e; setEcho(e); if (!e) setCaptionOn(false); }
+    const k = p < 0.3 ? 1 : 0;
+    if (k !== fRef.current) { fRef.current = k; setFolding(k); }
     const l = stepState(lRef.current, p, [0.8]);
     if (l !== lRef.current) { lRef.current = l; setLinks(l); }
   });
@@ -61,6 +67,11 @@ export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => v
       <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "meta.json", state: meta, retry: retryM }]} />
       {!motion ? <canvas ref={still} className="still-planet" aria-hidden="true" /> : null}
       <div className="surface-scrim" ref={scrim} aria-hidden="true" style={{ opacity: motion ? 0 : 1 }} />
+      {motion && !on ? (
+        <p className="surface-tag">{folding
+          ? <HonestyChip tag="OBSERVED" detail={`CELLS · ${look.source === "gistemp" ? "GISTEMP V4" : "HADCRUT5"} · ${look.baseline}`} />
+          : <HonestyChip tag="OBSERVED" detail="GISTEMP V4 · 1951-1980" />}</p>
+      ) : null}
       <p className={`surface-year tnum ${echo || !motion ? "is-in" : ""}`} aria-hidden="true"><span ref={counter}>{bank.axis().at(-1)}</span></p>
       <div className="surface-text" ref={text} style={{ opacity: motion ? 0 : 1 }}>
         <h2 id="surface-title" tabIndex={-1} data-scene-heading className="sr-only">{def.title}</h2>

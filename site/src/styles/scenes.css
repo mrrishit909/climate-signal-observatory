@@ -711,3 +711,15 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
 .seg-ctl__row > .chip-btn:last-child:not(:first-child) .chip-btn__why { left: auto; right: 0; }
 /* L5: the handles' 16px touch halos at the bench's right end must not widen the page */
 .scene-zero .stage, html[data-motion="off"] .scene-zero .stage { overflow-x: clip; }
+/* D-012: the S08 cells are tagged before the caption arrives */
+.surface-tag { left: var(--gutter); top: 18px; margin: 0; }
+.surface-tag .chip { font-size: 11px; padding: 4px 6px; }
+/* D-016: the region step dots keep their 12px look inside a 24px target */
+.regions-steps { gap: 0; }
+.step-dot { position: relative; width: 24px; height: 24px; border: 0; background: none; }
+.step-dot::before { content: ""; position: absolute; inset: 6px; border: 1px solid #fff; }
+.step-dot.is-on { background: none; }
+.step-dot.is-on::before { background: #fff; }
+.step-dot:focus-visible { outline: 2px solid #fff; outline-offset: 0; }
+/* D-019: on desktop the inspector opens left of the docked core, so PLAY and the core stay reachable */
+@media (min-width: 1024px) { .inspector { right: calc(17.4vw + 24px); } }

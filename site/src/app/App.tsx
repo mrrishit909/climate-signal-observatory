@@ -56,14 +56,7 @@ export function App() {
   const portal = document.getElementById("signal-portal");
   return (
     <>
-      <canvas ref={orb} className="planet-layer planet-2d" aria-hidden="true" />
-      <canvas ref={gl} className="planet-layer planet-gl" aria-hidden="true" />
-      <p className="gl-lost-note state-line" role="status">RESTORING 3D VIEW</p>
-      {portal ? createPortal(<SignalLayer introPlaying={intro.playing} />, portal) : null}
-      {SCENES.slice(1).map((s) => {
-        const C = SCENE_COMPONENTS[s.id];
-        return s.id === "surface" ? <S08Surface key={s.id} def={s} onReplay={intro.replay} /> : C ? <C key={s.id} def={s} /> : <Placeholder key={s.id} s={s} />;
-      })}
+      {/* D-013: SKIP INTRO and the chapter nav come first in the tab order (the nav is fixed, so DOM order is free) */}
       <Nav
         items={NAV_ITEMS}
         active={navActive(active)}
@@ -72,6 +65,14 @@ export function App() {
         onSkip={intro.skip}
         onReplay={intro.replay}
       />
+      <canvas ref={orb} className="planet-layer planet-2d" aria-hidden="true" />
+      <canvas ref={gl} className="planet-layer planet-gl" aria-hidden="true" />
+      <p className="gl-lost-note state-line" role="status">RESTORING 3D VIEW</p>
+      {portal ? createPortal(<SignalLayer introPlaying={intro.playing} />, portal) : null}
+      {SCENES.slice(1).map((s) => {
+        const C = SCENE_COMPONENTS[s.id];
+        return s.id === "surface" ? <S08Surface key={s.id} def={s} onReplay={intro.replay} /> : C ? <C key={s.id} def={s} /> : <Placeholder key={s.id} s={s} />;
+      })}
     </>
   );
 }
