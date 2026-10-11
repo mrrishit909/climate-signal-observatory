@@ -1,0 +1,236 @@
+{
+ "firstTabs": [
+  "a.nav__item \"SIGNAL\"",
+  "a.nav__item \"RECORD\"",
+  "a.nav__item \"YEARS\"",
+  "a.nav__item \"REGIONS\""
+ ],
+ "s03a": [
+  {
+   "key": "ArrowRight",
+   "baseline": "1991-2020",
+   "focus": "button.chip-btn.is-on. \"1991-2020\""
+  },
+  {
+   "key": "ArrowRight",
+   "baseline": "1951-1980",
+   "focus": "button.chip-btn.is-on. \"1951-1980\""
+  },
+  {
+   "key": "ArrowLeft",
+   "baseline": "1991-2020",
+   "focus": "button.chip-btn.is-on. \"1991-2020\""
+  },
+  {
+   "action": "click disabled 1850-1900 under GISTEMP",
+   "baseline": "1991-2020"
+  },
+  {
+   "key": "SOURCE ArrowRight",
+   "climate": {
+    "source": "hadcrut5",
+    "baseline": "1991-2020",
+    "year": 1938,
+    "announce": ""
+   }
+  },
+  {
+   "action": "click 1850-1900 under HadCRUT5",
+   "climate": {
+    "source": "hadcrut5",
+    "baseline": "1850-1900",
+    "year": 1938,
+    "announce": ""
+   }
+  },
+  {
+   "action": "switch back to GISTEMP while 1850-1900 selected",
+   "climate": {
+    "source": "gistemp",
+    "baseline": "1951-1980",
+    "year": 1953,
+    "announce": "BASELINE SET TO 1951-1980: GISTEMP HAS NO 1850-1900"
+   },
+   "text": "1953\n\nGLOBAL +0.08 °C VS 1951-1980\n\nRANK 55 OF 146 COMPLETE YEARS \nDERIVED\n\nNOT MEASURED AT MAUNA LOA (RECORD BEGINS 1958)\n\nMEASURED AREA 95%\n\n9% OF MEASURED AREA ABOVE ITS OWN 1951-1980 95TH PERCENTILE (7% EXPECTED)\n\n-3\n-2\n-1\n-0.5\n-0.2\n+0.2\n+0.5\n+1\n+2\n+3\n\nNOT MEASURED\n°C VS THE CHOSEN NORMAL\n\nOBSERVED\n· GISTEMP V4 · 1951-1980"
+  }
+ ],
+ "s05": [
+  {
+   "key": "ArrowRight",
+   "baseline": "1991-2020",
+   "valuetext": "1991-2020",
+   "offer": 0
+  },
+  {
+   "key": "ArrowRight",
+   "baseline": "1991-2020",
+   "valuetext": "1991-2020",
+   "offer": 0
+  },
+  {
+   "key": "ArrowLeft",
+   "baseline": "1951-1980",
+   "valuetext": "1951-1980",
+   "offer": 0
+  },
+  {
+   "key": "ArrowLeft",
+   "baseline": "1951-1980",
+   "valuetext": "1951-1980",
+   "offer": 1
+  },
+  {
+   "key": "ArrowLeft",
+   "baseline": "1951-1980",
+   "valuetext": "1951-1980",
+   "offer": 1
+  }
+ ],
+ "s05handles": [
+  {
+   "label": "Trend window from",
+   "start": "1975",
+   "right": "1976",
+   "pageUp": "1986",
+   "end": "2016",
+   "home": "1880",
+   "result": "TREND 1880-2025: +0.08 °C PER DECADE · 95% CI 0.06 TO 0.11 (AR(1)-ADJUSTED)\n\nNAIVE OLS CI 0.08 TO 0.09: TOO NARROW WHEN YEARS ARE AUTOCORRELATED\n\nSLOPE UNDER 1951-1980 = SLOPE UNDER 1991-2020 ✓\n\nGISTEMP HAS NO 1850-1900 BASELINE SWITCH TO HADCRUT5\n\n1975 to 2025: 0.21 degrees C per decade, 95 percent interval 0.18 to 0.24, autocorrelation-adjusted.\n\nOBSERVED\n· SERIES · GISTEMP V4 · 1951-1980\nDERIVED\n· TREND, AR(1) CI, LOESS"
+  },
+  {
+   "label": "Trend window to",
+   "start": "2025",
+   "right": "2025",
+   "pageUp": "2025",
+   "end": "2025",
+   "home": "1889",
+   "result": "TREND 1880-1889: -0.11 °C PER DECADE · 95% CI -1.17 TO 0.95 (AR(1)-ADJUSTED)\n\nNAIVE OLS CI -0.37 TO 0.15: TOO NARROW WHEN YEARS ARE AUTOCORRELATED\n\nSLOPE UNDER 1951-1980 = SLOPE UNDER 1991-2020 ✓\n\nGISTEMP HAS NO 1850-1900 BASELINE SWITCH TO HADCRUT5\n\n1880 to 2025: 0.08 degrees C per decade, 95 percent interval 0.06 to 0.11, autocorrelation-adjusted.\n\nOBSERVED\n· SERIES · GISTEMP V4 · 1951-1980\nDERIVED\n· TREND, AR(1) CI, LOESS"
+  }
+ ],
+ "obs": [
+  {
+   "key": "ArrowLeft",
+   "year": 2024,
+   "lon0": -30,
+   "lat0": 15,
+   "region": null,
+   "cell": null
+  },
+  {
+   "key": "PageDown",
+   "year": 2014,
+   "lon0": -30,
+   "lat0": 15,
+   "region": null,
+   "cell": null
+  },
+  {
+   "key": "Home",
+   "year": 1880,
+   "lon0": -30,
+   "lat0": 15,
+   "region": null,
+   "cell": null
+  },
+  {
+   "key": "End",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 15,
+   "region": null,
+   "cell": null
+  },
+  {
+   "key": "Shift+ArrowUp",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 15,
+   "region": {
+    "lat0": -8,
+    "lat1": 12
+   },
+   "cell": null
+  },
+  {
+   "key": "Shift+ArrowDown",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 15,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": null
+  },
+  {
+   "key": "globe ArrowLeft",
+   "year": 2025,
+   "lon0": -20,
+   "lat0": 15,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": null
+  },
+  {
+   "key": "globe ArrowRight",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 15,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": null
+  },
+  {
+   "key": "globe ArrowUp",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 5,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": null
+  },
+  {
+   "key": "globe Enter",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 5,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": {
+    "row": 42,
+    "col": 75
+   },
+   "dialog": 1,
+   "focus": "div.inspector \"Square 5°N 29°W\""
+  },
+  {
+   "key": "Escape",
+   "year": 2025,
+   "lon0": -30,
+   "lat0": 5,
+   "region": {
+    "lat0": -10,
+    "lat1": 10
+   },
+   "cell": null,
+   "dialog": 0,
+   "focus": "div.globe-hit.obs-globe \"Globe: arrow keys rotate it 10 degrees, Enter insp\""
+  }
+ ],
+ "obsWheel": {
+  "before": 19350,
+  "after": 19948
+ },
+ "mobileMenu": {
+  "open": "true",
+  "afterEsc": "false",
+  "focusIsPill": true
+ }
+}

@@ -1,0 +1,260 @@
+[
+ {
+  "vp": "D",
+  "paint": {
+   "first-paint": 24,
+   "first-contentful-paint": 24
+  },
+  "rs": [
+   {
+    "file": "facts.json",
+    "start": 44,
+    "end": 48,
+    "bytes": 2572
+   },
+   {
+    "file": "coastlines.json",
+    "start": 44,
+    "end": 53,
+    "bytes": 26449
+   },
+   {
+    "file": "grid_gistemp_2deg_intro.meta.json",
+    "start": 44,
+    "end": 51,
+    "bytes": 14517
+   },
+   {
+    "file": "ar6.json",
+    "start": 45,
+    "end": 49,
+    "bytes": 1637
+   },
+   {
+    "file": "meta.json",
+    "start": 45,
+    "end": 50,
+    "bytes": 5418
+   },
+   {
+    "file": "grid_gistemp_2deg.meta.json",
+    "start": 45,
+    "end": 52,
+    "bytes": 15356
+   },
+   {
+    "file": "grid_hadcrut5_5deg.meta.json",
+    "start": 45,
+    "end": 53,
+    "bytes": 9287
+   },
+   {
+    "file": "co2.json",
+    "start": 45,
+    "end": 55,
+    "bytes": 9425
+   },
+   {
+    "file": "series_annual.json",
+    "start": 45,
+    "end": 57,
+    "bytes": 14965
+   },
+   {
+    "file": "extremes.json",
+    "start": 45,
+    "end": 55,
+    "bytes": 6041
+   },
+   {
+    "file": "grid_gistemp_2deg.meta.json",
+    "start": 45,
+    "end": 57,
+    "bytes": 300
+   },
+   {
+    "file": "trends.json",
+    "start": 45,
+    "end": 58,
+    "bytes": 14148
+   },
+   {
+    "file": "regional.json",
+    "start": 45,
+    "end": 59,
+    "bytes": 15345
+   },
+   {
+    "file": "validation.json",
+    "start": 45,
+    "end": 57,
+    "bytes": 1792
+   },
+   {
+    "file": "changepoints.json",
+    "start": 45,
+    "end": 57,
+    "bytes": 3769
+   },
+   {
+    "file": "agreement.json",
+    "start": 45,
+    "end": 58,
+    "bytes": 7588
+   },
+   {
+    "file": "grid_trends_gistemp_2deg.meta.json",
+    "start": 45,
+    "end": 58,
+    "bytes": 1326
+   },
+   {
+    "file": "grid_gistemp_2deg_intro.i8.bin.gz",
+    "start": 68,
+    "end": 70,
+    "bytes": 67947
+   },
+   {
+    "file": "grid_gistemp_2deg.i8.bin.gz",
+    "start": 90,
+    "end": 105,
+    "bytes": 600401
+   },
+   {
+    "file": "grid_trends_gistemp_2deg.i8.bin.gz",
+    "start": 92,
+    "end": 96,
+    "bytes": 24682
+   }
+  ]
+ },
+ {
+  "vp": "M",
+  "paint": {
+   "first-paint": 24,
+   "first-contentful-paint": 24
+  },
+  "rs": [
+   {
+    "file": "facts.json",
+    "start": 46,
+    "end": 52,
+    "bytes": 2572
+   },
+   {
+    "file": "coastlines.json",
+    "start": 46,
+    "end": 54,
+    "bytes": 26449
+   },
+   {
+    "file": "grid_gistemp_2deg_intro.meta.json",
+    "start": 46,
+    "end": 54,
+    "bytes": 14517
+   },
+   {
+    "file": "meta.json",
+    "start": 46,
+    "end": 52,
+    "bytes": 5418
+   },
+   {
+    "file": "ar6.json",
+    "start": 46,
+    "end": 53,
+    "bytes": 1637
+   },
+   {
+    "file": "grid_gistemp_2deg.meta.json",
+    "start": 46,
+    "end": 55,
+    "bytes": 15356
+   },
+   {
+    "file": "grid_hadcrut5_5deg.meta.json",
+    "start": 47,
+    "end": 55,
+    "bytes": 9287
+   },
+   {
+    "file": "series_annual.json",
+    "start": 47,
+    "end": 58,
+    "bytes": 14965
+   },
+   {
+    "file": "co2.json",
+    "start": 47,
+    "end": 55,
+    "bytes": 9425
+   },
+   {
+    "file": "extremes.json",
+    "start": 47,
+    "end": 56,
+    "bytes": 6041
+   },
+   {
+    "file": "trends.json",
+    "start": 47,
+    "end": 57,
+    "bytes": 14148
+   },
+   {
+    "file": "grid_gistemp_2deg.meta.json",
+    "start": 47,
+    "end": 57,
+    "bytes": 300
+   },
+   {
+    "file": "regional.json",
+    "start": 47,
+    "end": 58,
+    "bytes": 15345
+   },
+   {
+    "file": "validation.json",
+    "start": 47,
+    "end": 57,
+    "bytes": 1792
+   },
+   {
+    "file": "changepoints.json",
+    "start": 47,
+    "end": 57,
+    "bytes": 3769
+   },
+   {
+    "file": "agreement.json",
+    "start": 47,
+    "end": 58,
+    "bytes": 7588
+   },
+   {
+    "file": "grid_trends_gistemp_2deg.meta.json",
+    "start": 47,
+    "end": 58,
+    "bytes": 1326
+   },
+   {
+    "file": "grid_gistemp_2deg_intro.i8.bin.gz",
+    "start": 69,
+    "end": 70,
+    "bytes": 67947
+   },
+   {
+    "file": "grid_gistemp_2deg.i8.bin.gz",
+    "start": 81,
+    "end": 103,
+    "bytes": 600401
+   },
+   {
+    "file": "grid_trends_gistemp_2deg.i8.bin.gz",
+    "start": 87,
+    "end": 89,
+    "bytes": 24682
+   }
+  ]
+ }
+]

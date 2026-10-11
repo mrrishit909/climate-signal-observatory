@@ -296,3 +296,149 @@ The headless numbers are software rendering and say nothing about phones. The he
 - **Probes:** `artifacts/evidence/qa/probe/qa-probe.mjs` with parts errors, axe, keyboard, text, nogl, paint, collide (`--classic`) and chips. Also `recheck.mjs`, `navblock.mjs`, `rm-overflow.mjs` and `p02-pair.py`. To run them, symlink `site/node_modules` into `probe/`, then run from `site/`.
 - **Lighthouse:** `site/tests/run-lighthouse.sh` (shared copy). JSON reports are in `artifacts/evidence/qa/lighthouse/run{1,2,3}/`. The HTML reports were dropped for size.
 - **Committed evidence:** about 40 MB. Screenshots are JPEG q72, and secondary viewports and probe shots are q60.
+
+---
+
+# Pass 2 (task P03-QA-003)
+
+Re-run of the same harness and probes against HEAD `405bc5d` (fix commits `de26c40`..`405bc5d`, P03 FIX-A2), served by
+`site/tests/serve.mjs` on 4321 from a fresh `npm run build`. Date 2026-10-11, 07:37 to 08:40 EDT. Reviewer as in pass 1
+(built none of this site). No product code was changed. Evidence: `artifacts/evidence/qa-2/` (about 30 MB). The probe
+scripts are copied into `artifacts/evidence/qa-2/probe/`, and every path below is relative to that folder.
+
+Changes to the probes since pass 1:
+- The collision probe now also covers 1280x720 (L2) and runs under reduced motion at 390, 375, 360 and 768 (L5, L11).
+- It reports text under 11 px (L7) and the app's own `__cso.classes()` (L1).
+- The error probe adds validation.json and agreement.json.
+- Five new single-purpose probes: `deck.mjs`, `ring.mjs`, `rmobs.mjs`, `rm-landings.mjs` and `p02-pair.py` (recomposed).
+
+**Verdict: FAILED.** 7 of the 9 pass-1 majors are closed and verified from my own frames. D-003 is closed with 0 of 56
+classic-scrollbar shots mismatched, and D-009 with mobile LCP 1956 to 1968 ms. **3 major defects remain, all new to the register.**
+
+1. **D-020** (regression from the D-001 fix). The S01 error line at desktop sits under the hero headline, which makes it unreadable and blocks RETRY for the pointer.
+2. **D-021** (missed in pass 1). On phones, the S00 resting frame's OBSERVED tag and caption are under the bottom scrim, at effectively about 1.3:1 contrast.
+3. **D-022** (pre-existing, missed in pass 1). Under reduced motion the Observatory draws no planet and no core at any viewport, because the static canvas is 0 px tall. At 768 the rail also overprints the headline and readout.
+
+Every other measured row passes.
+
+## P2.1 Release gate (pass 2)
+
+| Row | Result | Measured evidence |
+|---|---|---|
+| Visual design | PASS | **Compositions:** compact desktop (1024 and 1280), short desktop, tablet and phone are deliberate and on-system (`contact-sheets/*.jpg`, all 9 runs). **Orb (test 15):** minR equals G0 and is monotonic in all 9 runs. The S08 p0.6 radius is at least the half-diagonal everywhere: 1019 against 849 at 1440, 761 against 632 at 1024 classic, and 526 against 440 at 360. **Test 16:** recomposed (`p02-vs-p03-open-close-*`), still not confusable. |
+| Motion UI | PASS | Unchanged layers. **Frame pacing** (`frame-pacing.json`): headed Metal (M3 Pro) p95 was 10.0, 11.3 and 10.6 ms, load average 8.9 at start. SwiftShader (software GL, headless) p95 was 49.7, 59.5 and 45.6 ms, load 7.3. stateChanged was true in every run. |
+| UX | PASS (with defects) | **Keyboard** (`keyboard.json`): the first four Tab stops are now the chapter nav (D-013 closed). Baseline radios skip the disabled 1850-1900 under GISTEMP. The S05 clamp offers SWITCH TO HADCRUT5. OBS core and globe keys work. Enter opens the inspector at 5°N 29°W and Esc returns focus to the globe. A wheel over the globe scrolls the page (19350 to 19948). On mobile the pill closes on Esc and focus returns to it. **Nav:** every landing, normal and reduced, at 1440 and 390, has the nav and pill on top (`navblock.json`: 0 blocked). All 6 mobile reduced-motion nav jumps now click (D-015 closed). |
+| Functionality and states | **FAIL** | **Route-block** (`errors.json`): all 72 artifact-and-scene cases at 1440 and 390 show an in-scene alert, and RETRY re-fetches exactly once and recovers. The OBS RETRY is clickable (D-007 closed). **But** in 2 of 72 cases (S01 at desktop) the RETRY sits under `h1.hero-title` and the error text is overprinted (D-020). D-022: the reduced-motion Observatory draws no data. |
+| AI / analytical honesty | **FAIL** | Re-checked 29 on-screen numbers against the pass-1 artifact values, and all match (`text.json`). **D-004 closed:** `chips.json` shows no tag hidden at 768 or 390. The S04 phone tags are the `m-only` copies. The legend is visible on phone S03a and S03b. **D-005 closed:** the inspector path has dasharray `none`, the full 1880-2025 line is drawn, and its last point is x=308 (`recheck.json`, `shots/recheck-*-inspector.jpg`). "Arctic Circle" and "live" appear nowhere. **Open:** D-021, a phone S00 tag at about 1.3:1 contrast. |
+| Performance | PASS | **Lighthouse** (`lighthouse/run{1,2,3}/*.report.json.gz`), started at load 7.47 and ending at 8.39: mobile LCP 1956, 1959 and 1968 ms; perf 0.98; a11y 1.00; CLS 0; TBT 5 to 10 ms. Desktop LCP 445 ms and perf 1.00 in all three runs. **Grids** start at 68 to 92 ms after an FCP of 24 ms (`paint.json`). **nogl:** no page errors at D or M (`nogl.json`). |
+| Responsiveness | **FAIL** | **Closed:** D-002 (1024x768 collisions; `collide.json` 1024 and 1280 entries show only hidden-text false positives), D-003 (`screenshots/*-classic.json`: app JS class equals CSS class in 27 of 27 and 29 of 29 shots, clientWidth 1009 and 753; `classic-vs-overlay-*.jpg`), D-006 (S01 on phones), D-008 (`rm-overflow.json`: 100 checks, scrollX 0 everywhere), D-018 (768 S01 headline). **Open:** D-022 (reduced-motion OBS at 768), D-010 (minor), D-024 (minor). |
+| Professional quality | PASS | `uv run pytest -q`: 80 passed. `typecheck` and `lint` clean. `npm test`: 130 passed (7 files). `npm run e2e` (2 workers at load 15 to 29): 176 passed, 40 skipped (project-scoped), 0 failed, 0 flaky. axe (wcag2a/aa, 21a/aa): 0 violations in 62 runs, covering 1440 and 390, normal and reduced, every landing and nav jumps (`axe.json`). |
+| GitHub, Deployment, Portfolio | BLOCKED | Out of scope for QA. |
+
+## P2.2 Pass-1 register: status from my pass-2 frames
+
+| ID | Pass 1 | Pass 2 | Evidence |
+|---|---|---|---|
+| D-001 silent failures | major | **CLOSED** (one regression split out as D-020) | `errors.json`: 72 of 72 cases have an in-scene alert, exactly 1 re-fetch, and recover. Includes validation and agreement. |
+| D-002 1024x768 collisions | major | **CLOSED** | `screenshots/1024x768/*`, `contact-sheets/1024x768.jpg`, `collide.json` |
+| D-003 classic-scrollbar class | major | **CLOSED** | `screenshots/{1024x768,768x1024}-classic.json` (`appClasses` js equals css), `classic-vs-overlay-*.jpg` |
+| D-004 hidden tags and keys | major | **CLOSED** | `chips.json`, `screenshots/390x844/s03a-01-p50.jpg`, `s05-01-p30.jpg`, `s06-02-p90.jpg` |
+| D-005 inspector truncation | major | **CLOSED** | `recheck.json` (dasharray none), `shots/recheck-1440-inspector.jpg` |
+| D-006 S01 on phones | major | **CLOSED** | `screenshots/390x844/s01-01-p78-landing.jpg`, `shots/recheck-390-s01-landing-6s.jpg` |
+| D-007 OBS RETRY covered | major | **CLOSED** | `errors.json` (D, grid, observatory: covered false), `shots/err-D-grid_gistemp_2deg_i8_bin_gz-observatory.jpg` |
+| D-008 reduced-motion sideways scroll at 768 | major | **CLOSED** | `rm-overflow.json` |
+| D-009 mobile LCP | major | **CLOSED** | `lighthouse/run*/mobile.report.json.gz` (1956 to 1968 ms) |
+| D-010 S05/S06 labels at T/M | minor | **OPEN (minor)** | The S05 "-0.5 °C" and "0.0 °C = … MEAN" labels are still struck by the series at 390, 360 and 1024 (`screenshots/390x844/s05-01-p30.jpg`, `1024x768/s05-00-p30.jpg`). The S06 phone label is accepted by ruling. |
+| D-011 phone-edge clipping | minor | **CLOSED** | `screenshots/390x844/s04-04-p89.jpg` (TEN WARMEST fits), `360x800/s08-02-p98.jpg` (links clear the footer) |
+| D-012 S08 untagged | minor | **CLOSED** | `screenshots/1440x900.json`: s08 p15, p30 and p60 carry OBSERVED · GISTEMP v4 |
+| D-013 tab order | minor | **CLOSED** | `keyboard.json` `firstTabs` |
+| D-014 S05 sr lag | minor | **ACCEPTED** (ruling: 400 ms debounce) | |
+| D-015 mobile reduced-motion pill | minor | **CLOSED** | `axe.json` (all navjumps ran), `navblock.json` |
+| D-016 target size | minor | **CLOSED** | Lighthouse a11y 1.00 |
+| D-017 off-palette decade-run blends | minor | **OPEN (minor)** | `screenshots/1440x900/00-s00-t2500.jpg` (violet and magenta blends between bins) |
+| D-018 768 S01 headline clip | minor | **CLOSED** | `screenshots/768x1024/s01-01-p78-landing.jpg` |
+| D-019 inspector covers PLAY | minor | **CLOSED** | `screenshots/1440x900/obs-04-inspector.jpg` (inspector under the rail, PLAY clear) |
+
+## P2.3 QA_LESSONS L1-L11
+
+| # | Result | Evidence |
+|---|---|---|
+| L1 | PASS | App `__cso.classes()` js equals css in every shot, including classic 1009 and 753 px (`screenshots/*.json`). |
+| L2 | PASS | 1024x768 and 1280x720: no visible text collisions (`collide.json`). The only hits are hidden table text under the nav. |
+| L3 | **FAIL** (D-021) | No `display:none` tags at 360-768 (`chips.json`). But the phone S00 tag sits under the scrim at about 1.3:1. |
+| L4 | **FAIL** (D-020) | 72 of 72 cases visible with exactly one re-fetch. S01 at desktop is overprinted, and its RETRY is covered by the h1. |
+| L5 | PASS | `rm-overflow.json`: 0 sideways scroll in 100 scene, viewport and motion checks. |
+| L6 | PASS | Mobile LCP 1956 to 1968 ms (3 of 3 runs, load 7.5 to 9.1). |
+| L7 | PASS (with D-010) | `collide*.json` `tiny`: no visible text under 11 px. The S05 axis labels are struck by marks (D-010). |
+| L8 | PASS | REPLAY INTRO clears the pill at 768, 390, 375 and 360 (`collide.json`: no corner/pill overlaps). |
+| L9 | **FAIL** (D-020) | OBS RETRY passes. S01 RETRY: `elementFromPoint` returns `H1.hero-title`. |
+| L10 | PASS | Copy checks: no "live", no "every one" without a bound fact. The universal claims ("Every latitude band has warmed since 1975", "The ten warmest layers all came after 2010") are bound to `band_trends_all_positive_1975_latest` and `years_since_2010_in_gistemp_top10`. |
+| L11 | PASS at normal motion, minor issues under reduced motion | No collisions among visible scene text at 360x800 or 375x812 with normal motion (`collide.json`). Under reduced motion only one in-scene collision remains (D-024): the S05 note against the clamp label. Text scrolling under the fixed nav is ordinary flow, not a collision. |
+
+## P2.4 Defect register (pass 2, open items only)
+
+### Major
+
+**P03-D-020: The S01 error line at desktop sits under the hero headline. It is unreadable and its RETRY cannot be clicked** (major, states; L4/L9; regression from the D-001 fix)
+- **Files:** the S01 error placement in `site/src/scenes/S01Signal.tsx` (the alert renders in the top band where the static `h1#hero-title` of `site/index.html` sits on top), plus the S01 styles in `site/src/styles/scenes.css`.
+- **Viewport:** 1440x900, and any D composition where the hero sits top centre. At 390 the alert is clear.
+- **Repro:** route `facts.json` or `grid_gistemp_2deg_intro.i8.bin.gz` to 404, Escape, then `__cso.jumpTo('signal')`.
+- **Expected:** a readable `COULD NOT LOAD …` line, and a RETRY that is the top element at its centre.
+- **Actual:**
+  - "COULD NOT LOAD FACTS.JSON (HTTP 404)" is overprinted by "The planet is".
+  - `elementFromPoint` at the RETRY centre returns `H1.hero-title wr`, so a pointer click lands on the headline.
+  - The probe recovered only through `button.click()` (the keyboard/AT path).
+- **Evidence:** `probe/errors.json` (D facts/intro grid at signal: `covered: true`), `probe/shots/err-D-facts_json-signal.jpg`, `err-D-grid_gistemp_2deg_intro_i8_bin_gz-signal.jpg`.
+- **Verification test:** extend `e2e/states.spec.ts` to click RETRY with `page.mouse.click` at its centre, without `force` and without `button.click()`. Assert that `elementFromPoint` returns the button, and that the alert rect does not intersect the `h1#hero-title` rect.
+
+**P03-D-021: On phones the S00 resting frame's OBSERVED tag and caption are hidden under the scrim** (major, honesty; L3; missed in pass 1, present there too)
+- **File:** `site/src/styles/scenes.css:49`. `.signal-scrim` is a linear gradient to 85% black from y 460 to 600, and it sits above the `#signal` chip and caption (z-index 1).
+- **Viewports:** 390x844, 375x812 and 360x800. At 768 and 1440 the tag is clear.
+- **Repro:** load the page at 390 and wait for the intro to end.
+- **Expected:** the tag that names the planet as OBSERVED, and its caption ("CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1951-1980. DOTS = NOT MEASURED."), stay legible: 4.5:1 or better.
+- **Actual:**
+  - The chip and caption are visible only as faint grey, about 1.3:1 against the scrimmed planet.
+  - This is the first resting frame every phone visitor sees.
+  - The chip's own computed opacity is 1. The scrim is what hides it, so `chips.json` and axe cannot see it.
+- **Evidence:** `probe/shots/s00end-390.jpg`, `s00end-360.jpg`, `s00end-375.jpg` (and `s00end-768.jpg` as the clear control), `probe/deck.json` (`s00-end` entries), `screenshots/360x800/00-s00-end.jpg`.
+- **Verification test:** at M widths after the intro ends, sample the screenshot pixels behind and inside the `#signal` OBSERVED chip and the caption. Assert a contrast of 4.5:1 or better, or assert that the scrim's top edge is below the caption's bottom.
+
+**P03-D-022: Under reduced motion the Observatory draws no planet and no core, and at 768 the rail overprints the headline** (major, functionality and responsiveness; pre-existing, missed in pass 1)
+- **Files:**
+  - `site/src/styles/scenes.css:538`: `.obs-static { inset: 0; width: 100%; height: 100%; }` has no positioned or sized parent, so the canvas measures 1440x0 (or 390x0).
+  - `paintStatic` in `site/src/scenes/director.ts:672-674` returns early when `clientHeight` is 0.
+  - At T, the reduced-motion `.obs-rail` is absolute at the top (48,16 to 624,251) over the title (48,45 to 434,77).
+- **Viewports:** all of them under `prefers-reduced-motion: reduce`, or with MOTION OFF.
+- **Repro:** emulate reduced motion, then `__cso.jumpTo('observatory')` and wait 5s.
+- **Expected:** the static planet and core for the current year, source and baseline (MOTION_SYSTEM: "every control still works", reduced-motion static frames).
+- **Actual:**
+  - Only the controls, a "2025" stub and PLAY render. The canvas is unpainted (`getImageData` alpha samples all 0).
+  - At 768 the rail covers "Any year, any place, any zero." and the readout "+1.19 °C · MEASURED 99%".
+  - Every other scene's reduced-motion figures paint (`rm-landings.json`).
+- **Evidence:** `probe/shots/rm-obs-768.jpg`, `rm-obs-1024.jpg`, `rm-obs-390.jpg`, `rm-obs-1440.jpg`, `probe/rm-landings.json` (observatory: `obs-static 1440x0`, `390x0`), `probe/shots/rmland-*-observatory.jpg`, `probe/collide-reduced.json` (768 observatory).
+- **Verification test:** under reduced motion at 1440, 768 and 390:
+  1. Assert that `.obs-static` has a non-zero height and painted pixels.
+  2. Assert that the rail rect does not intersect `#observatory [data-scene-heading]` or the readout.
+
+### Minor
+
+- **P03-D-010 (open):** the S05 axis labels are struck by the series at 390, 360 and 1024. See the table above.
+- **P03-D-017 (open):** off-palette blends during the S00 decade run.
+- **P03-D-023: S08 entry dead zone with a transient limb arc.**
+  - Between OBS and S08 (scroll steps 85 and 86 of 90) the frame is black, apart from an orphan "OBSERVED · CELLS · GISTEMP v4" chip and the footer.
+  - In the contact-sheet frame one transient thin white circle is visible (`contact-sheets/1440x900.jpg` frame 85).
+  - The settled frames are clean: `probe/shots/ring-1440-{84,85,86}.jpg` show debug radius 0 and no arc. Not a ring-dial violation, but the beat reads as empty.
+- **P03-D-024: Reduced-motion phone S05 note collision.**
+  - At 375 and 360 the note "THE BENCH IS DRAWN ONLY WITH MOTION ON; …" collides with the clamp's "1951-1980" label at the top of the stage.
+  - **Evidence:** `probe/collide-reduced.json` (375 and 360 `zero@0.3`), `probe/shots/col-360x800r-zero-0.3.jpg`.
+
+Considered and not logged:
+- **S02 deck card clipped at 390 p0.45:** a mid-scrub state between centred steps. At p0.3, 0.6 and 0.75 the active card is centred (`deck.json`), as in the reference horizontal deck.
+- **Collision hits against the fixed nav under reduced motion:** content scrolling under a fixed bar, not a layout collision.
+- **Collisions inside closed `<details>` and sr-only tables:** not visible.
+
+## P2.5 Frames read in pass 2
+
+- **Contact sheets:** `1440x900`, `1024x768` and `768x1024` were read in full. `390x844`, `360x800` and the classic pair were read through the composite sheets.
+- **Full resolution:** 1440 `s01-01`, `s03a-01`, `s05-01`, `s06-02`, `s07-01`, `s04-04`, `obs-04`, `s08-01`, `s08-02`, `00-s00-t2500`. 1024 `s01-00`, `s03a-00`, `s05-00`, `s06-01`, `s07-01`, `obs-00`, `obs-02`, `s08-02`. 390 `s01-01`, `s03a-01`, `s03b-01`, `s04-04`, `s05-01`, `s05-04`, `s06-02`, `obs-04`, `s02-00/01/02`, `00-s00-end`. 360: 16 frames incl. `00-s00-end`, `s02-00`, `s05-00`, `s08-02`. 375 `s02-00`. 768 `s01-01`, `s02-01`. Classic: 12 pairs at 1024 and 12 at 768. Probe shots: `err-D-facts_json-signal`, `s00end-390/768/1440`, `ring-1440-84/85/86`, `rm-obs-768/1024/390/1440`, `col-1024x768-observatory-l`, `col-390x844-evidence-0.05`, `col-768x1024r-observatory-l`, `col-360x800r-zero-0.3`.
+- **Commit size:** to keep the commit near 30 MB, non-S00 frames at 1440, 768 and 390 are committed at 70% scale (JPEG q50). Lighthouse JSON is gzipped and the HTML reports are dropped.

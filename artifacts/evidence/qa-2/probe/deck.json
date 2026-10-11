@@ -1,0 +1,508 @@
+{
+ "390 s00-end": [
+  {
+   "t": "OBSERVED · PLANET",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 509
+  },
+  {
+   "t": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 640
+  },
+  {
+   "t": "OBSERVED · NOAA GML",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 748
+  },
+  {
+   "t": "OBSERVED",
+   "effOpacity": 1,
+   "color": "rgb(255, 255, 255)",
+   "top": 695
+  }
+ ],
+ "390 record@0.3": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -279,
+   "right": 21,
+   "clipped": false
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 54,
+   "right": 354,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 387,
+   "right": 687,
+   "clipped": false
+  }
+ ],
+ "390 record@0.45": [
+  {
+   "title": "Two agencies, two method",
+   "left": -28,
+   "right": 272,
+   "clipped": true
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 305,
+   "right": 605,
+   "clipped": true
+  }
+ ],
+ "390 record@0.6": [
+  {
+   "title": "Two agencies, two method",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 45,
+   "right": 345,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 378,
+   "right": 678,
+   "clipped": false
+  }
+ ],
+ "390 record@0.75": [
+  {
+   "title": "Every anomaly needs a ze",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 45,
+   "right": 345,
+   "clipped": false
+  }
+ ],
+ "375 s00-end": [
+  {
+   "t": "OBSERVED · PLANET",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 477
+  },
+  {
+   "t": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 608
+  },
+  {
+   "t": "OBSERVED · NOAA GML",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 716
+  },
+  {
+   "t": "OBSERVED",
+   "effOpacity": 1,
+   "color": "rgb(255, 255, 255)",
+   "top": 663
+  }
+ ],
+ "375 record@0.3": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -279,
+   "right": 21,
+   "clipped": false
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 46,
+   "right": 346,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 372,
+   "right": 672,
+   "clipped": false
+  }
+ ],
+ "375 record@0.45": [
+  {
+   "title": "Two agencies, two method",
+   "left": -34,
+   "right": 266,
+   "clipped": true
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 292,
+   "right": 592,
+   "clipped": true
+  }
+ ],
+ "375 record@0.6": [
+  {
+   "title": "Two agencies, two method",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 38,
+   "right": 338,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 363,
+   "right": 663,
+   "clipped": false
+  }
+ ],
+ "375 record@0.75": [
+  {
+   "title": "Every anomaly needs a ze",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 38,
+   "right": 338,
+   "clipped": false
+  }
+ ],
+ "360 s00-end": [
+  {
+   "t": "OBSERVED · PLANET",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 465
+  },
+  {
+   "t": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 596
+  },
+  {
+   "t": "OBSERVED · NOAA GML",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 704
+  },
+  {
+   "t": "OBSERVED",
+   "effOpacity": 1,
+   "color": "rgb(255, 255, 255)",
+   "top": 651
+  }
+ ],
+ "360 record@0.3": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -280,
+   "right": 20,
+   "clipped": false
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 38,
+   "right": 338,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 356,
+   "right": 656,
+   "clipped": false
+  }
+ ],
+ "360 record@0.45": [
+  {
+   "title": "Two agencies, two method",
+   "left": -39,
+   "right": 261,
+   "clipped": true
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 279,
+   "right": 579,
+   "clipped": true
+  }
+ ],
+ "360 record@0.6": [
+  {
+   "title": "Two agencies, two method",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 30,
+   "right": 330,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 348,
+   "right": 648,
+   "clipped": false
+  }
+ ],
+ "360 record@0.75": [
+  {
+   "title": "Every anomaly needs a ze",
+   "left": -288,
+   "right": 12,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 30,
+   "right": 330,
+   "clipped": false
+  }
+ ],
+ "768 s00-end": [
+  {
+   "t": "OBSERVED · PLANET",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 416
+  },
+  {
+   "t": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 555
+  },
+  {
+   "t": "OBSERVED · NOAA GML",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 555
+  },
+  {
+   "t": "OBSERVED",
+   "effOpacity": 1,
+   "color": "rgb(255, 255, 255)",
+   "top": 884
+  }
+ ],
+ "768 record@0.3": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -95,
+   "right": 225,
+   "clipped": true
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 233,
+   "right": 553,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 561,
+   "right": 881,
+   "clipped": true
+  }
+ ],
+ "768 record@0.45": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -176,
+   "right": 144,
+   "clipped": true
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 152,
+   "right": 472,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 480,
+   "right": 800,
+   "clipped": true
+  }
+ ],
+ "768 record@0.6": [
+  {
+   "title": "Two agencies, two method",
+   "left": -104,
+   "right": 216,
+   "clipped": true
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 224,
+   "right": 544,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 552,
+   "right": 872,
+   "clipped": true
+  }
+ ],
+ "768 record@0.75": [
+  {
+   "title": "Every anomaly needs a ze",
+   "left": -104,
+   "right": 216,
+   "clipped": true
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 224,
+   "right": 544,
+   "clipped": false
+  }
+ ],
+ "1440 s00-end": [
+  {
+   "t": "OBSERVED · PLANET",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 478
+  },
+  {
+   "t": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 633
+  },
+  {
+   "t": "OBSERVED · NOAA GML",
+   "effOpacity": 0,
+   "color": "rgb(255, 255, 255)",
+   "top": 777
+  },
+  {
+   "t": "OBSERVED",
+   "effOpacity": 1,
+   "color": "rgb(255, 255, 255)",
+   "top": 768
+  }
+ ],
+ "1440 record@0.3": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": 182,
+   "right": 542,
+   "clipped": false
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 550,
+   "right": 910,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 918,
+   "right": 1278,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 1286,
+   "right": 1646,
+   "clipped": true
+  }
+ ],
+ "1440 record@0.45": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": 93,
+   "right": 453,
+   "clipped": false
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 461,
+   "right": 821,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 829,
+   "right": 1189,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 1197,
+   "right": 1557,
+   "clipped": true
+  }
+ ],
+ "1440 record@0.6": [
+  {
+   "title": "A cell, not a thermomete",
+   "left": -196,
+   "right": 164,
+   "clipped": true
+  },
+  {
+   "title": "Two agencies, two method",
+   "left": 172,
+   "right": 532,
+   "clipped": false
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 540,
+   "right": 900,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 908,
+   "right": 1268,
+   "clipped": false
+  }
+ ],
+ "1440 record@0.75": [
+  {
+   "title": "Two agencies, two method",
+   "left": -196,
+   "right": 164,
+   "clipped": true
+  },
+  {
+   "title": "Every anomaly needs a ze",
+   "left": 172,
+   "right": 532,
+   "clipped": false
+  },
+  {
+   "title": "Gaps stay gaps.",
+   "left": 540,
+   "right": 900,
+   "clipped": false
+  }
+ ]
+}

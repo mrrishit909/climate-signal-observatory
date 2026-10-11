@@ -1,0 +1,26 @@
+[
+ {
+  "vp": "D",
+  "errors": [],
+  "quality": {
+   "tier": "nogl",
+   "median": 0
+  },
+  "note": [
+   "3D GLOBE UNAVAILABLE: FLAT MAPS USED",
+   "CO2 VS TEMPERATURE IS ASSOCIATION ONLY; BOTH SERIES TREND, SO LEVEL CORRELATION IS INFLATED BY CONSTRUCTION."
+  ]
+ },
+ {
+  "vp": "M",
+  "errors": [],
+  "quality": {
+   "tier": "nogl",
+   "median": 0
+  },
+  "note": [
+   "3D GLOBE UNAVAILABLE: FLAT MAPS USED",
+   "CO2 VS TEMPERATURE IS ASSOCIATION ONLY; BOTH SERIES TREND, SO LEVEL CORRELATION IS INFLATED BY CONSTRUCTION."
+  ]
+ }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "device": "Mac15,6",
+    "browser": "Chromium 156.0.8078.4 headed",
+    "uptimeAtStart": "8:25  up 2 days, 10:56, 4 users, load averages: 8.92 10.49 14.61",
+    "uptimeAtEnd": "8:26  up 2 days, 10:56, 4 users, load averages: 7.32 9.99 14.31",
+    "heavyInteraction": "scripted 6 s scroll through the S04 strata unwrap (scrubbed sphere-to-sheet morph, 1 px/ms)",
+    "measuredAt": "2026-10-11T12:26:12.468Z",
+    "runs": [
+      {
+        "label": "1440x900 unthrottled",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 744,
+        "p50_ms": 8.3,
+        "p95_ms": 10,
+        "pct_over_16_7ms": 0,
+        "pct_over_33ms": 0
+      },
+      {
+        "label": "1440x900 4x CPU throttle",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 717,
+        "p50_ms": 8.3,
+        "p95_ms": 11.3,
+        "pct_over_16_7ms": 0.015,
+        "pct_over_33ms": 0.001
+      },
+      {
+        "label": "390x844 4x CPU throttle",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 722,
+        "p50_ms": 8.4,
+        "p95_ms": 10.6,
+        "pct_over_16_7ms": 0.014,
+        "pct_over_33ms": 0.001
+      }
+    ]
+  },
+  {
+    "device": "Mac15,6",
+    "browser": "Chromium 156.0.8078.4 headless",
+    "uptimeAtStart": "8:26  up 2 days, 10:56, 4 users, load averages: 7.32 9.99 14.31",
+    "uptimeAtEnd": "8:26  up 2 days, 10:57, 4 users, load averages: 9.26 10.21 14.26",
+    "heavyInteraction": "scripted 6 s scroll through the S04 strata unwrap (scrubbed sphere-to-sheet morph, 1 px/ms)",
+    "measuredAt": "2026-10-11T12:26:39.448Z",
+    "runs": [
+      {
+        "label": "1440x900 unthrottled",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 245,
+        "p50_ms": 16.7,
+        "p95_ms": 49.7,
+        "pct_over_16_7ms": 0.571,
+        "pct_over_33ms": 0.29
+      },
+      {
+        "label": "1440x900 4x CPU throttle",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 220,
+        "p50_ms": 17.1,
+        "p95_ms": 59.5,
+        "pct_over_16_7ms": 0.655,
+        "pct_over_33ms": 0.273
+      },
+      {
+        "label": "390x844 4x CPU throttle",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 258,
+        "p50_ms": 17.1,
+        "p95_ms": 45.6,
+        "pct_over_16_7ms": 0.659,
+        "pct_over_33ms": 0.225
+      }
+    ]
+  }
+]

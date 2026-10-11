@@ -47,7 +47,7 @@ const probe = () => {
   }).map((c) => c.textContent.trim().slice(0, 40));
   const d = window.__cso?.debug?.() ?? {};
   return { scrollW: document.documentElement.scrollWidth, clientW: cw, innerW: iw, jsClassFromClientW: cls(cw), jsClassFromInnerW: cls(iw), cssClass: cssCls,
-    radius: d.radius, scene: d.scene, glFrames: d.glFrames, chips };
+    radius: d.radius, scene: d.scene, glFrames: d.glFrames, appClasses: window.__cso?.classes?.() ?? null, chips };
 };
 
 async function captureViewport(browser, vp) {

@@ -1,0 +1,150 @@
+[
+ {
+  "vp": 1440,
+  "id": "signal",
+  "canvases": [
+   "still-planet 1440x900"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "record",
+  "canvases": [
+   "canvas 191x191"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "years",
+  "canvases": [
+   "canvas 300x300",
+   "canvas 300x300",
+   "canvas 300x300",
+   "canvas 300x300"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "regions",
+  "canvases": [
+   "canvas 300x300",
+   "canvas 300x300",
+   "canvas 300x300",
+   "canvas 300x300"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "strata",
+  "canvases": [
+   "canvas 240x360",
+   "canvas 240x360",
+   "canvas 240x360",
+   "canvas 240x360",
+   "canvas 240x360"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "zero",
+  "canvases": []
+ },
+ {
+  "vp": 1440,
+  "id": "futures",
+  "canvases": []
+ },
+ {
+  "vp": 1440,
+  "id": "evidence",
+  "canvases": []
+ },
+ {
+  "vp": 1440,
+  "id": "observatory",
+  "canvases": [
+   "obs-static 1440x0"
+  ]
+ },
+ {
+  "vp": 1440,
+  "id": "surface",
+  "canvases": [
+   "still-planet 1440x900"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "signal",
+  "canvases": [
+   "still-planet 390x844"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "record",
+  "canvases": [
+   "canvas 191x191"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "years",
+  "canvases": [
+   "canvas 358x358",
+   "canvas 358x358",
+   "canvas 358x358",
+   "canvas 358x358"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "regions",
+  "canvases": [
+   "canvas 171x171",
+   "canvas 171x171",
+   "canvas 171x171",
+   "canvas 171x171"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "strata",
+  "canvases": [
+   "canvas 358x420",
+   "canvas 358x420",
+   "canvas 358x420",
+   "canvas 358x420",
+   "canvas 358x420"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "zero",
+  "canvases": []
+ },
+ {
+  "vp": 390,
+  "id": "futures",
+  "canvases": []
+ },
+ {
+  "vp": 390,
+  "id": "evidence",
+  "canvases": []
+ },
+ {
+  "vp": 390,
+  "id": "observatory",
+  "canvases": [
+   "obs-static 390x0"
+  ]
+ },
+ {
+  "vp": 390,
+  "id": "surface",
+  "canvases": [
+   "still-planet 390x844"
+  ]
+ }
+]
