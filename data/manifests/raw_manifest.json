@@ -1,0 +1,124 @@
+{
+ "gistemp_glb_landocean": {
+  "bytes": 12886,
+  "last_modified": "Thu, 08 Oct 2026 11:30:14 GMT",
+  "retrieved_at": "2026-10-11T02:15:04+00:00",
+  "sha256": "4c64eda288bce32b8d76926278f346ecea1e53506df8ee72a3d5accb0657c416",
+  "skipped": true,
+  "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
+ },
+ "gistemp_glb_landonly": {
+  "bytes": 12986,
+  "last_modified": "Thu, 08 Oct 2026 11:30:14 GMT",
+  "retrieved_at": "2026-10-11T02:15:05+00:00",
+  "sha256": "0ba691cd181374b2aa8c1289a125504e3e892911747c5554e0c7414502135ab5",
+  "skipped": true,
+  "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts.csv"
+ },
+ "gistemp_grid_nc_gz": {
+  "bytes": 25866289,
+  "decompressed_path": "data/raw/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc",
+  "decompressed_sha256": "189506b147b681f87686ec5a995bb8a84e600a84c7cf2e51b0c217b1f015118b",
+  "last_modified": "Thu, 08 Oct 2026 11:32:32 GMT",
+  "retrieved_at": "2026-10-11T02:15:03+00:00",
+  "sha256": "44c8a2d358d73a5488232cedda387c6e6501671f9d2286b5c656f5a4efb43796",
+  "skipped": true,
+  "url": "https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz"
+ },
+ "gistemp_nh_landocean": {
+  "bytes": 12937,
+  "last_modified": "Thu, 08 Oct 2026 11:30:14 GMT",
+  "retrieved_at": "2026-10-11T02:15:04+00:00",
+  "sha256": "e78c78f807ac34d6c113160189b2b18613fbcfe2e8de9e4d5a34fddf72a39326",
+  "skipped": true,
+  "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv"
+ },
+ "gistemp_sh_landocean": {
+  "bytes": 12868,
+  "last_modified": "Thu, 08 Oct 2026 11:30:14 GMT",
+  "retrieved_at": "2026-10-11T02:15:05+00:00",
+  "sha256": "e856610fc523b192bb5f64d7d0024acf6e94ae48cd8cd9d709b797d9e238d82c",
+  "skipped": true,
+  "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/SH.Ts+dSST.csv"
+ },
+ "hadcrut5_global_annual": {
+  "bytes": 7046,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:18:00+00:00",
+  "sha256": "7f750b673bb34aad722736ee21f122b5ea692c99877fa0b1066df65e51f32c04",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.global.annual.csv"
+ },
+ "hadcrut5_global_monthly": {
+  "bytes": 89634,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:15:08+00:00",
+  "sha256": "dd4449a3e25b75396ec4f0445f8647e5b9f5a10f3993929fb82918f3ec135dd1",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.global.monthly.csv"
+ },
+ "hadcrut5_grid_nc": {
+  "bytes": 32842962,
+  "last_modified": "Fri, 02 Oct 2026 13:06:24 GMT",
+  "retrieved_at": "2026-10-11T02:15:08+00:00",
+  "sha256": "75728d3c91a7283c19911ff616c9210660f7f7007911bbcfe3698776194fc728",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/HadCRUT.5.2.0.0.analysis.anomalies.ensemble_mean.nc"
+ },
+ "hadcrut5_nh_annual": {
+  "bytes": 7027,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:18:02+00:00",
+  "sha256": "51154ebde6d36df58b7dd2d99df7d57654535693859a6f09e28f1be77e0b28e1",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.northern_hemisphere.annual.csv"
+ },
+ "hadcrut5_nh_monthly": {
+  "bytes": 89093,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:15:09+00:00",
+  "sha256": "881da4f9edbb6b8869f6784ad954ea6c7a00cc316e76155e24f2eceda802d1f9",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.northern_hemisphere.monthly.csv"
+ },
+ "hadcrut5_sh_annual": {
+  "bytes": 7050,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:18:03+00:00",
+  "sha256": "8d558ed77b715cfe38af16f8c18b2598cd96a990b7b122ec510fa797133e884b",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.southern_hemisphere.annual.csv"
+ },
+ "hadcrut5_sh_monthly": {
+  "bytes": 89661,
+  "last_modified": "Fri, 02 Oct 2026 13:06:26 GMT",
+  "retrieved_at": "2026-10-11T02:15:10+00:00",
+  "sha256": "4a496891985608b0e85e9097e5e1b71a96fa02930853861fb6da6428fe133af7",
+  "skipped": true,
+  "url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.southern_hemisphere.monthly.csv"
+ },
+ "ipcc_ar6_wgi_spm_pdf": {
+  "bytes": 3709604,
+  "last_modified": "Fri, 17 Jun 2022 07:35:14 GMT",
+  "retrieved_at": "2026-10-11T02:15:11+00:00",
+  "sha256": "11bdea78a8589072d10dba518839f8d5c3d42c90fbeab859bd23cc915266f7b9",
+  "skipped": true,
+  "url": "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_final.pdf"
+ },
+ "noaa_co2_global_monthly": {
+  "bytes": 24763,
+  "last_modified": "Fri, 09 Oct 2026 19:23:07 GMT",
+  "retrieved_at": "2026-10-11T02:15:11+00:00",
+  "sha256": "761c9237cf82fda669dc2218b89ea68d7cbe59b7c1a80f5625665b2101743708",
+  "skipped": true,
+  "url": "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.csv"
+ },
+ "noaa_co2_mlo_monthly": {
+  "bytes": 38776,
+  "last_modified": "Fri, 09 Oct 2026 19:23:07 GMT",
+  "retrieved_at": "2026-10-11T02:15:10+00:00",
+  "sha256": "d895fb5b4a59fb5e4cd98e69b7667fe5bef595c6581f630852b12cb41c07f675",
+  "skipped": true,
+  "url": "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv"
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "co2": {
+  "global_interpolated_rows": 0,
+  "global_rows": 571,
+  "mlo_interpolated_rows": 196,
+  "mlo_measured_rows": 627,
+  "mlo_rows": 823
+ },
+ "grids": [
+  {
+   "annual_cell_years_dropped_lt_min_months": 278766,
+   "annual_cell_years_total": 2365200,
+   "annual_cell_years_valid": 2086434,
+   "cells_ever_valid": 16178,
+   "cells_never_valid": 22,
+   "complete_years": 146,
+   "fill_value_cells": 3099338,
+   "first_month": "1880-01",
+   "last_month": "2026-09",
+   "missing_cells": 3099338,
+   "missing_share": 0.108641,
+   "n_lat": 90,
+   "n_lon": 180,
+   "n_time": 1761,
+   "nan_cells": 0,
+   "partial_years": [
+    2026
+   ],
+   "source": "gistemp",
+   "total_cells": 28528200,
+   "valid_cells": 25428862
+  },
+  {
+   "annual_cell_years_dropped_lt_min_months": 104551,
+   "annual_cell_years_total": 456192,
+   "annual_cell_years_valid": 351641,
+   "cells_ever_valid": 2592,
+   "cells_never_valid": 0,
+   "complete_years": 176,
+   "fill_value_cells": 1099763,
+   "first_month": "1850-01",
+   "last_month": "2026-08",
+   "missing_cells": 1099763,
+   "missing_share": 0.200137,
+   "n_lat": 36,
+   "n_lon": 72,
+   "n_time": 2120,
+   "nan_cells": 0,
+   "partial_years": [
+    2026
+   ],
+   "source": "hadcrut5",
+   "total_cells": 5495040,
+   "valid_cells": 4395277
+  }
+ ],
+ "scale_factor_gistemp": 0.009999999776482582,
+ "tables": [
+  {
+   "file": "GLB.Ts+dSST.csv",
+   "months_expected": 1764,
+   "months_missing": 3,
+   "months_valid": 1761,
+   "partial_year_rows": 1,
+   "rows": 147,
+   "sentinel_values": "'***' (missing month)",
+   "source": "GISTEMP land-ocean global"
+  },
+  {
+   "file": "NH.Ts+dSST.csv",
+   "months_expected": 1764,
+   "months_missing": 3,
+   "months_valid": 1761,
+   "partial_year_rows": 1,
+   "rows": 147,
+   "sentinel_values": "'***' (missing month)",
+   "source": "GISTEMP land-ocean NH"
+  },
+  {
+   "file": "SH.Ts+dSST.csv",
+   "months_expected": 1764,
+   "months_missing": 3,
+   "months_valid": 1761,
+   "partial_year_rows": 1,
+   "rows": 147,
+   "sentinel_values": "'***' (missing month)",
+   "source": "GISTEMP land-ocean SH"
+  },
+  {
+   "file": "GLB.Ts.csv",
+   "months_expected": 1764,
+   "months_missing": 3,
+   "months_valid": 1761,
+   "partial_year_rows": 1,
+   "rows": 147,
+   "sentinel_values": "'***' (missing month)",
+   "source": "GISTEMP land-only global"
+  },
+  {
+   "file": "global.monthly.csv",
+   "months_expected": 2120,
+   "months_missing": 0,
+   "months_valid": 2120,
+   "partial_year_rows": 0,
+   "rows": 2120,
+   "sentinel_values": "none (no missing months in the summary series)",
+   "source": "HadCRUT5 global monthly"
+  },
+  {
+   "file": "nh.monthly.csv",
+   "months_expected": 2120,
+   "months_missing": 0,
+   "months_valid": 2120,
+   "partial_year_rows": 0,
+   "rows": 2120,
+   "sentinel_values": "none (no missing months in the summary series)",
+   "source": "HadCRUT5 NH monthly"
+  },
+  {
+   "file": "sh.monthly.csv",
+   "months_expected": 2120,
+   "months_missing": 0,
+   "months_valid": 2120,
+   "partial_year_rows": 0,
+   "rows": 2120,
+   "sentinel_values": "none (no missing months in the summary series)",
+   "source": "HadCRUT5 SH monthly"
+  },
+  {
+   "file": "global.annual.csv",
+   "months_expected": 177,
+   "months_missing": 0,
+   "months_valid": 177,
+   "partial_year_rows": 1,
+   "rows": 177,
+   "sentinel_values": "none (annual rows; the last row is a partial year and is excluded downstream)",
+   "source": "HadCRUT5 global annual"
+  },
+  {
+   "file": "nh.annual.csv",
+   "months_expected": 177,
+   "months_missing": 0,
+   "months_valid": 177,
+   "partial_year_rows": 1,
+   "rows": 177,
+   "sentinel_values": "none (annual rows; the last row is a partial year and is excluded downstream)",
+   "source": "HadCRUT5 NH annual"
+  },
+  {
+   "file": "sh.annual.csv",
+   "months_expected": 177,
+   "months_missing": 0,
+   "months_valid": 177,
+   "partial_year_rows": 1,
+   "rows": 177,
+   "sentinel_values": "none (annual rows; the last row is a partial year and is excluded downstream)",
+   "source": "HadCRUT5 SH annual"
+  }
+ ]
+}
