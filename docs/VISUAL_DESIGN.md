@@ -505,7 +505,7 @@ There are no spinners and no artificial delays anywhere.
 
 | State | Faces (lon0, lat0) | Band / data | Claim to verify before build |
 |---|---|---|---|
-| 1 "The Arctic" | (20, 72) | Northernmost band | `facts.arctic_to_global_trend_ratio_1975_latest` (DR-5) is at least 2, else the fallback title "The far north" |
+| 1 "The far north" | (20, 72) | Northernmost band (its edge and label come from `regional.bands`; with DR-7 edges this is 60-90°N, so the title never says "Arctic circle") | `facts.arctic_to_global_trend_ratio_1975_latest` (DR-5; the key name may follow the band id) is at least 2, else the fallback title "The fastest-warming band" |
 | 2 "Land and sea" | (30, 20) (Eurasia and Africa in view) | `regional.land_ocean` land-only versus land-ocean, plus the AR6 land and ocean 2011-2020 values | `facts.land_minus_landocean_gap_latest_decade` (DR-5) is above 0, else the body uses the neutral fallback |
 | 3 "The least-watched south" | (140, -62) | Southernmost band, `valid_area_share` | Descriptive. It uses `facts.south_band_first_year_valid_share_ge_50pct` (DR-5) |
 | 4 "Nowhere is cooling" | (-150, 0) (Pacific) | All bands | `facts.band_trends_all_positive_1975_latest` (DR-5) is true, else the title "Not everywhere at once" |
@@ -555,7 +555,7 @@ There are no spinners and no artificial delays anywhere.
   - `facts.json`
   - `validation.grid_vs_official_global` (footnote)
 - **Footnote** (13px, persistent once the spine shows): `SPINE = MEAN OF THE GRID CELLS SHOWN. NASA'S OFFICIAL GLOBAL SERIES DIFFERS BY AT MOST {{validation.grid_vs_official_global.gistemp.max_abs_diff}} °C.`
-- **Insight.** A planet can be read as a record. The record warms upward. The north edge of the recent strata glows brightest (amplification, visible without a chart), and the bottom of the core is mostly gaps.
+- **Insight.** A planet can be read as a record. The record warms upward. The north edge of the recent strata glows brightest (amplification, visible without a chart), and the oldest layers carry gaps at the poles. They are far sparser under HadCRUT5, which does not spread stations over 1200 km.
 - **Tags.** Cells OBSERVED (native) or DERIVED (rebased), strata DERIVED (zonal means), spine DERIVED.
 - **Transition to S05.** The core turns 90 degrees anticlockwise and slides to K3 (the bench), keyed per stratum. The series band fades in above it.
 - **States.**
@@ -945,6 +945,8 @@ Rules:
 - Numbers come only from placeholders (section 6).
 - (CHECK) claims must be verified against the artifact before build, and use their fallback if the check fails.
 - Every °C value is written with its sign and its baseline in view.
+- **Shares** in `facts.json` are fractions from 0 to 1 (`unit: share`, for example `0.8265`). They render as whole percents (`83%`), and the conversion lives in one formatter with a Vitest test.
+- Copy states only the values present in the 2026-10-10 artifacts: latest complete year 2025, GISTEMP 2025 at +1.185 °C versus 1951-1980, HadCRUT5 2025 at +1.433 °C versus 1850-1900, breaks 1912 / 1942 / 1972. Those values, read at handoff, decided the CHECK branches above. The site always renders the live artifact value, never these numbers.
 
 ### S00
 
@@ -971,7 +973,7 @@ Rules:
    - Body: `MOVING THE ZERO FROM 1951-1980 TO 1991-2020 SUBTRACTS {{facts.baseline_offset_1951_1980_to_1991_2020_gistemp}} °C FROM EVERY GISTEMP YEAR. THE WARMING TREND DOES NOT CHANGE.`
 4. Chip `RECORD 04 · THE GAPS`.
    - Title: **"Gaps stay gaps."**
-   - Body: `IN 1880 ONLY {{facts.gistemp_valid_area_share_first_year}}% OF THE SURFACE WAS MEASURED. IN {{facts.latest_complete_year}}, {{facts.gistemp_valid_area_share_latest_year}}%. WE NEVER FILL A MISSING SQUARE. IT STAYS DOTTED.`
+   - Body: `IN 1880, {{facts.gistemp_valid_area_share_first_year}}% OF THE SURFACE HAD A VALUE IN NASA'S RECORD, MOSTLY THANKS TO 1200 KM SMOOTHING. IN {{facts.latest_complete_year}}, {{facts.gistemp_valid_area_share_latest_year}}%. THE GAPS SIT AT THE POLES. WE NEVER FILL A MISSING SQUARE. IT STAYS DOTTED.`
 
 ### S03a
 
@@ -983,7 +985,7 @@ Rules:
 
 - Statement: **"Warming is not spread evenly."**
 - State titles and bodies:
-  1. **"The Arctic"**: `THE FAR NORTH HAS WARMED ABOUT {{facts.arctic_to_global_trend_ratio_1975_latest}} TIMES AS FAST AS THE GLOBE SINCE 1975.` (CHECK: at least 2, else **"The far north"** with `THE FASTEST-WARMING BAND SINCE 1975: {{band}} AT {{slope}} °C PER DECADE.`)
+  1. **"The far north"**: `{{band.label}} HAS WARMED ABOUT {{facts.arctic_to_global_trend_ratio_1975_latest}} TIMES AS FAST AS THE GLOBE SINCE 1975.` (CHECK: at least 2, else **"The fastest-warming band"** with `{{band.label}}: {{slope}} °C PER DECADE SINCE 1975.`)
   2. **"Land and sea"**: `LAND WARMS FASTER THAN THE OCEAN. IPCC AR6: LAND {{ar6_land}} °C, OCEAN {{ar6_ocean}} °C ABOVE 1850-1900 IN 2011-2020.` (CHECK: the DR-5 gap is above 0, else `LAND AND OCEAN, SIDE BY SIDE: ...`.)
   3. **"The least-watched south"**: `THE FAR SOUTH WAS BARELY MEASURED UNTIL {{facts.south_band_first_year_valid_share_ge_50pct}}. LEAST KNOWN IS NOT LEAST WARMING.`
   4. **"Nowhere is cooling"**: `EVERY LATITUDE BAND HAS WARMED SINCE 1975.` (CHECK: `facts.band_trends_all_positive_1975_latest`, else **"Not everywhere at once"** with `{{n}} OF 5 BANDS HAVE WARMED SINCE 1975 BEYOND THEIR UNCERTAINTY.`)
@@ -991,7 +993,10 @@ Rules:
 ### S04
 
 - Statement 1: **"Unwrap the planet and it becomes a record."**
-- Statement 2 (spine): **"{{facts.years_since_2010_in_gistemp_top10}} of the ten warmest years came after 2010."** (CHECK: the value is at least 5, else **"The warmest layers are on top."**)
+- Statement 2 (spine), depending on the value of `facts.years_since_2010_in_gistemp_top10`:
+  - 10: **"The ten warmest layers all came after 2010."** (the value in the 2026-10-10 artifacts)
+  - 5-9: **"{{n}} of the ten warmest layers came after 2010."**
+  - 4 or less: **"The warmest layers are on top."**
 - Phase captions: `1 · 16,200 SQUARES`, `2 · UNWRAPPED, EQUAL AREA`, `3 · EACH ROW AVERAGED`, `4 · ONE YEAR = ONE LAYER`, `5 · {{n}} LAYERS, OLDEST AT THE BOTTOM`.
 - Footnote: as in S04 above.
 
@@ -1016,7 +1021,7 @@ Rules:
 1. `CITIES ARE HOTTER. ISN'T THIS JUST URBAN HEAT?` / `THE OCEAN HAS NO CITIES AND IT WARMED TOO: +{{ar6.observed_published[ocean].best_estimate_c}} °C ({{low}} TO {{high}}) IN 2011-2020 VS 1850-1900, AS ASSESSED BY THE IPCC.`
 2. `DO THE TWO AGENCIES EVEN AGREE?` / `YEAR TO YEAR, CORRELATION {{facts.gistemp_hadcrut5_annual_corr}}, TYPICAL GAP {{facts.gistemp_hadcrut5_annual_rmsd}} °C. THEIR LONG-RUN TRENDS DIFFER BY {{facts.gistemp_hadcrut5_trend_gap_1880_latest}} °C PER DECADE. WE SHOW THE DISAGREEMENT, NOT AN AVERAGE.`
 3. `THE NUMBER WAS DIFFERENT LAST TIME I LOOKED.` / `TWO REASONS. THE ZERO: EVERY ANOMALY IS RELATIVE TO A CHOSEN PERIOD, AND WE NAME IT EVERYWHERE. THE VINTAGE: AGENCIES REVISE PAST MONTHS. THIS SITE USES FILES DATED {{meta.sources.gistemp.last_modified}}.`
-4. `WHAT ABOUT THE PLACES NOBODY MEASURED?` / `{{facts.gistemp_missing_cells_total_share}}% OF ALL SQUARE-MONTHS ARE MISSING. THEY STAY MISSING. AVERAGES USE MEASURED SQUARES ONLY, AND THE MEASURED SHARE IS ALWAYS SHOWN.`
+4. `WHAT ABOUT THE PLACES NOBODY MEASURED?` / `{{facts.gistemp_missing_cells_total_share}}% OF ALL SQUARE-MONTHS IN NASA'S GRID ARE MISSING. THEY STAY MISSING. AVERAGES USE MEASURED SQUARES ONLY, AND THE MEASURED SHARE IS ALWAYS SHOWN.` (CHECK: the fact's `note` confirms it counts cell-months, else say `SQUARES`.)
 5. `IS IT SPEEDING UP?` / `EXPLORATORY ONLY: THE BEST PIECEWISE FIT BENDS AT {{facts.changepoint_gistemp_selected_breaks}}. ROLLING 30-YEAR TRENDS ARE SHOWN WITH THEIR UNCERTAINTY. THIS IS NOT A FORMAL TEST FOR ACCELERATION.`
 6. `CO2 AND TEMPERATURE RISE TOGETHER. ISN'T THAT PROOF?` / `NO. TWO RISING LINES CORRELATE ({{facts.co2_temperature_corr_levels}}) EVEN WITHOUT A LINK. YEAR-TO-YEAR CHANGES CORRELATE {{facts.co2_temperature_corr_first_differences}}. ASSOCIATION, NOT ATTRIBUTION. ATTRIBUTION COMES FROM PHYSICS, AS ASSESSED IN IPCC AR6.`
 7. `HOW SURE IS THAT TREND?` / `NEIGHBOURING YEARS ARE NOT INDEPENDENT, SO A NAIVE INTERVAL IS TOO NARROW: ±{{facts.trend_gistemp_1975_latest_naive_ci_halfwidth}} NAIVE VERSUS ±{{facts.trend_gistemp_1975_latest_ar1_ci_halfwidth}} ADJUSTED, °C PER DECADE. IN A SIMULATION WITH KNOWN ANSWERS, THE ADJUSTED INTERVAL COVERED THE TRUTH {{validation.trend_ci_simulation.coverage_ar1}} OF THE TIME.` (The simulation line carries a SIMULATED chip.)
@@ -1075,6 +1080,12 @@ EXISTS means the value is in a contracted artifact today. DR means a data reques
 
 ### 6.2 Data requests
 
+**Status at handoff (2026-10-10).** I checked this against the data agent's work in progress, not against committed artifacts:
+
+- **Implemented in the working tree** (`pipelines/modeling/build.py`, `analytics/zonal.py`, `analytics/geo.py`), but not yet committed: DR-1 (decadal intro grid), DR-2 (coastlines), DR-3 (cell trend grids), DR-4 (`analytics/zonal.py` with `MIN_ROW_VALID = 0.20`, plus a zonal fixture), DR-5 (band series in `trends.json`), DR-7 (band edges at multiples of 10 degrees) and DR-9 (land fraction).
+- **Resolved by the published artifacts:** DR-8. `trends.periods` = 1850 / 1880 / 1900 / 1951 / 1975 / 1991 to 2025.
+- **Still open:** DR-6, DR-10, and the four S03b `facts` keys in DR-5. The frontend must re-check all of these against the committed artifacts.
+
 | ID | Request | Why the design needs it | Size |
 |---|---|---|---|
 | DR-1 | `grid_gistemp_2deg_intro.i8.bin.gz` plus a sidecar: the same encoding as the full grid, years {1880, 1890, ..., 2020, latest complete} only, with their layer years listed | S00 must run its year sweep without waiting for the 0.6 MB full grid (the LCP and TBT budget) | about 70-90 KB gz |
@@ -1084,7 +1095,7 @@ EXISTS means the value is in a contracted artifact today. DR means a data reques
 | DR-5 | Add the 5 `regional.bands` series (and land-only versus land-ocean) to `trends.json` for the standard periods, plus `facts`: `arctic_to_global_trend_ratio_1975_latest`, `land_minus_landocean_gap_latest_decade`, `south_band_first_year_valid_share_ge_50pct`, `band_trends_all_positive_1975_latest` (bool, CI lower bound above 0) | The S03b ledger and its four (CHECK) claims | small |
 | DR-6 | `facts.latest_year_rank_gistemp` (and the HadCRUT5 equivalent), and the `ar6` observed-published entries for land and ocean exposed as facts | S03a default readout on first paint and S07 answer 1, without client lookup | tiny |
 | DR-7 | `regional.bands` edges that fall on **both** grids' cell boundaries (multiples of 10 degrees, for example 90-60N, 60-30N, 30N-30S, 30-60S, 60-90S), with ids and labels | Band outlines on the globe must coincide with whole cells on 2° and 5° grids, or the outline would cut cells and the readout would not equal the rendered cells | n/a |
-| DR-8 | Confirm `trends.periods` includes ids for 1880, 1951, 1975 and 1991 to latest for the GISTEMP global series (it lists at least 5) | The parity test for the S05 client trend uses these as fixtures | n/a |
+| DR-8 (resolved) | Confirm `trends.periods` includes 1880, 1951, 1975 and 1991 to latest. Confirmed: `1850_latest`, `1880_latest`, `1900_latest`, `1951_latest`, `1975_latest`, `1991_latest` | The S03b period chips and the S05 trend parity fixtures use these ids | n/a |
 | DR-9 (optional) | Land fraction per 2° cell (Natural Earth 110m land, rasterized, Int8 0-100) | Enables LAND / OCEAN regions in OBS. If declined, OBS offers latitude bands only and land/ocean stays a series comparison in S03b | 10 KB gz or less |
 | DR-10 (optional) | The current partial year's YTD mean and month count per source in `facts` (`gistemp_ytd_{{year}}_mean_1951_1980`, `gistemp_ytd_months`) | The hollow `YTD` marker above the core. If declined, the marker is omitted | tiny |
 
