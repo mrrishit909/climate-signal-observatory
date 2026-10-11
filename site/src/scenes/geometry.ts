@@ -58,7 +58,8 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = typeo
   // short desktop (< 820 high): the bench rises so the result block and its tags stay above the nav
   const bench = cls === "D" ? (h < 820 ? { x0: 0.43 * w, x1: 0.43 * w + Math.floor((0.49 * w) / n) * n, y0: 0.57 * h, y1: 0.67 * h, series: [0.15 * h, 0.53 * h] as [number, number] }
     : { x0: 0.43 * w, x1: 0.43 * w + Math.floor((0.49 * w) / n) * n, y0: 0.622 * h, y1: 0.733 * h, series: [0.167 * h, 0.578 * h] as [number, number] })
-    : cls === "T" ? { x0: 0.156 * w, x1: 0.156 * w + Math.floor((0.69 * w) / n) * n, y0: 0.605 * h, y1: 0.684 * h, series: [0.322 * h, 0.586 * h] as [number, number] }
+    : cls === "T" ? { x0: 0.156 * w, x1: 0.156 * w + Math.floor((0.844 * w - 48) / n) * n, // whole px per year up to 48px from the edge (a 15px scrollbar must not drop a px)
+      y0: 0.605 * h, y1: 0.684 * h, series: [0.322 * h, 0.586 * h] as [number, number] }
     : { x0: 19, x1: 19 + Math.floor((w - 38) / n) * n, y0: 0.474 * h, y1: 0.54 * h, series: [0.085 * h, 0.45 * h] as [number, number] };
   const dock = cls === "D" ? { x0: 0.826 * w, x1: 0.826 * w + 120, y0: k0(), y1: k0() + n * H, lying: false }
     : cls === "T" ? { x0: 0.833 * w, x1: 0.833 * w + 80, y0: k0(), y1: k0() + n * H, lying: false }
