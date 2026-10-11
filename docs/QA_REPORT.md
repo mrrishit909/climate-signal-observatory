@@ -312,7 +312,7 @@ Changes to the probes since pass 1:
 - The error probe adds validation.json and agreement.json.
 - Five new single-purpose probes: `deck.mjs`, `ring.mjs`, `rmobs.mjs`, `rm-landings.mjs` and `p02-pair.py` (recomposed).
 
-**Verdict: FAILED.** 7 of the 9 pass-1 majors are closed and verified from my own frames. D-003 is closed with 0 of 56
+**Verdict: FAILED.** All 9 pass-1 majors are closed and verified from my own frames. D-001 is closed, with one regression split out as D-020. D-003 is closed with 0 of 56
 classic-scrollbar shots mismatched, and D-009 with mobile LCP 1956 to 1968 ms. **3 major defects remain, all new to the register.**
 
 1. **D-020** (regression from the D-001 fix). The S01 error line at desktop sits under the hero headline, which makes it unreadable and blocks RETRY for the pointer.
