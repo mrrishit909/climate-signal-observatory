@@ -9,5 +9,5 @@ Owner of this file: orchestrator only.
 | 18-19 Shell + prototype (S00 G0 orb, S03a, S04 unwrap) | PASSED with fixes (orchestrator: tsc, lint, Vitest 67/67; D/M sheets read; agent e2e 31 passed) | 90743b9..492a324; artifacts/evidence/stage-a/ |
 | 20-22 Stage B (all remaining scenes, OBS) + fixes | PASSED (orchestrator: tsc, lint, Vitest 117/117; stage-b sheet read; agent e2e 56 passed) | 6f253d8, e39b935; artifacts/evidence/stage-b/ |
 | Audit fixes (cross-project review 1) | PASSED (orchestrator: tsc, lint, Vitest 117/117; sheet read) | 8b9ec40; artifacts/evidence/fix-a1/ |
-| 23-28 Independent QA | FAILED (P03-QA-002: 9 majors; 34/34 numbers honest; real-GPU p95 10-11 ms; mobile LCP 2555 ms) -> FIXA-002 RUNNING -> QA pass 2 | 53240ce, fbc84ad, 2cdbf78 |
+| 23-28 Independent QA | FAILED (P03-QA-002: 9 majors; 34/34 numbers honest; real-GPU p95 10-11 ms; mobile LCP 2555 ms) -> FIXA-002 PASSED (de26c40..405bc5d; Vitest 130/130; builder mobile LCP 1957 ms) -> QA pass 2 RUNNING | 53240ce, fbc84ad, 2cdbf78 |
 | 29-30 | NOT_STARTED | |
