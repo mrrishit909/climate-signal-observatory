@@ -1,0 +1,2348 @@
+[
+ {
+  "vp": "1920x1080",
+  "state": "signal@0.78",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [
+   "\"THE\" x \"ITS\" (29x3px @114,504)",
+   "\"PLANET\" x \"1951-1980\" (59x3px @153,504)",
+   "\"AVERAGED\" x \"1951-1980\" (20x3px @221,504)",
+   "\"AVERAGED\" x \"NORMAL.\" (49x3px @221,504)",
+   "\"+1.19\" x \"NORMAL.\" (10x3px @309,504)",
+   "\"426.07\" x \"MEASURED,\" (59x3px @114,647)",
+   "\"PPM\" x \"MEASURED,\" (20x3px @182,647)",
+   "\"OF\" x \"NOT\" (20x3px @221,647)",
+   "\"CO2\" x \"MODELLED.\" (29x3px @251,647)",
+   "\"IN\" x \"MODELLED.\" (20x3px @290,647)",
+   "\"THE\" x \"MODELLED.\" (19x3px @319,647)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "record@0.14",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "record@0.45",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "record@0.82",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -292..-126 of 1920",
+   "\"A cell, not a thermometer.\" -300..-137 of 1920",
+   "\"A cell, not a thermometer.\" -300..-48 of 1920",
+   "\"LAT\" -300..-277 of 1920",
+   "\"LON\" -138..-115 of 1920",
+   "\"YEAR\" -300..-269 of 1920",
+   "\"ANOMALY (0.1 °C STEPS)\" -138..-23 of 1920",
+   "\"ANOMALY (0.1 °C STEPS)\" -138..-92 of 1920",
+   "\"MISSING = -128\" -300..-192 of 1920",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -300..-15 of 1920",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -300..7 of 1920",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -300..-4 of 1920",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -300..-36 of 1920",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -300..-113 of 1920",
+   "\"OBSERVED\" -277..-210 of 1920",
+   "\"·\" -202..-186 of 1920",
+   "\"GISTEMP v4 SIDECAR\" -186..-36 of 1920"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "1920x1080",
+  "state": "years@0.5",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "years@0.96",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.1",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.35",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.6",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "regions@0.85",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.45",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "strata@0.89",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "zero@0.3",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.42",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "futures@0.9",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.05",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.3",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.6",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1920x1080",
+  "state": "evidence@0.95",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1920x1080",
+  "state": "observatory@landing",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.6",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1920x1080",
+  "state": "surface@0.98",
+  "cw": 1920,
+  "scrollW": 1920,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "signal@0.78",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [
+   "\"THE\" x \"ITS\" (29x3px @114,504)",
+   "\"PLANET\" x \"1951-1980\" (59x3px @153,504)",
+   "\"AVERAGED\" x \"1951-1980\" (20x3px @221,504)",
+   "\"AVERAGED\" x \"NORMAL.\" (49x3px @221,504)",
+   "\"+1.19\" x \"NORMAL.\" (10x3px @309,504)",
+   "\"426.07\" x \"MEASURED,\" (59x3px @114,647)",
+   "\"PPM\" x \"MEASURED,\" (20x3px @182,647)",
+   "\"OF\" x \"NOT\" (20x3px @221,647)",
+   "\"CO2\" x \"MODELLED.\" (29x3px @251,647)",
+   "\"IN\" x \"MODELLED.\" (20x3px @290,647)",
+   "\"THE\" x \"MODELLED.\" (19x3px @319,647)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "record@0.14",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "record@0.45",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "record@0.82",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -532..-366 of 1440",
+   "\"A cell, not a thermometer.\" -540..-377 of 1440",
+   "\"A cell, not a thermometer.\" -540..-288 of 1440",
+   "\"LAT\" -540..-517 of 1440",
+   "\"LON\" -378..-355 of 1440",
+   "\"YEAR\" -540..-509 of 1440",
+   "\"ANOMALY (0.1 °C STEPS)\" -378..-263 of 1440",
+   "\"ANOMALY (0.1 °C STEPS)\" -378..-332 of 1440",
+   "\"MISSING = -128\" -540..-432 of 1440",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -540..-255 of 1440",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -540..-233 of 1440",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -540..-244 of 1440",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -540..-276 of 1440",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -540..-353 of 1440",
+   "\"OBSERVED\" -517..-450 of 1440",
+   "\"·\" -442..-426 of 1440",
+   "\"GISTEMP v4 SIDECAR\" -426..-276 of 1440",
+   "\"RECORD 02 · TWO AGENCIES\" -164..36 of 1440",
+   "\"Two agencies, two methods.\" -172..56 of 1440",
+   "\"Two agencies, two methods.\" -172..51 of 1440",
+   "\"90\" -172..-158 of 1440",
+   "\"×\" -158..-137 of 1440",
+   "\"180\" -137..-116 of 1440",
+   "\"·\" -116..-95 of 1440",
+   "\"2\" -95..-87 of 1440",
+   "\"° · FROM\" -87..-31 of 1440",
+   "\"1880\" -172..-144 of 1440",
+   "\"· NATIVE\" -144..-73 of 1440",
+   "\"1951-1980\" -73..-38 of 1440",
+   "\"1951-1980\" -172..-144 of 1440",
+   "\"36\" -10..4 of 1440",
+   "\"1850\" -10..18 of 1440",
+   "\"1961-1990\" -10..18 of 1440",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -172..124 of 1440",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -172..92 of 1440",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -172..59 of 1440",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -172..103 of 1440",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -172..135 of 1440",
+   "\"OBSERVED\" -149..-82 of 1440",
+   "\"·\" -74..-58 of 1440",
+   "\"GRID SIDECARS\" -58..50 of 1440"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "state": "years@0.5",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "years@0.96",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.1",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.35",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.6",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "regions@0.85",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.45",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "strata@0.89",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "zero@0.3",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.42",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "futures@0.9",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.05",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.3",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.6",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "state": "evidence@0.95",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL",
+   "\"GRIDS ARE QUANTIZED TO 0.1 C INT8 (MAX E\" in UL",
+   "\"BERKELEY EARTH WAS NOT USED (CC BY-NC); \" in UL"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "state": "observatory@landing",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.6",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1440x900",
+  "state": "surface@0.98",
+  "cw": 1440,
+  "scrollW": 1440,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "signal@0.78",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"THE\" x \"ITS\" (29x3px @114,504)",
+   "\"PLANET\" x \"1951-1980\" (59x3px @153,504)",
+   "\"AVERAGED\" x \"1951-1980\" (20x3px @221,504)",
+   "\"AVERAGED\" x \"NORMAL.\" (49x3px @221,504)",
+   "\"+1.19\" x \"NORMAL.\" (10x3px @309,504)",
+   "\"426.07\" x \"MEASURED,\" (59x3px @114,647)",
+   "\"PPM\" x \"MEASURED,\" (20x3px @182,647)",
+   "\"OF\" x \"NOT\" (20x3px @221,647)",
+   "\"CO2\" x \"MODELLED.\" (29x3px @251,647)",
+   "\"IN\" x \"MODELLED.\" (20x3px @290,647)",
+   "\"THE\" x \"MODELLED.\" (19x3px @319,647)",
+   "\"MEASURED,\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (88x12px @114,665)",
+   "\"NOT\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (29x12px @212,665)",
+   "\"MODELLED.\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (88x12px @251,665)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "record@0.14",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "record@0.45",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -83..84 of 1024",
+   "\"A cell, not a thermometer.\" -91..72 of 1024",
+   "\"A cell, not a thermometer.\" -91..161 of 1024",
+   "\"LAT\" -91..-68 of 1024",
+   "\"YEAR\" -91..-60 of 1024",
+   "\"MISSING = -128\" -91..17 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -91..195 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -91..217 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -91..206 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -91..173 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -91..96 of 1024",
+   "\"OBSERVED\" -68..-1 of 1024"
+  ],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "record@0.82",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -740..-574 of 1024",
+   "\"A cell, not a thermometer.\" -748..-585 of 1024",
+   "\"A cell, not a thermometer.\" -748..-496 of 1024",
+   "\"LAT\" -748..-725 of 1024",
+   "\"LON\" -586..-563 of 1024",
+   "\"YEAR\" -748..-717 of 1024",
+   "\"ANOMALY (0.1 °C STEPS)\" -586..-471 of 1024",
+   "\"ANOMALY (0.1 °C STEPS)\" -586..-540 of 1024",
+   "\"MISSING = -128\" -748..-640 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -748..-463 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -748..-441 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -748..-452 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -748..-484 of 1024",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -748..-561 of 1024",
+   "\"OBSERVED\" -725..-658 of 1024",
+   "\"·\" -650..-634 of 1024",
+   "\"GISTEMP v4 SIDECAR\" -634..-484 of 1024",
+   "\"RECORD 02 · TWO AGENCIES\" -372..-172 of 1024",
+   "\"Two agencies, two methods.\" -380..-152 of 1024",
+   "\"Two agencies, two methods.\" -380..-157 of 1024",
+   "\"90\" -380..-366 of 1024",
+   "\"×\" -366..-345 of 1024",
+   "\"180\" -345..-324 of 1024",
+   "\"·\" -324..-303 of 1024",
+   "\"2\" -303..-295 of 1024",
+   "\"° · FROM\" -295..-239 of 1024",
+   "\"1880\" -380..-352 of 1024",
+   "\"· NATIVE\" -352..-281 of 1024",
+   "\"1951-1980\" -281..-246 of 1024",
+   "\"1951-1980\" -380..-352 of 1024",
+   "\"36\" -218..-204 of 1024",
+   "\"×\" -204..-183 of 1024",
+   "\"72\" -183..-169 of 1024",
+   "\"·\" -169..-148 of 1024",
+   "\"5\" -148..-141 of 1024",
+   "\"° · FROM\" -141..-84 of 1024",
+   "\"1850\" -218..-190 of 1024",
+   "\"· NATIVE\" -190..-119 of 1024",
+   "\"1961-1990\" -119..-84 of 1024",
+   "\"1961-1990\" -218..-190 of 1024",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -380..-84 of 1024",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -380..-116 of 1024",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -380..-149 of 1024",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -380..-105 of 1024",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -380..-73 of 1024",
+   "\"OBSERVED\" -357..-290 of 1024",
+   "\"·\" -282..-266 of 1024",
+   "\"GRID SIDECARS\" -266..-158 of 1024",
+   "\"RECORD 03 · THE ZERO\" -4..162 of 1024",
+   "\"Every anomaly needs a zero.\" -12..235 of 1024",
+   "\"Every anomaly needs a zero.\" -12..197 of 1024",
+   "\"1850-1900\" -12..51 of 1024",
+   "\"1850\" -12..14 of 1024",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -12..273 of 1024",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -12..284 of 1024",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -12..295 of 1024",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -12..109 of 1024"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "years@0.5",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"-3\" x \"SIGNAL\" (12x7px @120,726)",
+   "\"-2\" x \"RECORD\" (5x7px @150,726)",
+   "\"-1\" x \"RECORD\" (12x7px @180,726)",
+   "\"-0.5\" x \"RECORD\" (3x7px @204,726)",
+   "\"-0.5\" x \"YEARS\" (5x7px @204,726)",
+   "\"-0.2\" x \"YEARS\" (24x7px @234,726)",
+   "\"+0.2\" x \"REGIONS\" (8x7px @264,726)",
+   "\"+0.5\" x \"REGIONS\" (24x7px @294,726)",
+   "\"+1\" x \"REGIONS\" (9x7px @330,726)",
+   "\"+2\" x \"STRATA\" (12x7px @360,726)",
+   "\"+3\" x \"STRATA\" (12x7px @390,726)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"NOT MEASURED\" in stage",
+   "\"°C VS THE CHOSEN NORMAL\" in stage"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "years@0.96",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"-3\" x \"SIGNAL\" (12x7px @120,726)",
+   "\"-2\" x \"RECORD\" (5x7px @150,726)",
+   "\"-1\" x \"RECORD\" (12x7px @180,726)",
+   "\"-0.5\" x \"RECORD\" (3x7px @204,726)",
+   "\"-0.5\" x \"YEARS\" (5x7px @204,726)",
+   "\"-0.2\" x \"YEARS\" (24x7px @234,726)",
+   "\"+0.2\" x \"REGIONS\" (8x7px @264,726)",
+   "\"+0.5\" x \"REGIONS\" (24x7px @294,726)",
+   "\"+1\" x \"REGIONS\" (9x7px @330,726)",
+   "\"+2\" x \"STRATA\" (12x7px @360,726)",
+   "\"+3\" x \"STRATA\" (12x7px @390,726)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"NOT MEASURED\" in stage",
+   "\"°C VS THE CHOSEN NORMAL\" in stage"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.1",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.35",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.6",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "regions@0.85",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.45",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "strata@0.89",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"S\" x \"SPINE = MEAN OF THE GRID CELLS SHOWN. NA\" (8x8px @402,654)",
+   "\"EQ\" x \"SPINE = MEAN OF THE GRID CELLS SHOWN. NA\" (8x8px @504,654)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "zero@0.3",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"DRAG THE CLAMP TO CHANGE WHAT COUNTS AS \" x \"0.0 °C = 1951-1980 MEAN\" (12x14px @96,293)",
+   "\"RESET\" x \"OBSERVED\" (21x6px @96,632)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.42",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"· HADCRUT5 ONLY\" x \"1950\" (28x14px @411,437)",
+   "\"°C VS 1850-1900\" x \"MOTION ON\" (75x7px @850,725)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "futures@0.9",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"°C VS 1850-1900\" x \"MOTION ON\" (75x7px @850,725)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.05",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"TREND INTERVALS ASSUME AR(1) RESIDUALS (\" in UL",
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.3",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (55x12px @336,300)",
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (55x5px @336,300)",
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (71x11px @336,317)",
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (71x6px @336,317)",
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (80x9px @336,335)",
+   "\"YEAR TO YEAR, CORRELATION 0.992, TYPICAL\" x \"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" (80x8px @336,335)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"TREND INTERVALS ASSUME AR(1) RESIDUALS (\" in UL",
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.6",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"How we know.\" x \"THE RECORD / SINCE 1850\" (32x13px @96,83)",
+   "\"How we know.\" x \"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" (32x12px @96,83)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"changepoints.json\" (61x16px @336,115)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"SHA256\" (36x14px @336,133)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"SHA256\" (54x2px @336,150)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"d6f39c57\" (48x2px @336,150)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"GENERATED\" (77x11px @336,150)",
+   "\"11% OF ALL SQUARE-MONTHS IN NASA'S GRID \" x \"2026-10-11\" (25x11px @336,150)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (89x6px @338,467)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (89x12px @338,467)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (97x4px @338,485)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (97x14px @338,485)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (63x2px @338,504)",
+   "\"EXPLORATORY ONLY: THE BEST PIECEWISE FIT\" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (63x16px @338,504)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"TREND INTERVALS ASSUME AR(1) RESIDUALS (\" in UL",
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "evidence@0.95",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"How we know.\" x \"A SKEPTIC / NOW\" (55x13px @96,83)",
+   "\"How we know.\" x \"CO2 AND TEMPERATURE RISE TOGETHER. ISN'T\" (55x17px @96,83)",
+   "\"How we know.\" x \"CO2 AND TEMPERATURE RISE TOGETHER. ISN'T\" (55x8px @96,83)",
+   "\"NO. TWO RISING LINES CORRELATE (0.95) EV\" x \"LIMITATIONS (\" (40x10px @336,194)",
+   "\"NO. TWO RISING LINES CORRELATE (0.95) EV\" x \"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" (71x16px @336,212)",
+   "\"NO. TWO RISING LINES CORRELATE (0.95) EV\" x \"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" (80x16px @336,229)",
+   "\"NO. TWO RISING LINES CORRELATE (0.95) EV\" x \"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" (55x15px @336,247)",
+   "\"NO. TWO RISING LINES CORRELATE (0.95) EV\" x \"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" (55x2px @336,247)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" (72x12px @338,423)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" (38x6px @338,423)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" (38x10px @338,441)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (21x14px @338,460)",
+   "\"NEIGHBOURING YEARS ARE NOT INDEPENDENT, \" x \"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" (21x4px @338,460)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"TREND INTERVALS ASSUME AR(1) RESIDUALS (\" in UL",
+   "\"CHANGE-POINT RESULTS ARE EXPLORATORY; A \" in UL",
+   "\"CO2 VS TEMPERATURE IS ASSOCIATION ONLY; \" in UL",
+   "\"AR6 RANGES ARE PUBLISHED IPCC ASSESSED V\" in UL"
+  ]
+ },
+ {
+  "vp": "1024x768",
+  "state": "observatory@landing",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"Any year, any place, any zero.\" x \"VIEW\" (33x6px @96,61)",
+   "\"Any year, any place, any zero.\" x \"GLOBE\" (38x16px @96,61)",
+   "\"Any year, any place, any zero.\" x \"MAP\" (18x16px @96,61)",
+   "\"DRAG THE CORE TO MOVE THROUGH TIME. DRAG\" x \"GISTEMP 2°\" (26x16px @96,129)",
+   "\"+1.19 °C\" x \"1951-1980\" (5x13px @490,175)",
+   "\"· MEASURED 99%\" x \"1951-1980\" (19x13px @567,175)",
+   "\"1951-1980\" x \"SIGNAL\" (31x7px @104,722)",
+   "\"(cos-latitude weighted mean of measured \" x \"SIGNAL\" (6x7px @135,722)",
+   "\"(cos-latitude weighted mean of measured \" x \"RECORD\" (50x7px @135,722)",
+   "\"(cos-latitude weighted mean of measured \" x \"YEARS\" (19x7px @135,722)",
+   "\"(cos-latitude weighted mean of measured \" x \"SIGNAL\" (37x11px @104,738)",
+   "\"(cos-latitude weighted mean of measured \" x \"RECORD\" (50x11px @104,738)",
+   "\"(cos-latitude weighted mean of measured \" x \"YEARS\" (42x11px @104,738)",
+   "\"(cos-latitude weighted mean of measured \" x \"REGIONS\" (16x11px @104,738)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.6",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "1024x768",
+  "state": "surface@0.98",
+  "cw": 1024,
+  "scrollW": 1024,
+  "overlaps": [
+   "\"→ OPEN THE OBSERVATORY\" x \"DATA: NASA GISS GISTEMP v4 · MET OFFICE \" (197x4px @96,676)",
+   "\"→ OPEN THE OBSERVATORY\" x \"DATA: NASA GISS GISTEMP v4 · MET OFFICE \" (197x14px @96,676)",
+   "\"→ READ THE METHODOLOGY\" x \"SIGNAL\" (45x3px @96,745)",
+   "\"→ READ THE METHODOLOGY\" x \"RECORD\" (50x3px @96,745)",
+   "\"→ READ THE METHODOLOGY\" x \"YEARS\" (42x3px @96,745)",
+   "\"→ READ THE METHODOLOGY\" x \"REGIONS\" (13x3px @96,745)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "signal@0.78",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [
+   "\"THE\" x \"ABOVE\" (29x3px @66,442)",
+   "\"PLANET\" x \"ABOVE\" (10x3px @105,442)",
+   "\"PLANET\" x \"ITS\" (29x3px @105,442)",
+   "\"AVERAGED\" x \"1951-1980\" (78x3px @173,442)",
+   "\"+1.19\" x \"NORMAL.\" (49x3px @261,442)",
+   "\"°C\" x \"NORMAL.\" (10x3px @320,442)",
+   "\"426.07\" x \"MEASURED,\" (59x3px @415,442)",
+   "\"PPM\" x \"MEASURED,\" (20x3px @484,442)",
+   "\"OF\" x \"NOT\" (20x3px @523,442)",
+   "\"CO2\" x \"MODELLED.\" (29x3px @552,442)",
+   "\"IN\" x \"MODELLED.\" (20x3px @591,442)",
+   "\"THE\" x \"MODELLED.\" (19x3px @620,442)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.14",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.45",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -144..22 of 768",
+   "\"A cell, not a thermometer.\" -152..-23 of 768",
+   "\"A cell, not a thermometer.\" -152..46 of 768",
+   "\"LAT\" -152..-129 of 768",
+   "\"LON\" -10..13 of 768",
+   "\"YEAR\" -152..-121 of 768",
+   "\"ANOMALY (0.1 °C STEPS)\" -10..105 of 768",
+   "\"ANOMALY (0.1 °C STEPS)\" -10..36 of 768",
+   "\"MISSING = -128\" -152..-45 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -152..86 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -152..104 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -152..95 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -152..68 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -152..3 of 768",
+   "\"OBSERVED\" -129..-63 of 768",
+   "\"·\" -55..-38 of 768",
+   "\"GISTEMP v4 SIDECAR\" -38..112 of 768"
+  ],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "record@0.82",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -728..-562 of 768",
+   "\"A cell, not a thermometer.\" -736..-607 of 768",
+   "\"A cell, not a thermometer.\" -736..-538 of 768",
+   "\"LAT\" -736..-713 of 768",
+   "\"LON\" -594..-571 of 768",
+   "\"YEAR\" -736..-705 of 768",
+   "\"ANOMALY (0.1 °C STEPS)\" -594..-479 of 768",
+   "\"ANOMALY (0.1 °C STEPS)\" -594..-548 of 768",
+   "\"MISSING = -128\" -736..-628 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -736..-498 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -736..-480 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -736..-489 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -736..-516 of 768",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -736..-580 of 768",
+   "\"OBSERVED\" -713..-646 of 768",
+   "\"·\" -638..-622 of 768",
+   "\"GISTEMP v4 SIDECAR\" -622..-472 of 768",
+   "\"RECORD 02 · TWO AGENCIES\" -400..-200 of 768",
+   "\"Two agencies, two methods.\" -408..-229 of 768",
+   "\"Two agencies, two methods.\" -408..-233 of 768",
+   "\"90\" -408..-394 of 768",
+   "\"×\" -394..-373 of 768",
+   "\"180\" -373..-352 of 768",
+   "\"·\" -352..-331 of 768",
+   "\"2\" -331..-323 of 768",
+   "\"° · FROM\" -323..-302 of 768",
+   "\"° · FROM\" -408..-373 of 768",
+   "\"1880\" -373..-345 of 768",
+   "\"· NATIVE\" -345..-281 of 768",
+   "\"1951-1980\" -408..-345 of 768",
+   "\"36\" -266..-252 of 768",
+   "\"×\" -252..-231 of 768",
+   "\"72\" -231..-217 of 768",
+   "\"·\" -217..-196 of 768",
+   "\"5\" -196..-189 of 768",
+   "\"° · FROM\" -189..-167 of 768",
+   "\"° · FROM\" -266..-231 of 768",
+   "\"1850\" -231..-203 of 768",
+   "\"· NATIVE\" -203..-139 of 768",
+   "\"1961-1990\" -266..-203 of 768",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -408..-155 of 768",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -408..-373 of 768",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -408..-143 of 768",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -408..-152 of 768",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -408..-161 of 768",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -408..-188 of 768",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -408..-326 of 768",
+   "\"OBSERVED\" -385..-318 of 768",
+   "\"·\" -310..-294 of 768",
+   "\"GRID SIDECARS\" -294..-186 of 768",
+   "\"RECORD 03 · THE ZERO\" -72..94 of 768",
+   "\"Every anomaly needs a zero.\" -80..114 of 768",
+   "\"Every anomaly needs a zero.\" -80..84 of 768",
+   "\"1850-1900\" -80..-17 of 768",
+   "\"· NOT FOR GISTEMP\" -17..110 of 768",
+   "\"1850\" -80..-54 of 768",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -80..158 of 768",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -80..167 of 768",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -80..176 of 768",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -80..21 of 768",
+   "\"DERIVED\" -57..1 of 768"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.5",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "years@0.96",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.1",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.35",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.6",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "regions@0.85",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.45",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "strata@0.89",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "zero@0.3",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"0.0 °C = 1951-1980 MEAN\" in stage"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.42",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "futures@0.9",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.05",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"EVIDENCE\" (67x10px @62,990)",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"REPLAY INTRO\" (63x10px @62,990)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.3",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"EVIDENCE\" (67x10px @62,990)",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"REPLAY INTRO\" (63x10px @62,990)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.6",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"EVIDENCE\" (67x10px @62,990)",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" x \"REPLAY INTRO\" (63x10px @62,990)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "evidence@0.95",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (12x12px @90,743)",
+   "\"DERIVED\" x \"trends.json\" (21x12px @111,771)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL",
+   "\"ANNUAL-MEAN ANOMALIES ARE NOT EXTREME-EV\" in UL",
+   "\"TREND INTERVALS ASSUME AR(1) RESIDUALS (\" in UL"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "state": "observatory@landing",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"LAYER\" in obs-rail ",
+   "\"ANOMALY\" in obs-rail ",
+   "\"TREND\" in obs-rail ",
+   "\"+2 °C\" in obs-rail ",
+   "\"COVERAGE\" in obs-rail ",
+   "\"REGION\" in obs-rail ",
+   "\"ALL\" in obs-rail ",
+   "\"60N-90N\" in obs-rail ",
+   "\"30N-60N\" in obs-rail ",
+   "\"30S-30N\" in obs-rail ",
+   "\"60S-30S\" in obs-rail ",
+   "\"90S-60S\" in obs-rail "
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.6",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "768x1024",
+  "state": "surface@0.98",
+  "cw": 768,
+  "scrollW": 768,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "signal@0.78",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,584)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,584)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,584)",
+   "\"426.07\" x \"MODELLED.\" (48x3px @24,691)",
+   "\"426.07\" x \"OBSERVED\" (33x8px @24,691)",
+   "\"PPM\" x \"MODELLED.\" (16x3px @80,691)",
+   "\"PPM\" x \"OBSERVED\" (21x8px @80,691)",
+   "\"MODELLED.\" x \"OBSERVED\" (56x11px @24,706)",
+   "\"OBSERVED\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @45,734)",
+   "\"·\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (14x14px @109,734)",
+   "\"NOAA GML\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @123,734)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.14",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @69,458)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.45",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-337,458)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -329..-163 of 390",
+   "\"A cell, not a thermometer.\" -337..-226 of 390",
+   "\"A cell, not a thermometer.\" -337..-165 of 390",
+   "\"LAT\" -337..-314 of 390",
+   "\"LON\" -205..-182 of 390",
+   "\"YEAR\" -337..-307 of 390",
+   "\"ANOMALY (0.1 °C STEPS)\" -205..-90 of 390",
+   "\"ANOMALY (0.1 °C STEPS)\" -205..-159 of 390",
+   "\"MISSING = -128\" -337..-230 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -337..-115 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -337..-98 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -337..-107 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -337..-133 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -337..-192 of 390",
+   "\"OBSERVED\" -314..-248 of 390",
+   "\"·\" -240..-223 of 390",
+   "\"GISTEMP v4 SIDECAR\" -223..-74 of 390",
+   "\"Two agencies, two methods.\" -4..151 of 390",
+   "\"Two agencies, two methods.\" -4..148 of 390",
+   "\"90\" -4..10 of 390",
+   "\"° · FROM\" -4..31 of 390",
+   "\"· NATIVE\" -4..45 of 390",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -4..186 of 390",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -4..94 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -4..243 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -4..235 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -4..226 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -4..200 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -4..72 of 390"
+  ],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "record@0.82",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-930,458)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -922..-756 of 390",
+   "\"A cell, not a thermometer.\" -930..-818 of 390",
+   "\"A cell, not a thermometer.\" -930..-758 of 390",
+   "\"LAT\" -930..-907 of 390",
+   "\"LON\" -798..-775 of 390",
+   "\"YEAR\" -930..-899 of 390",
+   "\"ANOMALY (0.1 °C STEPS)\" -798..-683 of 390",
+   "\"ANOMALY (0.1 °C STEPS)\" -798..-752 of 390",
+   "\"MISSING = -128\" -930..-822 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -930..-708 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -930..-691 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -930..-699 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -930..-725 of 390",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -930..-785 of 390",
+   "\"OBSERVED\" -907..-840 of 390",
+   "\"·\" -832..-816 of 390",
+   "\"GISTEMP v4 SIDECAR\" -816..-666 of 390",
+   "\"RECORD 02 · TWO AGENCIES\" -589..-389 of 390",
+   "\"Two agencies, two methods.\" -597..-441 of 390",
+   "\"Two agencies, two methods.\" -597..-445 of 390",
+   "\"90\" -597..-583 of 390",
+   "\"×\" -583..-562 of 390",
+   "\"180\" -562..-541 of 390",
+   "\"·\" -541..-520 of 390",
+   "\"2\" -520..-512 of 390",
+   "\"° · FROM\" -512..-491 of 390",
+   "\"° · FROM\" -597..-562 of 390",
+   "\"1880\" -562..-534 of 390",
+   "\"· NATIVE\" -534..-520 of 390",
+   "\"· NATIVE\" -597..-548 of 390",
+   "\"1951-1980\" -548..-484 of 390",
+   "\"36\" -465..-451 of 390",
+   "\"×\" -451..-430 of 390",
+   "\"72\" -430..-416 of 390",
+   "\"·\" -416..-395 of 390",
+   "\"5\" -395..-388 of 390",
+   "\"° · FROM\" -388..-366 of 390",
+   "\"° · FROM\" -465..-430 of 390",
+   "\"1850\" -430..-402 of 390",
+   "\"· NATIVE\" -402..-388 of 390",
+   "\"· NATIVE\" -465..-416 of 390",
+   "\"1961-1990\" -416..-352 of 390",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -597..-407 of 390",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -597..-498 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -597..-349 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -597..-358 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -597..-366 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -597..-392 of 390",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -597..-520 of 390",
+   "\"OBSERVED\" -574..-507 of 390",
+   "\"·\" -499..-483 of 390",
+   "\"GRID SIDECARS\" -483..-375 of 390",
+   "\"RECORD 03 · THE ZERO\" -256..-90 of 390",
+   "\"Every anomaly needs a zero.\" -264..-95 of 390",
+   "\"Every anomaly needs a zero.\" -264..-121 of 390",
+   "\"1850-1900\" -264..-201 of 390",
+   "\"· NOT FOR GISTEMP\" -201..-74 of 390",
+   "\"1951-1980\" -119..-55 of 390",
+   "\"1991-2020\" -61..2 of 390",
+   "\"1850\" -264..-238 of 390",
+   "\"2025\" -38..-12 of 390",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-42 of 390",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-33 of 390",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-25 of 390",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-170 of 390",
+   "\"DERIVED\" -241..-183 of 390",
+   "\"·\" -175..-158 of 390",
+   "\"BASELINE OFFSET\" -158..-33 of 390"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.5",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "years@0.96",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.1",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.35",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.6",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "regions@0.85",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.45",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "strata@0.89",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"◂ TEN WARMEST\" in stage"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "zero@0.3",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.42",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "futures@0.9",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.05",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (26x9px @30,787)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,802)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (5x7px @30,802)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.3",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (26x9px @30,787)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,802)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (5x7px @30,802)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.6",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (26x9px @30,787)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,802)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (5x7px @30,802)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "evidence@0.95",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x9px @34,607)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x5px @34,622)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"trends.json\" (59x6px @34,622)",
+   "\"DERIVED\" x \"SHA256\" (10x12px @55,649)",
+   "\"DERIVED\" x \"a5d28818\" (39x12px @55,649)",
+   "\"·\" x \"a5d28818\" (9x12px @112,649)",
+   "\"·\" x \"·\" (5x12px @112,649)",
+   "\"TRENDS.JSON\" x \"·\" (16x12px @126,649)",
+   "\"TRENDS.JSON\" x \"56,198\" (42x12px @126,649)",
+   "\"TRENDS.JSON\" x \"BYTES\" (19x12px @126,649)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL",
+   "\"LAND-ONLY VS LAND-OCEAN COMPARES TWO GIS\" in UL"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "state": "observatory@landing",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.6",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "390x844",
+  "state": "surface@0.98",
+  "cw": 390,
+  "scrollW": 390,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "signal@0.78",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,552)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,552)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,552)",
+   "\"426.07\" x \"NOT\" (24x3px @24,659)",
+   "\"426.07\" x \"MODELLED.\" (16x3px @24,659)",
+   "\"426.07\" x \"OBSERVED\" (33x8px @24,659)",
+   "\"PPM\" x \"MODELLED.\" (24x3px @80,659)",
+   "\"PPM\" x \"OBSERVED\" (21x8px @80,659)",
+   "\"OF\" x \"MODELLED.\" (16x3px @111,659)",
+   "\"NOT\" x \"OBSERVED\" (9x11px @24,674)",
+   "\"MODELLED.\" x \"OBSERVED\" (45x11px @56,674)",
+   "\"OBSERVED\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @45,702)",
+   "\"·\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (14x14px @109,702)",
+   "\"NOAA GML\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @123,702)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.14",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @62,442)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.45",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-335,442)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -327..-161 of 375",
+   "\"A cell, not a thermometer.\" -335..-223 of 375",
+   "\"A cell, not a thermometer.\" -335..-163 of 375",
+   "\"LAT\" -335..-312 of 375",
+   "\"LON\" -203..-180 of 375",
+   "\"YEAR\" -335..-304 of 375",
+   "\"ANOMALY (0.1 °C STEPS)\" -203..-88 of 375",
+   "\"ANOMALY (0.1 °C STEPS)\" -203..-157 of 375",
+   "\"MISSING = -128\" -335..-228 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -335..-113 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -335..-96 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -335..-105 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -335..-130 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -335..-190 of 375",
+   "\"OBSERVED\" -312..-246 of 375",
+   "\"·\" -238..-221 of 375",
+   "\"GISTEMP v4 SIDECAR\" -221..-71 of 375",
+   "\"RECORD 02 · TWO AGENCIES\" -2..198 of 375",
+   "\"Two agencies, two methods.\" -10..146 of 375",
+   "\"Two agencies, two methods.\" -10..142 of 375",
+   "\"90\" -10..4 of 375",
+   "\"° · FROM\" -10..26 of 375",
+   "\"· NATIVE\" -10..40 of 375",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -10..180 of 375",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -10..89 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -10..238 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -10..230 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -10..221 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -10..195 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -10..67 of 375"
+  ],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "record@0.82",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-915,442)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -907..-741 of 375",
+   "\"A cell, not a thermometer.\" -915..-803 of 375",
+   "\"A cell, not a thermometer.\" -915..-743 of 375",
+   "\"LAT\" -915..-892 of 375",
+   "\"LON\" -783..-760 of 375",
+   "\"YEAR\" -915..-884 of 375",
+   "\"ANOMALY (0.1 °C STEPS)\" -783..-668 of 375",
+   "\"ANOMALY (0.1 °C STEPS)\" -783..-737 of 375",
+   "\"MISSING = -128\" -915..-807 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -915..-693 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -915..-676 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -915..-684 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -915..-710 of 375",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -915..-770 of 375",
+   "\"OBSERVED\" -892..-825 of 375",
+   "\"·\" -817..-801 of 375",
+   "\"GISTEMP v4 SIDECAR\" -801..-651 of 375",
+   "\"RECORD 02 · TWO AGENCIES\" -581..-382 of 375",
+   "\"Two agencies, two methods.\" -589..-434 of 375",
+   "\"Two agencies, two methods.\" -589..-437 of 375",
+   "\"90\" -589..-575 of 375",
+   "\"×\" -575..-554 of 375",
+   "\"180\" -554..-533 of 375",
+   "\"·\" -533..-512 of 375",
+   "\"2\" -512..-505 of 375",
+   "\"° · FROM\" -505..-484 of 375",
+   "\"° · FROM\" -589..-554 of 375",
+   "\"1880\" -554..-526 of 375",
+   "\"· NATIVE\" -526..-512 of 375",
+   "\"· NATIVE\" -589..-540 of 375",
+   "\"1951-1980\" -540..-477 of 375",
+   "\"36\" -457..-443 of 375",
+   "\"×\" -443..-422 of 375",
+   "\"72\" -422..-408 of 375",
+   "\"·\" -408..-387 of 375",
+   "\"5\" -387..-380 of 375",
+   "\"° · FROM\" -380..-359 of 375",
+   "\"° · FROM\" -457..-422 of 375",
+   "\"1850\" -422..-394 of 375",
+   "\"· NATIVE\" -394..-380 of 375",
+   "\"· NATIVE\" -457..-408 of 375",
+   "\"1961-1990\" -408..-345 of 375",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -589..-399 of 375",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -589..-491 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -589..-342 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -589..-350 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -589..-359 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -589..-385 of 375",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -589..-513 of 375",
+   "\"OBSERVED\" -566..-500 of 375",
+   "\"·\" -492..-475 of 375",
+   "\"GRID SIDECARS\" -475..-367 of 375",
+   "\"RECORD 03 · THE ZERO\" -256..-90 of 375",
+   "\"Every anomaly needs a zero.\" -264..-95 of 375",
+   "\"Every anomaly needs a zero.\" -264..-121 of 375",
+   "\"1850-1900\" -264..-201 of 375",
+   "\"· NOT FOR GISTEMP\" -201..-74 of 375",
+   "\"1951-1980\" -119..-55 of 375",
+   "\"1991-2020\" -61..2 of 375",
+   "\"1850\" -264..-238 of 375",
+   "\"2025\" -38..-12 of 375",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-42 of 375",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-33 of 375",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-25 of 375",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-170 of 375",
+   "\"DERIVED\" -241..-183 of 375",
+   "\"·\" -175..-158 of 375",
+   "\"BASELINE OFFSET\" -158..-33 of 375"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.5",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "years@0.96",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.1",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.35",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.6",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "regions@0.85",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.45",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "strata@0.89",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"◂ TEN WARMEST\" in stage"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "zero@0.3",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.42",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "futures@0.9",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.05",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (6x9px @30,755)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,770)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.3",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (6x9px @30,755)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,770)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.6",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (6x9px @30,755)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,770)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "evidence@0.95",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x9px @34,575)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x5px @34,590)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"trends.json\" (59x6px @34,590)",
+   "\"DERIVED\" x \"SHA256\" (10x12px @55,617)",
+   "\"DERIVED\" x \"a5d28818\" (39x12px @55,617)",
+   "\"·\" x \"a5d28818\" (9x12px @112,617)",
+   "\"·\" x \"·\" (5x12px @112,617)",
+   "\"TRENDS.JSON\" x \"·\" (16x12px @126,617)",
+   "\"TRENDS.JSON\" x \"56,198\" (42x12px @126,617)",
+   "\"TRENDS.JSON\" x \"BYTES\" (19x12px @126,617)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "state": "observatory@landing",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.6",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "375x812",
+  "state": "surface@0.98",
+  "cw": 375,
+  "scrollW": 375,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "signal@0.78",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"THE\" x \"1951-1980\" (24x3px @24,540)",
+   "\"PLANET\" x \"1951-1980\" (40x3px @56,540)",
+   "\"AVERAGED\" x \"NORMAL.\" (48x3px @111,540)",
+   "\"426.07\" x \"NOT\" (24x3px @24,647)",
+   "\"426.07\" x \"MODELLED.\" (16x3px @24,647)",
+   "\"426.07\" x \"OBSERVED\" (33x8px @24,647)",
+   "\"PPM\" x \"MODELLED.\" (24x3px @80,647)",
+   "\"PPM\" x \"OBSERVED\" (21x8px @80,647)",
+   "\"OF\" x \"MODELLED.\" (16x3px @111,647)",
+   "\"NOT\" x \"OBSERVED\" (9x11px @24,662)",
+   "\"MODELLED.\" x \"OBSERVED\" (45x11px @56,662)",
+   "\"OBSERVED\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @45,690)",
+   "\"·\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (14x14px @109,690)",
+   "\"NOAA GML\" x \"CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1\" (56x14px @123,690)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.14",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @54,436)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.45",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-333,436)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -325..-158 of 360",
+   "\"A cell, not a thermometer.\" -333..-221 of 360",
+   "\"A cell, not a thermometer.\" -333..-161 of 360",
+   "\"LAT\" -333..-310 of 360",
+   "\"LON\" -201..-178 of 360",
+   "\"YEAR\" -333..-302 of 360",
+   "\"ANOMALY (0.1 °C STEPS)\" -201..-85 of 360",
+   "\"ANOMALY (0.1 °C STEPS)\" -201..-155 of 360",
+   "\"MISSING = -128\" -333..-225 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -333..-111 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -333..-94 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -333..-102 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -333..-128 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -333..-188 of 360",
+   "\"OBSERVED\" -310..-243 of 360",
+   "\"·\" -235..-218 of 360",
+   "\"GISTEMP v4 SIDECAR\" -218..-69 of 360",
+   "\"RECORD 02 · TWO AGENCIES\" -7..193 of 360",
+   "\"Two agencies, two methods.\" -15..141 of 360",
+   "\"Two agencies, two methods.\" -15..137 of 360",
+   "\"90\" -15..-1 of 360",
+   "\"° · FROM\" -15..21 of 360",
+   "\"· NATIVE\" -15..35 of 360",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -15..175 of 360",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -15..84 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -15..233 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -15..224 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -15..216 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -15..190 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -15..62 of 360"
+  ],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "record@0.82",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"MISSING = -128\" x \"STATIONS ON LAND AND SHIPS AND BUOYS AT \" (108x2px @-900,436)"
+  ],
+  "offscreen": [
+   "\"RECORD 01 · THE CELL\" -892..-726 of 360",
+   "\"A cell, not a thermometer.\" -900..-788 of 360",
+   "\"A cell, not a thermometer.\" -900..-728 of 360",
+   "\"LAT\" -900..-877 of 360",
+   "\"LON\" -768..-745 of 360",
+   "\"YEAR\" -900..-869 of 360",
+   "\"ANOMALY (0.1 °C STEPS)\" -768..-653 of 360",
+   "\"ANOMALY (0.1 °C STEPS)\" -768..-722 of 360",
+   "\"MISSING = -128\" -900..-792 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -900..-678 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -900..-661 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -900..-669 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -900..-695 of 360",
+   "\"STATIONS ON LAND AND SHIPS AND BUOYS AT \" -900..-755 of 360",
+   "\"OBSERVED\" -877..-810 of 360",
+   "\"·\" -802..-786 of 360",
+   "\"GISTEMP v4 SIDECAR\" -786..-636 of 360",
+   "\"RECORD 02 · TWO AGENCIES\" -574..-374 of 360",
+   "\"Two agencies, two methods.\" -582..-426 of 360",
+   "\"Two agencies, two methods.\" -582..-430 of 360",
+   "\"90\" -582..-568 of 360",
+   "\"×\" -568..-547 of 360",
+   "\"180\" -547..-526 of 360",
+   "\"·\" -526..-505 of 360",
+   "\"2\" -505..-497 of 360",
+   "\"° · FROM\" -497..-476 of 360",
+   "\"° · FROM\" -582..-547 of 360",
+   "\"1880\" -547..-519 of 360",
+   "\"· NATIVE\" -519..-505 of 360",
+   "\"· NATIVE\" -582..-533 of 360",
+   "\"1951-1980\" -533..-469 of 360",
+   "\"36\" -450..-436 of 360",
+   "\"×\" -436..-415 of 360",
+   "\"72\" -415..-401 of 360",
+   "\"·\" -401..-380 of 360",
+   "\"5\" -380..-373 of 360",
+   "\"° · FROM\" -373..-351 of 360",
+   "\"° · FROM\" -450..-415 of 360",
+   "\"1850\" -415..-387 of 360",
+   "\"· NATIVE\" -387..-373 of 360",
+   "\"· NATIVE\" -450..-401 of 360",
+   "\"1961-1990\" -401..-337 of 360",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -582..-392 of 360",
+   "\"SAME 30° × 15° WINDOW, TRUE RELATIVE SCA\" -582..-483 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -582..-334 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -582..-343 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -582..-351 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -582..-377 of 360",
+   "\"NASA GISTEMP: 2° SQUARES FROM 1880. MET \" -582..-505 of 360",
+   "\"OBSERVED\" -559..-492 of 360",
+   "\"·\" -484..-468 of 360",
+   "\"GRID SIDECARS\" -468..-360 of 360",
+   "\"RECORD 03 · THE ZERO\" -256..-90 of 360",
+   "\"Every anomaly needs a zero.\" -264..-95 of 360",
+   "\"Every anomaly needs a zero.\" -264..-121 of 360",
+   "\"1850-1900\" -264..-201 of 360",
+   "\"· NOT FOR GISTEMP\" -201..-74 of 360",
+   "\"1951-1980\" -119..-55 of 360",
+   "\"1991-2020\" -61..2 of 360",
+   "\"1850\" -264..-238 of 360",
+   "\"2025\" -38..-12 of 360",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-42 of 360",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-33 of 360",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-25 of 360",
+   "\"MOVING THE ZERO FROM 1951-1980 TO 1991-2\" -264..-170 of 360",
+   "\"DERIVED\" -241..-183 of 360",
+   "\"·\" -175..-158 of 360",
+   "\"BASELINE OFFSET\" -158..-33 of 360"
+  ],
+  "scrolledOut": [
+   "\"· 0.61 °C\" in story-card story-card--dark"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.5",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "years@0.96",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.1",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.35",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.6",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "regions@0.85",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"SINCE 1991\" in seg-ctl__row seg-ctl__row--scr"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.45",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "strata@0.89",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"SPINE = MEAN OF THE GRID CELLS SHOWN. NA\" x \"REPLAY INTRO\" (42x11px @16,745)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"◂ TEN WARMEST\" in stage"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "zero@0.3",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.42",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "futures@0.9",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.05",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (21x9px @30,743)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,758)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.3",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (21x9px @30,743)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,758)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.6",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"REPLAY INTRO\" (21x9px @30,743)",
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" x \"EVIDENCE\" (67x12px @30,758)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "evidence@0.95",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x9px @34,563)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"RECEIPT\" (31x5px @34,578)",
+   "\"IN A SIMULATION WITH KNOWN ANSWERS, THE \" x \"trends.json\" (37x6px @34,578)",
+   "\"DERIVED\" x \"SHA256\" (10x12px @55,605)",
+   "\"DERIVED\" x \"a5d28818\" (39x12px @55,605)",
+   "\"·\" x \"a5d28818\" (9x12px @112,605)",
+   "\"·\" x \"·\" (5x12px @112,605)",
+   "\"TRENDS.JSON\" x \"·\" (16x12px @126,605)",
+   "\"TRENDS.JSON\" x \"56,198\" (42x12px @126,605)",
+   "\"TRENDS.JSON\" x \"BYTES\" (19x12px @126,605)"
+  ],
+  "offscreen": [],
+  "scrolledOut": [
+   "\"ANOMALIES, NOT ABSOLUTE TEMPERATURES; BA\" in UL",
+   "\"GISTEMP SMOOTHS STATION ANOMALIES UP TO \" in UL"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "state": "observatory@landing",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.6",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [],
+  "offscreen": [],
+  "scrolledOut": []
+ },
+ {
+  "vp": "360x800",
+  "state": "surface@0.98",
+  "cw": 360,
+  "scrollW": 360,
+  "overlaps": [
+   "\"→ SOURCE CODE\" x \"DATA: NASA GISS GISTEMP v4 · MET OFFICE \" (108x9px @16,647)"
+  ],
+  "offscreen": [],
+  "scrolledOut": []
+ }
+]

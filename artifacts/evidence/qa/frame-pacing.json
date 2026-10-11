@@ -1,0 +1,130 @@
+[
+  {
+    "device": "Mac15,6",
+    "browser": "Chromium 156.0.8078.4 headed",
+    "uptimeAtStart": "5:16  up 2 days,  7:47, 4 users, load averages: 7.99 11.56 15.56",
+    "uptimeAtEnd": "5:17  up 2 days,  7:47, 4 users, load averages: 9.15 11.54 15.44",
+    "heavyInteraction": "scripted 6 s scroll through the S04 strata unwrap (scrubbed sphere-to-sheet morph, 1 px/ms)",
+    "measuredAt": "2026-10-11T09:17:08.696Z",
+    "runs": [
+      {
+        "label": "1440x900 unthrottled",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 744,
+        "p50_ms": 8.3,
+        "p95_ms": 10.2,
+        "pct_over_16_7ms": 0,
+        "pct_over_33ms": 0
+      },
+      {
+        "label": "1440x900 4x CPU throttle",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 704,
+        "p50_ms": 8.4,
+        "p95_ms": 11.8,
+        "pct_over_16_7ms": 0.021,
+        "pct_over_33ms": 0.001
+      },
+      {
+        "label": "390x844 4x CPU throttle",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 717,
+        "p50_ms": 8.3,
+        "p95_ms": 10.9,
+        "pct_over_16_7ms": 0.013,
+        "pct_over_33ms": 0.001
+      }
+    ]
+  },
+  {
+    "device": "Mac15,6",
+    "browser": "Chromium 156.0.8078.4 headless",
+    "uptimeAtStart": "5:17  up 2 days,  7:47, 4 users, load averages: 9.15 11.54 15.44",
+    "uptimeAtEnd": "5:17  up 2 days,  7:48, 4 users, load averages: 12.83 12.14 15.52",
+    "heavyInteraction": "scripted 6 s scroll through the S04 strata unwrap (scrubbed sphere-to-sheet morph, 1 px/ms)",
+    "measuredAt": "2026-10-11T09:17:35.864Z",
+    "runs": [
+      {
+        "label": "1440x900 unthrottled",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 234,
+        "p50_ms": 17.1,
+        "p95_ms": 62.4,
+        "pct_over_16_7ms": 0.598,
+        "pct_over_33ms": 0.244
+      },
+      {
+        "label": "1440x900 4x CPU throttle",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 211,
+        "p50_ms": 17.6,
+        "p95_ms": 64.8,
+        "pct_over_16_7ms": 0.701,
+        "pct_over_33ms": 0.256
+      },
+      {
+        "label": "390x844 4x CPU throttle",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "stateBefore": {
+          "scene": "signal",
+          "phase": 0
+        },
+        "stateAfter": {
+          "scene": "futures",
+          "phase": 400
+        },
+        "stateChanged": true,
+        "sampleCount": 258,
+        "p50_ms": 17.8,
+        "p95_ms": 44,
+        "pct_over_16_7ms": 0.694,
+        "pct_over_33ms": 0.202
+      }
+    ]
+  }
+]

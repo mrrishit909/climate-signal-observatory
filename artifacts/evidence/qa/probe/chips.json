@@ -1,0 +1,422 @@
+{
+ "1440x900 signal": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · NOAA GML",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ],
+ "1440x900 record": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 SIDECAR",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · GRID SIDECARS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · BASELINE OFFSET",
+   "hidden": "off-screen"
+  },
+  {
+   "chip": "OBSERVED · MEASURED AREA",
+   "hidden": "off-screen"
+  }
+ ],
+ "1440x900 years": [
+  {
+   "chip": "DERIVED",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "1440x900 regions": [
+  {
+   "chip": "DERIVED · CELL TRENDS SINCE 1975 · 12730 OF 15914 CELLS BEYOND THEIR CI",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · BAND MEANS · AR(1) 95% CI",
+   "hidden": null
+  }
+ ],
+ "1440x900 strata": [
+  {
+   "chip": "OBSERVED · CELLS · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": "display:none on m-only"
+  },
+  {
+   "chip": "DERIVED · SPINE",
+   "hidden": null
+  }
+ ],
+ "1440x900 zero": [
+  {
+   "chip": "OBSERVED · SERIES · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · TREND, AR(1) CI, LOESS",
+   "hidden": null
+  }
+ ],
+ "1440x900 futures": [
+  {
+   "chip": "PREDICTED · IPCC AR6 ASSESSED RANGES, NOT OUR PROJECTION",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · HADCRUT5 REBASED TO 1850-1900 · 20-YEAR MEANS",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)",
+   "hidden": null
+  }
+ ],
+ "1440x900 evidence": [
+  {
+   "chip": "OBSERVED · AR6.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · AGREEMENT.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · META.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · RECONCILIATION.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · CHANGEPOINTS.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
+   "hidden": null
+  },
+  {
+   "chip": "SIMULATED",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · TRENDS.JSON",
+   "hidden": null
+  }
+ ],
+ "1440x900 observatory": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "1440x900 surface": [
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ],
+ "768x1024 signal": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · NOAA GML",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ],
+ "768x1024 record": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 SIDECAR",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · GRID SIDECARS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · BASELINE OFFSET",
+   "hidden": "off-screen"
+  },
+  {
+   "chip": "OBSERVED · MEASURED AREA",
+   "hidden": "off-screen"
+  }
+ ],
+ "768x1024 years": [
+  {
+   "chip": "DERIVED",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "768x1024 regions": [
+  {
+   "chip": "DERIVED · CELL TRENDS SINCE 1975 · 12730 OF 15914 CELLS BEYOND THEIR CI",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · BAND MEANS · AR(1) 95% CI",
+   "hidden": null
+  }
+ ],
+ "768x1024 strata": [
+  {
+   "chip": "OBSERVED · CELLS · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": "display:none on m-only"
+  },
+  {
+   "chip": "DERIVED · SPINE",
+   "hidden": null
+  }
+ ],
+ "768x1024 zero": [
+  {
+   "chip": "OBSERVED · SERIES · GISTEMP v4 · 1951-1980",
+   "hidden": "display:none on zero-chips"
+  },
+  {
+   "chip": "DERIVED · TREND, AR(1) CI, LOESS",
+   "hidden": "display:none on zero-chips"
+  }
+ ],
+ "768x1024 futures": [
+  {
+   "chip": "PREDICTED · IPCC AR6 ASSESSED RANGES, NOT OUR PROJECTION",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · HADCRUT5 REBASED TO 1850-1900 · 20-YEAR MEANS",
+   "hidden": "display:none on chip chip--derived  "
+  },
+  {
+   "chip": "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)",
+   "hidden": "display:none on chip chip--observed  "
+  }
+ ],
+ "768x1024 evidence": [
+  {
+   "chip": "OBSERVED · AR6.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · AGREEMENT.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · META.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · RECONCILIATION.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · CHANGEPOINTS.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
+   "hidden": null
+  },
+  {
+   "chip": "SIMULATED",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · TRENDS.JSON",
+   "hidden": null
+  }
+ ],
+ "768x1024 observatory": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "768x1024 surface": [
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ],
+ "390x844 signal": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED · NOAA GML",
+   "hidden": null
+  },
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ],
+ "390x844 record": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 SIDECAR",
+   "hidden": "off-screen"
+  },
+  {
+   "chip": "OBSERVED · GRID SIDECARS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · BASELINE OFFSET",
+   "hidden": "off-screen"
+  },
+  {
+   "chip": "OBSERVED · MEASURED AREA",
+   "hidden": "off-screen"
+  }
+ ],
+ "390x844 years": [
+  {
+   "chip": "DERIVED",
+   "hidden": "display:none on readout-line tnum"
+  },
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "390x844 regions": [
+  {
+   "chip": "DERIVED · CELL TRENDS SINCE 1975 · 12730 OF 15914 CELLS BEYOND THEIR CI",
+   "hidden": "display:none on regions-chips"
+  },
+  {
+   "chip": "DERIVED · BAND MEANS · AR(1) 95% CI",
+   "hidden": "display:none on regions-chips"
+  }
+ ],
+ "390x844 strata": [
+  {
+   "chip": "OBSERVED · CELLS · GISTEMP v4 · 1951-1980",
+   "hidden": "display:none on strata-chips"
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": "display:none on strata-chips"
+  },
+  {
+   "chip": "DERIVED · LAYERS = ZONAL MEANS",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · SPINE",
+   "hidden": null
+  }
+ ],
+ "390x844 zero": [
+  {
+   "chip": "OBSERVED · SERIES · GISTEMP v4 · 1951-1980",
+   "hidden": "display:none on zero-chips"
+  },
+  {
+   "chip": "DERIVED · TREND, AR(1) CI, LOESS",
+   "hidden": "display:none on zero-chips"
+  }
+ ],
+ "390x844 futures": [
+  {
+   "chip": "PREDICTED · IPCC AR6 ASSESSED RANGES, NOT OUR PROJECTION",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · HADCRUT5 REBASED TO 1850-1900 · 20-YEAR MEANS",
+   "hidden": "display:none on chip chip--derived  "
+  },
+  {
+   "chip": "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)",
+   "hidden": "display:none on chip chip--observed  "
+  }
+ ],
+ "390x844 evidence": [
+  {
+   "chip": "OBSERVED · AR6.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · AGREEMENT.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · META.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · RECONCILIATION.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · CHANGEPOINTS.JSON",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
+   "hidden": "opacity 0 on ev-a"
+  },
+  {
+   "chip": "SIMULATED",
+   "hidden": null
+  },
+  {
+   "chip": "DERIVED · TRENDS.JSON",
+   "hidden": null
+  }
+ ],
+ "390x844 observatory": [
+  {
+   "chip": "OBSERVED · GISTEMP v4 · 1951-1980",
+   "hidden": null
+  }
+ ],
+ "390x844 surface": [
+  {
+   "chip": "OBSERVED",
+   "hidden": null
+  }
+ ]
+}

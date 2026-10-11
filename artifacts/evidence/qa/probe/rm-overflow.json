@@ -1,0 +1,1394 @@
+[
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "signal",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--dark right=1636",
+   "SPAN.story-card__chip right=1482",
+   "DIV.segs right=1612",
+   "SPAN.seg right=1454",
+   "SPAN.seg right=1533"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "record",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--dark right=1636",
+   "SPAN.story-card__chip right=1482",
+   "DIV.segs right=1612",
+   "SPAN.seg right=1454",
+   "SPAN.seg right=1533"
+  ]
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "years",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "regions",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "strata",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "zero",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "futures",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "evidence",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "observatory",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "no-preference",
+  "at": "surface",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "signal",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "record",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "years",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "regions",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "strata",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "zero",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "futures",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "evidence",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "observatory",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "1440x900",
+  "motion": "reduce",
+  "at": "surface",
+  "scrollW": 1440,
+  "clientW": 1440,
+  "scrollXAfterNudge": 0,
+  "wide": []
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "signal",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=872",
+   "SPAN.story-card__chip right=792",
+   "DIV.segs right=848",
+   "SPAN.seg right=779",
+   "SPAN.seg right=848"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "record",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=872",
+   "SPAN.story-card__chip right=792",
+   "DIV.segs right=848",
+   "SPAN.seg right=779",
+   "SPAN.seg right=848"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "years",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=1084",
+   "CAPTION. right=1084",
+   "THEAD. right=1084",
+   "TR. right=1084",
+   "TH. right=1084"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "regions",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=1084",
+   "CAPTION. right=1084",
+   "THEAD. right=1084",
+   "TR. right=1084",
+   "TH. right=1084"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "strata",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "zero",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "futures",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "evidence",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "observatory",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "no-preference",
+  "at": "surface",
+  "scrollW": 768,
+  "clientW": 768,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "TABLE.sr-only right=940",
+   "CAPTION. right=940",
+   "THEAD. right=940",
+   "TR. right=940",
+   "TH. right=787"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "signal",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "record",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "years",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "regions",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "strata",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "zero",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "futures",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "evidence",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "observatory",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "768x1024",
+  "motion": "reduce",
+  "at": "surface",
+  "scrollW": 1084,
+  "clientW": 768,
+  "scrollXAfterNudge": 316,
+  "wide": [
+   "TABLE.sr-only right=988",
+   "CAPTION. right=988",
+   "THEAD. right=988",
+   "TR. right=988",
+   "TH. right=835"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "signal",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=678",
+   "SPAN.story-card__chip right=618",
+   "DIV.segs right=654",
+   "SPAN.seg right=462",
+   "SPAN.seg right=526"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "record",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=678",
+   "SPAN.story-card__chip right=618",
+   "DIV.segs right=654",
+   "SPAN.seg right=462",
+   "SPAN.seg__fill right=412"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "years",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "regions",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "strata",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "zero",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "futures",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "evidence",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "observatory",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "no-preference",
+  "at": "surface",
+  "scrollW": 390,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "signal",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "record",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "years",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "regions",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "strata",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "zero",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "futures",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "evidence",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "observatory",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "390x844",
+  "motion": "reduce",
+  "at": "surface",
+  "scrollW": 1085,
+  "clientW": 390,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=406",
+   "SPAN.chip-btn__why right=517",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "signal",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=663",
+   "SPAN.story-card__chip right=603",
+   "DIV.segs right=639",
+   "SPAN.seg right=447",
+   "SPAN.seg right=511"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "record",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=663",
+   "SPAN.story-card__chip right=603",
+   "DIV.segs right=639",
+   "SPAN.seg right=447",
+   "SPAN.seg__fill right=397"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "years",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "regions",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "strata",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "zero",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "futures",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "evidence",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "observatory",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "no-preference",
+  "at": "surface",
+  "scrollW": 375,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "signal",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "record",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "years",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "regions",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "strata",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "zero",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "futures",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "evidence",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "observatory",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "375x812",
+  "motion": "reduce",
+  "at": "surface",
+  "scrollW": 1084,
+  "clientW": 375,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=398",
+   "SPAN.chip-btn__why right=507",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "signal",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=648",
+   "SPAN.story-card__chip right=588",
+   "DIV.segs right=624",
+   "SPAN.seg right=432",
+   "SPAN.seg right=496"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "record",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "ARTICLE.story-card story-card--blue right=648",
+   "SPAN.story-card__chip right=588",
+   "DIV.segs right=624",
+   "SPAN.seg right=432",
+   "SPAN.seg__fill right=383"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "years",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "regions",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "strata",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "zero",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "futures",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "evidence",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "observatory",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "no-preference",
+  "at": "surface",
+  "scrollW": 360,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=508",
+   "CAPTION. right=508",
+   "THEAD. right=508",
+   "TR. right=508"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "signal",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "record",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "years",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "regions",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "strata",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "zero",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "futures",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "evidence",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "observatory",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ },
+ {
+  "vp": "360x800",
+  "motion": "reduce",
+  "at": "surface",
+  "scrollW": 1084,
+  "clientW": 360,
+  "scrollXAfterNudge": 0,
+  "wide": [
+   "SPAN.bl-label right=391",
+   "SPAN.chip-btn__why right=497",
+   "TABLE.sr-only right=524",
+   "CAPTION. right=524",
+   "THEAD. right=524"
+  ]
+ }
+]

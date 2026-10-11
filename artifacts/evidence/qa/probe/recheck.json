@@ -1,0 +1,30 @@
+{
+ "390 s01 cards opacity": [
+  "note note--dark:1",
+  "note__head:1",
+  "wr note__body:1",
+  "note__tag:1",
+  "note note--blue:1",
+  "note__head:1"
+ ],
+ "390 inspector": {
+  "totalLength": 1476,
+  "dasharray": "1000px",
+  "dashoffset": "0px",
+  "lastPointX": "308.0,28.9"
+ },
+ "1440 s01 cards opacity": [
+  "note note--dark:1",
+  "note__head:1",
+  "wr note__body:1",
+  "note__tag:1",
+  "note note--blue:1",
+  "note__head:1"
+ ],
+ "1440 inspector": {
+  "totalLength": 1476,
+  "dasharray": "1000px",
+  "dashoffset": "0px",
+  "lastPointX": "308.0,28.9"
+ }
+}

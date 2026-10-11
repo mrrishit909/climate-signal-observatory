@@ -1,0 +1,1014 @@
+{
+ "viewport": "1440x900",
+ "errors": [],
+ "shots": [
+  {
+   "name": "00-s00-t0500",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 14,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "00-s00-t1000",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 25,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "00-s00-t1500",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 37,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "00-s00-t2500",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 47,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "00-s00-t3000",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 57,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "00-s00-end",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 559.8,
+   "scene": "signal",
+   "glFrames": 68,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "s01-00-p30",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 339.9026474399681,
+   "scene": "signal",
+   "glFrames": 98,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "s01-01-p78-landing",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "signal",
+   "glFrames": 134,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · NOAA GML",
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "s02-00-p14",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "record",
+   "glFrames": 177,
+   "chips": [
+    "OBSERVED · GISTEMP v4 SIDECAR"
+   ]
+  },
+  {
+   "name": "s02-01-p45",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "record",
+   "glFrames": 205,
+   "chips": [
+    "OBSERVED · GISTEMP v4 SIDECAR",
+    "OBSERVED · GRID SIDECARS"
+   ]
+  },
+  {
+   "name": "s02-02-p82",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "record",
+   "glFrames": 238,
+   "chips": [
+    "OBSERVED · GISTEMP v4 SIDECAR",
+    "OBSERVED · GRID SIDECARS",
+    "DERIVED · BASELINE OFFSET",
+    "OBSERVED · MEASURED AREA"
+   ]
+  },
+  {
+   "name": "s03a-00-p10",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 276,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-01-p50",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 304,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-02-p96",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 330,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-03-base-1991",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 346,
+   "chips": [
+    "DERIVED",
+    "DERIVED · GISTEMP v4 REBASED TO 1991-202"
+   ]
+  },
+  {
+   "name": "s03a-04-src-hadcrut5",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 406,
+   "chips": [
+    "DERIVED",
+    "DERIVED · HADCRUT5 REBASED TO 1991-2020"
+   ]
+  },
+  {
+   "name": "s03a-05-base-1850-hadcrut5",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 435,
+   "chips": [
+    "DERIVED",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900"
+   ]
+  },
+  {
+   "name": "s03a-06-back-to-gistemp",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 467,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-07-disabled-1850-gistemp",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 481,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-08-plus2",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 501,
+   "chips": [
+    "DERIVED",
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03a-09-reset",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "years",
+   "glFrames": 525,
+   "chips": [
+    "DERIVED",
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s03b-00-p10",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 566,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-01-p35",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 588,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-02-p60",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 620,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-03-p85",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 664,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-04-ledger-band3",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 701,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-05-since1991",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 717,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1991 · 10877",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s03b-06-reset",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 320.4,
+   "scene": "regions",
+   "glFrames": 736,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975 · 12730",
+    "DERIVED · BAND MEANS · AR(1) 95% CI"
+   ]
+  },
+  {
+   "name": "s04-00-p8",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 780,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS"
+   ]
+  },
+  {
+   "name": "s04-01-p25",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 824,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS"
+   ]
+  },
+  {
+   "name": "s04-02-p45",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 846,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS"
+   ]
+  },
+  {
+   "name": "s04-03-p65",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 878,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS"
+   ]
+  },
+  {
+   "name": "s04-04-p89",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 910,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS",
+    "DERIVED · SPINE"
+   ]
+  },
+  {
+   "name": "s04-05-p98",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "strata",
+   "glFrames": 959,
+   "chips": [
+    "OBSERVED · CELLS · GISTEMP v4 · 1951-198",
+    "DERIVED · LAYERS = ZONAL MEANS",
+    "DERIVED · SPINE"
+   ]
+  },
+  {
+   "name": "s05-00-p8",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1044,
+   "chips": [
+    "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-01-p30",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1135,
+   "chips": [
+    "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-02-p60",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1230,
+   "chips": [
+    "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-03-base-1991",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1303,
+   "chips": [
+    "DERIVED · SERIES · GISTEMP v4 REBASED TO",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-04-more-controls",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1345,
+   "chips": [
+    "DERIVED · SERIES · GISTEMP v4 REBASED TO",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-05-loess-breaks",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1407,
+   "chips": [
+    "DERIVED · EXPLORATORY",
+    "DERIVED · SERIES · GISTEMP v4 REBASED TO",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s05-06-restored",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "zero",
+   "glFrames": 1465,
+   "chips": [
+    "OBSERVED · SERIES · GISTEMP v4 · 1951-19",
+    "DERIVED · TREND, AR(1) CI, LOESS"
+   ]
+  },
+  {
+   "name": "s06-00-p15",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1544,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s06-01-p42",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1626,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s06-02-p90",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1716,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s06-03-ssp585",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1762,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s06-04-ssp119",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1805,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s06-05-ssp245",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "futures",
+   "glFrames": 1841,
+   "chips": [
+    "PREDICTED · IPCC AR6 ASSESSED RANGES, NO",
+    "DERIVED · HADCRUT5 REBASED TO 1850-1900 ",
+    "OBSERVED · HADCRUT5 95% RANGE (STIPPLE)"
+   ]
+  },
+  {
+   "name": "s07-00-p5",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 0,
+   "scene": "evidence",
+   "glFrames": 1842,
+   "chips": [
+    "OBSERVED · AR6.JSON"
+   ]
+  },
+  {
+   "name": "s07-01-p30",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 0,
+   "scene": "evidence",
+   "glFrames": 1842,
+   "chips": [
+    "OBSERVED · AR6.JSON",
+    "DERIVED · AGREEMENT.JSON"
+   ]
+  },
+  {
+   "name": "s07-02-p60",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 0,
+   "scene": "evidence",
+   "glFrames": 1842,
+   "chips": [
+    "DERIVED · RECONCILIATION.JSON",
+    "DERIVED · CHANGEPOINTS.JSON"
+   ]
+  },
+  {
+   "name": "s07-03-p95",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 0,
+   "scene": "evidence",
+   "glFrames": 1842,
+   "chips": [
+    "DERIVED · ASSOCIATION, NOT ATTRIBUTION",
+    "SIMULATED",
+    "DERIVED · TRENDS.JSON"
+   ]
+  },
+  {
+   "name": "obs-00-default",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 1888,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "obs-01-map",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 1939,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "obs-02-trend-farnorth",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 1978,
+   "chips": [
+    "DERIVED · CELL TRENDS SINCE 1975"
+   ]
+  },
+  {
+   "name": "obs-03-slice-1998",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 2008,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "obs-04-inspector",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 2040,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "OBSERVED · GISTEMP v4 · 1951-1980",
+    "DERIVED · CELL TREND"
+   ]
+  },
+  {
+   "name": "obs-05-esc-closed",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 315,
+   "scene": "observatory",
+   "glFrames": 2058,
+   "chips": [
+    "OBSERVED · GISTEMP v4 · 1951-1980"
+   ]
+  },
+  {
+   "name": "s08-00-p15",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "surface",
+   "glFrames": 2082,
+   "chips": []
+  },
+  {
+   "name": "s08-01-p30",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 289.8,
+   "scene": "surface",
+   "glFrames": 2114,
+   "chips": []
+  },
+  {
+   "name": "s08-02-p60",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 1018.8699622621131,
+   "scene": "surface",
+   "glFrames": 2135,
+   "chips": []
+  },
+  {
+   "name": "s08-03-p90",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 1018.8699622621131,
+   "scene": "surface",
+   "glFrames": 2180,
+   "chips": [
+    "OBSERVED"
+   ]
+  },
+  {
+   "name": "s08-04-p98",
+   "scrollW": 1440,
+   "clientW": 1440,
+   "innerW": 1440,
+   "jsClassFromClientW": "D",
+   "jsClassFromInnerW": "D",
+   "cssClass": "D",
+   "radius": 1018.8699622621131,
+   "scene": "surface",
+   "glFrames": 2223,
+   "chips": [
+    "OBSERVED"
+   ]
+  }
+ ],
+ "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+ "introStats": {
+  "minR": 559.8,
+  "monotonic": true,
+  "years": [
+   1880,
+   1930,
+   1990
+  ],
+  "playing": false,
+  "G0": 559.8
+ }
+}

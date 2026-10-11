@@ -1,0 +1,356 @@
+[
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "intro-end",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:signal",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:record",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:years",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:regions",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:strata",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:zero",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:futures",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:evidence",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:observatory",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "landing:surface",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "navjump:years",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "navjump:zero",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "no-preference",
+  "at": "navjump:observatory",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "intro-end",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:signal",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:record",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:years",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:regions",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:strata",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:zero",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:futures",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:evidence",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:observatory",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "landing:surface",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "navjump:years",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "navjump:zero",
+  "violations": []
+ },
+ {
+  "vp": "D",
+  "motion": "reduce",
+  "at": "navjump:observatory",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "intro-end",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:signal",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:record",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:years",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:regions",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:strata",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:zero",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:futures",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:evidence",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:observatory",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "landing:surface",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "menu-open-before-years",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "navjump:years",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "menu-open-before-zero",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "navjump:zero",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "menu-open-before-observatory",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "no-preference",
+  "at": "navjump:observatory",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "intro-end",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:signal",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:record",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:years",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:regions",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:strata",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:zero",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:futures",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:evidence",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:observatory",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "landing:surface",
+  "violations": []
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "navjump:years",
+  "error": "locator.click: Timeout 8000ms exceeded."
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "navjump:zero",
+  "error": "locator.click: Timeout 8000ms exceeded."
+ },
+ {
+  "vp": "M",
+  "motion": "reduce",
+  "at": "navjump:observatory",
+  "error": "locator.click: Timeout 8000ms exceeded."
+ }
+]

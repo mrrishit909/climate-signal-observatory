@@ -1,0 +1,411 @@
+{
+ "_comment": "P03 Climate Signal Observatory, QA-002. Sections are Track ids from src/app/scenes.ts; window.__cso.jumpTo(id,p) is the nav's instant-jump path. introFrames freeze the S00 clock (ms). Steps marked core run at every viewport; the rest only at fullViewports (the three gate compositions), to keep committed evidence near 40 MB.",
+ "introFrames": [
+  500,
+  1000,
+  1500,
+  2500,
+  3000
+ ],
+ "scrollSteps": 90,
+ "scrollStepMs": 260,
+ "interactionSequences": [
+  {
+   "id": "s01",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('signal',0.3);",
+     "name": "p30",
+     "waitMs": 1600
+    },
+    {
+     "setup": "window.__cso.jumpTo('signal',0.78);",
+     "name": "p78-landing",
+     "waitMs": 2200,
+     "core": true
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('record',0.14);",
+     "name": "p14",
+     "waitMs": 1700
+    },
+    {
+     "setup": "window.__cso.jumpTo('record',0.45);",
+     "name": "p45",
+     "waitMs": 1700,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('record',0.82);",
+     "name": "p82",
+     "waitMs": 1700
+    }
+   ]
+  },
+  {
+   "id": "s03a",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('years',0.1);",
+     "name": "p10",
+     "waitMs": 2200
+    },
+    {
+     "setup": "window.__cso.jumpTo('years',0.5);",
+     "name": "p50",
+     "waitMs": 2200,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('years',0.96);",
+     "name": "p96",
+     "waitMs": 2200
+    },
+    {
+     "setup": "[...document.querySelectorAll('#years [role=radio]')].find(b=>b.textContent.trim().startsWith('1991-2020'))?.click();",
+     "name": "base-1991",
+     "waitMs": 1200
+    },
+    {
+     "setup": "[...document.querySelectorAll('#years [role=radio]')].find(b=>b.textContent.trim().startsWith('HADCRUT5'))?.click();",
+     "name": "src-hadcrut5",
+     "waitMs": 2500
+    },
+    {
+     "setup": "[...document.querySelectorAll('#years [role=radio]')].find(b=>b.textContent.trim().startsWith('1850-1900'))?.click();",
+     "name": "base-1850-hadcrut5",
+     "waitMs": 1200,
+     "core": true
+    },
+    {
+     "setup": "[...document.querySelectorAll('#years [role=radio]')].find(b=>b.textContent.trim().startsWith('GISTEMP'))?.click();",
+     "name": "back-to-gistemp",
+     "waitMs": 2500
+    },
+    {
+     "setup": "document.querySelector('#years .is-disabled')?.focus(); document.querySelector('#years .is-disabled')?.dispatchEvent(new MouseEvent('mouseover',{bubbles:true}));",
+     "name": "disabled-1850-gistemp",
+     "waitMs": 800,
+     "core": true
+    },
+    {
+     "setup": "document.querySelector('#years .plus2')?.click();",
+     "name": "plus2",
+     "waitMs": 1200
+    },
+    {
+     "setup": "[...document.querySelectorAll('#years .text-btn')].find(b=>b.textContent.trim().startsWith('RESET'))?.click();",
+     "name": "reset",
+     "waitMs": 1200
+    }
+   ]
+  },
+  {
+   "id": "s03b",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('regions',0.1);",
+     "name": "p10",
+     "waitMs": 2300
+    },
+    {
+     "setup": "window.__cso.jumpTo('regions',0.35);",
+     "name": "p35",
+     "waitMs": 2300,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('regions',0.6);",
+     "name": "p60",
+     "waitMs": 2300
+    },
+    {
+     "setup": "window.__cso.jumpTo('regions',0.85);",
+     "name": "p85",
+     "waitMs": 2300,
+     "core": true
+    },
+    {
+     "setup": "[...document.querySelectorAll('#regions .ledger button')][2]?.click();",
+     "name": "ledger-band3",
+     "waitMs": 1800
+    },
+    {
+     "setup": "[...document.querySelectorAll('#regions [role=radio]')].find(b=>b.textContent.trim().startsWith('SINCE 1991'))?.click();",
+     "name": "since1991",
+     "waitMs": 1200
+    },
+    {
+     "setup": "[...document.querySelectorAll('#regions [role=radio]')].find(b=>b.textContent.trim().startsWith('SINCE 1975'))?.click();[...document.querySelectorAll('#regions .text-btn')].find(b=>b.textContent.trim().startsWith('RESET'))?.click();",
+     "name": "reset",
+     "waitMs": 1200
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('strata',0.08);",
+     "name": "p8",
+     "waitMs": 2400
+    },
+    {
+     "setup": "window.__cso.jumpTo('strata',0.25);",
+     "name": "p25",
+     "waitMs": 2400
+    },
+    {
+     "setup": "window.__cso.jumpTo('strata',0.45);",
+     "name": "p45",
+     "waitMs": 2400,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('strata',0.65);",
+     "name": "p65",
+     "waitMs": 2400
+    },
+    {
+     "setup": "window.__cso.jumpTo('strata',0.89);",
+     "name": "p89",
+     "waitMs": 2400,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('strata',0.98);",
+     "name": "p98",
+     "waitMs": 2400
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('zero',0.08);",
+     "name": "p8",
+     "waitMs": 1800
+    },
+    {
+     "setup": "window.__cso.jumpTo('zero',0.3);",
+     "name": "p30",
+     "waitMs": 1800,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('zero',0.6);",
+     "name": "p60",
+     "waitMs": 1800
+    },
+    {
+     "setup": "window.__cso.setClimate({baseline:'1991-2020'});",
+     "name": "base-1991",
+     "waitMs": 1200
+    },
+    {
+     "setup": "document.querySelector('#zero .zero-more')?.click();",
+     "name": "more-controls",
+     "waitMs": 900,
+     "core": true
+    },
+    {
+     "setup": "[...document.querySelectorAll('#zero [role=radio]')].filter(b=>/LOESS|EXPLORATORY/.test(b.textContent)).forEach(b=>b.click());",
+     "name": "loess-breaks",
+     "waitMs": 1200
+    },
+    {
+     "setup": "[...document.querySelectorAll('#zero [role=radio]')].filter(b=>b.textContent.trim()==='OFF').forEach(b=>b.click()); window.__cso.setClimate({baseline:'1951-1980'}); document.querySelector('#zero .zero-more[aria-expanded=true]')?.click();",
+     "name": "restored",
+     "waitMs": 1000
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('futures',0.15);",
+     "name": "p15",
+     "waitMs": 2000
+    },
+    {
+     "setup": "window.__cso.jumpTo('futures',0.42);",
+     "name": "p42",
+     "waitMs": 2000,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('futures',0.9);",
+     "name": "p90",
+     "waitMs": 2000,
+     "core": true
+    },
+    {
+     "setup": "[...document.querySelectorAll('.fut-chip')].find(b=>b.textContent.trim().startsWith('SSP5-8.5'))?.click();",
+     "name": "ssp585",
+     "waitMs": 900
+    },
+    {
+     "setup": "[...document.querySelectorAll('.fut-chip')].find(b=>b.textContent.trim().startsWith('SSP1-1.9'))?.click();",
+     "name": "ssp119",
+     "waitMs": 900
+    },
+    {
+     "setup": "[...document.querySelectorAll('.fut-chip')].find(b=>b.textContent.trim().startsWith('SSP2-4.5'))?.click();",
+     "name": "ssp245",
+     "waitMs": 600
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('evidence',0.05);",
+     "name": "p5",
+     "waitMs": 1800
+    },
+    {
+     "setup": "window.__cso.jumpTo('evidence',0.3);",
+     "name": "p30",
+     "waitMs": 1800,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('evidence',0.6);",
+     "name": "p60",
+     "waitMs": 1800
+    },
+    {
+     "setup": "window.__cso.jumpTo('evidence',0.95);",
+     "name": "p95",
+     "waitMs": 1800,
+     "core": true
+    }
+   ]
+  },
+  {
+   "id": "obs",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('observatory');",
+     "name": "default",
+     "waitMs": 2800,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.setObs({view:'map'});",
+     "name": "map",
+     "waitMs": 2200
+    },
+    {
+     "setup": "window.__cso.setObs({view:'globe',layer:'trend',region:'arctic'});",
+     "name": "trend-farnorth",
+     "waitMs": 2400
+    },
+    {
+     "setup": "window.__cso.setObs({layer:'anomaly',region:{lat0:-20,lat1:20},year:1998});",
+     "name": "slice-1998",
+     "waitMs": 1500,
+     "core": true
+    },
+    {
+     "mouse": {
+      "selector": ".obs-globe",
+      "fx": 0.45,
+      "fy": 0.5,
+      "click": true
+     },
+     "name": "inspector",
+     "waitMs": 1200,
+     "core": true
+    },
+    {
+     "key": "Escape",
+     "name": "esc-closed",
+     "waitMs": 700
+    },
+    {
+     "setup": "window.__cso.setObs({cell:null,region:null,year:2025,layer:'anomaly',view:'globe'});",
+     "shot": false,
+     "waitMs": 300,
+     "core": true
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('surface',0.15);",
+     "name": "p15",
+     "waitMs": 1500
+    },
+    {
+     "setup": "window.__cso.jumpTo('surface',0.3);",
+     "name": "p30",
+     "waitMs": 1500,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('surface',0.6);",
+     "name": "p60",
+     "waitMs": 1500,
+     "core": true
+    },
+    {
+     "setup": "window.__cso.jumpTo('surface',0.9);",
+     "name": "p90",
+     "waitMs": 2600
+    },
+    {
+     "setup": "window.__cso.jumpTo('surface',0.98);",
+     "name": "p98",
+     "waitMs": 2600,
+     "core": true
+    }
+   ]
+  },
+  {
+   "id": "menu",
+   "steps": [
+    {
+     "setup": "window.__cso.jumpTo('zero');",
+     "shot": false,
+     "waitMs": 1200,
+     "core": true
+    },
+    {
+     "setup": "document.querySelector('.nav-pill.is-fixed .menu-pill')?.click();",
+     "name": "open",
+     "waitMs": 900,
+     "core": true
+    },
+    {
+     "key": "Escape",
+     "name": "closed",
+     "waitMs": 700,
+     "core": true
+    }
+   ],
+   "maxWidth": 1023
+  }
+ ],
+ "heavyInteraction": {
+  "label": "scripted 6 s scroll through the S04 strata unwrap (scrubbed sphere-to-sheet morph, 1 px/ms)",
+  "trigger": "window.__cso.jumpTo('strata',0); const t0=performance.now(); const y0=scrollY; const run=()=>{const dt=performance.now()-t0; window.scrollTo(0,y0+dt*1.0); if(dt<6000) requestAnimationFrame(run);}; requestAnimationFrame(run);",
+  "stateCheck": "(() => ({ scene: window.__cso.debug().scene, phase: Math.round(window.__cso.debug().phase*100) }))()",
+  "durationMs": 6200
+ },
+ "fullViewports": [
+  "1440x900",
+  "768x1024",
+  "390x844"
+ ]
+}
