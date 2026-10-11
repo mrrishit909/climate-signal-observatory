@@ -5,7 +5,7 @@ Date: 2026-10-11, 04:29 to 05:20 EDT. Product code audited at HEAD `b29a485` (in
 `640e24c` docs). Build: `npm run build` (vite 8.3.4). Served with `site/tests/serve.mjs` (in-process vite preview on
 4321, restarted in a loop). The dev server was never used. No product code was changed.
 
-**Verdict: FAILED.** 8 major defects, no blocker. The site is distinctive and its numbers are honest (34 of 34 spot
+**Verdict: FAILED.** 9 major defects, no blocker. The site is distinctive and its numbers are honest (34 of 34 spot
 checks match the artifacts), axe is clean in 56 runs, and the giant-orb and P02-confusion rules pass. It fails the gate on:
 
 - **Operational states.** 10 probed artifacts fail silently: no inline error, no RETRY, content just disappears (D-001).
