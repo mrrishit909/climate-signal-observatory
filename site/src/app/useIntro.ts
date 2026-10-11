@@ -27,6 +27,7 @@ export function useIntro() {
     const now = performance.now();
     intro.completeFrom = introTime(now);
     intro.completeAt = now;
+    setNavIn(true); // the nav enters with the 350ms completion, not at the compressed 4200ms mark
   }, []);
 
   useEffect(() => {

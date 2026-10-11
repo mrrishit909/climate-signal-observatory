@@ -100,6 +100,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
             </div>
           </div>
         ) : null}
+        <span className="m-only"><HonestyChip tag="DERIVED" detail="LAYERS = ZONAL MEANS" /></span>
         {copy && showSpine ? <p className="strata-note"><HonestyChip tag="DERIVED" detail="SPINE" className="chip--inline" /> {copy.footnote}</p> : null}
         {copy && (!motion || cover > 0) ? <p className="strata-note tnum" data-coverage>{copy.coverage}</p> : null}
       </div>

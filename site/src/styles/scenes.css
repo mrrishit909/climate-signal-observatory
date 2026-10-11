@@ -39,6 +39,7 @@ html[data-motion="off"] .planet-layer, html.is-gallery .planet-layer { display: 
 .signal-foot.is-waiting { opacity: 0; }
 .signal-note { margin: 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font: 400 13px / 1.3 var(--font-mono); letter-spacing: var(--tracking-label); }
 .nogl-only { display: none; }
+.m-only { display: none; }
 html[data-tier="nogl"] .nogl-only { display: block; }
 .still-planet { inset: 0; width: 100%; height: 100%; z-index: 0 !important; }
 html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; overflow: hidden; }
@@ -114,7 +115,11 @@ html[data-motion="off"] .scene-signal .stage { height: 100dvh; min-height: 0; ov
   .readout-year { font-size: 32px; grid-row: auto; }
   .readout-line { font-size: 12px; }
   .years-readout > .readout-line:nth-of-type(3), .years-readout > .readout-line:nth-of-type(4), .years-readout > .readout-line--sm { display: none; }
-  .years-readout .legend { display: none; }
+  .years-readout .legend__swatches, .years-readout .legend__edges, .legend__unit { display: none; }
+  .years-readout .legend { margin-top: 2px; }
+  .legend__miss { margin: 0; font-size: 12px; }
+  .strata-foot .m-only { display: block; }
+  .strata-foot .m-only .chip { font-size: 11px; padding: 5px 6px; }
   .years-readout > .chip { margin: 2px 0 0; font-size: 11px; padding: 5px 6px; }
 }
 html[data-motion="off"] .scene-years .stage-content > * { position: relative; left: auto; right: auto; top: auto; bottom: auto; }
@@ -155,7 +160,9 @@ html[data-motion="off"] .scene-years .stage-content { display: flex; flex-direct
   .strata-text { top: auto; bottom: calc(var(--nav-clear) + 8px); left: 12px; right: 12px; padding: 12px 14px; gap: 6px; background: rgb(22 22 22 / 0.94); border-radius: var(--radius-card); }
   .strata-text .scene-statement { font-size: 22px; }
   .strata-chips .chip { font-size: 11px; padding: 5px 6px; }
-  .strata-foot { bottom: auto; top: 654px; left: 16px; right: 16px; gap: 6px; }
+  .strata-foot { bottom: auto; top: 650px; left: 16px; right: 16px; gap: 4px; }
+  .strata-foot .seg-ctl__label { display: none; }
+  .strata-foot .chip-btn { padding: 7px 10px; }
   /* landed: the card gives way to the source toggle and notes; the statement moves above the core */
   .strata-text.is-landed { top: 34px; bottom: auto; padding: 0; background: none; }
   .strata-text.is-landed .strata-chips, .strata-text.is-landed .phase-caption { display: none; }

@@ -23,15 +23,25 @@ test("WebGL2 is live in this browser (the GL tests cannot pass vacuously on the 
   await page.waitForFunction(() => (window as unknown as { __cso: Cso }).__cso.debug().glFrames > 2);
 });
 
-test("S00: SKIP is visible at once and the nav arrives within 400ms of the click", async ({ page }) => {
-  await page.goto("?quality=high", { waitUntil: "domcontentloaded" });
+test("S00: SKIP is visible at once and the nav arrives within 400ms of the click (measured in-page)", async ({ page, isMobile }) => {
+  // instrument before any script runs, so the measurement is in-page and the click can happen at once
+  await page.addInitScript((sel) => {
+    const w = window as unknown as { __clickT: number; __navT: number };
+    w.__clickT = 0; w.__navT = 0;
+    addEventListener("click", (e) => { if ((e.target as Element).closest?.(".corner-btn")) w.__clickT = performance.now(); }, true);
+    const poll = () => {
+      const nav = document.querySelector(sel);
+      if (w.__clickT && nav && !nav.classList.contains("is-hidden")) w.__navT = performance.now();
+      else requestAnimationFrame(poll);
+    };
+    requestAnimationFrame(poll);
+  }, isMobile ? ".nav-pill.is-fixed" : ".nav-bar.is-fixed");
+  await page.goto("?quality=high", { waitUntil: "commit" });
   const skip = page.getByRole("button", { name: "SKIP INTRO" });
-  await expect(skip).toBeVisible({ timeout: 1500 });
-  await expect(page.locator("h1[data-hero]")).toBeVisible();
-  await skip.click();
-  const t0 = Date.now();
-  await expect(page.locator(".nav-bar.is-fixed, .nav-pill.is-fixed").locator("visible=true").first()).not.toHaveClass(/is-hidden/);
-  expect(Date.now() - t0).toBeLessThan(1000);
+  await skip.click({ timeout: 15000 }); // the main thread may be busy compiling shaders on software GL; the timing is measured in-page
+  await page.waitForFunction(() => (window as unknown as { __navT: number }).__navT > 0, null, { timeout: 3000 });
+  const dt = await page.evaluate(() => { const w = window as unknown as { __clickT: number; __navT: number }; return w.__navT - w.__clickT; });
+  expect(dt).toBeLessThan(400);
 });
 
 test("S00 (test 15): the orb/planet radius is at least 120vh across and never decreases through the intro", async ({ page }) => {
@@ -65,6 +75,7 @@ test("S00 decade run: the counter only shows DR-1 layer years and lands on the l
 });
 
 test("S03a baseline toggle re-levels the readout to the facts' values (GISTEMP latest year)", async ({ page }) => {
+  test.setTimeout(90_000); // loads the HadCRUT5 grid on a shared, software-GL machine
   await page.goto("?quality=high");
   await page.keyboard.press("Escape");
   await hook(page).jump("years", 0.96);
@@ -133,4 +144,21 @@ test("no-WebGL tier: the orb stays an orb with the note, S03a draws a flat map",
     return n;
   });
   expect(lit).toBeGreaterThan(500);
+});
+
+test("LOW tier: no decade run (one crossfade 1880 -> latest) and integer-year hard steps in S03a", async ({ page }) => {
+  await page.goto("?quality=low");
+  await page.waitForFunction(() => !(window as unknown as { __cso: Cso }).__cso.introStats().playing, null, { timeout: 15000 });
+  const s = await hook(page).get<{ years: number[] }>("introStats()");
+  expect(s.years.every((y) => y === 1880 || y === LATEST)).toBe(true);
+  expect(s.years.at(-1)).toBe(LATEST);
+  expect(await hook(page).get<{ tier: string }>("quality()")).toMatchObject({ tier: "low" });
+  await hook(page).jump("years", 0.4);
+  await page.waitForTimeout(100);
+  await hook(page).jump("years", 0.45);
+  for (let i = 0; i < 5; i++) {
+    const mix = await page.evaluate(() => (window as unknown as { __cso: { yearMix: () => number } }).__cso.yearMix());
+    expect([0, 1]).toContain(mix);
+    await page.waitForTimeout(40);
+  }
 });

@@ -11,7 +11,7 @@ export default defineConfig({
   reporter: [["list"]],
   use: { baseURL: "http://localhost:4321/climate-signal-observatory/" },
   webServer: {
-    command: "npm run build && npm run preview",
+    command: "npm run build && node tests/serve.mjs",
     url: "http://localhost:4321/climate-signal-observatory/",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,

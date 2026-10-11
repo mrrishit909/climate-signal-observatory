@@ -348,6 +348,7 @@ export const paintData = {
 
 let orbDpr = 1;
 function frame(now: number) {
+  tick++;
   if (!orbCanvas || !motionEnabled()) return;
   const w = document.documentElement.clientWidth, h = innerHeight;
   if (!L || L.w !== w || L.h !== h) { L = layout(w, h); lastKey = ""; }
@@ -399,11 +400,13 @@ function frame(now: number) {
   tier(now, f !== null);
 }
 
-let lastT = 0;
+let lastT = 0, lastTick = -2, tick = 0;
 function tier(now: number, drew: boolean) {
   if (quality.forced || tierChecked || intro.playing || !drew) { lastT = now; return; }
-  if (lastT) quality.samples.push(now - lastT);
+  // only draws in back-to-back rAF ticks count: an idle gap (nothing changed, draw skipped) is not a frame time
+  if (lastT && lastTick === tick - 1) quality.samples.push(now - lastT);
   lastT = now;
+  lastTick = tick;
   if (quality.samples.length >= 60) {
     tierChecked = true;
     const s = [...quality.samples].sort((a, b) => a - b);
@@ -456,3 +459,6 @@ export function paintStatic(canvas: HTMLCanvasElement, build: (L: Layout, dpr: n
   drawOverlay(ctx, o ?? NONE, w, h);
   if (f) paint2d(ctx, { ...f, dpr }, paintData);
 }
+
+/** Current year crossfade weight (integer-year rule: 0 or 1 except inside a <= 200ms fade). */
+export const yearMix = () => yearFade.mix;

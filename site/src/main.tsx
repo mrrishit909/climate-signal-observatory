@@ -6,7 +6,7 @@ import "./styles/scenes.css";
 import { ErrorBoundary } from "./app/ErrorBoundary";
 import { App } from "./app/App";
 import { getProgress, jumpTo, startEngine } from "./scroll/engine";
-import { debug, intro, introTime, quality, snapAll } from "./scenes/director";
+import { debug, intro, introTime, quality, snapAll, yearMix } from "./scenes/director";
 import { layout } from "./scenes/geometry";
 import { getClimate, setClimate } from "./state/climate";
 
@@ -27,6 +27,7 @@ Object.assign(window, {
     introStats: () => ({ minR: intro.minR, monotonic: intro.monotonic, years: [...intro.years], playing: intro.playing, G0: layout(document.documentElement.clientWidth, innerHeight).G0.r }),
     debug: () => ({ ...debug }),
     introT: () => introTime(performance.now()),
+    yearMix,
   },
 });
 addEventListener("cso:jump", snapAll);
