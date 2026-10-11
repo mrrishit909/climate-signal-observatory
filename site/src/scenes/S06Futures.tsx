@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
 import { Tooltip } from "../components/Tooltip";
 import { useArtifact } from "../data/useArtifact";
 import { AR6, FACTS, SERIES } from "../data/artifacts";
@@ -13,7 +13,7 @@ import { futuresModel, type Bracket } from "../model/futures";
 import { clamp } from "../lib/math";
 import { easeSymmetric } from "../motion/ease";
 import { stepState, windowed } from "../motion/progress";
-import { useMotion, useProgress } from "../scroll/hooks";
+import { useActiveScene, useMotion, useProgress } from "../scroll/hooks";
 import { futures, SCENARIOS } from "../state/scenes";
 import { layout } from "./geometry";
 import { useViewport } from "./useViewport";
@@ -28,8 +28,9 @@ export function S06Futures({ def }: { def: SceneDef }) {
   const vp = useViewport();
   const { scenario } = futures.use();
   const [ar6, retryA] = useArtifact(AR6);
-  const [series] = useArtifact(SERIES);
-  const [facts] = useArtifact(FACTS);
+  const [series, retryS] = useArtifact(SERIES);
+  const [facts, retryF] = useArtifact(FACTS);
+  const active = useActiveScene();
   const [lit, setLit] = useState(0);
   const litRef = useRef(0);
   const groupRef = useRef<SVGGElement>(null);
@@ -78,6 +79,7 @@ export function S06Futures({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="What is assessed next" className="scene scene-futures">
+      <SceneErrors active={active === def.id} items={[{ file: "series_annual.json", state: series, retry: retryS }, { file: "facts.json", state: facts, retry: retryF }]} />
       <div className="fut-text">
         <h2 id="futures-title" tabIndex={-1} data-scene-heading className="scene-statement" key={statement}>{statement}</h2>
         {callout ? <p className="fut-callout serif">{copy.callout}</p> : null}
@@ -154,11 +156,11 @@ export function S06Futures({ def }: { def: SceneDef }) {
         </svg>
       ) : null}
       <Tooltip x={tip?.x ?? 0} y={tip?.y ?? 0} visible={!!tip}>{tip?.text}</Tooltip>
-      <table className="sr-only">
+      <div className="sr-only"><table>
         <caption>IPCC AR6 WG1 SPM Table SPM.1, printed page {page}: global surface temperature change relative to 1850-1900, degrees C</caption>
         <thead><tr><th>Scenario</th><th>Period</th><th>Best estimate</th><th>Very likely range</th></tr></thead>
         <tbody>{model?.brackets.map((b) => <tr key={`${b.scenario}${b.period}`}><td>{b.scenario}</td><td>{b.period}</td><td>{b.best}</td><td>{b.low} to {b.high}</td></tr>)}</tbody>
-      </table>
+      </table></div>
     </Track>
   );
 }

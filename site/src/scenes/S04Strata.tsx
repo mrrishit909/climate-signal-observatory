@@ -7,16 +7,16 @@ import { SERIES_ID } from "./S03aYears";
 import { MISSING_F } from "../model/zonal";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
 import { useArtifact } from "../data/useArtifact";
 import { getStore } from "../data/loader";
-import { FACTS, GRIDS, VALIDATION } from "../data/artifacts";
+import { COAST, FACTS, GRIDS, VALIDATION } from "../data/artifacts";
 import { copyS04, SOURCE_LABEL, top10 } from "../data/copy";
 import type { Source } from "../data/types";
 import { stepState } from "../motion/progress";
 import { getClimate, setClimate, subscribeClimate } from "../state/climate";
 import { bank } from "../state/bank";
-import { useMotion, useProgress } from "../scroll/hooks";
+import { useActiveScene, useMotion, useProgress } from "../scroll/hooks";
 import { paintStatic } from "./director";
 import { S04, strataFrame, strataPhase } from "./frames";
 import { layout } from "./geometry";
@@ -33,8 +33,10 @@ export function S04Strata({ def }: { def: SceneDef }) {
   const version = useSyncExternalStore(bank.subscribe, bank.getVersion);
   const motion = useMotion();
   const vp = useViewport();
-  const [facts] = useArtifact(FACTS);
-  const [val] = useArtifact(VALIDATION);
+  const [facts, retryF] = useArtifact(FACTS);
+  const [val, retryV] = useArtifact(VALIDATION);
+  const [coast, retryK] = useArtifact(COAST);
+  const activeScene = useActiveScene();
   const [grid, retry] = useArtifact(GRIDS[c.source], false);
   const [phase, setPhase] = useState(0);
   const [spine, setSpine] = useState(0);
@@ -64,7 +66,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
   const every = L.cls === "M" ? 40 : 20;
   const labels = [1850, ...axis.filter((y) => y % every === 0 && y > 1850 && axis.at(-1)! - y >= 4 * (L.cls === "M" ? 2 : 1)), axis.at(-1)!];
   const tag = anomalyTag(c.source, c.baseline);
-  const [series] = useArtifact(SERIES);
+  const [series, retryS] = useArtifact(SERIES);
   const [tip, setTip] = useState<{ x: number; y: number; year: number } | null>(null);
   const yearAt = (clientY: number) => Math.max(1850, Math.min(axis.at(-1)!, 1850 + (k.n - 1) - Math.floor((clientY - k.y0) / k.H)));
   const hover = (e: PointerEvent) => setTip({ x: e.clientX, y: e.clientY, year: yearAt(e.clientY) });
@@ -93,6 +95,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="From planet to record" className="scene scene-strata">
+      <SceneErrors active={activeScene === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "validation.json", state: val, retry: retryV }, { file: "series_annual.json", state: series, retry: retryS }, { file: "coastlines.json", state: coast, retry: retryK }]} />
       <div className={`strata-text ${landed && ready ? "is-landed" : ""}`}>
         <h2 id="strata-title" tabIndex={-1} data-scene-heading className="scene-statement" key={showSpine ? "s2" : "s1"}>
           {copy ? (showSpine ? copy.s2 : copy.s1) : def.title}
@@ -130,11 +133,11 @@ export function S04Strata({ def }: { def: SceneDef }) {
       ) : null}
       <Tooltip x={tip?.x ?? 0} y={tip?.y ?? 0} visible={!!tip}>{tip ? tipText(tip.year) : ""}</Tooltip>
       {table ? (
-        <table className="sr-only">
+        <div className="sr-only"><table>
           <caption>Decade-mean zonal anomalies, {c.source.toUpperCase()}, vs {c.baseline}, degrees C (mean of each layer's latitude rows)</caption>
           <thead><tr><th>Decade</th><th>60-90N</th><th>30-60N</th><th>30S-30N</th><th>30-60S</th><th>60-90S</th></tr></thead>
           <tbody>{table.map((r) => <tr key={r.d}><td>{r.d}s</td>{r.v.map((v, i) => <td key={i}>{v}</td>)}</tr>)}</tbody>
-        </table>
+        </table></div>
       ) : null}
       <div className={`strata-foot ${landed && ready ? "is-in" : ""}`}>
         {landed && ready ? (
@@ -148,7 +151,7 @@ export function S04Strata({ def }: { def: SceneDef }) {
             </div>
           </div>
         ) : null}
-        <span className="m-only"><HonestyChip tag="DERIVED" detail="LAYERS = ZONAL MEANS" /></span>
+        <span className="m-only"><HonestyChip tag={tag.tag} detail={`CELLS · ${tag.detail}`} /><HonestyChip tag="DERIVED" detail="LAYERS = ZONAL MEANS" /></span>
         {copy && showSpine ? <p className="strata-note"><HonestyChip tag="DERIVED" detail="SPINE" className="chip--inline" /> {copy.footnote}</p> : null}
         {copy && (!motion || cover > 0) ? <p className="strata-note tnum" data-coverage>{copy.coverage}</p> : null}
       </div>

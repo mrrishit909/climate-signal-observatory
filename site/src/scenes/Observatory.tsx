@@ -1,11 +1,12 @@
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type KeyboardEvent, type PointerEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type KeyboardEvent, type PointerEvent } from "react";
+import { motionEnabled } from "../state/motion";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
 import { Tooltip } from "../components/Tooltip";
 import { useArtifact } from "../data/useArtifact";
 import { getStore } from "../data/loader";
-import { GRIDS, REGIONAL, TREND_GRIDS } from "../data/artifacts";
+import { COAST, GRIDS, REGIONAL, TREND_GRIDS } from "../data/artifacts";
 import { copyOBS, SOURCE_LABEL } from "../data/copy";
 import { BASELINES, type Baseline, type Source } from "../data/types";
 import { fixed, pct, signed } from "../model/format";
@@ -14,7 +15,7 @@ import { faceQuat, invertEqualEarth, invertOrtho, quatMat3 } from "../gl/project
 import { DEFAULTS, FIRST_YEAR, baselineAllowed, getClimate, setClimate, subscribeClimate } from "../state/climate";
 import { BAND_IDS, OBS_DEFAULT, PERIODS, obs, type Layer, type Region } from "../state/scenes";
 import { bank } from "../state/bank";
-import { useFrame, useMotion } from "../scroll/hooks";
+import { useActiveScene, useFrame, useMotion } from "../scroll/hooks";
 import { paintStatic, setObsDragging } from "./director";
 import { lyingBoxes, obsSheet, planetFrame, still, uprightBoxes } from "./frames";
 import { HIDDEN } from "../gl/frame";
@@ -40,8 +41,10 @@ export function Observatory({ def }: { def: SceneDef }) {
   const vp = useViewport();
   const L = layout(vp.w, vp.h);
   const [grid, retry] = useArtifact(GRIDS[c.source], false);
-  const [tg] = useArtifact(TREND_GRIDS[c.source], false);
-  const [reg] = useArtifact(REGIONAL);
+  const [tg, retryTg] = useArtifact(TREND_GRIDS[c.source], false);
+  const [reg, retryR] = useArtifact(REGIONAL);
+  const [coast, retryK] = useArtifact(COAST);
+  const active = useActiveScene();
   const [sheet, setSheet] = useState(false);
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const [resetOk, setResetOk] = useState(false);
@@ -245,7 +248,8 @@ export function Observatory({ def }: { def: SceneDef }) {
         {readout?.empty ? <p className="state-line state-line--empty">NO MEASURED CELLS IN {regionName(o.region)} IN {o.year}</p> : null}
         {readout ? <HonestyChip tag={readout.tag.tag} detail={readout.tag.detail} /> : null}
         <ArtifactStatus file={`grid_${c.source === "gistemp" ? "gistemp_2deg" : "hadcrut5_5deg"}`} state={grid} retry={retry} empty="">{() => null}</ArtifactStatus>
-        {o.layer === "trend" && tg.status !== "ready" ? <p className="state-line">{tg.status === "error" ? "TREND GRID UNAVAILABLE" : "LOADING TREND GRID"}</p> : null}
+        {o.layer === "trend" && tg.status === "loading" ? <p className="state-line">LOADING TREND GRID</p> : null}
+        <SceneErrors active={active === def.id} items={[{ file: `grid_trends_${c.source === "gistemp" ? "gistemp_2deg" : "hadcrut5_5deg"}.i8.bin.gz`, state: tg, retry: retryTg }, { file: "regional.json", state: reg, retry: retryR }, { file: "coastlines.json", state: coast, retry: retryK }]} />
       </div>
       <button type="button" className="obs-layers chip-btn" aria-expanded={sheet} aria-controls="obs-rail" onClick={() => setSheet((s) => !s)}>{sheet ? "CLOSE" : "LAYERS"}</button>
       {rail}
@@ -302,6 +306,25 @@ function Inspector({ cell, onClose }: { cell: { row: number; col: number }; onCl
   let d = "", pen = false, subpaths = 0;
   vals.forEach((v, k) => { if (v === null) { pen = false; return; } if (!pen) subpaths++; d += `${pen ? "L" : "M"}${x(k).toFixed(1)},${y(v).toFixed(1)}`; pen = true; });
   const cur = ys.indexOf(o.year);
+  // D-005: the line draws over its own measured length, then the dash is removed so the whole series stays drawn
+  const line = useRef<SVGPathElement>(null);
+  useLayoutEffect(() => {
+    const el = line.current;
+    if (!el) return;
+    const len = el.getTotalLength();
+    el.dataset.length = String(len);
+    if (!motionEnabled()) { el.style.strokeDasharray = ""; return; }
+    el.style.transition = "none";
+    el.style.strokeDasharray = `${len}`;
+    el.style.strokeDashoffset = `${len}`;
+    void el.getBoundingClientRect();
+    el.style.transition = "stroke-dashoffset 600ms cubic-bezier(.5,0,0,1)";
+    el.style.strokeDashoffset = "0";
+    const done = () => { el.style.transition = ""; el.style.strokeDasharray = ""; el.style.strokeDashoffset = ""; };
+    el.addEventListener("transitionend", done, { once: true });
+    const t = window.setTimeout(done, 900);
+    return () => { clearTimeout(t); el.removeEventListener("transitionend", done); };
+  }, [d]);
   const t = bank.trends.get(c.source), li = bank.trendLayers(c.source, o.period);
   const slope = t && li ? t.data[li[0] * nLat * nLon + i] : undefined;
   const sig = t && li ? t.data[li[1] * nLat * nLon + i] : undefined;
@@ -315,7 +338,7 @@ function Inspector({ cell, onClose }: { cell: { row: number; col: number }; onCl
         <svg className="inspector__series" viewBox="0 0 312 80" role="img" data-subpaths={subpaths}
           aria-label={`Anomaly vs ${c.baseline} from ${ys[firstValid]} to ${ys[lastValid]}, min ${fixed(Math.min(...valid), 1)}, max ${fixed(Math.max(...valid), 1)} C, ${vals.length - valid.length} missing years`}>
           <line x1={0} x2={312} y1={y(0)} y2={y(0)} className="inspector__zero" />
-          <path d={d} className="inspector__line" />
+          <path ref={line} d={d} className="inspector__line" data-last-x={x(lastValid).toFixed(1)} />
           {cur >= 0 && vals[cur] !== null ? <rect x={x(cur) - 3} y={y(vals[cur]!) - 3} width={6} height={6} className="inspector__now" /> : null}
         </svg>
       )}

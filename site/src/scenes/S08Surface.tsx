@@ -6,7 +6,8 @@ import { useArtifact } from "../data/useArtifact";
 import { FACTS, META } from "../data/artifacts";
 import { copyS08, footer } from "../data/copy";
 import { stepState, windowed } from "../motion/progress";
-import { useFrame, useMotion, useProgress } from "../scroll/hooks";
+import { useActiveScene, useFrame, useMotion, useProgress } from "../scroll/hooks";
+import { SceneErrors } from "../components/StateUI";
 import { jumpTo } from "../scroll/engine";
 import { bank } from "../state/bank";
 import { faceQuat } from "../gl/projection";
@@ -19,8 +20,9 @@ const REPO = "https://github.com/mrrishit909/climate-signal-observatory";
 /** S08 The Surface (interaction 10): the record folds back into the planet, the camera pushes into it, the decade run echoes. */
 export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => void }) {
   const motion = useMotion();
-  const [facts] = useArtifact(FACTS);
-  const [meta] = useArtifact(META);
+  const [facts, retryF] = useArtifact(FACTS);
+  const [meta, retryM] = useArtifact(META);
+  const active = useActiveScene();
   const version = useSyncExternalStore(bank.subscribe, bank.getVersion);
   const [echo, setEcho] = useState(0);
   const [links, setLinks] = useState(0);
@@ -56,6 +58,7 @@ export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => v
   const act = [() => jumpTo("observatory", undefined, { push: true, focus: true }), onReplay];
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="Closing: the surface" className="scene scene-surface">
+      <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "meta.json", state: meta, retry: retryM }]} />
       {!motion ? <canvas ref={still} className="still-planet" aria-hidden="true" /> : null}
       <div className="surface-scrim" ref={scrim} aria-hidden="true" style={{ opacity: motion ? 0 : 1 }} />
       <p className={`surface-year tnum ${echo || !motion ? "is-in" : ""}`} aria-hidden="true"><span ref={counter}>{bank.axis().at(-1)}</span></p>

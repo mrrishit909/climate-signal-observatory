@@ -25,7 +25,12 @@ export interface Layout {
   G5: Disc;
 }
 
-export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewportClass(w)): Layout {
+/**
+ * The composition class comes from the full window width, the same number the CSS media queries use (L1):
+ * with classic scrollbars clientWidth is 15px narrower and would draw the next class down. Positions use w.
+ */
+export const cssClass = (): ViewportClass => (typeof window === "undefined" ? "D" : matchMedia("(min-width: 1024px)").matches ? "D" : matchMedia("(min-width: 768px)").matches ? "T" : "M");
+export function layout(w: number, h: number, n = 176, cls: ViewportClass = typeof window === "undefined" ? viewportClass(w) : cssClass()): Layout {
   const half = Math.hypot(w, h) / 2;
   // G0: D 560/900, T 620/1024, M 510/844 of the height; on M also at least the half-diagonal (frame is all planet)
   const G0: Disc = cls === "D" ? { cx: w / 2, cy: h / 2, r: 0.622 * h } : cls === "T" ? { cx: w / 2, cy: h / 2, r: 0.606 * h } : { cx: w / 2, cy: h / 2, r: Math.max(0.605 * h, half + 2) };
@@ -38,7 +43,7 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewp
   const H = figure ? (0.8 * h) / n : Math.min(cls === "M" ? 3 : 4, Math.max(1, Math.floor((0.8 * h) / n)));
   const cw = figure ? Math.min(0.45 * w, (cls === "D" ? 220 : 200) * (h / 900)) : cls === "D" ? 220 : cls === "T" ? 200 : 150;
   const x0 = Math.round(w / 2 - cw / 2), total = n * H;
-  const y0 = figure ? (h - total) / 2 : Math.round(cls === "M" ? 0.114 * h : (h - total) / 2 - (cls === "T" ? 10 : 0));
+  const y0 = figure ? (h - total) / 2 : Math.round(cls === "M" ? 0.1 * h : (h - total) / 2 - (cls === "T" ? 10 : 0));
   const sw = cls === "M" ? 8 : 12;
   const bench = cls === "D" ? { x0: 0.43 * w, x1: 0.43 * w + Math.floor((0.49 * w) / n) * n, y0: 0.622 * h, y1: 0.733 * h, series: [0.167 * h, 0.578 * h] as [number, number] }
     : cls === "T" ? { x0: 0.156 * w, x1: 0.156 * w + Math.floor((0.69 * w) / n) * n, y0: 0.605 * h, y1: 0.684 * h, series: [0.322 * h, 0.586 * h] as [number, number] }
@@ -46,7 +51,7 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewp
   const dock = cls === "D" ? { x0: 0.826 * w, x1: 0.826 * w + 120, y0: k0(), y1: k0() + n * H, lying: false }
     : cls === "T" ? { x0: 0.833 * w, x1: 0.833 * w + 80, y0: k0(), y1: k0() + n * H, lying: false }
     : { x0: 19, x1: 19 + Math.floor((w - 38) / n) * n, y0: 0.818 * h, y1: 0.889 * h, lying: true };
-  function k0() { return Math.round(cls === "M" ? 0.114 * h : (h - n * H) / 2 - (cls === "T" ? 10 : 0)); }
+  function k0() { return Math.round(cls === "M" ? 0.1 * h : (h - n * H) / 2 - (cls === "T" ? 10 : 0)); }
   const obs: Disc = cls === "D" ? { cx: 0.4 * w, cy: 0.56 * h, r: 0.35 * h } : cls === "T" ? { cx: w / 2, cy: 0.352 * h, r: 0.273 * h } : { cx: w / 2, cy: 0.391 * h, r: Math.min(0.41 * w, 0.19 * h) };
   const G5: Disc = { cx: w / 2, cy: h / 2, r: 1.2 * half };
   return {

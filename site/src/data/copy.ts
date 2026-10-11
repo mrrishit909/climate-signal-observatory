@@ -32,10 +32,12 @@ export interface YearReadoutIn {
   baseline: Baseline;
   global: number | null;
   rank: { rank: number; of: number } | null;
-  co2: number | null;
+  /** undefined = co2.json not loaded (no claim either way) */
+  co2: number | null | undefined;
   co2First: number;
   measured: number | null;
-  extremes: { share: number | null; expected: number | null } | null;
+  /** null = no metric for this baseline; undefined = extremes.json not loaded */
+  extremes: { share: number | null; expected: number | null } | null | undefined;
   lostMost: boolean;
 }
 /** S03a readout lines (each value already bound by the caller to its artifact field). */
@@ -44,9 +46,9 @@ export function yearReadout(r: YearReadoutIn) {
     year: String(r.year),
     global: r.global === null ? `GLOBAL n/a VS ${r.baseline}` : `GLOBAL ${signed(r.global)} °C VS ${r.baseline}`,
     rank: r.rank ? `RANK ${r.rank.rank} OF ${r.rank.of} COMPLETE YEARS` : "NOT RANKED",
-    co2: r.co2 === null ? `NOT MEASURED AT MAUNA LOA (RECORD BEGINS ${r.co2First})` : `CO2 ${fixed(r.co2, 1)} PPM · MAUNA LOA`,
+    co2: r.co2 === undefined ? "" : r.co2 === null ? `NOT MEASURED AT MAUNA LOA (RECORD BEGINS ${r.co2First})` : `CO2 ${fixed(r.co2, 1)} PPM · MAUNA LOA`,
     measured: r.measured === null ? "MEASURED AREA n/a" : `MEASURED AREA ${pct(r.measured)}%`,
-    extremes: r.extremes === null ? `NO EXTREMES REFERENCE FOR ${r.baseline}`
+    extremes: r.extremes === undefined ? "" : r.extremes === null ? `NO EXTREMES REFERENCE FOR ${r.baseline}`
       : r.extremes.share === null ? `NO EXTREMES VALUE FOR ${r.year}`
       : `${pct(r.extremes.share)}% OF MEASURED AREA ABOVE ITS OWN ${r.baseline} 95TH PERCENTILE (${pct(r.extremes.expected ?? 0)}% EXPECTED)`,
     lost: r.lostMost ? `MANY CELLS HAVE NO ${r.baseline} REFERENCE` : "",

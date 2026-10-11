@@ -9,7 +9,8 @@ import { olsTrend } from "../model/trend";
 import { fixed } from "../model/format";
 import { DEFAULTS, baselineAllowed, getClimate, setClimate, subscribeClimate } from "../state/climate";
 import { LAB_DEFAULT, lab } from "../state/scenes";
-import { useMotion } from "../scroll/hooks";
+import { useActiveScene, useMotion } from "../scroll/hooks";
+import { SceneErrors } from "../components/StateUI";
 import { layout } from "./geometry";
 import { useViewport } from "./useViewport";
 import { anomalyTag, SERIES_ID } from "./S03aYears";
@@ -25,9 +26,10 @@ export function S05Zero({ def }: { def: SceneDef }) {
   const st = lab.use();
   const motion = useMotion();
   const vp = useViewport();
-  const [series] = useArtifact(SERIES);
-  const [trends] = useArtifact(TRENDS);
-  const [cps] = useArtifact(CHANGEPOINTS);
+  const [series, retryS] = useArtifact(SERIES);
+  const [trends, retryT] = useArtifact(TRENDS);
+  const [cps, retryC] = useArtifact(CHANGEPOINTS);
+  const active = useActiveScene();
   const [note, setNote] = useState("");
   const [switchOffer, setSwitchOffer] = useState(false);
   const [resetOk, setResetOk] = useState(false);
@@ -148,6 +150,7 @@ export function S05Zero({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="Choosing the zero" className="scene scene-zero">
+      <SceneErrors active={active === def.id} items={[{ file: "series_annual.json", state: series, retry: retryS }, { file: "trends.json", state: trends, retry: retryT }, { file: "changepoints.json", state: cps, retry: retryC }]} />
       <div className="zero-text">
         <h2 id="zero-title" tabIndex={-1} data-scene-heading className="scene-statement">{copyS05.statement}</h2>
         <p className="scene-body">{copyS05.body}</p>
@@ -229,6 +232,10 @@ export function S05Zero({ def }: { def: SceneDef }) {
         ) : null}
         {switchOffer ? <p className="state-line">{copyS05.disabled} <button type="button" className="btn-square" onClick={() => { setClimate({ source: "hadcrut5", baseline: "1850-1900", announce: "" }); setSwitchOffer(false); setNote("changed"); }}>SWITCH TO HADCRUT5</button></p> : null}
         <p className="sr-only" aria-live="polite">{spoken}</p>
+        <div className="zero-chips zero-chips--inline">
+          <HonestyChip tag={tag.tag} detail={`SERIES · ${tag.detail}`} />
+          <HonestyChip tag="DERIVED" detail="TREND, AR(1) CI, LOESS" />
+        </div>
         {st.breaks ? <p className="result-naive"><HonestyChip tag="DERIVED" detail="EXPLORATORY" className="chip--inline" /> {copyS05.breaks}</p> : null}
       </div>
       <div className={`zero-controls ${sheet ? "is-open" : ""}`}>
@@ -264,8 +271,8 @@ export function S05Zero({ def }: { def: SceneDef }) {
               <button type="button" role="radio" aria-checked={!st.smooth} className={`chip-btn ${!st.smooth ? "is-on" : ""}`} onClick={() => lab.set({ smooth: false })}>OFF</button>
               <button type="button" role="radio" aria-checked={st.smooth} aria-disabled={!loess?.fit[c.baseline] || undefined}
                 className={`chip-btn ${st.smooth ? "is-on" : ""} ${!loess?.fit[c.baseline] ? "is-disabled" : ""}`}
-                title={trends.status !== "ready" ? "LOADING TRENDS" : !loess?.fit[c.baseline] ? `NO LOESS FIT ON ${c.baseline}` : undefined}
-                onClick={() => loess?.fit[c.baseline] && lab.set({ smooth: true })}>{trends.status !== "ready" ? "LOADING TRENDS" : "LOESS"}</button>
+                title={trends.status === "error" ? "TRENDS UNAVAILABLE: SEE RETRY ABOVE" : trends.status !== "ready" ? "LOADING TRENDS" : !loess?.fit[c.baseline] ? `NO LOESS FIT ON ${c.baseline}` : undefined}
+                onClick={() => loess?.fit[c.baseline] && lab.set({ smooth: true })}>{trends.status === "error" ? "LOESS UNAVAILABLE" : trends.status !== "ready" ? "LOADING TRENDS" : "LOESS"}</button>
             </div>
           </div>
           <div className="seg-ctl" role="radiogroup" aria-label="BREAKS">
@@ -279,10 +286,6 @@ export function S05Zero({ def }: { def: SceneDef }) {
           </div>
           <button type="button" className="text-btn" onClick={reset}>{resetOk ? "RESET ✓" : "RESET"}</button>
         </div>
-      </div>
-      <div className="zero-chips">
-        <HonestyChip tag={tag.tag} detail={`SERIES · ${tag.detail}`} />
-        <HonestyChip tag="DERIVED" detail="TREND, AR(1) CI, LOESS" />
       </div>
       {!motion ? <p className="state-line state-line--muted zero-rm">THE BENCH IS DRAWN ONLY WITH MOTION ON; EVERY CONTROL ABOVE STILL UPDATES THE SERIES AND THE TREND.</p> : null}
     </Track>

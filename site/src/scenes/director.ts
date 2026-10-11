@@ -131,7 +131,7 @@ let tierChecked = false;
 let started = false;
 let losses = 0;
 export const glLosses = () => losses;
-export const debug = { radius: 0, scene: "", glFrames: 0, lastYear: 0, phase: 0, coreAlpha: 0 };
+export const debug = { radius: 0, scene: "", glFrames: 0, lastYear: 0, phase: 0, coreAlpha: 0, figure: { discs: [] as number[][], rects: [] as number[][] } };
 
 function dprFor(cls: string) {
   const d = devicePixelRatio || 1;
@@ -541,6 +541,20 @@ function frame(now: number) {
   // intro radius stats (MOTION_SYSTEM test 15): the disc the renderer actually uses, every frame
   const [f, o, id] = build(now, L, dpr);
   debug.scene = id;
+  // the drawn figure, for layout tests: the sphere disc while it is a sphere, the core's box once it stands
+  debug.figure = { discs: [], rects: [] };
+  if (f && f.cells.length && f.cellAlpha > 0.05 && f.u.s1 === 0 && f.dim > 0.3) debug.figure.discs.push([...f.u.sphere]);
+  if (f?.core && f.core.alpha > 0.05) {
+    const v = f.core.v, n = v.length / 4;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (let i = 0; i < n; i++) {
+      if (v[i * 4 + 1]! <= HIDDEN) continue;
+      const t = f.core.bench, lie = f.core.h;
+      const bx = t >= 1 ? [lie[i * 4]!, lie[i * 4 + 1]!, lie[i * 4]! + lie[i * 4 + 2]!, lie[i * 4 + 1]! + lie[i * 4 + 3]!] : [v[i * 4]!, v[i * 4 + 1]!, v[i * 4]! + v[i * 4 + 2]!, v[i * 4 + 1]! + v[i * 4 + 3]!];
+      x0 = Math.min(x0, bx[0]!); y0 = Math.min(y0, bx[1]!); x1 = Math.max(x1, bx[2]!); y1 = Math.max(y1, bx[3]!);
+    }
+    if (x1 > x0 && (f.core.bench === 0 || f.core.bench === 1)) debug.figure.rects.push([x0, y0, x1, y1]);
+  }
   const r = o.orb?.disc.r ?? (f ? f.u.sphere[2] : 0);
   debug.radius = r;
   if (intro.playing && r > 0) {

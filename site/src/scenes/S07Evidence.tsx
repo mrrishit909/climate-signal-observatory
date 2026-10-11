@@ -5,7 +5,8 @@ import { useArtifact } from "../data/useArtifact";
 import { AGREEMENT, CO2, FACTS, GRID_META, META, TRENDS, VALIDATION } from "../data/artifacts";
 import { copyS07, type Exchange } from "../data/copy";
 import { stepState } from "../motion/progress";
-import { useMotion, useProgress } from "../scroll/hooks";
+import { useActiveScene, useMotion, useProgress } from "../scroll/hooks";
+import { SceneErrors } from "../components/StateUI";
 import { CoverageStrip } from "./S02Record";
 import type { SceneDef } from "../app/scenes";
 
@@ -57,13 +58,14 @@ function CiBars({ rows }: { rows: [string, [number, number]][] }) {
 /** S07 Evidence (argument stack): seven objections, each answered with a receipt. */
 export function S07Evidence({ def }: { def: SceneDef }) {
   const motion = useMotion();
-  const [facts] = useArtifact(FACTS);
-  const [meta] = useArtifact(META);
-  const [val] = useArtifact(VALIDATION);
-  const [agr] = useArtifact(AGREEMENT);
-  const [tr] = useArtifact(TRENDS);
-  const [co2] = useArtifact(CO2);
-  const [gm] = useArtifact(GRID_META.gistemp);
+  const [facts, rF] = useArtifact(FACTS);
+  const [meta, rM] = useArtifact(META);
+  const [val, rV] = useArtifact(VALIDATION);
+  const [agr, rA] = useArtifact(AGREEMENT);
+  const [tr, rT] = useArtifact(TRENDS);
+  const [co2, rC] = useArtifact(CO2);
+  const [gm, rG] = useArtifact(GRID_META.gistemp);
+  const active = useActiveScene();
   const [shown, setShown] = useState(0);
   const sRef = useRef(0);
   useProgress(def.id, (p) => { const s = stepState(sRef.current, p, THRESH); if (s !== sRef.current) { sRef.current = s; setShown(s); } });
@@ -112,6 +114,8 @@ export function S07Evidence({ def }: { def: SceneDef }) {
   const cur = ex?.[Math.max(0, n - 1)];
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="How we know" className="scene scene-evidence">
+      <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: rF }, { file: "meta.json", state: meta, retry: rM }, { file: "validation.json", state: val, retry: rV },
+        { file: "agreement.json", state: agr, retry: rA }, { file: "trends.json", state: tr, retry: rT }, { file: "co2.json", state: co2, retry: rC }, { file: "grid_gistemp_2deg.meta.json", state: gm, retry: rG }]} />
       <h2 id="evidence-title" tabIndex={-1} data-scene-heading className="ev-title serif">How we know.</h2>
       <ol className="ev-stack" aria-label="Seven objections and their answers">
         {ex?.slice(0, n).map((e, i) => (

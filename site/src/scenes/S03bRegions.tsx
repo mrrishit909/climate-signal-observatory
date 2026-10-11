@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
 import { useArtifact } from "../data/useArtifact";
 import { getStore } from "../data/loader";
-import { FACTS, REGIONAL, TREND_GRIDS, TRENDS } from "../data/artifacts";
+import { COAST, FACTS, REGIONAL, TREND_GRIDS, TRENDS } from "../data/artifacts";
 import { copyS03b } from "../data/copy";
 import { fixed, pct, signed } from "../model/format";
 import { BINS } from "../model/bins";
@@ -32,9 +32,10 @@ export function S03bRegions({ def }: { def: SceneDef }) {
   const motion = useMotion();
   const active = useActiveScene();
   const vp = useViewport();
-  const [facts] = useArtifact(FACTS);
-  const [trends] = useArtifact(TRENDS);
-  const [reg] = useArtifact(REGIONAL);
+  const [facts, retryF] = useArtifact(FACTS);
+  const [trends, retryT2] = useArtifact(TRENDS);
+  const [reg, retryR] = useArtifact(REGIONAL);
+  const [coast, retryK] = useArtifact(COAST);
   const [tg, retryT] = useArtifact(TREND_GRIDS[c.source], false);
   const [step, setStep] = useState(0);
   const stepRef = useRef(0);
@@ -102,6 +103,7 @@ export function S03bRegions({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="Where it warms fastest" className="scene scene-regions">
+      <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "trends.json", state: trends, retry: retryT2 }, { file: "regional.json", state: reg, retry: retryR }, { file: "coastlines.json", state: coast, retry: retryK }]} />
       <div className="regions-text">
         <h2 id="regions-title" tabIndex={-1} data-scene-heading className="scene-statement">{copy?.statement ?? def.title}</h2>
         {state ? <p className="scene-body" key={`b${step}`}>{state.body}</p> : null}

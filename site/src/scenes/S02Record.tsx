@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { Track } from "../scroll/Track";
 import { StoryDeck, type DeckCard } from "../components/StoryDeck";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
+import { useActiveScene } from "../scroll/hooks";
 import { Orb } from "../components/Orb";
 import { useArtifact } from "../data/useArtifact";
 import { AR6, FACTS, GRID_META, META } from "../data/artifacts";
@@ -59,9 +60,10 @@ function Baselines({ last, offset }: { last: number; offset: string }) {
 
 /** S02 Provenance Deck (interaction 4): what a cell is, two agencies, the zero, the gaps. */
 export function S02Record({ def }: { def: SceneDef }) {
-  const [facts] = useArtifact(FACTS);
-  const [meta] = useArtifact(META);
-  const [ar6] = useArtifact(AR6);
+  const [facts, retryF] = useArtifact(FACTS);
+  const [meta, retryM] = useArtifact(META);
+  const [ar6, retryA] = useArtifact(AR6);
+  const active = useActiveScene();
   const [gm, retryG] = useArtifact(GRID_META.gistemp);
   const [hm, retryH] = useArtifact(GRID_META.hadcrut5);
   const cards = useMemo((): DeckCard[] | null => {
@@ -109,6 +111,7 @@ export function S02Record({ def }: { def: SceneDef }) {
         </div>
       )}
       {sources ? <p className="record-sources">{sources}</p> : null}
+      <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "meta.json", state: meta, retry: retryM }, { file: "ar6.json", state: ar6, retry: retryA }]} />
     </Track>
   );
 }

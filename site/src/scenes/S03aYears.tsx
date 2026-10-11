@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent } from "react";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
-import { ArtifactStatus } from "../components/StateUI";
+import { ArtifactStatus, SceneErrors } from "../components/StateUI";
 import { useArtifact } from "../data/useArtifact";
 import { getStore } from "../data/loader";
-import { CO2, EXTREMES, GRIDS, SERIES } from "../data/artifacts";
+import { CO2, COAST, EXTREMES, GRIDS, SERIES } from "../data/artifacts";
 import { copyS03a, SOURCE_LABEL, yearReadout } from "../data/copy";
 import { BASELINES, type Baseline, type Source } from "../data/types";
 import { BINS, EDGE_LABELS } from "../model/bins";
@@ -79,9 +79,10 @@ export function S03aYears({ def }: { def: SceneDef }) {
   const c = useSyncExternalStore(subscribeClimate, getClimate);
   const motion = useMotion();
   const active = useActiveScene();
-  const [series] = useArtifact(SERIES);
-  const [co2] = useArtifact(CO2);
-  const [ext] = useArtifact(EXTREMES);
+  const [series, retryS] = useArtifact(SERIES);
+  const [co2, retryC] = useArtifact(CO2);
+  const [ext, retryE] = useArtifact(EXTREMES);
+  const [coast, retryK] = useArtifact(COAST);
   const [grid, retry] = useArtifact(GRIDS[c.source], false);
   const version = useSyncExternalStore(bank.subscribe, bank.getVersion);
   const vp = useViewport();
@@ -108,9 +109,9 @@ export function S03aYears({ def }: { def: SceneDef }) {
         year, source: c.source, baseline: c.baseline,
         global: vals?.[yi] ?? null,
         rank: s?.values[RANK_BASELINE] ? rankOf(s.values[RANK_BASELINE]!, yi) : null,
-        co2: co2.status === "ready" ? co2.data.mlo_annual_ppm[yi] ?? null : null, co2First,
+        co2: co2.status === "ready" ? co2.data.mlo_annual_ppm[yi] ?? null : undefined, co2First,
         measured: g && layer >= 0 ? g.meta.valid_area_share_per_year[layer]! : null,
-        extremes: metric ? { share: metric.area_share[yi] ?? null, expected: metric.expected_share_in_reference } : null,
+        extremes: ext.status !== "ready" ? undefined : metric ? { share: metric.area_share[yi] ?? null, expected: metric.expected_share_in_reference } : null,
         lostMost: !!shares && shares.measured > 0 && shares.referenced < 0.4 * shares.measured,
       }),
       empty: !!shares && shares.referenced === 0,
@@ -128,6 +129,7 @@ export function S03aYears({ def }: { def: SceneDef }) {
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="Year by year" className="scene scene-years">
+      <SceneErrors active={active === def.id} items={[{ file: "series_annual.json", state: series, retry: retryS }, { file: "co2.json", state: co2, retry: retryC }, { file: "extremes.json", state: ext, retry: retryE }, { file: "coastlines.json", state: coast, retry: retryK }]} />
       <div className="years-text">
         <h2 id="years-title" tabIndex={-1} data-scene-heading className="scene-statement">{copyS03a.statement}</h2>
         <p className="scene-body">{copyS03a.body}</p>
@@ -146,9 +148,9 @@ export function S03aYears({ def }: { def: SceneDef }) {
         <p className="readout-year tnum" data-year>{r.lines.year}</p>
         <p className="readout-line tnum" data-global>{r.lines.global}</p>
         <p className="readout-line tnum">{r.lines.rank} <HonestyChip tag="DERIVED" className="chip--inline" /></p>
-        <p className="readout-line tnum">{r.lines.co2}</p>
+        {r.lines.co2 ? <p className="readout-line tnum" data-co2>{r.lines.co2}</p> : null}
         <p className="readout-line tnum">{r.lines.measured}</p>
-        <p className="readout-line readout-line--sm tnum">{r.lines.extremes}</p>
+        {r.lines.extremes ? <p className="readout-line readout-line--sm tnum">{r.lines.extremes}</p> : null}
         {plus2 ? <p className="readout-line tnum" data-plus2>{r.plus2 === null ? "n/a" : `${pct(r.plus2)}% OF MEASURED AREA AT +2 °C OR MORE`} <HonestyChip tag="DERIVED" className="chip--inline" /></p> : null}
         {r.lines.lost ? <p className="readout-line readout-line--warn">{r.lines.lost}</p> : null}
         {r.empty ? <p className="state-line state-line--empty">NO MEASURED CELLS FOR {year} UNDER {c.baseline}</p> : null}
@@ -160,13 +162,13 @@ export function S03aYears({ def }: { def: SceneDef }) {
         const sr = series.data.series.find((x) => x.id === SERIES_ID[c.source]);
         const vals = sr?.values[c.baseline], rk = sr?.values[RANK_BASELINE];
         return (
-          <table className="sr-only">
+          <div className="sr-only"><table>
             <caption>Global annual anomaly and rank, {c.source.toUpperCase()}, vs {c.baseline}</caption>
             <thead><tr><th>Year</th><th>°C</th><th>Rank (1 = warmest)</th></tr></thead>
             <tbody>{series.data.years.map((yy, i) => (vals?.[i] === null || vals?.[i] === undefined ? null : (
               <tr key={yy}><td>{yy}</td><td>{vals[i]}</td><td>{rk ? rankOf(rk, i)?.rank : ""}</td></tr>
             )))}</tbody>
-          </table>
+          </table></div>
         );
       })() : null}
       {motion ? (

@@ -57,3 +57,18 @@ export function ArtifactStatus<T>({ file, state, retry, empty, children }: {
       return <>{children(state.data)}</>;
   }
 }
+
+export interface Needed { file: string; state: LoadState<unknown>; retry: () => void }
+/**
+ * L4: every scene that consumes an artifact shows its own inline error and RETRY, in view. Alerts render only
+ * while the scene owns the viewport, so a failed file has one live region at a time, not one per scene.
+ */
+export function SceneErrors({ active, items }: { active: boolean; items: Needed[] }) {
+  const bad = items.filter((i) => i.state.status === "error");
+  if (!active || !bad.length) return null;
+  return (
+    <div className="scene-errors">
+      {bad.map((b) => b.state.status === "error" ? <ErrorLine key={b.file} file={b.file} reason={b.state.reason} attempt={b.state.attempt} onRetry={b.retry} /> : null)}
+    </div>
+  );
+}

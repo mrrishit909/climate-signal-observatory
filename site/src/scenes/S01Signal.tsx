@@ -3,7 +3,9 @@ import { NotificationCard } from "../components/NotificationCard";
 import { WordReveal } from "../components/WordReveal";
 import { stepState } from "../motion/progress";
 import { HonestyChip } from "../components/HonestyChip";
-import { ErrorLine } from "../components/StateUI";
+import { SceneErrors } from "../components/StateUI";
+import { useActiveScene } from "../scroll/hooks";
+import { COAST } from "../data/artifacts";
 import { useArtifact } from "../data/useArtifact";
 import { FACTS, GRID_INTRO } from "../data/artifacts";
 import { copyS00, copyS01 } from "../data/copy";
@@ -23,7 +25,9 @@ import { planetFrame } from "./frames";
  * the reduced-motion static planet. The headline itself is static HTML (LCP).
  */
 export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
-  const [facts] = useArtifact(FACTS);
+  const [facts, retryF] = useArtifact(FACTS);
+  const [coast, retryC] = useArtifact(COAST);
+  const active = useActiveScene();
   const [grid, retry] = useArtifact(GRID_INTRO);
   const motion = useMotion();
   const copy = copyS00(facts.status === "ready" ? facts.data : null);
@@ -34,8 +38,11 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
   const s01Ref = useRef<HTMLDivElement>(null);
   useProgress("signal", (p) => {
     if (s01Ref.current) s01Ref.current.style.opacity = !motion || p > 0.3 ? "1" : "0";
+    // D-006: past p 0.3 the S01 block carries the planet's tag itself, so the S00 note steps aside instead of printing over the cards
     const s = stepState(cardStep.current, p, [0.6]);
     if (s !== cardStep.current) { cardStep.current = s; setCards((k) => (s ? Math.abs(k) + 1 : -Math.abs(k))); }
+    // D-006: once the cards are in, they carry the planet's tag, so the S00 note steps aside instead of printing over them
+    document.querySelector(".signal-foot")?.classList.toggle("is-s01", !motion || s > 0);
   });
   const s01 = facts.status === "ready" ? copyS01(facts.data) : null;
 
@@ -71,15 +78,16 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
         <div className="s01" ref={s01Ref} style={{ opacity: motion ? 0 : 1 }}>
           <WordReveal as="p" className="s01-statement" text={s01.statement} mode={motion ? { kind: "scrub", track: "signal", from: 0.35, to: 0.75 } : { kind: "value", t: 1 }} />
           <div className={`s01-cards ${cards > 0 || !motion ? "is-in" : ""}`}>
+            <p className="s01-tag"><HonestyChip tag="OBSERVED" detail="PLANET" /> <span>{copy.note}</span></p>
             <NotificationCard from={s01.card1Head} when="" body={s01.card1Body} playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="GISTEMP v4 · 1951-1980" />} />
             <NotificationCard from={s01.card2Head} when="" body={s01.card2Body} variant="blue" playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="NOAA GML" />} />
           </div>
         </div>
       ) : null}
+      <SceneErrors active={active === "signal" || active === null} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "coastlines.json", state: coast, retry: retryC }, { file: "grid_gistemp_2deg_intro.i8.bin.gz", state: grid, retry }]} />
       <p className="sr-only">{copy.alt}</p>
       <div className={`signal-foot ${introPlaying ? "is-waiting" : ""}`}>
         <p className="state-line nogl-only">{copy.noGl}</p>
-        {grid.status === "error" ? <ErrorLine file="grid_gistemp_2deg_intro" reason={grid.reason} attempt={grid.attempt} onRetry={retry} /> : null}
         <p className="signal-note"><HonestyChip tag="OBSERVED" /> <span>{copy.note}</span></p>
       </div>
     </>

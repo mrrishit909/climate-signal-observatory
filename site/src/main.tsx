@@ -7,7 +7,7 @@ import { ErrorBoundary } from "./app/ErrorBoundary";
 import { App } from "./app/App";
 import { getProgress, jumpTo, startEngine } from "./scroll/engine";
 import { debug, intro, introTime, quality, snapAll, yearMix } from "./scenes/director";
-import { layout } from "./scenes/geometry";
+import { cssClass, layout } from "./scenes/geometry";
 import { getClimate, setClimate } from "./state/climate";
 import { obs } from "./state/scenes";
 
@@ -29,6 +29,8 @@ Object.assign(window, {
     debug: () => ({ ...debug }),
     introT: () => introTime(performance.now()),
     yearMix,
+    /** L1: the JS composition class and the CSS one must agree */
+    classes: () => ({ js: layout(document.documentElement.clientWidth, innerHeight).cls, css: cssClass() }),
   },
 });
 addEventListener("cso:jump", snapAll);
