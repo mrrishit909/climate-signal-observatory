@@ -684,7 +684,8 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
   /* the regional title sits between the ledger block and the planet (G1s T top = 59% of the stage) */
   .regions-title { top: calc(59% - 44px); }
   /* the controls may wrap to two lines below 790px (classic scrollbars), so the readout starts under the second line */
-  .years-readout { top: 372px; }
+  .years-controls { top: 244px; }
+  .years-readout { top: 354px; }
   /* the rail runs from the margin to the docked core as a two-column grid, groups wrap instead of scrolling */
   .obs-rail { width: auto; right: calc(16.7% + 16px); top: calc(60% + 16px); bottom: auto; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: row; gap: 8px 16px; overflow: visible; }
   .obs-rail .seg-ctl__row { flex-wrap: wrap; }
@@ -693,14 +694,13 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
 /* ---- L2 phones ---- */
 @media (max-width: 767px) {
   .years-readout > .chip { max-width: none; white-space: nowrap; }
-  .regions-text .seg-ctl__row--scroll { flex-wrap: wrap; overflow: visible; }
   .strata-foot { top: auto; bottom: calc(var(--nav-clear) + 4px); }
   .surface-text { bottom: calc(var(--nav-clear) + 80px); }
   .cell-anatomy__fields { margin-bottom: 6px; }
 }
 @media (max-width: 767px) {
   /* the previous answer collapses to its header and tag (L3: the tag stays), the stack ends above the receipt */
-  .ev-ex.is-prev { display: flex; }
+  .ev-ex.is-prev:not(.is-old) { display: flex; }
   .ev-ex.is-prev .ev-q, .ev-ex.is-prev .ev-a > :not(header):not(.ev-tag) { display: none; }
   .ev-ex.is-prev .ev-a { padding: 8px 12px; gap: 4px; }
   .ev-stack { bottom: calc(var(--nav-clear) + 176px); height: calc(100% - var(--nav-clear) - 240px); overflow: hidden; }
@@ -723,3 +723,7 @@ html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 5
 .step-dot:focus-visible { outline: 2px solid #fff; outline-offset: 0; }
 /* D-019: on desktop the inspector opens left of the docked core, so PLAY and the core stay reachable */
 @media (min-width: 1024px) { .inspector { right: calc(17.4vw + 24px); } }
+/* the trend-period chips wrap instead of scrolling a chip out of view (1024 compact and phones) */
+.regions-text .seg-ctl__row--scroll { flex-wrap: wrap; overflow: visible; }
+/* tablet: the readout's tag takes a full row instead of a 150px column */
+@media (min-width: 768px) and (max-width: 1023px) { .years-readout > .chip { grid-column: 1 / -1; grid-row: auto; max-width: none; white-space: nowrap; } }

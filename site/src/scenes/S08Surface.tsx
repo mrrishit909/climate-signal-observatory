@@ -67,7 +67,7 @@ export function S08Surface({ def, onReplay }: { def: SceneDef; onReplay: () => v
       <SceneErrors active={active === def.id} items={[{ file: "facts.json", state: facts, retry: retryF }, { file: "meta.json", state: meta, retry: retryM }]} />
       {!motion ? <canvas ref={still} className="still-planet" aria-hidden="true" /> : null}
       <div className="surface-scrim" ref={scrim} aria-hidden="true" style={{ opacity: motion ? 0 : 1 }} />
-      {motion && !on ? (
+      {motion && !on && active === def.id ? (
         <p className="surface-tag">{folding
           ? <HonestyChip tag="OBSERVED" detail={`CELLS · ${look.source === "gistemp" ? "GISTEMP V4" : "HADCRUT5"} · ${look.baseline}`} />
           : <HonestyChip tag="OBSERVED" detail="GISTEMP V4 · 1951-1980" />}</p>

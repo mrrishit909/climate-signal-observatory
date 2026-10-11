@@ -129,7 +129,8 @@ test.describe("layout: L1 L2 L3 L5 L7 L8", () => {
     if (reference.size) return;
     const page = await browser.newPage();
     await open(page, 1440, 900);
-    for (const [s, p] of LANDINGS) { await land(page, s, p); reference.set(`${s}@${p}`, (await audit(page, s)).chips); }
+    // the reference waits out the fade-ins (cards, notes) so it holds every tag the landing settles on
+    for (const [s, p] of LANDINGS) { await land(page, s, p); await page.waitForTimeout(1200); reference.set(`${s}@${p}`, (await audit(page, s)).chips); }
     await page.close();
   }
 
@@ -140,12 +141,13 @@ test.describe("layout: L1 L2 L3 L5 L7 L8", () => {
       const problems: string[] = [];
       for (const [s, p] of LANDINGS) {
         await land(page, s, p);
-        const r = await audit(page, s);
+        const ref = reference.get(`${s}@${p}`) ?? [];
+        const missing = (chips: string[]) => [...new Set(ref)].map((tag) => [tag, ref.filter((c) => c === tag).length, chips.filter((c) => c === tag).length] as const).filter(([, want, have]) => have < want);
+        // tags fade in with their blocks: re-audit (up to 3 s) until the landing has settled, then judge the settled frame
+        let r = await audit(page, s);
+        for (let k = 0; k < 6 && missing(r.chips).length; k++) { await page.waitForTimeout(500); r = await audit(page, s); }
         problems.push(...r.hits.map((x) => `${s}@${p ?? "-"}: ${x}`));
-        for (const tag of reference.get(`${s}@${p}`) ?? []) {
-          const have = r.chips.filter((c) => c === tag).length, want = (reference.get(`${s}@${p}`) ?? []).filter((c) => c === tag).length;
-          if (have < want) problems.push(`${s}@${p ?? "-"}: tag ${tag} shown ${want}x at 1440, ${have}x here`);
-        }
+        for (const [tag, want, have] of missing(r.chips)) problems.push(`${s}@${p ?? "-"}: tag ${tag} shown ${want}x at 1440, ${have}x here`);
         expect(r.classes.js).toBe(r.classes.css);
       }
       if (w < 1024) {
