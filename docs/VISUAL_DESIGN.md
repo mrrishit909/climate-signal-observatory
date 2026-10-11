@@ -56,7 +56,7 @@ The project 03 rule differs from P01. **Here, orange is a data colour.** Warm an
 | Anomaly scale (diverging, luminance-symmetric) | See the bin table below | **Sign is hue** (Solar warm, Electric cool). **Magnitude is luminance**, so large anomalies of either sign glow and near-zero cells are a dim neutral. The scale is binned (11 bins), never continuous, so every colour reads as a stated range. Blue-versus-orange is safe for protan and deutan vision. |
 | Neutral (anomaly within ±0.2 °C) | `#2E2E2E` | 1.55:1 against black. With the 1px globe limb line, a neutral cell is visibly *data*, not background |
 | **Missing cell** | Dot lattice: 1px white dots at 40% opacity, 4px pitch, on black | It is never a colour. This is the "missing stays missing" cue, and it is distinct from both neutral (a solid grey) and the background (pure black) |
-| Primary accent | Solar orb family (`--orb-solar`: `#fff3a6`, `#ffc23d`, `#ff7a1f`, `#ff4c25`) | The opening orb, warm data, and the S08 return |
+| Primary accent | Solar orb family (`--orb-solar`: `#fff3a6`, `#ffc23d`, `#ff7a1f`, `#ff4c25`) | The oversized opening orb (S00) and warm data. There is no orb in S08: the closing is the measured surface itself |
 | Secondary accent | Electric family (`#8fd9ff`, `#58b8e1`, `#192ce4`) | Cool data. `#192CE4` (2.5:1) is **fill only**: it is used solely for the weakest cool bin, which sits next to neutral, and never as text or a line |
 | UI structure | White, and `#58B8E1` for DERIVED overlays (trend lines, CI edges) | Light blue is never used for raw observations |
 | PREDICTED (IPCC AR6) | `#8fa2ff` (`--tag-predicted`, 8.8:1) outline plus a 45-degree hatch (1px at 6px pitch, 50% opacity) plus the chip `PREDICTED · IPCC AR6` | It is never a solid fill and never a line continuing from observations (see S06) |
@@ -201,12 +201,13 @@ The plan's "radial year ring around the globe" collides with P01 (a ring of mark
   - The core is also the year control: drag along its height to choose a year.
   - Time is vertical, so nothing about the core is radial.
 - **Accent use.**
-  - The Solar orb *becomes* the planet in S00 and returns in S08.
+  - An **oversized** Solar orb (at least 120vh across, cropped by the frame) *resolves in place* into the planet in S00.
+  - In S08 the camera pushes into that planet until its measured surface fills the frame.
   - Warm data uses Solar bins and cool data uses Electric bins.
   - Light blue is reserved for DERIVED overlays. The PREDICTED periwinkle hatch appears only in S06.
 - **Layout.** Asymmetric editorial: statements on a left measure, the globe centre-right, the core as a tall right-hand column (D). The core becomes a horizontal "bench" for the lab (S05), and lies horizontally at the bottom on mobile OBS.
 - **3D/2D strategy.** A raw WebGL2 sphere mesh whose vertex shader blends orthographic and Equal Earth positions (the unwrap). The core is drawn in the same context from a small latitude-by-year texture, and all text and controls are DOM. There is no three.js.
-- **Hero concept.** A Solar orb glows on black. Its glow contracts into a sphere edge, and the orb resolves into the planet in 1880 (mostly neutral, with large lattice gaps). The years run to the last complete year, and the warming appears as the surface brightens. "The planet is keeping a record."
+- **Hero concept.** A giant Solar orb, larger than the frame, glows on black. It **cools in place**: its glow drains into thousands of square cells and it becomes the planet in 1880, at the same giant size (mostly neutral, with polar lattice gaps). The years run to the last complete year, and the warming appears as the surface brightens. "The planet is keeping a record." The orb never shrinks to a marker.
 - **Nav labels.** SIGNAL · RECORD · YEARS · REGIONS · STRATA · ZERO · FUTURES · EVIDENCE · OBSERVATORY
 - **Storytelling.** The signal, where it comes from, how it changes by year, where it changes most, how a planet becomes a record, how the "zero" is chosen, what is assessed for the future, why you can trust it, then free exploration, then the return.
 - **Motion character.** The sphere turns slowly and deliberately (1.2s settles to a region). The unwrap is long, continuous and scrubbed. Strata land with weight (premium ease). Year changes are 200ms crossfades between real states, never interpolated values.
@@ -271,13 +272,17 @@ DESIGN_AUDIT should check items 1, 2 and 4 when P06 and P07 are designed.
 - **What differs from P03:**
   - geometry: our sphere and vertical core versus their straight walls on a horizon floor
   - accent: Solar-primary versus Electric-primary
-- **One near-echo to watch:** both sites open and close on an orb. Ours is distinguished because:
-  - The P03 orb is **Solar** and becomes a **sphere filled with measured cells**. P02's stays a flat Electric glow that shrinks to a marker.
-  - P03's return is preceded by the core folding back into the planet, with no horizon line.
-  - P03 never shows the orb at 164vw. G0 is at most 200px in radius.
+- **The shared mandate.** Both sites must have a giant circular composition, and both use an orb. P03's open and close must therefore read differently from P02's in a side-by-side contact sheet:
 
-  DESIGN_AUDIT (after P02) should confirm this reads differently in the two contact sheets.
-- **Outdated wording in P02:** P02's document still lists "P03 (year ring)" among the radial claims. That plan item is dropped here.
+| | P02 (The Valley) | P03 (The Core Sample) |
+|---|---|---|
+| Colour | Electric | **Solar** (warm), resolving into the diverging cell palette |
+| S00 placement | Giant orb rising, lower part off-screen | **Centred** orb at 124vh, cropped at **top and bottom** (D). On M it covers the frame corner to corner |
+| S00 motion | Contracts into a price marker at the valley floor | **Resolves in place:** the glow drains into square measured cells at the same giant size, and the years run on it. **No contraction during S00** |
+| S08 composition | The marker regrows into the glow | **No glow:** the camera pushes into the planet until its cell surface fills the frame edge to edge (no limb, no horizon), then the surface replays 1880 to the latest year |
+| Texture at a glance | A smooth gradient disc over straight walls | A grid of hard-edged squares with dotted gaps |
+
+  Hard rejection criterion 19 enforces this.
 
 **Why A gets 4, not 5, for feasibility.** The full 2-degree annual grid (146 x 16,200 Int8 values) is 2.4 MB raw and about 0.6 MB gzip (contract figure). It must stay off the LCP path. It is fetched after first paint, and the intro must work before it arrives (DR-1: a small intro subset). That is solvable, but it is the main performance risk.
 
@@ -306,7 +311,7 @@ A is the only concept where the project's core analytical object (the gridded an
 | S06 Consequences | What is assessed next | FUTURES | 250vh | Colour becomes position; PREDICTED windows |
 | S07 Evidence | How we know | EVIDENCE | 250vh | Argument card stack |
 | OBS | The Climate Signal Observatory | OBSERVATORY | 100dvh, **not pinned**, normal flow | Free exploration |
-| S08 Conclusion | Closing (echoes S00) | (none; the nav keeps OBSERVATORY active) | 200vh | The core folds back; the planet becomes the orb |
+| S08 Conclusion | Closing (echoes S00) | (none; the nav keeps OBSERVATORY active) | 200vh | The core folds back; the camera pushes into the planet until its surface fills the frame; the 1880-to-latest run replays |
 
 The total is about 2,350vh. If the QA scroll recording shows fatigue, cut S04 to 300vh first, then S03b to 250vh.
 
@@ -342,8 +347,9 @@ The total is about 2,350vh. If the QA scroll recording shows fatigue, cut S04 to
 
 | State | D 1440x900 | T 768x1024 | M 390x844 | Notes |
 |---|---|---|---|---|
-| G0 Orb (S00 start, S08 end) | c (720, 450), orb radius 200, no sphere | c (384, 470), 190 | c (195, 360), 130 | Solar orb, flat concentric glow (cached bitmap) |
-| G1 Planet hero (S00 end) | c (720, 450), r 290, halo 20% | c (384, 450), r 280 | c (195, 330), r 160 | Rotation lon0 = -30 (Atlantic), lat0 = 15; idle drift 3 deg/s |
+| G0 Oversized (S00, S01 start): the Solar orb, then the planet at the same size | c (720, 450), r 560 (diameter 1120px = **124vh**). Cropped top and bottom (y -110..1010), with side edges visible at x 160..1280 | c (384, 512), r 620 (121vh). Cropped on all four sides, with the edge visible only at mid-height on the sides | c (195, 422), r 510 (121vh). All four corners fall inside the disc, so the frame is entirely orb or planet and no edge is visible | The orb is a flat concentric Solar glow (cached bitmap, drawn at the G0 size). The planet uses rotation lon0 -30, lat0 15, idle drift 3 deg/s. **There are no marks on the visible edge** |
+| G1 Planet centred (S04 start, reduced-motion frames) | c (720, 450), r 290, halo 20% | c (384, 450), r 280 | c (195, 330), r 160 | The unwrap starts from here |
+| G5 Surface (S08) | c (720, 450), r 1000. The limb is entirely off-frame (r 1000 is greater than the 849px half-diagonal) | c (384, 512), r 760 (half-diagonal 640) | c (195, 422), r 560 (half-diagonal 465) | The frame is **only measured cells and lattice**, edge to edge, with a faint sphere curvature at the corners. There is no halo, no limb and no horizon |
 | G1s Planet aside (S01-S03b) | c (1000, 470), r 320, text x 96-560 | c (384, 640), r 270, text y 72-330 | c (195, 520), r 168, text y 56-300 | Drift stops at S03b; settles are stepped |
 | G2 Sheet (S04 mid) | Equal Earth, width 1080, centre (720, 430) | width 704, centre (384, 520) | width 358, centre (195, 380) | Aspect from the projection (about 2.05:1) |
 | K1 Core hero (S04 end) | x 610-830 (+ spine to 846), y 98-802 (176 x 4px) | x 284-484 (+ spine to 500), y 150-854 (176 x 4px) | x 120-270 (+ spine to 282), y 96-624 (176 x 3px) | Centred, oversized. Year labels at the left (every 20 years, plus first and last), S / EQ / N labels below |
@@ -372,16 +378,16 @@ There are no spinners and no artificial delays anywhere.
 #### S00 Opening: the planet is speaking (overlay, 4.6s or less)
 
 - **Composition.** Pure black. The timeline is in MOTION_SYSTEM 5.1:
-  1. A Solar orb (G0) breathes in.
-  2. Its glow contracts to a sphere's edge.
-  3. The orb resolves into the planet in 1880.
+  1. An oversized Solar orb (G0, at least 120vh, cropped by the frame) breathes in.
+  2. It cools in place: the glow drains and square cells appear inside the same disc (no contraction).
+  3. The orb becomes the planet in 1880, still at G0 size.
   4. The years run to the latest complete year and the surface brightens.
   5. The headline sharpens.
   6. The nav enters.
 - **Per viewport.**
-  - **D:** headline centred over the planet, 2 lines at 96px, with the planet (G1) at 45% opacity behind it.
-  - **T:** 64px, 2-3 lines, over G1.
-  - **M:** the planet sits in the top half (c 195, 330), and the headline (40px, 3 lines) sits *below* it at y 560-700. It is not overlaid, for legibility.
+  - **D:** headline centred over the giant planet, 2 lines at 96px, with the planet (G0) dimmed to 40% behind it.
+  - **T:** 64px, 2-3 lines, over G0 at 40%.
+  - **M:** the planet fills the frame (G0-M). The headline (40px, 3 lines) sits at y 560-700 over a black scrim that fades from 0 at y 460 to 85% at y 600 and below, with the planet dimmed to 50%. This keeps the text at AA contrast over the cells.
 - **Corner labels.** Top-left is the mono wordmark `CLIMATE SIGNAL OBSERVATORY` (13px). Top-right is a mono year counter that counts `1880` up to `{{facts.latest_complete_year}}` in step with the surface. It is an original element, not the reference's spread wordmark.
 - **LCP rule.** The `h1[data-hero]` is in the DOM from first paint as ghost text (opacity 0.55, blur 12px), never at opacity 0.
 - **Data:**
@@ -397,13 +403,13 @@ There are no spinners and no artificial delays anywhere.
 - **States.**
   - If DR-1 has not arrived by 1.2s, the orb resolves into the sphere with the limb and coastlines only. The counter runs, but the cells fade in (350ms) whenever the subset arrives, with no year run.
   - If the coastlines fail, the sphere still renders (no coastlines).
-  - If WebGL2 is unavailable, the orb stays an orb (the cached 2D bitmap), the headline sharpens, and the note reads `3D GLOBE UNAVAILABLE: FLAT MAPS USED`.
+  - If WebGL2 is unavailable, the oversized orb stays an orb (the cached 2D bitmap at G0 size), the headline sharpens, and the note reads `3D GLOBE UNAVAILABLE: FLAT MAPS USED`.
 
 #### S01 Big Idea: the signal (200vh)
 
 | p | Change |
 |---|---|
-| 0-0.4 | The headline scales from 96px to 44px and moves to y 120 (D). Scrubbed, the planet moves **G1 to G1s** and the halo fades from 20% to 6%. The year stays at the latest complete year. |
+| 0-0.4 | The headline scales from 96px to 44px and moves to y 120 (D). Scrubbed, the giant planet moves **G0 to G1s** (the radius shrinks in log space from 560 to 320 on D; this is the first time it gets smaller, and it happens under the visitor's scroll, not on its own) and the halo fades from 20% to 6%. The year stays at the latest complete year. |
 | 0.35-0.75 | Statement 2 blur-reveals: 64px in the left column (D), 48px (T), 36px (M). |
 | 0.6-1 | Two notification cards type in. |
 
@@ -750,25 +756,29 @@ There are no spinners and no artificial delays anywhere.
   - **Error:** per-artifact RETRY.
   - **Reset:** `RESET VIEW` returns the store to the latest complete year, GISTEMP, 1951-1980, ANOMALY, GLOBE, ALL, no cell, rotation (-30, 15).
 
-#### S08 Conclusion: the return (200vh)
+#### S08 Conclusion: the surface (200vh)
 
 - **Composition.**
 
 | p | What happens |
 |---|---|
-| 0-0.35 | Scrubbed: the docked core retracts. The strata fall back into one strip, the strip widens into the sheet, and the sheet wraps into the sphere (the S04 unwrap in reverse, compressed). |
-| 0.35-0.6 | The planet moves to the centre. Its cells fade, and the Solar halo grows until it is the **G0 orb** again. The planet becomes the orb it came from. |
-| 0.4-0.75 | A serif paragraph blur-reveals (D 44px, T 36px, M 28px). |
-| 0.75 | **The echo.** The S00 year counter reappears top-right showing `{{facts.latest_complete_year}}`. The orb brightens once (600ms). The caption appears: `{{facts.latest_complete_year}}: {{facts.gistemp_latest_year_anomaly_1951_1980}} °C ABOVE 1951-1980 · GISTEMP v4`. |
+| 0-0.30 | Scrubbed: the docked core retracts. The strata fall back into one strip, the strip widens into the sheet, and the sheet wraps into the sphere at G1 (the S04 unwrap in reverse, compressed). |
+| 0.30-0.55 | Scrubbed: **the camera pushes into the planet.** The radius grows in log space from G1 to **G5**, so the limb leaves the frame on every side, and the rotation slerps to face (0, 30). The halo is 0. The frame becomes the measured surface of the latest complete year, square cells and dotted gaps edge to edge. |
+| 0.40-0.75 | A serif paragraph blur-reveals (D 44px, T 36px, M 28px) on a left scrim (D: black 0 to 80% across x 0-820; T/M: bottom scrim). The surface dims to 35% under the text. |
+| 0.75 | **The echo** (stepped, once per down-crossing). The S00 year counter reappears top-right and the surface **replays the intro's decade run in place**: 1880, then each decade, then the latest year (the same DR-1 layers and cadence as S00, 1.4s). The counter shows each layer's year. The caption then appears: `{{facts.latest_complete_year}}: {{facts.gistemp_latest_year_anomaly_1951_1980}} °C ABOVE 1951-1980 · GISTEMP v4`. |
 | 0.8-1 | The links fade in: `→ OPEN THE OBSERVATORY`, `→ REPLAY THE INTRO`, `→ READ THE METHODOLOGY`, `→ SOURCE CODE`. |
 
 - **Footer** (12px mono, 50% white): sources, `meta.generated_at` and the author.
-- **Per viewport.**
-  - D: the paragraph sits at the left (x 96-760), and the orb at the right (c 1060, 450).
-  - T: the paragraph sits at the top, with the orb below.
-  - M: the orb sits at the top (c 195, 220, radius 110), with the paragraph from y 380.
-- **Tags.** The caption is OBSERVED.
-- **States.** Static if the data is missing: the echo is skipped and the caption hidden. The **closing never uses a horizon arc** (that is P01's closing).
+- **Per viewport.** The surface is full-bleed on all three viewports.
+  - D: the paragraph sits at the left (x 96-760, y 200-460), with the links below it.
+  - T: the paragraph sits at the bottom (y 640-900) over a bottom scrim.
+  - M: the paragraph runs from y 480 over a bottom scrim, with the links stacked in 44px rows.
+- **The echo is the opening, not a glow.** S00 resolved a giant orb into this surface and ran it from 1880. S08 ends inside that same surface and runs it from 1880 again. **No orb regrows, and nothing contracts to or grows from a point.**
+- **Tags.** The surface and caption are OBSERVED (`CELLS = GISTEMP v4, 2° ANNUAL MEANS VS 1951-1980`).
+- **States.**
+  - If DR-1 is missing, the echo is a single 200ms crossfade from 1880 to the latest year, using the full grid.
+  - If the grid is missing, S08 shows the coastlines at G5 on black (no glow), with the caption hidden.
+  - **The closing never uses a horizon arc or a visible limb** (those belong to P01 and P07).
 
 ---
 
@@ -787,7 +797,7 @@ There are ten interactions. Six are driven by visitor-set analytical parameters 
 | 7 | Assessed Futures | Significant comparison visualisation | P |
 | 8 | The Observatory | Significant interactive data visualisation | P |
 | 9 | Cell Inspector | Contextual inspection | |
-| 10 | The Return | Memorable closing | |
+| 10 | The Surface | Memorable closing | |
 
 ### 1. Solar Ignition (S00)
 
@@ -795,11 +805,11 @@ There are ten interactions. Six are driven by visitor-set analytical parameters 
 - **State:** `intro: 'playing' | 'done'`, `t` in ms.
 - **Permitted values:** t 0..4600.
 - **Data:** the DR-1 intro subset, DR-2 coastlines, `facts.latest_complete_year`.
-- **Visual output:** the orb glows, contracts into a sphere, and becomes the 1880 planet. The decades run, the latest year lands, and the headline sharpens.
+- **Visual output:** the oversized orb (at least 120vh) glows, cools in place into the 1880 planet at the same size, the decades run, the latest year lands, and the headline sharpens.
 - **Keyboard:** Esc, or Enter on SKIP, finishes. Focus starts on SKIP INTRO.
 - **Mobile:** a tap on SKIP, or any touch-scroll, completes it in 350ms.
-- **Reduced motion:** the end state renders at once (the latest-year planet at G1, the sharp headline).
-- **Text alternative:** a visually hidden paragraph, "Animated introduction: a glowing orb becomes a globe of measured temperature anomalies, running from 1880 to {{year}}. Unmeasured areas are dotted."
+- **Reduced motion:** the end state renders at once (the latest-year planet at G0, dimmed, with the sharp headline).
+- **Text alternative:** a visually hidden paragraph, "Animated introduction: a giant glowing orb cools into a globe of measured temperature anomalies, running from 1880 to {{year}}. Unmeasured areas are dotted."
 - **Test:**
   - Playwright: SKIP is visible at 100ms, and the nav appears within 400ms of the click.
   - The LCP element is `h1[data-hero]`.
@@ -938,16 +948,16 @@ There are ten interactions. Six are driven by visitor-set analytical parameters 
 - **Text alternative:** the inspector is text. The series line's `aria-label` gives the first and last valid years, the min and max, and the count of missing years.
 - **Test:** Playwright: clicking a known cell gives a series length equal to the grid years, and missing years render as gaps (the path has more than one subpath when gaps exist).
 
-### 10. The Return (S08)
+### 10. The Surface (S08)
 
 - **Inputs:** scroll progress, the threshold at 0.75, and the REPLAY button.
 - **State:** `echoPlayed: bool` (reset below 0.73).
 - **Permitted values:** echoPlayed true | false.
 - **Data:** `facts`.
-- **Visual output:** the reverse unwrap, the planet becoming the orb, the counter, the brightening, and the caption.
+- **Visual output:** the reverse unwrap, the push into the surface (G5), the counter, the in-place 1880-to-latest replay, and the caption.
 - **Keyboard:** REPLAY THE INTRO scrolls to the top and replays S00.
 - **Mobile:** the same.
-- **Reduced motion:** a static orb with the caption.
+- **Reduced motion:** a static full-frame surface of the latest year with the caption.
 - **Text alternative:** the caption.
 - **Test:** Playwright: the caption is correct at the end. Reverse-crossing 0.75 does not duplicate it.
 
@@ -1139,5 +1149,12 @@ I fail the build on review if any of these is true:
 14. **Text contrast fails:** `#192CE4` used as text or line, 50% white under 13px, or data colours used for body text.
 15. **Any reference asset is used:** Blink fonts, wordmark styling, copy, images or video. The ring dial is also out of bounds (see criterion 2).
 16. **No visible tag** on a data visual, SIMULATED appears outside S07 answer 7, or the CO2 statement lacks "association, not attribution".
-17. **The closing doesn't return to the opening orb** (the same Solar orb, the same year counter).
+17. **The closing doesn't echo the opening.** It must use the same planet surface, year counter and decade-run layers as S00. A regrowing orb or glow in S08 fails (that is P02's closing).
 18. **A U+2014 or U+2015 dash appears** in the site copy.
+19. **S00 or S08 frames that could be confused with P02's S00/S08 in a side-by-side sheet fail.** The checklist:
+    - G0 is at least 120vh in diameter and centred (not rising from the bottom).
+    - The S00 orb resolves into square cells *without contracting*.
+    - No S00 frame shows a small orb or marker.
+    - S08 shows a full-bleed cell surface with no visible limb and no glow disc.
+    - The contact-sheet comparison is part of QA evidence (MOTION_SYSTEM test 16).
+20. **The giant circular composition is missing or undersized:** a G0 diameter under 120vh at any viewport, or an S00 frame where the orb/planet is fully inside the frame on D.

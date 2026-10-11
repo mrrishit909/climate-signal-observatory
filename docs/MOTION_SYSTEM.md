@@ -3,7 +3,7 @@
 This is the phase 17 motion bible. It pairs with `VISUAL_DESIGN.md`, and all references point there:
 
 - scene ids S00-S08 and OBS
-- geometry states G0/G1/G1s/G2 (globe, sheet) and K1-K4 (core, bench, spine column)
+- geometry states G0 (oversized orb and planet), G1/G1s (planet), G2 (sheet), G5 (full-frame surface), and K1-K4 (core, bench, spine column)
 - interaction numbers 1-10
 
 Every value here is binding for the frontend engineer. A deviation needs a written reason in `docs/ENGINEERING_DECISIONS.md` (the orchestrator owns that file).
@@ -32,13 +32,14 @@ Every value here is binding for the frontend engineer. A deviation needs a writt
    - Rows *collapse* into their zonal mean.
    - Strata *land* in time order.
    - Colour *becomes* position.
-   - The planet *returns* to the orb.
+   - In S08 the camera *pushes into* the planet until its measured surface fills the frame.
 2. **Two motion modes,** from the reference:
    - **Scrubbed.** A pure function of scroll progress, reversible and stateless: camera moves, the unwrap, the core build, colour-to-position, card decks, word reveals.
    - **Stepped.** A threshold triggers a timed, retargetable transition: region turns, statement swaps, the spine, the coverage pulse, the futures windows, the argument cards.
 3. **Data is shown only at integer years.** A year change is a 200ms crossfade between two *real* layers. A fractional-year state is never held on screen. Scrubbing moves the year; it does not interpolate the planet.
 4. **One luminous form at a time:**
-   - In S00 and S08 it is the orb.
+   - In S00 it is the oversized Solar orb, which becomes the planet at the same size.
+   - In S08 there is no glow at all: the light is the full-frame cell surface.
    - From S01 to OBS it is the planet with its Solar halo, at 20% or less.
    - In S05 and S06 the halo is off, and the light comes only from the data.
 5. **Slow structure, quick data.** Structure (the sphere, sheet, core and bench) moves over 800-1200ms with long settles. Data re-binning takes 200-600ms.
@@ -56,9 +57,9 @@ Every value here is binding for the frontend engineer. A deviation needs a writt
 
 | Layer | Where it lives | Spec |
 |---|---|---|
-| 1. Intro | S00 Solar Ignition: the orb, sphere, decade run, headline and nav | 5.1 |
+| 1. Intro | S00 Solar Ignition: the oversized orb cooling in place into the planet, decade run, headline and nav | 5.1 |
 | 2. Navigation transitions | Bottom bar active block, MENU pill, chapter jumps with a stage fade, focus moves | 6 |
-| 3. Scroll storytelling | G1 to G1s camera moves, year scrub, region turns, the unwrap and core build, bench, colour-to-position, the return | 4, 5.3, 5.5-5.9, 5.13 |
+| 3. Scroll storytelling | G0 to G1s camera move, year scrub, region turns, the unwrap and core build, bench, colour-to-position, the push into the surface | 4, 5.3, 5.5-5.9, 5.13 |
 | 4. Component interaction | Clamp drag and snap, trend handles, the core scrubber, drag-rotate, the inspector, bottom sheets | 5.8, 5.12, 5.14 |
 | 5. Data transitions | Year crossfades, baseline/source re-bin, trend surface swaps, ledger FLIP, numeral tweens, inspector path morph, bracket emphasis | 5.10 |
 | 6. Microinteractions | Hover, press and focus on squares and chips, segmented active blocks, tooltip, copy check marks, the RESET confirmation | 5.14, 7 |
@@ -134,14 +135,14 @@ Format for each entry:
 |---|---|---|
 | 0 | First paint: black, the ghost headline at its final position, the corner labels at 0, and SKIP INTRO. | |
 | 0-200 | Corner labels fade in. The year counter shows `1880`. | 200, linear |
-| up to 300 | First rAF after `document.fonts.ready` (capped at 300ms): the **Orb component** (shared, Canvas2D, cached bitmap) is drawn at G0. The WebGL context and programs compile in the same idle slot. | |
-| 200-1200 | **The orb breathes in:** scale 0.92 to 1, opacity 0 to 1. | 1000, smooth |
-| 1000-1700 | **The glow contracts:** the orb's outer radius goes from 1.6r to 1.18r (it becomes the halo), its core luminance drops to 35%, and the 1px limb draws (opacity 0 to 0.24). | 700, premium |
-| 1500-1700 | **The handoff:** the WebGL sphere (cells at uniform `#FF7A1F`, matching the orb's mid stop at that frame) crossfades in over the 2D orb's disc. The 2D layer keeps only the halo. | 200, linear |
+| up to 300 | First rAF after `document.fonts.ready` (capped at 300ms): the **Orb component** (shared, Canvas2D) is drawn at **G0: r 560 on D (124vh), 620 on T, 510 on M**, centred and cropped by the frame. At this size it is drawn directly as layered radial gradients at viewport resolution (DPR at most 1.5), not from the 1024px cache. The WebGL context and programs compile in the same idle slot. | |
+| 200-1200 | **The giant orb breathes in:** opacity 0 to 1 and scale 0.96 to 1 (it is already larger than the frame, so it reads as light flooding in, not an object arriving). | 1000, smooth |
+| 1000-1700 | **The orb cools in place.** The radius **stays at G0**, with no contraction. The core luminance drains from `#fff3a6` toward `#ff7a1f`, the outer glow tightens from 1.25r to 1.06r (it becomes the halo), and the 1px limb draws where the edge is in frame (D sides only). | 700, premium |
+| 1500-1700 | **The handoff:** the WebGL sphere at the same G0 centre and radius (cells at uniform `#FF7A1F`, matching the orb's colour at that frame) crossfades in over the 2D disc. The 2D layer keeps only the halo. | 200, linear |
 | 1600-2000 | **The 1880 layer appears:** cell colours tween from the uniform colour to their binned values. Missing cells resolve to the lattice. Coastlines fade in (0 to 0.35). | 400, premium |
 | 2000-3400 | **The decade run:** the DR-1 layers 1890, 1900, ..., 2020 and then the latest year. Each step is a 120ms crossfade, started every 93ms (15 steps). The counter shows **the year of the layer on screen**, jumping by decades with no invented in-between years. | 120 per step, linear |
 | 0-4600 | Idle rotation of 3 deg/s about the planet's axis, starting from lon0 -30, lat0 15. | linear |
-| 3300-4500 | **The headline sharpens** word by word: 6 words, each blur 12 to 0 and opacity 0.55 to 1 over 600ms, staggered 120ms. On D/T the planet dims to 45% behind it. On M it stays 100% (the headline sits below the planet). | 600 per word, smooth |
+| 3300-4500 | **The headline sharpens** word by word: 6 words, each blur 12 to 0 and opacity 0.55 to 1 over 600ms, staggered 120ms. On D/T the giant planet dims to 40% behind it. On M it dims to 50% and the bottom scrim fades in (0 to 85% from y 460 down). | 600 per word, smooth |
 | 4200-4550 | The nav enters: translateY 24px to 0, opacity 0 to 1. | 350, premium |
 | 4600 | `intro = done`. Scroll was never locked. | |
 
@@ -151,7 +152,8 @@ Format for each entry:
   - The counter then stops at `{{facts.latest_complete_year}}` without stepping.
 - **Interruption.** SKIP, Esc, wheel, touch-move or a scroll key complete the intro: every value tweens to its end state in 350ms (premium), the year jumps to latest with one 200ms crossfade, and the input is then honoured. The intro never rewinds.
 - **Replay.** REPLAY INTRO scrolls instantly to the top and resets. The `sessionStorage['climate.intro']` flag is in try/catch.
-- **Reduced motion.** The end state on the first frame: the planet at G1 (latest year, no rotation), the sharp headline and the nav.
+- **Reduced motion.** The end state on the first frame: the planet at G0 (latest year, dimmed, no rotation), the sharp headline and the nav.
+- **No contraction rule.** From 0 to 4600ms, the rendered radius of the orb or planet never goes below the G0 radius. The first reduction happens in S01, scrubbed by the visitor (5.3). This separates P03's S00 from P02's, where the orb contracts into a marker.
 - **Performance.**
   - The Orb bitmap is at most 1024px (D) and 512px (M).
   - The WebGL sphere shades only the disc.
@@ -167,7 +169,7 @@ This matches P01 5.2, with the ghost state at opacity 0.55 and a 12px blur:
 - **Reduced motion:** static and sharp.
 - **Screen readers:** get the full text from the start.
 
-### 5.3 Globe camera moves (S01 G1 to G1s, S02 dim, S03a to S03b, S04 re-centre, OBS)
+### 5.3 Globe camera moves (S01 G0 to G1s, S02 dim, S03a to S03b, S04 re-centre, S08 push to G5, OBS)
 
 - **Scrubbed.**
   - The centre interpolates linearly in s, and the radius interpolates in log space (`r = r0 x (r1 / r0)^s`), with `s = ease_symmetric(local)`.
@@ -183,7 +185,7 @@ This is identical to P01 5.4: rise, plateau-and-step row translate, scaleX progr
 
 | Card | Activation animation (800ms premium unless noted) |
 |---|---|
-| 1 | The inner Solar orb contracts into one square cell (the S00 motif in miniature), then the field rows light up with an 80ms stagger |
+| 1 | The inner Solar orb cools into a grid of square cells (the S00 motif in miniature), one cell is outlined, then the field rows light up with an 80ms stagger |
 | 2 | The two lattices draw row by row (2ms stagger per row), the 2° grid first and then the 5° grid |
 | 3 | The three baseline brackets slide in from the left in time order, then the offset numeral tweens (600ms smooth) |
 | 4 | The 176 coverage bars grow from 0 (scaleY, 1ms stagger by year) |
@@ -329,18 +331,19 @@ This is identical to P01 5.12, with 7 exchanges:
   - Exit is 350ms.
   - Its line draws on open (stroke progress, 600ms).
 
-### 5.13 Closing: The Return (S08)
+### 5.13 Closing: the surface (S08)
 
 | p | Motion | Sync |
 |---|---|---|
-| 0-0.35 | The S04 phases in reverse, compressed: the core un-stacks (strata fall below the viewport, newest last), the top stratum turns back into the strip, the strip widens into the sheet, and the sheet wraps into the sphere (`s1` 1 to 0). | scrubbed |
-| 0.35-0.6 | The planet re-centres and its radius eases to the orb radius. Cell opacity goes 1 to 0. The Solar halo grows from 1.18r to 1.6r, and the 2D Orb bitmap crossfades back in (from p 0.5 to 0.6). The result is the G0 orb, the same component and colours as S00. | scrubbed |
-| 0.4-0.75 | Paragraph word reveal (5.2 scrubbed). | scrubbed |
-| 0.75 | **The echo** (stepped, once per down-crossing): the year counter fades in top-right showing the latest year (350ms). The orb brightens by +0.3 core opacity (600ms smooth up, 1200ms back). The caption fades in (350ms) after the brightening peaks. | stepped |
+| 0-0.30 | The S04 phases in reverse, compressed: the core un-stacks (strata fall below the viewport, newest last), the top stratum turns back into the strip, the strip widens into the sheet, and the sheet wraps into the sphere at G1 (`s1` 1 to 0). | scrubbed |
+| 0.30-0.55 | **The push.** The radius grows in log space from G1 to **G5** (D 290 to 1000), with the centre fixed at the frame centre. The rotation slerps to face (0, 30). The halo goes to 0. By p 0.55 the limb is off-frame on every side and the frame is only cells and lattice. | scrubbed, symmetric |
+| 0.40-0.75 | The scrim fades in and the surface dims to 35%. Paragraph word reveal (5.2 scrubbed). | scrubbed |
+| 0.75 | **The echo** (stepped, once per down-crossing). The year counter fades in top-right (350ms). The surface replays the S00 decade run **in place**: 1880, then every decade, then the latest year (the same DR-1 layers and 120ms crossfades every 93ms, 1.4s total), with the counter showing each layer's year. The caption fades in (350ms) after the last layer lands. No orb or glow appears. | stepped |
 | 0.8-1 | The links fade in (350ms, 60ms stagger). | stepped |
 
-- **Reverse.** Re-crossing above 0.73 resets the echo. The caption never duplicates.
-- **Reduced motion.** The static orb with the caption.
+- **Reverse.** Re-crossing above 0.73 resets the echo, and the surface returns to the latest year. The caption never duplicates.
+- **Reduced motion.** The static G5 surface of the latest year with the caption (no replay).
+- **Performance.** At G5 the full frame is shaded. Use the same DPR caps, and verify with the S08 frame-pacing segment.
 
 ### 5.14 Component microinteractions
 
@@ -433,7 +436,7 @@ It is triggered by `prefers-reduced-motion: reduce` **or** the MOTION OFF toggle
 | S06 | The final composition, with all windows lit and the scenario selector live |
 | S07 | All 7 exchanges as a vertical list |
 | OBS | Fully functional. No PLAY tweening, instant view switch, no inertia |
-| S08 | The static orb plus the caption and links |
+| S08 | The static full-frame surface (G5, latest year, dimmed under the text) plus the caption and links |
 
 4. No idle rotation anywhere. The globe faces its scene orientation.
 5. No blur, and no word reveals.
@@ -468,7 +471,8 @@ This departs from MASTER_PLAN's "R3F globe" and is raised for `docs/ENGINEERING_
 | Draw calls per frame | 5 or fewer | 5 or fewer | 3 or fewer | n/a |
 | Year crossfade | 200ms | 200ms | 0ms (hard steps) | 0ms |
 | Intro decade run | yes | yes | no (single crossfade) | no (orb, then flat map) |
-| Halo / orb bitmap | cached, 1024px max | 512px max | 512px max, halo 0 in scenes | cached 2D |
+| Halo / orb | G0 orb drawn as live radial gradients (DPR 1.5 max, S00 only). Small orbs and the halo use a cached bitmap, 1024px max | the same rule, 512px cache | the same rule, halo 0 in scenes | the same, 2D |
+| G0 / G5 fill cost | The giant sphere shades about 75% (G0) or 100% (G5) of the frame. The cell fragment shader is simple, which is budgeted. Verify it with frame pacing in S00 and S08 | Mobile G0/G5 shade the full frame at DPR 1.5 | DPR 1 | n/a |
 | Idle rotation | 3 deg/s | 3 deg/s | off | n/a |
 | Word spans animating filter | 14 or fewer | 14 or fewer | 0 (opacity only) | 0 |
 | GPU texture memory | GISTEMP 146 x 16,200 B = 2.4 MB R8I, HadCRUT5 0.45 MB, offsets 3 x 32 KB, zonal R32F 63 KB | same | same | n/a |
@@ -539,4 +543,6 @@ Playwright runs against `npm run build && npm run preview` at D, T and M.
 12. **Reduced motion.** No sticky in scenes, no animated filter, a stable GL counter, and every control still works.
 13. **Pause offscreen.** With S07 centred, the GL frame counter is flat for 2s.
 14. **Tiers.** `?quality=low` disables crossfades and the decade run. `?quality=nogl` renders the Equal Earth flat map with the note, and every scene still reaches its end state.
-15. **Frame pacing** (evidence harness). Scroll recordings at D and M report p50/p95 frame times on a stated device and browser. They are recorded, never estimated.
+15. **Oversized geometry.** At 1000ms and 2500ms into S00, a debug hook reports an orb/planet radius at or above the G0 value (D 560, T 620, M 510) on every viewport, and the radius never decreases during S00. At S08 p 0.6, the debug hook reports no limb pixel inside the viewport (r is at least the half-diagonal) at D, T and M.
+16. **P02 confusion check (QA evidence).** The evidence harness writes `artifacts/evidence/<stage>/p02-vs-p03-open-close.png`: P02 and P03 frames side by side at S00 (0.5s, 1.5s, 3s, end) and at S08 (p 0.3, 0.6, 0.9), at D and M. An independent QA reviewer confirms that no P03 frame shows a small orb or marker, an orb rising from the bottom, or a regrowing glow. Hard rejection criterion 19 applies.
+17. **Frame pacing** (evidence harness). Scroll recordings at D and M report p50/p95 frame times on a stated device and browser. They are recorded, never estimated.
