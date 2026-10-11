@@ -1,0 +1,73 @@
+/**
+ * Artifact types (subset of data/contracts/*.schema.json the site reads) and
+ * hand-written guards at the trust boundary: a mismatch is a SCHEMA MISMATCH
+ * error state, never a half-rendered scene.
+ */
+export type Tag = "OBSERVED" | "DERIVED" | "PREDICTED" | "SIMULATED" | "SYNTHETIC";
+export type Baseline = "1850-1900" | "1951-1980" | "1991-2020";
+export type Source = "gistemp" | "hadcrut5";
+export const BASELINES: Baseline[] = ["1951-1980", "1991-2020", "1850-1900"];
+
+export interface Fact { value: unknown; unit: string; tag: Tag; source_artifact: string; note?: string }
+export interface Facts { schema_version: string; facts: Record<string, Fact> }
+
+export interface GridMeta {
+  id: string;
+  native_baseline: string;
+  source: string;
+  grid: { n_lat: number; n_lon: number; lat_first_center: number; lat_step_deg: number; lon_first_center: number; lon_step_deg: number };
+  years: { first: number; last: number; n: number; list: number[] };
+  encoding: { sha256_uncompressed: string; uncompressed_bytes: number; gz_bytes: number };
+  baseline_offsets: Partial<Record<Baseline, { values: (number | null)[]; n_valid_cells: number }>>;
+  valid_area_share_per_year: number[];
+}
+
+export interface Coastlines { coords: number[]; starts: number[]; n_lines: number }
+
+export interface SeriesAnnual {
+  years: number[];
+  series: { id: string; native_baseline: string; first_year: number; values: Partial<Record<Baseline, (number | null)[]>> }[];
+}
+
+export interface Co2 { annual_years: number[]; mlo_annual_ppm: (number | null)[]; monthly: { start: string; mlo_ppm: (number | null)[] } }
+
+export interface Extremes {
+  years: number[];
+  metrics: { id: string; area_share: (number | null)[]; expected_share_in_reference: number | null }[];
+}
+
+export interface Validation { grid_vs_official_global: Record<Source, { max_abs_diff: number }> }
+
+const obj = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
+const arr = Array.isArray;
+
+export const isFacts = (v: unknown): v is Facts =>
+  obj(v) && obj(v.facts) && Object.values(v.facts).every((f) => obj(f) && "value" in f && typeof f.tag === "string");
+
+export const isGridMeta = (v: unknown): v is GridMeta =>
+  obj(v) && obj(v.grid) && typeof v.grid.n_lat === "number" && obj(v.years) && arr(v.years.list) && obj(v.encoding) &&
+  typeof v.encoding.sha256_uncompressed === "string" && obj(v.baseline_offsets) && arr(v.valid_area_share_per_year);
+
+export const isCoastlines = (v: unknown): v is Coastlines => obj(v) && arr(v.coords) && arr(v.starts);
+
+export const isSeriesAnnual = (v: unknown): v is SeriesAnnual =>
+  obj(v) && arr(v.years) && arr(v.series) && v.series.every((s) => obj(s) && typeof s.id === "string" && obj(s.values));
+
+export const isCo2 = (v: unknown): v is Co2 => obj(v) && arr(v.annual_years) && arr(v.mlo_annual_ppm) && obj(v.monthly);
+
+export const isExtremes = (v: unknown): v is Extremes =>
+  obj(v) && arr(v.years) && arr(v.metrics) && v.metrics.every((m) => obj(m) && typeof m.id === "string" && arr(m.area_share));
+
+export const isValidation = (v: unknown): v is Validation => obj(v) && obj(v.grid_vs_official_global);
+
+/** Typed fact accessors: a missing or mistyped key throws (caught by the scene's error state). */
+export function num(f: Facts, key: string): number {
+  const v = f.facts[key]?.value;
+  if (typeof v !== "number") throw new Error(`facts.${key} is not a number`);
+  return v;
+}
+export function fact<T>(f: Facts, key: string): T {
+  const v = f.facts[key];
+  if (!v) throw new Error(`facts.${key} missing`);
+  return v.value as T;
+}
