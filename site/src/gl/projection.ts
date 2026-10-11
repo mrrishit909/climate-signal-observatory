@@ -106,3 +106,33 @@ export function unwrapVertex(lon: number, lat: number, slot: number, u: Unwrap):
   const th = (u.s3 * Math.PI) / 2, c = Math.cos(th), s = Math.sin(th);
   return [cx + uu * c + vv * s, cy - (-uu * s + vv * c), z];
 }
+
+/** Inverse orthographic: screen point -> [lon, lat] on the visible hemisphere, or null off the disc. */
+export function invertOrtho(x: number, y: number, rot: Float32Array, sphere: [number, number, number]): [number, number] | null {
+  const vx = (x - sphere[0]) / sphere[2], vy = (sphere[1] - y) / sphere[2];
+  const d = vx * vx + vy * vy;
+  if (d > 1) return null;
+  const vz = Math.sqrt(1 - d);
+  // world = R^T v (R is orthonormal; column-major m)
+  const m = rot;
+  const wx = m[0]! * vx + m[1]! * vy + m[2]! * vz, wy = m[3]! * vx + m[4]! * vy + m[5]! * vz, wz = m[6]! * vx + m[7]! * vy + m[8]! * vz;
+  return [(Math.atan2(wx, wz) * 180) / Math.PI, (Math.asin(Math.max(-1, Math.min(1, wy))) * 180) / Math.PI];
+}
+
+/** Inverse Equal Earth (Newton on the latitude parameter, as d3 does). */
+export function invertEqualEarth(x: number, y: number): [number, number] | null {
+  let l = y;
+  for (let i = 0; i < 12; i++) {
+    const l2 = l * l, l6 = l2 * l2 * l2;
+    const fy = l * (A1 + A2 * l2 + l6 * (A3 + A4 * l2)) - y;
+    const fpy = A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2);
+    const dl = fy / fpy;
+    l -= dl;
+    if (Math.abs(dl) < 1e-12) break;
+  }
+  const l2 = l * l, l6 = l2 * l2 * l2;
+  const lam = (M * x * (A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2))) / Math.cos(l);
+  const phi = Math.asin(Math.sin(l) / M);
+  if (!Number.isFinite(lam) || Math.abs(lam) > Math.PI + 1e-9 || !Number.isFinite(phi)) return null;
+  return [(lam * 180) / Math.PI, (phi * 180) / Math.PI];
+}

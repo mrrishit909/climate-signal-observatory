@@ -13,6 +13,13 @@ import { startDirector } from "../scenes/director";
 import { SignalLayer } from "../scenes/S01Signal";
 import { S03aYears } from "../scenes/S03aYears";
 import { S04Strata } from "../scenes/S04Strata";
+import { S02Record } from "../scenes/S02Record";
+import { S03bRegions } from "../scenes/S03bRegions";
+import { S05Zero } from "../scenes/S05Zero";
+import { S06Futures } from "../scenes/S06Futures";
+import { S07Evidence } from "../scenes/S07Evidence";
+import { S08Surface } from "../scenes/S08Surface";
+import { Observatory } from "../scenes/Observatory";
 
 function Placeholder({ s }: { s: SceneDef }) {
   return (
@@ -24,6 +31,10 @@ function Placeholder({ s }: { s: SceneDef }) {
     </Track>
   );
 }
+
+const SCENE_COMPONENTS: Record<string, (p: { def: SceneDef }) => React.ReactNode> = {
+  record: S02Record, years: S03aYears, regions: S03bRegions, strata: S04Strata, zero: S05Zero, futures: S06Futures, evidence: S07Evidence, observatory: Observatory,
+};
 
 /** App: the static S00/S01 track (index.html) plus the React scenes, the planet canvases and the nav. */
 export function App() {
@@ -47,10 +58,12 @@ export function App() {
     <>
       <canvas ref={orb} className="planet-layer planet-2d" aria-hidden="true" />
       <canvas ref={gl} className="planet-layer planet-gl" aria-hidden="true" />
+      <p className="gl-lost-note state-line" role="status">RESTORING 3D VIEW</p>
       {portal ? createPortal(<SignalLayer introPlaying={intro.playing} />, portal) : null}
-      {SCENES.slice(1).map((s) =>
-        s.id === "years" ? <S03aYears key={s.id} def={s} /> : s.id === "strata" ? <S04Strata key={s.id} def={s} /> : <Placeholder key={s.id} s={s} />,
-      )}
+      {SCENES.slice(1).map((s) => {
+        const C = SCENE_COMPONENTS[s.id];
+        return s.id === "surface" ? <S08Surface key={s.id} def={s} onReplay={intro.replay} /> : C ? <C key={s.id} def={s} /> : <Placeholder key={s.id} s={s} />;
+      })}
       <Nav
         items={NAV_ITEMS}
         active={navActive(active)}

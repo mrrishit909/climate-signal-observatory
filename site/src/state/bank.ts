@@ -4,9 +4,9 @@
  * year) built in an idle callback per (source, baseline).
  */
 import { getStore } from "../data/loader";
-import { COAST, GRID_INTRO, GRIDS } from "../data/artifacts";
-import type { Grid } from "../data/grid";
-import type { Baseline, Coastlines, Source } from "../data/types";
+import { COAST, GRID_INTRO, GRIDS, REGIONAL, TREND_GRIDS } from "../data/artifacts";
+import type { Grid, TrendGrid } from "../data/grid";
+import type { Band, Baseline, Coastlines, Regional, Source } from "../data/types";
 import { collapseSlots, coreTexture, type GridGeom } from "../model/zonal";
 import type { GridKey } from "../gl/frame";
 import { idle } from "../lib/math";
@@ -20,6 +20,8 @@ class Bank {
   grids = new Map<GridKey, GridData>();
   cores = new Map<string, Float32Array>();
   coast: Coastlines | null = null;
+  trends = new Map<Source, TrendGrid>();
+  bands: Band[] = [];
   version = 0;
   private listeners = new Set<Listener>();
   private pending = new Set<string>();
@@ -34,6 +36,15 @@ class Bank {
     this.bump();
   }
   setCoast(c: Coastlines) { this.coast = c; this.bump(); }
+  addTrend(s: Source, t: TrendGrid) { if (!this.trends.has(s)) { this.trends.set(s, t); this.bump(); } }
+  setBands(b: Band[]) { this.bands = b; this.bump(); }
+  band(id: string) { return this.bands.find((b) => b.id === id); }
+  /** Layer indices of a trend period in a DR-3 grid: [slope, significant]. */
+  trendLayers(s: Source, period: string): [number, number] | null {
+    const t = this.trends.get(s);
+    const i = t?.meta.periods.findIndex((p) => p.id === period) ?? -1;
+    return t && i >= 0 ? [i, t.meta.periods.length + i] : null;
+  }
 
   /** The shared annual axis 1850..latest complete year (DATA_CONTRACTS). */
   axis(): number[] {
@@ -79,5 +90,9 @@ const watch = <T,>(store: { subscribe: (l: Listener) => () => void; getState: ()
 export function connectBank() {
   watch<Grid>(getStore(GRID_INTRO), (g) => bank.addGrid("intro", g));
   watch<Coastlines>(getStore(COAST), (c) => bank.setCoast(c));
-  (["gistemp", "hadcrut5"] as Source[]).forEach((s) => watch<Grid>(getStore(GRIDS[s]), (g) => bank.addGrid(s, g)));
+  (["gistemp", "hadcrut5"] as Source[]).forEach((s) => {
+    watch<Grid>(getStore(GRIDS[s]), (g) => bank.addGrid(s, g));
+    watch<TrendGrid>(getStore(TREND_GRIDS[s]), (t) => bank.addTrend(s, t));
+  });
+  watch<Regional>(getStore(REGIONAL), (r) => bank.setBands(r.bands));
 }

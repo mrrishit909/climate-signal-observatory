@@ -2,7 +2,8 @@
  * Raw WebGL2 renderer (ENGINEERING_DECISIONS #19): one keyed cell mesh per grid
  * resolution (one quad per cell, unshared vertices, seam at the antimeridian),
  * integer textures sampled with texelFetch (NEAREST, never interpolated), a
- * coastline line set through the same vertex path, and instanced strata.
+ * coastline line set and band parallels through the same vertex path, and
+ * instanced strata that stand as the core or lie down as the bench.
  */
 import { BINS, hexRgb } from "../model/bins";
 import { CELL_FS, CELL_VS, LINE_FS, LINE_VS, STRATA_FS, STRATA_VS } from "./shaders";
@@ -40,18 +41,21 @@ export class Globe {
   private strata: Prog;
   private meshes = new Map<MeshKey, Mesh>();
   private grids = new Map<GridKey, Tex>();
+  private trends = new Map<string, Tex>();
   private offsets = new Map<string, Tex>();
   private cores = new Map<string, Tex>();
   private coast: { vao: WebGLVertexArrayObject; count: number } | null = null;
+  private par: { vao: WebGLVertexArrayObject; buf: WebGLBuffer; count: number; key: string };
   private strataVao: WebGLVertexArrayObject;
-  private strataY: WebGLBuffer;
+  private instV: WebGLBuffer;
+  private instH: WebGLBuffer;
   private nStrata = 0;
   frames = 0;
 
   /** null when WebGL2 is missing or too limited (MOTION_SYSTEM 9.2: NO-WEBGL tier). */
   static create(canvas: HTMLCanvasElement): Globe | null {
     const gl = canvas.getContext("webgl2", { antialias: true, premultipliedAlpha: true, alpha: true, depth: true, powerPreference: "high-performance" });
-    if (!gl || gl.getParameter(gl.MAX_ARRAY_TEXTURE_LAYERS) < 180) return null;
+    if (!gl || gl.isContextLost() || gl.getParameter(gl.MAX_ARRAY_TEXTURE_LAYERS) < 180) return null;
     try {
       return new Globe(gl);
     } catch (e) {
@@ -63,17 +67,26 @@ export class Globe {
   private constructor(gl: WebGL2RenderingContext) {
     this.gl = gl;
     gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
-    this.cells = compile(gl, CELL_VS, CELL_FS, [...UNWRAP_U, ...BIN_U, "u_grid", "u_offA", "u_offB", "u_coreTex", "u_layerA", "u_layerB",
-      "u_coreYear", "u_hasCore", "u_mix", "u_baseMix", "u_uniform", "u_alpha", "u_dim", "u_gap", "u_uniformColor"]);
+    this.cells = compile(gl, CELL_VS, CELL_FS, [...UNWRAP_U, ...BIN_U, "u_grid", "u_trend", "u_offA", "u_offB", "u_coreTex", "u_layerA", "u_layerB",
+      "u_coreYear", "u_hasCore", "u_mix", "u_baseMix", "u_uniform", "u_alpha", "u_dim", "u_gap", "u_uniformColor", "u_mode", "u_modeMix",
+      "u_trendLayer", "u_sigLayer", "u_band", "u_step"]);
     this.lines = compile(gl, LINE_VS, LINE_FS, [...UNWRAP_U, "u_alpha"]);
-    this.strata = compile(gl, STRATA_VS, STRATA_FS, ["u_view", "u_rect", "u_coreTex", "u_nLat", "u_spine", "u_step", "u_alpha", "u_dim", ...BIN_U]);
+    this.strata = compile(gl, STRATA_VS, STRATA_FS, ["u_view", "u_bench", "u_coreTex", "u_nLat", "u_spine", "u_firstYear", "u_step", "u_alpha", "u_dim", "u_thickPx", "u_sep", ...BIN_U]);
     for (const m of [["2", 90, 180], ["5", 36, 72]] as const) this.meshes.set(m[0], this.buildMesh(m[1], m[2]));
-    // strata: one unit quad, instanced per year, with a dynamic per-instance top y
     this.strataVao = gl.createVertexArray()!;
     gl.bindVertexArray(this.strataVao);
     this.attr(this.strata.p, "a_corner", new Float32Array([0, 0, 1, 0, 0, 1, 1, 1]), 2);
-    this.strataY = gl.createBuffer()!;
+    this.instV = gl.createBuffer()!;
+    this.instH = gl.createBuffer()!;
     gl.bindVertexArray(null);
+    const vao = gl.createVertexArray()!, buf = gl.createBuffer()!;
+    gl.bindVertexArray(vao);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    const loc = gl.getAttribLocation(this.lines.p, "a_ll");
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    gl.bindVertexArray(null);
+    this.par = { vao, buf, count: 0, key: "" };
   }
 
   private attr(p: WebGLProgram, name: string, data: Float32Array, size: number, divisor = 0, usage: number = this.gl.STATIC_DRAW) {
@@ -116,7 +129,7 @@ export class Globe {
     return { vao, slots, count: idx.length, nLat, nLon };
   }
 
-  private intTex(w: number, h: number, layers: number, fmt: number, type: number, data: ArrayBufferView) {
+  private dataTex(w: number, h: number, layers: number, fmt: number, type: number, data: ArrayBufferView) {
     const gl = this.gl, tex = gl.createTexture()!;
     const target = layers ? gl.TEXTURE_2D_ARRAY : gl.TEXTURE_2D;
     gl.bindTexture(target, tex);
@@ -133,20 +146,24 @@ export class Globe {
 
   setGrid(key: GridKey, data: Int8Array, nLon: number, nLat: number) {
     if (this.grids.has(key)) return;
-    this.grids.set(key, this.intTex(nLon, nLat, data.length / (nLon * nLat), this.gl.R8I, this.gl.BYTE, data));
+    this.grids.set(key, this.dataTex(nLon, nLat, data.length / (nLon * nLat), this.gl.R8I, this.gl.BYTE, data));
   }
   hasGrid = (key: GridKey) => this.grids.has(key);
+  setTrend(key: string, data: Int8Array, nLon: number, nLat: number) {
+    if (this.trends.has(key)) return;
+    this.trends.set(key, this.dataTex(nLon, nLat, data.length / (nLon * nLat), this.gl.R8I, this.gl.BYTE, data));
+  }
 
   setOffsets(key: string, values: readonly (number | null)[], nLon: number, nLat: number) {
     if (this.offsets.has(key)) return;
     const a = Int16Array.from(values, (v) => (v === null ? OFF_MISSING : v));
-    this.offsets.set(key, this.intTex(nLon, nLat, 0, this.gl.R16I, this.gl.SHORT, a));
+    this.offsets.set(key, this.dataTex(nLon, nLat, 0, this.gl.R16I, this.gl.SHORT, a));
   }
 
   setCore(key: string, data: Float32Array, width: number) {
     const old = this.cores.get(key);
     if (old) this.gl.deleteTexture(old.tex);
-    this.cores.set(key, this.intTex(width, data.length / width, 0, this.gl.R32F, this.gl.FLOAT, data));
+    this.cores.set(key, this.dataTex(width, data.length / width, 0, this.gl.R32F, this.gl.FLOAT, data));
   }
   hasCore = (key: string) => this.cores.has(key);
 
@@ -173,6 +190,22 @@ export class Globe {
     this.coast = { vao, count: segs.length / 2 };
   }
 
+  /** Two parallels (band edges) as line segments, rebuilt only when the band changes. */
+  private parallels(min: number, max: number) {
+    const key = `${min}:${max}`;
+    if (key === this.par.key) return;
+    const segs: number[] = [];
+    for (const lat of [min, max]) {
+      if (Math.abs(lat) >= 89.9) continue;
+      for (let lon = -180; lon < 180; lon += 2) segs.push(lon, lat, lon + 2, lat);
+    }
+    const gl = this.gl;
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.par.buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(segs), gl.DYNAMIC_DRAW);
+    this.par.count = segs.length / 2;
+    this.par.key = key;
+  }
+
   private unwrapUniforms(u: Uniforms, f: Frame) {
     const gl = this.gl, w = f.u;
     gl.uniform2f(u.u_view!, f.w, f.h);
@@ -191,11 +224,17 @@ export class Globe {
     gl.uniform1f(u.u_lattice!, f.lattice);
     gl.uniform1f(u.u_dpr!, f.dpr);
   }
-  private bindTex(unit: number, target: number, tex: WebGLTexture, loc: WebGLUniformLocation | null) {
+  private bindTex(unit: number, target: number, tex: WebGLTexture | null, loc: WebGLUniformLocation | null) {
     const gl = this.gl;
     gl.activeTexture(gl.TEXTURE0 + unit);
     gl.bindTexture(target, tex);
     gl.uniform1i(loc, unit);
+  }
+
+  clear() {
+    const gl = this.gl;
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
   }
 
   draw(f: Frame) {
@@ -220,18 +259,26 @@ export class Globe {
     gl.uniform3fv(u.u_uniformColor!, f.uniformColor);
     gl.uniform1f(u.u_dim!, f.dim);
     gl.uniform1f(u.u_gap!, f.gap);
+    gl.uniform3fv(u.u_band!, f.band);
+    const trend = f.trend ? this.trends.get(f.trend.key) : undefined;
+    const mode = f.mode === 1 && !trend ? 0 : f.mode;
+    gl.uniform1i(u.u_mode!, mode);
+    gl.uniform1f(u.u_modeMix!, f.modeMix);
+    gl.uniform1i(u.u_trendLayer!, f.trend?.slope ?? 0);
+    gl.uniform1i(u.u_sigLayer!, f.trend?.sig ?? 0);
     for (const L of f.cells) {
       const grid = this.grids.get(L.grid);
       const src = L.grid === "hadcrut5" ? "hadcrut5" : L.grid === "intro" ? "intro" : "gistemp";
       const oA = this.offsets.get(`${src}:${L.baseA}`), oB = this.offsets.get(`${src}:${L.baseB}`);
       if (!grid || !oA || !oB || L.alpha <= 0) continue;
       const mesh = this.meshes.get(L.grid === "hadcrut5" ? "5" : "2")!;
+      gl.uniform1f(u.u_step!, 180 / mesh.nLat);
       this.bindTex(0, gl.TEXTURE_2D_ARRAY, grid.tex, u.u_grid!);
       this.bindTex(1, gl.TEXTURE_2D, oA.tex, u.u_offA!);
       this.bindTex(2, gl.TEXTURE_2D, oB.tex, u.u_offB!);
-      // always point the float sampler at its own unit: two sampler types on one unit is INVALID_OPERATION
-      gl.uniform1i(u.u_coreTex!, 3);
-      if (collapse) { gl.activeTexture(gl.TEXTURE3); gl.bindTexture(gl.TEXTURE_2D, collapse.tex); }
+      // every sampler on its own unit: two sampler types on one unit is INVALID_OPERATION
+      this.bindTex(3, gl.TEXTURE_2D, collapse?.tex ?? null, u.u_coreTex!);
+      this.bindTex(4, gl.TEXTURE_2D_ARRAY, trend && L.grid !== "intro" ? trend.tex : null, u.u_trend!);
       gl.uniform1i(u.u_layerA!, L.layerA);
       gl.uniform1i(u.u_layerB!, L.layerB);
       gl.uniform1f(u.u_mix!, L.mix);
@@ -241,12 +288,19 @@ export class Globe {
       gl.drawElements(gl.TRIANGLES, mesh.count, gl.UNSIGNED_SHORT, 0);
     }
 
+    gl.useProgram(this.lines.p);
+    this.unwrapUniforms(this.lines.u, f);
     if (this.coast && f.coast > 0) {
-      gl.useProgram(this.lines.p);
-      this.unwrapUniforms(this.lines.u, f);
       gl.uniform1f(this.lines.u.u_alpha!, f.coast);
       gl.bindVertexArray(this.coast.vao);
       gl.drawArrays(gl.LINES, 0, this.coast.count);
+    }
+    if (f.band[2] > 0) {
+      this.parallels(f.band[0], f.band[1]);
+      gl.disable(gl.DEPTH_TEST);
+      gl.uniform1f(this.lines.u.u_alpha!, f.band[2] * f.cellAlpha);
+      gl.bindVertexArray(this.par.vao);
+      gl.drawArrays(gl.LINES, 0, this.par.count);
     }
 
     gl.disable(gl.DEPTH_TEST);
@@ -257,36 +311,48 @@ export class Globe {
       this.binUniforms(su, f);
       gl.uniform2f(su.u_view!, f.w, f.h);
       gl.uniform1i(su.u_nLat!, k.nLat);
+      gl.uniform1i(su.u_firstYear!, 1850);
       gl.uniform1f(su.u_step!, k.step);
       gl.uniform1f(su.u_alpha!, k.alpha);
       gl.uniform1f(su.u_dim!, f.dim);
+      gl.uniform1f(su.u_thickPx!, Math.max(1, k.v[3]! * f.dpr));
       this.bindTex(0, gl.TEXTURE_2D, core.tex, su.u_coreTex!);
       gl.bindVertexArray(this.strataVao);
-      for (const [spine, ys, x0, x1] of [[0, k.ys, k.rect[0], k.rect[1]], [1, k.spineYs, k.spine[0], k.spine[1]]] as const) {
-        this.instance(ys);
-        gl.uniform1i(su.u_spine!, spine);
-        gl.uniform4f(su.u_rect!, x0, x1, 0, k.rect[3]);
-        gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, ys.length);
+      this.instance(k.v, k.h);
+      gl.uniform1i(su.u_spine!, 0);
+      gl.uniform1f(su.u_sep!, k.sep);
+      gl.uniform1f(su.u_bench!, k.bench);
+      gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, k.v.length / 4);
+      if (k.bench < 1) {
+        this.instance(k.spine, k.spine);
+        gl.uniform1i(su.u_spine!, 1);
+        gl.uniform1f(su.u_sep!, 0);
+        gl.uniform1f(su.u_bench!, 0);
+        gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, k.spine.length / 4);
       }
     }
     gl.bindVertexArray(null);
   }
 
-  /** Per-instance year index + top y (a_year, a_y). */
-  private instance(ys: Float32Array) {
-    const gl = this.gl, p = this.strata.p;
-    if (this.nStrata !== ys.length) {
-      this.nStrata = ys.length;
-      this.attr(p, "a_year", Float32Array.from({ length: ys.length }, (_, i) => i), 1, 1);
-      gl.bindBuffer(gl.ARRAY_BUFFER, this.strataY);
-      gl.bufferData(gl.ARRAY_BUFFER, ys.byteLength, gl.DYNAMIC_DRAW);
-      const loc = gl.getAttribLocation(p, "a_y");
-      gl.enableVertexAttribArray(loc);
-      gl.vertexAttribPointer(loc, 1, gl.FLOAT, false, 0, 0);
-      gl.vertexAttribDivisor(loc, 1);
+  /** Per-instance year index + upright and lying boxes (a_year, a_v, a_h). */
+  private instance(v: Float32Array, h: Float32Array) {
+    const gl = this.gl, p = this.strata.p, n = v.length / 4;
+    if (this.nStrata !== n) {
+      this.nStrata = n;
+      this.attr(p, "a_year", Float32Array.from({ length: n }, (_, i) => i), 1, 1);
+      for (const [name, buf] of [["a_v", this.instV], ["a_h", this.instH]] as const) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, v.byteLength, gl.DYNAMIC_DRAW);
+        const loc = gl.getAttribLocation(p, name);
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 4, gl.FLOAT, false, 0, 0);
+        gl.vertexAttribDivisor(loc, 1);
+      }
     }
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.strataY);
-    gl.bufferSubData(gl.ARRAY_BUFFER, 0, ys);
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.instV);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, v);
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.instH);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, h);
   }
 
   resize(canvas: HTMLCanvasElement, w: number, h: number, dpr: number) {

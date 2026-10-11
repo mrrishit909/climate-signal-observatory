@@ -9,7 +9,9 @@ import { copyS03a, SOURCE_LABEL, yearReadout } from "../data/copy";
 import { BASELINES, type Baseline, type Source } from "../data/types";
 import { BINS, EDGE_LABELS } from "../model/bins";
 import { RANK_BASELINE, rankOf } from "../model/rank";
-import { areaShares } from "../model/zonal";
+import { areaShares, shareAtLeast } from "../model/zonal";
+import { years as yearsStore } from "../state/scenes";
+import { pct } from "../model/format";
 import { DEFAULTS, NATIVE, baselineAllowed, getClimate, setClimate, subscribeClimate } from "../state/climate";
 import { bank } from "../state/bank";
 import { useActiveScene, useMotion } from "../scroll/hooks";
@@ -90,6 +92,7 @@ export function S03aYears({ def }: { def: SceneDef }) {
   useEffect(() => { if (active === "years") getStore(GRIDS.hadcrut5).prefetch(); }, [active]);
 
   const year = c.year;
+  const { plus2 } = yearsStore.use();
   const r = useMemo(() => {
     const yi = year - 1850;
     const s = series.status === "ready" ? series.data.series.find((x) => x.id === SERIES_ID[c.source]) : undefined;
@@ -111,13 +114,14 @@ export function S03aYears({ def }: { def: SceneDef }) {
         lostMost: !!shares && shares.measured > 0 && shares.referenced < 0.4 * shares.measured,
       }),
       empty: !!shares && shares.referenced === 0,
+      plus2: g && off && layer >= 0 ? shareAtLeast(g.data, layer, g.geom, off) : null,
     };
     // version: recompute when a grid lands
   }, [year, c.source, c.baseline, series, co2, ext, version]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tag = anomalyTag(c.source, c.baseline);
-  const changed = c.source !== DEFAULTS.source || c.baseline !== DEFAULTS.baseline;
-  const reset = () => { setClimate({ ...DEFAULTS, announce: "RESET TO GISTEMP, 1951-1980" }); setResetOk(true); setTimeout(() => setResetOk(false), 1200); };
+  const changed = c.source !== DEFAULTS.source || c.baseline !== DEFAULTS.baseline || plus2;
+  const reset = () => { yearsStore.set({ plus2: false }); setClimate({ ...DEFAULTS, announce: "RESET TO GISTEMP, 1951-1980" }); setResetOk(true); setTimeout(() => setResetOk(false), 1200); };
   const L = layout(vp.w, vp.h);
   const k = L.core;
   const ty = k.y0 + (k.n - 1 - (year - 1850)) * k.H;
@@ -132,7 +136,10 @@ export function S03aYears({ def }: { def: SceneDef }) {
         <Radio label="BASELINE" value={c.baseline} options={BASELINES} onChange={(b) => setClimate({ baseline: b, announce: "" })}
           disabled={(b) => (baselineAllowed(c.source, b) ? null : copyS03a.disabled1850)} />
         <Radio label="SOURCE" value={c.source} options={["gistemp", "hadcrut5"] as const} render={(s) => SOURCE_LABEL[s]} onChange={(s) => setClimate({ source: s, announce: "" })} />
-        {changed || resetOk ? <button type="button" className="text-btn" onClick={reset}>{resetOk ? "RESET ✓" : "RESET"}</button> : null}
+        <div className="years-row">
+          <button type="button" className={`chip-btn plus2 ${plus2 ? "is-on" : ""}`} aria-pressed={plus2} onClick={() => yearsStore.set({ plus2: !plus2 })}>+2 °C CELLS</button>
+          {changed || resetOk ? <button type="button" className="text-btn" onClick={reset}>{resetOk ? "RESET ✓" : "RESET"}</button> : null}
+        </div>
         <p className="sr-only" aria-live="polite">{c.announce}</p>
       </div>
       <div className="years-readout" data-readout>
@@ -142,12 +149,26 @@ export function S03aYears({ def }: { def: SceneDef }) {
         <p className="readout-line tnum">{r.lines.co2}</p>
         <p className="readout-line tnum">{r.lines.measured}</p>
         <p className="readout-line readout-line--sm tnum">{r.lines.extremes}</p>
+        {plus2 ? <p className="readout-line tnum" data-plus2>{r.plus2 === null ? "n/a" : `${pct(r.plus2)}% OF MEASURED AREA AT +2 °C OR MORE`} <HonestyChip tag="DERIVED" className="chip--inline" /></p> : null}
         {r.lines.lost ? <p className="readout-line readout-line--warn">{r.lines.lost}</p> : null}
         {r.empty ? <p className="state-line state-line--empty">NO MEASURED CELLS FOR {year} UNDER {c.baseline}</p> : null}
         <ArtifactStatus file={`grid_${c.source === "gistemp" ? "gistemp_2deg" : "hadcrut5_5deg"}`} state={grid} retry={retry} empty="">{() => null}</ArtifactStatus>
         <Legend />
         <HonestyChip tag={tag.tag} detail={tag.detail} />
       </div>
+      {series.status === "ready" ? (() => {
+        const sr = series.data.series.find((x) => x.id === SERIES_ID[c.source]);
+        const vals = sr?.values[c.baseline], rk = sr?.values[RANK_BASELINE];
+        return (
+          <table className="sr-only">
+            <caption>Global annual anomaly and rank, {c.source.toUpperCase()}, vs {c.baseline}</caption>
+            <thead><tr><th>Year</th><th>°C</th><th>Rank (1 = warmest)</th></tr></thead>
+            <tbody>{series.data.years.map((yy, i) => (vals?.[i] === null || vals?.[i] === undefined ? null : (
+              <tr key={yy}><td>{yy}</td><td>{vals[i]}</td><td>{rk ? rankOf(rk, i)?.rank : ""}</td></tr>
+            )))}</tbody>
+          </table>
+        );
+      })() : null}
       {motion ? (
         <div className="year-track" aria-hidden="true" style={{ top: k.y0, height: k.n * k.H }}>
           <span className="year-track__mark" style={{ transform: `translateY(${ty - k.y0 - 6}px)` }} />

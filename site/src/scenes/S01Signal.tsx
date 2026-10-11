@@ -1,9 +1,12 @@
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { NotificationCard } from "../components/NotificationCard";
+import { WordReveal } from "../components/WordReveal";
+import { stepState } from "../motion/progress";
 import { HonestyChip } from "../components/HonestyChip";
 import { ErrorLine } from "../components/StateUI";
 import { useArtifact } from "../data/useArtifact";
 import { FACTS, GRID_INTRO } from "../data/artifacts";
-import { copyS00 } from "../data/copy";
+import { copyS00, copyS01 } from "../data/copy";
 import { useMotion, useProgress } from "../scroll/hooks";
 import { easeSymmetric } from "../motion/ease";
 import { windowed } from "../motion/progress";
@@ -26,6 +29,15 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
   const copy = copyS00(facts.status === "ready" ? facts.data : null);
   const version = useSyncExternalStore(bank.subscribe, bank.getVersion);
   const still = useRef<HTMLCanvasElement>(null);
+  const [cards, setCards] = useState(0);
+  const cardStep = useRef(0);
+  const s01Ref = useRef<HTMLDivElement>(null);
+  useProgress("signal", (p) => {
+    if (s01Ref.current) s01Ref.current.style.opacity = !motion || p > 0.3 ? "1" : "0";
+    const s = stepState(cardStep.current, p, [0.6]);
+    if (s !== cardStep.current) { cardStep.current = s; setCards((k) => (s ? Math.abs(k) + 1 : -Math.abs(k))); }
+  });
+  const s01 = facts.status === "ready" ? copyS01(facts.data) : null;
 
   // S01 p 0-0.4: the headline scales down and rises as the planet moves G0 -> G1s
   useProgress("signal", (p) => {
@@ -55,6 +67,15 @@ export function SignalLayer({ introPlaying }: { introPlaying: boolean }) {
     <>
       {!motion ? <canvas ref={still} className="still-planet" aria-hidden="true" /> : null}
       <div className="signal-scrim" aria-hidden="true" />
+      {s01 ? (
+        <div className="s01" ref={s01Ref} style={{ opacity: motion ? 0 : 1 }}>
+          <WordReveal as="p" className="s01-statement" text={s01.statement} mode={motion ? { kind: "scrub", track: "signal", from: 0.35, to: 0.75 } : { kind: "value", t: 1 }} />
+          <div className={`s01-cards ${cards > 0 || !motion ? "is-in" : ""}`}>
+            <NotificationCard from={s01.card1Head} when="" body={s01.card1Body} playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="GISTEMP v4 · 1951-1980" />} />
+            <NotificationCard from={s01.card2Head} when="" body={s01.card2Body} variant="blue" playKey={motion && cards > 0 ? cards : 0} tag={<HonestyChip tag="OBSERVED" detail="NOAA GML" />} />
+          </div>
+        </div>
+      ) : null}
       <p className="sr-only">{copy.alt}</p>
       <div className={`signal-foot ${introPlaying ? "is-waiting" : ""}`}>
         <p className="state-line nogl-only">{copy.noGl}</p>

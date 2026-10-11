@@ -67,6 +67,7 @@ export function StoryDeck({ track, cards }: { track: string; cards: DeckCard[] }
       const y = j === 0 ? rise0 * 0.6 * vh : (1 - easeSymmetric(clamp(k - (j - 1)))) * vh;
       c.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
       c.style.opacity = exit > 0 ? String(1 - 0.6 * exit) : "";
+      c.style.visibility = exit >= 0.999 ? "hidden" : ""; // a deck that has left the stage is not content
     });
     const cur = Math.round(k);
     const seg = Math.floor(k);

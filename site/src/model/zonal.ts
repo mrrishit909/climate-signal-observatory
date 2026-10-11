@@ -97,3 +97,39 @@ export function areaShares(grid: Int8Array, layer: number, g: GridGeom, offsets:
   }
   return { measured: measured / all, referenced: referenced / all };
 }
+
+/**
+ * Region readout (OBS cross-filter contract): the cos(lat)-weighted mean of
+ * exactly the cells rendered as valid in [latMin, latMax] (cell centres), plus
+ * the observed share of the region's area. `value` maps a cell to the number
+ * shown (anomaly, trend, ...) or null when it is not rendered as valid.
+ */
+export function regionMean(g: GridGeom, latMin: number, latMax: number, value: (i: number) => number | null) {
+  let all = 0, w = 0, s = 0, n = 0;
+  for (let r = 0; r < g.nLat; r++) {
+    const lat = g.latFirst - r * g.step;
+    if (lat < latMin || lat > latMax) continue;
+    const c = Math.cos((lat * Math.PI) / 180);
+    for (let k = 0; k < g.nLon; k++) {
+      all += c;
+      const v = value(r * g.nLon + k);
+      if (v === null) continue;
+      w += c; s += c * v; n++;
+    }
+  }
+  return { mean: w > 0 ? s / w : null, share: all > 0 ? w / all : 0, n };
+}
+
+/** Anomaly accessor in degrees C for one layer and offset set (null = missing or no reference). */
+export const anomalyAt = (grid: Int8Array, layer: number, g: GridGeom, offsets: readonly (number | null)[]) => {
+  const base = layer * g.nLat * g.nLon;
+  return (i: number) => { const b = grid[base + i]!, o = offsets[i]; return b === MISSING_BYTE || o === null || o === undefined ? null : b * 0.1 - o * 0.01; };
+};
+
+/** Share of the measured (referenced) area at +2 C or more under the given offsets (S03a / OBS +2 C readout). */
+export function shareAtLeast(grid: Int8Array, layer: number, g: GridGeom, offsets: readonly (number | null)[], c100 = 200) {
+  const at = anomalyAt(grid, layer, g, offsets);
+  const all = regionMean(g, -90, 90, at);
+  const hot = regionMean(g, -90, 90, (i) => { const v = at(i); return v === null ? null : Math.round(v * 100) >= c100 ? 1 : 0; });
+  return all.share > 0 ? hot.mean : null;
+}

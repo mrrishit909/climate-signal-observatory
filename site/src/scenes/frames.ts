@@ -3,7 +3,7 @@
  * director, the no-WebGL tier and the reduced-motion static frames all call
  * these, so every tier shows the same states. Scrubbed parts hold no state.
  */
-import { faceQuat, quatMat3, slerp, type Quat } from "../gl/projection";
+import { EE_XMAX, faceQuat, quatMat3, type Quat } from "../gl/projection";
 import { HIDDEN, type CellLayer, type Frame, type GridKey } from "../gl/frame";
 import { hexRgb } from "../model/bins";
 import { clamp } from "../lib/math";
@@ -26,7 +26,8 @@ export function baseFrame(L: Layout, dpr: number, disc: Disc, q: Quat): Frame {
       rot: quatMat3(q), sphere: [disc.cx, disc.cy, disc.r], sheet: [L.sheet.cx, L.sheet.cy, L.sheet.k],
       s1: 0, s2: 0, s3: 0, strip: [L.sheet.cx, L.strip], core: [L.core.x0, L.core.x1, L.core.y0 + L.core.H / 2, L.core.H],
     },
-    cells: [], uniform: 1, uniformColor: ORANGE, cellAlpha: 1, dim: 1, gap: 0.03, lattice: 0.4, coast: 0.35, core: null, collapseKey: null,
+    cells: [], uniform: 1, uniformColor: ORANGE, cellAlpha: 1, dim: 1, gap: 1, lattice: 0.4, coast: 0.35, core: null, collapseKey: null,
+    mode: 0, modeMix: 0, trend: null, band: [0, 0, 0],
   };
 }
 
@@ -62,20 +63,41 @@ export function strataPhase(p: number) {
   return 4;
 }
 
-/** Stratum k (1..N-1 below the current year) rises in [0.58 + 0.19 k/N, +0.08] from below the frame. */
-export function strataYs(L: Layout, p: number, cur: number, viewH = L.h) {
-  const { n, y0, H } = L.core;
-  const ys = new Float32Array(n).fill(HIDDEN);
+/** Upright box of stratum i in a core rect (oldest at the bottom). */
+export const slotTop = (y0: number, H: number, n: number, i: number) => y0 + (n - 1 - i) * H;
+
+/**
+ * Core boxes at S04 progress p: stratum k (1..N-1 below the current year)
+ * rises in [0.58 + 0.19 k/N, +0.08] from below the frame. Once the strip has
+ * turned (s3 = 1) the current year's stratum is drawn from the same texture.
+ */
+export function coreBoxes(L: Layout, p: number, cur: number, spine: number, viewH = L.h) {
+  const { n, y0, H, x0, x1 } = L.core;
+  const v = new Float32Array(n * 4), sp = new Float32Array(n * 4);
   for (let i = 0; i < n; i++) {
-    const k = cur - i;
-    if (k < 1) continue;
-    const a = S04.build[0] + (0.19 * k) / n;
-    const e = easeSymmetric(clamp((p - a) / 0.08));
-    if (e <= 0) continue;
-    const slot = y0 + (n - 1 - i) * H;
-    ys[i] = viewH + 40 + (slot - viewH - 40) * e;
+    const k = cur - i, slot = slotTop(y0, H, n, i);
+    let y = HIDDEN;
+    if (k >= 1) {
+      const e = easeSymmetric(clamp((p - (S04.build[0] + (0.19 * k) / n)) / 0.08));
+      if (e > 0) y = viewH + 40 + (slot - viewH - 40) * e;
+    } else if (k === 0 && p >= S04.turn[1]) y = slot;
+    v.set([x0, y, x1 - x0, H], i * 4);
+    sp.set([L.core.spine[0], spine > 0 && i <= spine * n - 0.5 ? slot : HIDDEN, L.core.spine[1] - L.core.spine[0], H], i * 4);
   }
-  return ys;
+  return { v, spine: sp };
+}
+
+/** Lying boxes in a horizontal rect (time left to right, north on top). */
+export function lyingBoxes(n: number, r: { x0: number; x1: number; y0: number; y1: number }) {
+  const h = new Float32Array(n * 4), bw = (r.x1 - r.x0) / n;
+  for (let i = 0; i < n; i++) h.set([r.x0 + i * bw, r.y0, bw, r.y1 - r.y0], i * 4);
+  return h;
+}
+/** Upright boxes in a vertical rect (latitude across, oldest at the bottom). */
+export function uprightBoxes(n: number, r: { x0: number; x1: number; y0: number; y1: number }) {
+  const v = new Float32Array(n * 4), H = (r.y1 - r.y0) / n;
+  for (let i = 0; i < n; i++) v.set([r.x0, r.y0 + (n - 1 - i) * H, r.x1 - r.x0, H], i * 4);
+  return v;
 }
 
 export interface StrataOpts { source: Source; base: Baseline; spine: number; lattice: number; nogl?: boolean }
@@ -84,13 +106,13 @@ export interface StrataOpts { source: Source; base: Baseline; spine: number; lat
 export function strataFrame(L: Layout, dpr: number, p: number, o: StrataOpts) {
   const e0 = easeSymmetric(windowed(p, S04.recentre[0], S04.recentre[1]));
   const disc = discLerp(L.G1s, L.G1, e0);
-  const f = baseFrame(L, dpr, disc, slerp(FACE_NORTH, FACE_ZERO, e0));
+  const f = baseFrame(L, dpr, disc, FACE_ZERO); // S03b hands over already facing (0, 0)
   const axis = bank.axis(), cur = axis.length - 1, year = axis[cur]!;
   const s1 = o.nogl ? 1 : easeSymmetric(windowed(p, S04.unwrap[0], S04.unwrap[1]));
   const s2 = easeSymmetric(windowed(p, S04.collapse[0], S04.collapse[1]));
   const s3 = easeSymmetric(windowed(p, S04.turn[0], S04.turn[1]));
   Object.assign(f.u, { s1, s2, s3 });
-  f.gap = 0.03 * (1 - s2);
+  f.gap = 1 - s2;
   f.coast = 0.35 * (1 - s2);
   f.lattice = o.lattice;
   const g = gridFor(o.source, year, o.base);
@@ -98,17 +120,17 @@ export function strataFrame(L: Layout, dpr: number, p: number, o: StrataOpts) {
   // collapse colour = the row's zonal mean for this year: full-grid core, else the intro subset's (same year)
   const fullKey = `${o.source}:${o.base}`;
   const full = bank.core(o.source, o.base);
-  const collapse = full ? fullKey : g ? (bank.core(g, o.base) ? `${g}:${o.base}` : null) : null;
-  f.collapseKey = collapse;
+  f.collapseKey = full ? fullKey : g ? (bank.core(g, o.base) ? `${g}:${o.base}` : null) : null;
   const geomGrid = g ? bank.grids.get(g) : bank.grids.get(o.source);
   const nLat = geomGrid?.geom.nLat ?? 90, step = geomGrid?.geom.step ?? 2;
-  const ys = full ? strataYs(L, p, cur) : new Float32Array(L.core.n).fill(HIDDEN);
-  // once landed, the current year's stratum is drawn from the same zonal texture over the merged strip
-  if (full && s3 >= 1) ys[cur] = L.core.y0 + (L.core.n - 1 - cur) * L.core.H;
-  const spineYs = new Float32Array(L.core.n).fill(HIDDEN);
-  if (full && o.spine > 0) for (let i = 0; i < L.core.n; i++) if (i <= o.spine * L.core.n - 0.5) spineYs[i] = L.core.y0 + (L.core.n - 1 - i) * L.core.H;
-  f.core = {
-    key: fullKey, nLat, step, cur, rect: [L.core.x0, L.core.x1, 0, L.core.H], ys, spine: L.core.spine, spineYs, alpha: 1,
-  };
+  const boxes = coreBoxes(L, full ? p : 0, cur, full ? o.spine : 0);
+  f.core = { key: fullKey, nLat, step, cur, v: boxes.v, h: boxes.v, bench: 0, spine: boxes.spine, alpha: 1, sep: clamp((p - S04.build[1]) / 0.05), thickPx: L.core.H * dpr };
   return { frame: f, disc, year, fullReady: !!full, phase: strataPhase(p) };
+}
+
+/** OBS MAP view sheet: Equal Earth beside the docked core on D, full width otherwise (shared by the director and picking). */
+export function obsSheet(L: Layout) {
+  const d = L.obs;
+  const sw = Math.min(2.7 * d.r, L.w - (L.cls === "D" ? L.w - L.dock.x0 + 48 : 24));
+  return { cx: L.cls === "D" ? Math.min(d.cx, (L.dock.x0 - 24) / 2) : d.cx, cy: d.cy, k: sw / (2 * EE_XMAX), width: sw };
 }

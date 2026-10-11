@@ -1,11 +1,17 @@
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type PointerEvent } from "react";
+import { Tooltip } from "../components/Tooltip";
+import { SERIES } from "../data/artifacts";
+import { obs } from "../state/scenes";
+import { pct, signed } from "../model/format";
+import { SERIES_ID } from "./S03aYears";
+import { MISSING_F } from "../model/zonal";
 import { Track } from "../scroll/Track";
 import { HonestyChip } from "../components/HonestyChip";
 import { ArtifactStatus } from "../components/StateUI";
 import { useArtifact } from "../data/useArtifact";
 import { getStore } from "../data/loader";
 import { FACTS, GRIDS, VALIDATION } from "../data/artifacts";
-import { copyS04, SOURCE_LABEL } from "../data/copy";
+import { copyS04, SOURCE_LABEL, top10 } from "../data/copy";
 import type { Source } from "../data/types";
 import { stepState } from "../motion/progress";
 import { getClimate, setClimate, subscribeClimate } from "../state/climate";
@@ -58,6 +64,32 @@ export function S04Strata({ def }: { def: SceneDef }) {
   const every = L.cls === "M" ? 40 : 20;
   const labels = [1850, ...axis.filter((y) => y % every === 0 && y > 1850 && axis.at(-1)! - y >= 4 * (L.cls === "M" ? 2 : 1)), axis.at(-1)!];
   const tag = anomalyTag(c.source, c.baseline);
+  const [series] = useArtifact(SERIES);
+  const [tip, setTip] = useState<{ x: number; y: number; year: number } | null>(null);
+  const yearAt = (clientY: number) => Math.max(1850, Math.min(axis.at(-1)!, 1850 + (k.n - 1) - Math.floor((clientY - k.y0) / k.H)));
+  const hover = (e: PointerEvent) => setTip({ x: e.clientX, y: e.clientY, year: yearAt(e.clientY) });
+  const tipText = (yy: number) => {
+    const s = series.status === "ready" ? series.data.series.find((x) => x.id === SERIES_ID[c.source])?.values[c.baseline]?.[yy - 1850] : null;
+    const gi = g?.meta.years.list.indexOf(yy) ?? -1;
+    const share = g && gi >= 0 ? g.meta.valid_area_share_per_year[gi] : null;
+    return `${yy} · GLOBAL ${s === null || s === undefined ? "n/a" : `${signed(s)} °C`} VS ${c.baseline} · MEASURED ${share === null || share === undefined ? "n/a" : `${pct(share)}%`}`;
+  };
+  // a11y: decade-mean zonal anomalies for five bands, from the same core texture the strata draw
+  const table = useMemo(() => {
+    const tex = bank.cores.get(`${c.source}:${c.baseline}`);
+    if (!tex || !g) return null;
+    const W = g.geom.nLat + 1, bands: [string, number, number][] = [["60-90N", 60, 90], ["30-60N", 30, 60], ["30S-30N", -30, 30], ["30-60S", -60, -30], ["60-90S", -90, -60]];
+    const decades = [1880, 1900, 1920, 1940, 1960, 1980, 2000, 2020].filter((d) => d >= (g.meta.years.first));
+    return decades.map((d) => ({ d, v: bands.map(([, lo, hi]) => {
+      let s = 0, w = 0;
+      for (let yy = d; yy < d + 10 && yy <= axis.at(-1)!; yy++) for (let r = 0; r < g.geom.nLat; r++) {
+        const lat = g.geom.latFirst - r * g.geom.step; if (lat < lo || lat > hi) continue;
+        const m = tex[(yy - 1850) * W + r]!; if (m <= MISSING_F) continue;
+        const cw = Math.cos((lat * Math.PI) / 180); s += cw * m / 100; w += cw;
+      }
+      return w ? signed(s / w) : "n/a";
+    }) }));
+  }, [c.source, c.baseline, g, version]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Track id={def.id} height={def.track} landing={def.landing} label="From planet to record" className="scene scene-strata">
@@ -85,8 +117,24 @@ export function S04Strata({ def }: { def: SceneDef }) {
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: k.x0 }}>S</span>
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: (k.x0 + k.x1) / 2 - 8 }}>EQ</span>
           <span className="core-axis" style={{ top: k.y0 + k.n * k.H + 8, left: k.x1 - 8 }}>N</span>
+          {facts.status === "ready" && showSpine && c.source === "gistemp" ? top10(facts.data).map((y) => (
+            <span key={`t${y}`} className="core-top10" style={{ top: slotY(y) + k.H / 2, left: k.spine[1] + 4 }} />
+          )) : null}
+          {facts.status === "ready" && showSpine && c.source === "gistemp" ? <span className="core-top10-label" style={{ top: slotY(axis.at(-1)! - 6), left: k.spine[1] + 60 }}>◂ TEN WARMEST</span> : null}
           {c.source === "gistemp" && copy ? <span className="core-begins" style={{ top: slotY(1865), left: (k.x0 + k.x1) / 2 }}>{copy.begins}</span> : null}
         </div>
+      ) : null}
+      {motion && landed && ready ? (
+        <div className="core-hit" aria-hidden="true" style={{ left: k.x0, top: k.y0, width: k.x1 - k.x0, height: k.n * k.H }}
+          onPointerMove={hover} onPointerLeave={() => setTip(null)} onClick={(e) => { const yy = yearAt(e.clientY); obs.set({ year: yy }); setTip({ x: e.clientX, y: e.clientY, year: yy }); }} />
+      ) : null}
+      <Tooltip x={tip?.x ?? 0} y={tip?.y ?? 0} visible={!!tip}>{tip ? tipText(tip.year) : ""}</Tooltip>
+      {table ? (
+        <table className="sr-only">
+          <caption>Decade-mean zonal anomalies, {c.source.toUpperCase()}, vs {c.baseline}, degrees C (mean of each layer's latitude rows)</caption>
+          <thead><tr><th>Decade</th><th>60-90N</th><th>30-60N</th><th>30S-30N</th><th>30-60S</th><th>60-90S</th></tr></thead>
+          <tbody>{table.map((r) => <tr key={r.d}><td>{r.d}s</td>{r.v.map((v, i) => <td key={i}>{v}</td>)}</tr>)}</tbody>
+        </table>
       ) : null}
       <div className={`strata-foot ${landed && ready ? "is-in" : ""}`}>
         {landed && ready ? (

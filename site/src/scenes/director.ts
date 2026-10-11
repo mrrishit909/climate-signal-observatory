@@ -8,8 +8,8 @@
  */
 import { Globe } from "../gl/globe";
 import { paint2d } from "../gl/paint2d";
-import { EE_XMAX, faceQuat, slerp } from "../gl/projection";
-import type { CellLayer, Frame, GridKey } from "../gl/frame";
+import { EE_XMAX, faceQuat, slerp, type Quat } from "../gl/projection";
+import { HIDDEN, type CellLayer, type Frame, type GridKey } from "../gl/frame";
 import { addFrame } from "../motion/loop";
 import { Tween } from "../motion/tween";
 import { DUR, easePremium, easeSmooth, easeSymmetric, linear } from "../motion/ease";
@@ -24,7 +24,8 @@ import { GRIDS } from "../data/artifacts";
 import type { Baseline, Source } from "../data/types";
 import { layout, discLerp, type Disc, type Layout } from "./geometry";
 import { viewportClass, type ViewportClass } from "../graphics/canvas";
-import { FACE_NORTH, FACE_OPEN, baseFrame, gridFor, layerOf, planetFrame, S04, strataFrame } from "./frames";
+import { FACE_NORTH, FACE_OPEN, FACE_ZERO, baseFrame, gridFor, layerOf, lyingBoxes, obsSheet, planetFrame, S04, strataFrame, uprightBoxes } from "./frames";
+import { obs, regions, years as yearsStore, type BandId } from "../state/scenes";
 import { SCENES } from "../app/scenes";
 
 export const INTRO_MS = 4600;
@@ -82,15 +83,41 @@ const yearFade = new Fader<number>(2025);
 const baseFade = new Fader<Baseline>("1951-1980");
 const srcFade = new Fader<Source>("gistemp");
 const spineTw = new Tween(0, DUR.card, easePremium);
+const modeTw = new Tween(0, DUR.panel, easeSmooth);
+const bandTw = new Tween(0, DUR.card, easePremium);
+const mapTw = new Tween(0, DUR.scene, easeSmooth);
+
+/** Retargetable rotation: slerp along the shortest arc from wherever it is now (MOTION_SYSTEM 4). */
+class QuatTween {
+  private from: Quat; private to: Quat; private start = 0; private dur = 0;
+  constructor(q: Quat) { this.from = q; this.to = q; }
+  value(now: number): Quat { const t = this.dur > 0 ? clamp((now - this.start) / this.dur) : 1; return slerp(this.from, this.to, easeSmooth(t)); }
+  active(now: number) { return this.dur > 0 && now - this.start < this.dur; }
+  set(q: Quat, now: number, ms: number) {
+    if (q.every((v, i) => Math.abs(v - this.to[i]!) < 1e-9)) return;
+    this.from = this.value(now); this.to = q; this.start = now; this.dur = motionEnabled() && now >= instantUntil ? ms : 0;
+  }
+}
+const regionRot = new QuatTween(FACE_NORTH);
+/** S03b states (VISUAL_DESIGN 3.4): the face each threshold turns to, and its band. */
+export const REGION_FACES: [number, number][] = [[20, 72], [30, 20], [140, -62], [-150, 0]];
+export const REGION_BANDS: (BandId | null)[] = ["arctic", null, "antarctic", null];
+const BAND_FACE: Record<BandId, [number, number]> = { arctic: [20, 72], n_mid: [20, 45], low: [-150, 0], s_mid: [30, -45], antarctic: [140, -62] };
+export const regionState = { step: 0 };
+let echoStep = 0, echoAt = -1;
+export const surface = { year: 0 };
 let instantUntil = 0;
+/** OBS core drag: 0ms crossfades while dragging (5.12). */
+export let obsDragging = false;
+export const setObsDragging = (v: boolean) => { obsDragging = v; };
 let spineStep = 0, coverageStep = 0, coverageAt = -1, lastYearAt = 0, lastYearVal = 0;
 
 /** Integer-year controller: crossfade 200ms, shortened as the scrub rate rises; 0 above 8 years/s (5.5). */
-function setYear(y: number, now: number) {
+function setYear(y: number, now: number, force?: number) {
   if (y === yearFade.b) return;
   const rate = Math.abs(y - lastYearVal) / Math.max(1, now - lastYearAt) * 1000;
   lastYearAt = now; lastYearVal = y;
-  const ms = quality.tier === "high" ? Math.max(0, DUR.fast * (1 - rate / 8)) : 0;
+  const ms = force ?? (quality.tier === "high" && !obsDragging ? Math.max(0, DUR.fast * (1 - rate / 8)) : 0);
   yearFade.set(y, now, ms);
 }
 
@@ -102,6 +129,8 @@ let L: Layout | null = null;
 let lastKey = "";
 let tierChecked = false;
 let started = false;
+let losses = 0;
+export const glLosses = () => losses;
 export const debug = { radius: 0, scene: "", glFrames: 0, lastYear: 0, phase: 0 };
 
 function dprFor(cls: string) {
@@ -127,6 +156,7 @@ function sync(f: Frame | null) {
       globe.setCore(key, data, nLat + 1);
     }
     if (bank.coast && !coastDone) { coastDone = true; globe.setCoast(bank.coast.coords, bank.coast.starts); }
+    for (const [key, t] of bank.trends) globe.setTrend(key, t.data, t.meta.grid.n_lon, t.meta.grid.n_lat);
   }
   if (f && f.u.s2 > 0 && f.cells[0]) {
     const c = f.cells[0], year = bank.axis()[f.core?.cur ?? 0]!;
@@ -227,26 +257,45 @@ function yearsFrame(p: number, now: number, L: Layout, dpr: number): [Frame | nu
   const hand = easeSymmetric(windowed(p, 0.92, 1));
   const q = slerp(openFace(now), FACE_NORTH, hand);
   const f = baseFrame(L, dpr, L.G1s, q);
-  const layersFor = (src: Source, alpha: number): CellLayer | null => {
-    if (!bank.grids.has(src)) return null;
-    const A = layerOf(src, yearFade.a), B = layerOf(src, yearFade.b);
-    const bA = baseFade.a, bB = baseFade.b;
-    const ok = (b: Baseline) => !!bank.grids.get(src)!.meta.baseline_offsets[b];
-    if (B < 0) return null;
-    return { grid: src, layerA: A < 0 ? B : A, layerB: B, mix: A < 0 ? 0 : yearFade.mix, baseA: ok(bA) ? bA : bB, baseB: ok(bB) ? bB : bA, baseMix: baseFade.mix, alpha };
-  };
-  const out = srcFade.a !== srcFade.b && srcFade.mix < 1 ? layersFor(srcFade.a, 1) : null;
-  const inn = layersFor(srcFade.b, out ? srcFade.mix : 1);
-  f.cells = [out, inn].filter((x): x is CellLayer => !!x);
+  f.cells = cellLayers();
+  modeTw.retarget(yearsStore.get().plus2 ? 1 : 0, now, quality.tier === "high" ? DUR.standard : 0);
+  modeTw.update(now);
+  if (modeTw.value > 0) { f.mode = 2; f.modeMix = modeTw.value; }
   debug.lastYear = yearFade.shown;
   return [f, { ...NONE, halo: { disc: L.G1s, alpha: 0.06 }, limb: { disc: L.G1s, alpha: 0.24 } }];
 }
 
-function regionsFrame(L: Layout, dpr: number): [Frame | null, Overlay] {
+function bandLat(id: BandId | null): [number, number] | null {
+  const b = id ? bank.band(id) : undefined;
+  return b ? [b.lat_min, b.lat_max] : null;
+}
+
+/** S03b Regional Turn (5.6): stepped turns to a region, the TREND surface, the band outlined. */
+function regionsFrame(p: number, now: number, L: Layout, dpr: number): [Frame | null, Overlay] {
+  const s = stepState(regionState.step, p, [0.25, 0.5, 0.75]);
+  if (s !== regionState.step) { regionState.step = s; regions.set({ override: null, drag: null }); }
+  const st = regions.get();
+  const band = st.override ?? REGION_BANDS[regionState.step]!;
+  const [lon, lat] = st.drag ? [st.drag.lon, st.drag.lat] : st.override ? BAND_FACE[st.override] : REGION_FACES[regionState.step]!;
+  regionRot.set(faceQuat(lon, lat), now, st.drag ? 0 : DUR.scene);
+  // hand-over to S04: settle to face (0, 0), trend back to anomaly (p 0.92-1)
+  const hand = easeSymmetric(windowed(p, 0.92, 1));
+  const q = slerp(regionRot.value(now), FACE_ZERO, hand);
   const { source, baseline } = latestLook();
-  const f = planetFrame(L, dpr, L.G1s, FACE_NORTH, source, bank.axis().at(-1)!, baseline);
+  const f = planetFrame(L, dpr, L.G1s, q, source, bank.axis().at(-1)!, baseline);
+  const layers = bank.trendLayers(source, st.period);
+  modeTw.retarget(layers ? 1 : 0, now, quality.tier === "high" ? DUR.panel : 0);
+  modeTw.update(now);
+  if (layers) { f.mode = 1; f.trend = { key: source, slope: layers[0], sig: layers[1] }; }
+  f.modeMix = modeTw.value * (1 - hand);
+  const lat2 = bandLat(band);
+  bandTw.retarget(lat2 ? 1 : 0, now, motionEnabled() ? DUR.card : 0);
+  bandTw.update(now);
+  if (lat2) lastBand = lat2;
+  f.band = [lastBand[0], lastBand[1], bandTw.value * (1 - hand)];
   return [f, { ...NONE, halo: { disc: L.G1s, alpha: 0.06 }, limb: { disc: L.G1s, alpha: 0.24 } }];
 }
+let lastBand: [number, number] = [60, 90];
 
 function strataSceneFrame(p: number, now: number, L: Layout, dpr: number): [Frame | null, Overlay] {
   const c = getClimate();
@@ -274,8 +323,125 @@ function strataSceneFrame(p: number, now: number, L: Layout, dpr: number): [Fram
   }];
 }
 
+/** S05 Zero Lab (5.8): the core lies down as the bench (p 0-0.2, scrubbed); time on x is shared with the series band. */
+function zeroFrame(p: number, L: Layout, dpr: number): [Frame | null, Overlay] {
+  const { source, baseline } = getClimate();
+  const t = easeSymmetric(windowed(p, 0, 0.2));
+  return [benchFrame(L, dpr, source, baseline, t, 1), NONE];
+}
+function benchFrame(L: Layout, dpr: number, source: Source, base: Baseline, t: number, alpha: number): Frame | null {
+  const key = `${source}:${base}`;
+  if (!bank.core(source, base)) return null;
+  const k = L.core, g = bank.grids.get(source)!;
+  const f = baseFrame(L, dpr, L.G1, FACE_ZERO);
+  f.cellAlpha = 0;
+  f.coast = 0;
+  const v = uprightBoxes(k.n, { x0: k.x0, x1: k.x1, y0: k.y0, y1: k.y0 + k.n * k.H });
+  const spine = uprightBoxes(k.n, { x0: k.spine[0], x1: k.spine[1], y0: k.y0, y1: k.y0 + k.n * k.H });
+  if (t > 0.02) for (let i = 0; i < k.n; i++) spine[i * 4 + 1] = HIDDEN;
+  f.core = { key, nLat: g.geom.nLat, step: g.geom.step, cur: k.n - 1, v, h: lyingBoxes(k.n, L.bench), bench: t, spine, alpha, sep: 1 - t, thickPx: k.H * dpr };
+  return f;
+}
+
+/** S06: the bench returns upright and the core dims to 15% (the spine's colours leave it as positions, drawn in SVG). */
+function futuresFrame(p: number, L: Layout, dpr: number): [Frame | null, Overlay] {
+  const { source, baseline } = getClimate();
+  const e = easeSymmetric(windowed(p, 0, 0.12));
+  const f = benchFrame(L, dpr, source, baseline, 1 - e, 1 - 0.85 * e);
+  if (f?.core) for (let i = 0; i < L.core.n; i++) f.core.spine[i * 4 + 1] = HIDDEN;
+  return [f, NONE];
+}
+
+/** OBS (5.12): the planet the visitor turns, the docked core as the year scrubber, layers and regions. */
+function obsFrame(now: number, L: Layout, dpr: number, dy: number): [Frame | null, Overlay] {
+  const o = obs.get(), c = getClimate();
+  setYear(o.year, now, o.playing ? (quality.tier === "high" ? 120 : 0) : undefined);
+  baseFade.set(c.baseline, now, quality.tier === "high" ? DUR.panel : 0, easeSmooth);
+  srcFade.set(c.source, now, quality.tier === "high" ? DUR.panel : 0, easeSmooth);
+  mapTw.retarget(o.view === "map" ? 1 : 0, now, quality.tier === "nogl" ? 0 : DUR.scene);
+  mapTw.update(now);
+  const m = mapTw.value;
+  const q = slerp(faceQuat(o.lon0, o.lat0), FACE_ZERO, clamp(m * 3));
+  const d = { ...L.obs, cy: L.obs.cy + dy };
+  const f = baseFrame(L, dpr, d, q);
+  const sh = obsSheet(L);
+  f.u.sheet = [sh.cx, sh.cy + dy, sh.k];
+  f.u.s1 = easeSmooth(clamp((m - 0.33) / 0.67));
+  f.cells = cellLayers();
+  const mode = o.layer === "trend" ? 1 : o.layer === "plus2" ? 2 : o.layer === "coverage" ? 3 : 0;
+  modeTw.retarget(mode ? 1 : 0, now, quality.tier === "high" ? DUR.panel : 0);
+  modeTw.update(now);
+  if (mode) lastMode = mode;
+  f.mode = lastMode; f.modeMix = modeTw.value;
+  const layers = bank.trendLayers(c.source, o.period);
+  if (layers) f.trend = { key: c.source, slope: layers[0], sig: layers[1] };
+  const r = o.region;
+  const lat2 = typeof r === "string" ? bandLat(r) : r ? [r.lat0, r.lat1] as [number, number] : null;
+  bandTw.retarget(lat2 ? 1 : 0, now, motionEnabled() ? DUR.card : 0);
+  bandTw.update(now);
+  if (lat2) lastBand = lat2;
+  f.band = [lastBand[0], lastBand[1], bandTw.value];
+  const g = bank.grids.get(c.source);
+  if (bank.core(c.source, c.baseline) && g) {
+    const k = { ...L.dock, y0: L.dock.y0 + dy, y1: L.dock.y1 + dy }, n = L.core.n;
+    const v = uprightBoxes(n, k), h = lyingBoxes(n, k);
+    f.core = { key: `${c.source}:${c.baseline}`, nLat: g.geom.nLat, step: g.geom.step, cur: n - 1, v, h, bench: k.lying ? 1 : 0, spine: Float32Array.from(v).fill(HIDDEN), alpha: 1, sep: 0.6, thickPx: (k.lying ? (k.x1 - k.x0) / n : (k.y1 - k.y0) / n) * dpr };
+  }
+  debug.lastYear = yearFade.shown;
+  return [f, { ...NONE, limb: m < 0.3 ? { disc: d, alpha: 0.24 * (1 - m * 3) } : null, halo: m < 0.3 ? { disc: d, alpha: 0.06 * (1 - m * 3) } : null }];
+}
+let lastMode = 0;
+
+/** Cell layers for the shared year / baseline / source faders (S03a, OBS). */
+function cellLayers(): CellLayer[] {
+  const layersFor = (src: Source, alpha: number): CellLayer | null => {
+    if (!bank.grids.has(src)) return null;
+    const A = layerOf(src, yearFade.a), B = layerOf(src, yearFade.b);
+    const ok = (b: Baseline) => !!bank.grids.get(src)!.meta.baseline_offsets[b];
+    if (B < 0) return null;
+    return { grid: src, layerA: A < 0 ? B : A, layerB: B, mix: A < 0 ? 0 : yearFade.mix, baseA: ok(baseFade.a) ? baseFade.a : baseFade.b, baseB: ok(baseFade.b) ? baseFade.b : baseFade.a, baseMix: baseFade.mix, alpha };
+  };
+  const out = srcFade.a !== srcFade.b && srcFade.mix < 1 ? layersFor(srcFade.a, 1) : null;
+  const inn = layersFor(srcFade.b, out ? srcFade.mix : 1);
+  return [out, inn].filter((x): x is CellLayer => !!x);
+}
+
+/** S08 The Surface (5.13): the unwrap in reverse, the push into the planet (G5), then the echo of the decade run. */
+function surfaceFrame(p: number, now: number, L: Layout, dpr: number): [Frame | null, Overlay] {
+  if (p < 0.3) {
+    const local = p / 0.3;
+    const { source, baseline } = getClimate();
+    const r = strataFrame(L, dpr, 0.86 - 0.78 * local, { source, base: baseline, spine: 0, lattice: 0.4, nogl: quality.tier === "nogl" });
+    if (r.frame.core) r.frame.core.alpha = 1 - clamp((local - 0.85) / 0.15) * 0;
+    return [r.frame, { ...NONE, limb: r.frame.u.s1 < 1 ? { disc: r.disc, alpha: 0.24 * (1 - r.frame.u.s1) } : null }];
+  }
+  const s = easeSymmetric(windowed(p, 0.3, 0.55));
+  const disc = discLerp(L.G1, L.G5, s);
+  const f = baseFrame(L, dpr, disc, slerp(FACE_ZERO, faceQuat(0, 30), s));
+  f.dim = 1 - 0.65 * windowed(p, 0.4, 0.75);
+  const e = stepState(echoStep, p, [0.75]);
+  if (e !== echoStep) { echoStep = e; echoAt = e && motionEnabled() && quality.tier !== "nogl" && now >= instantUntil ? now : -1; }
+  const intGrid = bank.grids.get("intro"), latest = intGrid ? intGrid.meta.years.list.length - 1 : 0;
+  let A = latest, B = latest, mix = 0;
+  if (echoAt >= 0 && intGrid) [A, B, mix] = quality.tier === "high" ? decadeLayers(RUN_AT + (now - echoAt)) : [0, latest, 1];
+  if (echoAt >= 0 && now - echoAt > 1500) echoAt = -1;
+  if (intGrid) f.cells = [{ ...cell("intro", A, "1951-1980"), layerB: B, mix }];
+  else { const g = gridFor("gistemp", bank.axis().at(-1)!, "1951-1980"); if (g) f.cells = [cell(g, layerOf(g, bank.axis().at(-1)!), "1951-1980")]; }
+  f.coast = 0.35 * (1 - s) + 0.2 * s;
+  surface.year = intGrid?.meta.years.list[mix >= 0.5 ? B : A] ?? bank.axis().at(-1)!;
+  debug.lastYear = surface.year;
+  return [f, { ...NONE, limb: s < 1 ? { disc, alpha: 0.24 * (1 - s) } : null }];
+}
+export const echoLive = () => echoAt >= 0;
+
 /** Each frame: which scene owns the viewport, and its Frame. */
 function build(now: number, L: Layout, dpr: number): [Frame | null, Overlay, string] {
+  // OBS is in normal flow: whenever it holds the middle of the viewport it owns the planet, offset with the section
+  const obsEl = document.getElementById("observatory");
+  if (obsEl) {
+    const r = obsEl.getBoundingClientRect();
+    if (r.top < L.h * 0.5 && r.bottom > L.h * 0.5) return [...obsFrame(now, L, dpr, r.top), "observatory"];
+  }
   const loc = locate(SCENE_IDS);
   const id = loc?.id ?? "signal";
   const p = loc ? loc.p : 0;
@@ -283,8 +449,12 @@ function build(now: number, L: Layout, dpr: number): [Frame | null, Overlay, str
     case "signal": return [...signalFrame(p, now, L, dpr), id];
     case "record": return [...recordFrame(p, now, L, dpr), id];
     case "years": return [...yearsFrame(p, now, L, dpr), id];
-    case "regions": return [...regionsFrame(L, dpr), id];
+    case "regions": return [...regionsFrame(p, now, L, dpr), id];
     case "strata": return [...strataSceneFrame(p, now, L, dpr), id];
+    case "zero": return [...zeroFrame(p, L, dpr), id];
+    case "futures": return [...futuresFrame(p, L, dpr), id];
+    case "observatory": return [null, NONE, id];
+    case "surface": return [...surfaceFrame(p, now, L, dpr), id];
     default: return [null, NONE, id];
   }
 }
@@ -293,6 +463,21 @@ function build(now: number, L: Layout, dpr: number): [Frame | null, Overlay, str
 const SOLAR = ["#fff3a6", "#ffc23d", "#ff7a1f", "#ff4c25"];
 const hex = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
 const mixHex = (a: string, b: string, t: number) => { const x = hex(a), y = hex(b); return `rgb(${x.map((v, i) => Math.round(v + (y[i]! - v) * t)).join(",")})`; };
+
+let haloCache: { size: number; c: HTMLCanvasElement } | null = null;
+function haloBitmap(size: number) {
+  if (haloCache?.size === size) return haloCache.c;
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  const g = c.getContext("2d")!, h = size / 2, inner = h * (0.97 / 1.18);
+  const grad = g.createRadialGradient(h, h, inner, h, h, h);
+  grad.addColorStop(0, "rgba(255,92,34,1)");
+  grad.addColorStop(1, "rgba(255,92,34,0)");
+  g.fillStyle = grad;
+  g.beginPath(); g.arc(h, h, h, 0, Math.PI * 2); g.arc(h, h, inner, 0, Math.PI * 2, true); g.fill();
+  haloCache = { size, c };
+  return c;
+}
 
 export function drawOverlay(ctx: CanvasRenderingContext2D, o: Overlay, w: number, h: number) {
   ctx.clearRect(0, 0, w, h);
@@ -316,13 +501,10 @@ export function drawOverlay(ctx: CanvasRenderingContext2D, o: Overlay, w: number
     }
   }
   if (o.halo && o.halo.alpha > 0) {
-    const d = o.halo.disc;
+    // the halo is a cached bitmap (1024px max, 512px on M): live gradients are for the intro orb only (9.2)
+    const d = o.halo.disc, R = d.r * 1.18;
     ctx.globalAlpha = o.halo.alpha;
-    const g = ctx.createRadialGradient(d.cx, d.cy, d.r * 0.97, d.cx, d.cy, d.r * 1.18);
-    g.addColorStop(0, "rgba(255,92,34,1)");
-    g.addColorStop(1, "rgba(255,92,34,0)");
-    ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(d.cx, d.cy, d.r * 1.18, 0, Math.PI * 2); ctx.arc(d.cx, d.cy, d.r * 0.97, 0, Math.PI * 2, true); ctx.fill();
+    ctx.drawImage(haloBitmap(innerWidth < 768 ? 512 : 1024), d.cx - R, d.cy - R, 2 * R, 2 * R);
   }
   if (o.limb && o.limb.alpha > 0) {
     const d = o.limb.disc;
@@ -343,6 +525,7 @@ export const paintData = {
   grid: (k: string) => bank.grids.get(k as GridKey),
   core: (k: string) => bank.cores.get(k),
   slots: (k: string) => slots2d.get(k),
+  trend: (k: string) => bank.trends.get(k as Source),
   get coast() { return bank.coast; },
 };
 
@@ -365,9 +548,9 @@ function frame(now: number) {
     const y = debug.lastYear;
     if (y && intro.years.at(-1) !== y) intro.years.push(y);
   }
-  const busy = [yearFade.update(now), baseFade.update(now), srcFade.update(now), spineTw.active].some(Boolean);
+  const busy = [yearFade.update(now), baseFade.update(now), srcFade.update(now), spineTw.active, modeTw.active, bandTw.active, mapTw.active, regionRot.active(now), echoAt >= 0].some(Boolean);
   const live = intro.playing || (["signal", "record", "years"].includes(id) && drift(now) !== 0) || busy || coverageAt >= 0 && now - coverageAt < 2200;
-  const key = `${id}:${getProgress(id).toFixed(4)}:${bank.version}:${w}x${h}:${getClimate().source}:${getClimate().baseline}:${quality.tier}`;
+  const key = `${id}:${getProgress(id).toFixed(4)}:${id === "observatory" ? Math.round(scrollY) : 0}:${bank.version}:${w}x${h}:${getClimate().source}:${getClimate().baseline}:${quality.tier}`;
   if (!live && key === lastKey) return;
   lastKey = key;
   const od = Math.min(devicePixelRatio || 1, 1.5);
@@ -394,9 +577,14 @@ function frame(now: number) {
     return;
   }
   sync(f);
+  if (document.documentElement.dataset.gl === "lost" && f) {
+    const [cx, cy, r] = f.u.sphere;
+    drawOverlay(ctx, { ...NONE, orb: { disc: { cx, cy, r }, alpha: 1, cool: 1, glow: 1.06, body: 1 } }, w, h);
+    return;
+  }
   if (!globe || !glCanvas) return;
   globe.resize(glCanvas, w, h, dpr);
-  if (f) { globe.draw(f); debug.glFrames = globe.frames; } else { const gl = globe.gl; gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); }
+  if (f) { globe.draw(f); debug.glFrames = globe.frames; } else globe.clear();
   tier(now, f !== null);
 }
 
@@ -432,6 +620,20 @@ export function startDirector(orb: HTMLCanvasElement, gl: HTMLCanvasElement) {
   idle(init, 300);
   addFrame(frame, 50);
   subscribeClimate(() => { lastKey = ""; });
+  [obs, regions, yearsStore].forEach((st) => st.subscribe(() => { lastKey = ""; }));
+  // context loss (6.3): keep the static orb and a note, rebuild on restore, give up after two losses
+  gl.addEventListener("webglcontextlost", (e) => {
+    e.preventDefault();
+    globe = null;
+    losses++;
+    document.documentElement.dataset.gl = "lost";
+  });
+  gl.addEventListener("webglcontextrestored", () => {
+    if (losses >= 2) { quality.tier = "nogl"; document.documentElement.dataset.tier = "nogl"; }
+    else globe = Globe.create(gl);
+    uploaded = -1; uploadedCores.clear(); coastDone = false; slotKey = ""; lastKey = "";
+    document.documentElement.dataset.gl = "";
+  });
   // the full grids are needed from S03a on: fetched after load / first idle, never on the LCP path
   const later = () => getStore(GRIDS.gistemp).prefetch();
   if (document.readyState === "complete") idle(later);

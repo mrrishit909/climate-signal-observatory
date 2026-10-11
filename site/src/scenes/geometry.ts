@@ -16,6 +16,13 @@ export interface Layout {
   sheet: { cx: number; cy: number; k: number; width: number };
   strip: number; // collapsed strip width
   core: { x0: number; x1: number; y0: number; H: number; n: number; spine: [number, number] };
+  /** S05 bench (K3): the core lying down, time on x shared with the series band above it */
+  bench: { x0: number; x1: number; y0: number; y1: number; series: [number, number] };
+  /** OBS: the docked core (K2) and the planet; on M the docked core lies horizontally */
+  dock: { x0: number; x1: number; y0: number; y1: number; lying: boolean };
+  obs: Disc;
+  /** S08: the surface, radius past the half-diagonal so no limb is in frame */
+  G5: Disc;
 }
 
 export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewportClass(w)): Layout {
@@ -33,8 +40,17 @@ export function layout(w: number, h: number, n = 176, cls: ViewportClass = viewp
   const x0 = Math.round(w / 2 - cw / 2), total = n * H;
   const y0 = figure ? (h - total) / 2 : Math.round(cls === "M" ? 0.114 * h : (h - total) / 2 - (cls === "T" ? 10 : 0));
   const sw = cls === "M" ? 8 : 12;
+  const bench = cls === "D" ? { x0: 0.43 * w, x1: 0.43 * w + Math.floor((0.49 * w) / n) * n, y0: 0.622 * h, y1: 0.733 * h, series: [0.167 * h, 0.578 * h] as [number, number] }
+    : cls === "T" ? { x0: 0.156 * w, x1: 0.156 * w + Math.floor((0.69 * w) / n) * n, y0: 0.605 * h, y1: 0.684 * h, series: [0.322 * h, 0.586 * h] as [number, number] }
+    : { x0: 19, x1: 19 + Math.floor((w - 38) / n) * n, y0: 0.474 * h, y1: 0.54 * h, series: [0.085 * h, 0.45 * h] as [number, number] };
+  const dock = cls === "D" ? { x0: 0.826 * w, x1: 0.826 * w + 120, y0: k0(), y1: k0() + n * H, lying: false }
+    : cls === "T" ? { x0: 0.833 * w, x1: 0.833 * w + 80, y0: k0(), y1: k0() + n * H, lying: false }
+    : { x0: 19, x1: 19 + Math.floor((w - 38) / n) * n, y0: 0.818 * h, y1: 0.889 * h, lying: true };
+  function k0() { return Math.round(cls === "M" ? 0.114 * h : (h - n * H) / 2 - (cls === "T" ? 10 : 0)); }
+  const obs: Disc = cls === "D" ? { cx: 0.4 * w, cy: 0.56 * h, r: 0.35 * h } : cls === "T" ? { cx: w / 2, cy: 0.352 * h, r: 0.273 * h } : { cx: w / 2, cy: 0.391 * h, r: Math.min(0.41 * w, 0.19 * h) };
+  const G5: Disc = { cx: w / 2, cy: h / 2, r: 1.2 * half };
   return {
-    cls, w, h, G0, G1s, G1, sheet, strip: cls === "D" ? 24 : cls === "T" ? 20 : 16,
+    cls, w, h, G0, G1s, G1, sheet, bench, dock, obs, G5, strip: cls === "D" ? 24 : cls === "T" ? 20 : 16,
     core: { x0, x1: x0 + cw, y0, H, n, spine: [x0 + cw + 4, x0 + cw + 4 + sw] },
   };
 }

@@ -53,15 +53,14 @@ export async function sha256Hex(bytes: Uint8Array) {
 }
 
 /** Decode + verify. Throws LoadError("CHECKSUM") on a size or hash mismatch. */
-export async function decodeGrid(bytes: Uint8Array, meta: GridMeta): Promise<Int8Array> {
+export async function decodeGrid(bytes: Uint8Array, meta: Pick<GridMeta, "encoding">): Promise<Int8Array> {
   let raw: Uint8Array;
   try {
     raw = await gunzipIfNeeded(bytes);
   } catch {
     throw new LoadError("CHECKSUM");
   }
-  const g = meta.grid;
-  if (raw.byteLength !== meta.years.list.length * g.n_lat * g.n_lon || raw.byteLength !== meta.encoding.uncompressed_bytes) throw new LoadError("CHECKSUM");
+  if (raw.byteLength !== meta.encoding.uncompressed_bytes) throw new LoadError("CHECKSUM");
   if ((await sha256Hex(raw)) !== meta.encoding.sha256_uncompressed) throw new LoadError("CHECKSUM");
   return new Int8Array(raw.buffer, raw.byteOffset, raw.byteLength);
 }
@@ -74,6 +73,26 @@ export function gridReader(metaFile: string) {
     const metaUrl = url.replace(/[^/]+$/, metaFile);
     const meta = await fetchJson(metaUrl, () => {}, fetchImpl);
     if (!isGridMeta(meta)) throw new LoadError("SCHEMA MISMATCH");
+    const bytes = await fetchBytes(url, onProgress, fetchImpl, meta.encoding.uncompressed_bytes);
+    return { meta, data: await decodeGrid(bytes, meta) };
+  };
+}
+
+export interface TrendMeta {
+  grid: GridMeta["grid"];
+  encoding: GridMeta["encoding"];
+  periods: { id: string; start: number; end: number; n_valid_cells: number; n_significant_cells: number }[];
+}
+export interface TrendGrid { meta: TrendMeta; data: Int8Array }
+const isTrendMeta = (v: unknown): v is TrendMeta => {
+  const o = v as TrendMeta;
+  return !!o && typeof o === "object" && !!o.grid && Array.isArray(o.periods) && typeof o.encoding?.sha256_uncompressed === "string";
+};
+/** DR-3 cell trend grids: [slope | significant][period][lat][lon]. */
+export function trendReader(metaFile: string) {
+  return async (url: string, onProgress: (l: number, t: number | null) => void, fetchImpl: typeof fetch): Promise<TrendGrid> => {
+    const meta = await fetchJson(url.replace(/[^/]+$/, metaFile), () => {}, fetchImpl);
+    if (!isTrendMeta(meta)) throw new LoadError("SCHEMA MISMATCH");
     const bytes = await fetchBytes(url, onProgress, fetchImpl, meta.encoding.uncompressed_bytes);
     return { meta, data: await decodeGrid(bytes, meta) };
   };

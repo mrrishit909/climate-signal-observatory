@@ -9,6 +9,7 @@ import { getProgress, jumpTo, startEngine } from "./scroll/engine";
 import { debug, intro, introTime, quality, snapAll, yearMix } from "./scenes/director";
 import { layout } from "./scenes/geometry";
 import { getClimate, setClimate } from "./state/climate";
+import { obs } from "./state/scenes";
 
 // The dev gallery is excluded from production builds: the guard is a build-time constant, so the
 // chunk is not emitted. `npm run build:gallery` (VITE_GALLERY=1, separate outDir) is for evidence only.
@@ -20,7 +21,7 @@ if (!isGallery) document.documentElement.classList.remove("is-gallery");
 // Test/evidence hook: the same instant-jump path the nav uses (deterministic captures).
 Object.assign(window, {
   __cso: {
-    jumpTo, getProgress, getClimate, setClimate,
+    jumpTo, getProgress, getClimate, setClimate, obs: obs.get, setObs: obs.set,
     quality: () => ({ tier: quality.tier, median: quality.median }),
     /** freeze the S00 clock at t ms (evidence frames); -1 releases it */
     freeze: (t: number) => { intro.frozen = t; if (t >= 0) intro.playing = true; },

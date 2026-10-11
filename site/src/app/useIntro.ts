@@ -66,11 +66,13 @@ export function useIntro() {
       if (["Escape", "ArrowDown", "ArrowUp", "PageDown", "PageUp", " ", "End", "Home"].includes(e.key)) complete();
     };
     addEventListener("wheel", complete, { passive: true });
+    addEventListener("cso:jump", complete); // a chapter jump or deep link is scroll input too
     addEventListener("touchmove", complete, { passive: true });
     addEventListener("keydown", onKey);
     return () => {
       off();
       removeEventListener("wheel", complete);
+      removeEventListener("cso:jump", complete);
       removeEventListener("touchmove", complete);
       removeEventListener("keydown", onKey);
     };
