@@ -2,7 +2,7 @@
 import os, sys
 from PIL import Image, ImageDraw
 root = sys.argv[1]
-for vp in sorted(d for d in os.listdir(root) if os.path.isdir(os.path.join(root, d)) and "x" in d):
+for vp in sorted(d for d in os.listdir(root) if os.path.isdir(os.path.join(root, d)) and __import__("re").fullmatch(r"\d+x\d+", d)):
     w0, h0 = map(int, vp.split("x"))
     cols = 6 if w0 < 800 else 4
     scale = (1800 / cols) / w0

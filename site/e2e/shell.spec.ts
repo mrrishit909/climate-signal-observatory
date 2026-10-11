@@ -89,7 +89,7 @@ test("reduced motion renders in flow: no pinned stages, no blur, static frames",
   expect(sticky).toBe(0);
   const blurred = await page.evaluate(() => [...document.querySelectorAll(".wr-word")].filter((w) => getComputedStyle(w).filter !== "none").length);
   expect(blurred).toBe(0);
-  await expect(page.locator(".years-static canvas")).toHaveCount(4);
+  await expect(page.locator(".scene-years .years-static canvas")).toHaveCount(4);
   await expect(page.locator(".strata-static canvas")).toHaveCount(5);
   await expect(page.locator(".planet-layer").first()).toBeHidden();
   await ctx.close();

@@ -83,23 +83,23 @@ test("S03a baseline toggle re-levels the readout to the facts' values (GISTEMP l
   await expect(page.locator("[data-year]")).toHaveText(String(LATEST));
   await expect(global).toHaveText(`GLOBAL ${signed(facts.gistemp_latest_year_anomaly_1951_1980.value)} °C VS 1951-1980`);
   await expect(page.locator(".years-readout > .chip")).toContainText("OBSERVED");
-  const base = page.getByRole("radiogroup", { name: "BASELINE" });
+  const base = page.locator(".scene-years").getByRole("radiogroup", { name: "BASELINE" });
   await base.getByRole("radio", { name: "1991-2020" }).click();
   await expect(global).toHaveText(`GLOBAL ${signed(facts.gistemp_latest_year_anomaly_1991_2020.value)} °C VS 1991-2020`);
   await expect(page.locator(".years-readout > .chip")).toContainText("DERIVED");
   // 1850-1900 is disabled under GISTEMP, enabled under HadCRUT5; going back snaps and announces
   const b1850 = base.getByRole("radio", { name: /1850-1900/ });
   await expect(b1850).toHaveAttribute("aria-disabled", "true");
-  await page.getByRole("radiogroup", { name: "SOURCE" }).first().getByRole("radio", { name: /HADCRUT5/ }).click();
+  await page.locator(".scene-years").getByRole("radiogroup", { name: "SOURCE" }).getByRole("radio", { name: /HADCRUT5/ }).click();
   await expect(b1850).not.toHaveAttribute("aria-disabled", "true");
   await b1850.click();
   await expect(global).toContainText("VS 1850-1900");
-  await page.getByRole("radiogroup", { name: "SOURCE" }).first().getByRole("radio", { name: /GISTEMP/ }).click();
+  await page.locator(".scene-years").getByRole("radiogroup", { name: "SOURCE" }).getByRole("radio", { name: /GISTEMP/ }).click();
   await expect(base.getByRole("radio", { name: "1951-1980" })).toHaveAttribute("aria-checked", "true");
   await expect(page.locator(".years-controls [aria-live]")).toHaveText("BASELINE SET TO 1951-1980: GISTEMP HAS NO 1850-1900");
   // RESET restores the defaults
   await base.getByRole("radio", { name: "1991-2020" }).click();
-  await page.getByRole("button", { name: "RESET" }).click();
+  await page.locator(".years-controls").getByRole("button", { name: "RESET" }).click();
   await expect(base.getByRole("radio", { name: "1951-1980" })).toHaveAttribute("aria-checked", "true");
 });
 

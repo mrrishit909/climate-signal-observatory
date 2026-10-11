@@ -193,8 +193,8 @@ html[data-gl="lost"] .gl-lost-note { display: block; }
 /* ---------- S01 the signal: statement + two notification cards ---------- */
 .s01 { inset: 0; pointer-events: none; }
 .s01 > * { position: absolute; }
-.s01-statement { left: var(--margin); top: 250px; width: 480px; margin: 0; font-family: var(--font-display); font-size: 56px; line-height: 1.04; letter-spacing: -0.012em; text-wrap: balance; }
-.s01-cards { left: var(--margin); top: 540px; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(16px); transition: opacity var(--motion-standard) var(--ease-premium), transform var(--motion-standard) var(--ease-premium); }
+.s01-statement { left: var(--margin); top: 212px; width: 480px; margin: 0; font-family: var(--font-display); font-size: 56px; line-height: 1.04; letter-spacing: -0.012em; text-wrap: balance; }
+.s01-cards { left: var(--margin); top: 462px; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(16px); transition: opacity var(--motion-standard) var(--ease-premium), transform var(--motion-standard) var(--ease-premium); }
 .s01-cards.is-in { opacity: 1; transform: none; }
 .s01-cards .note { width: 400px; padding: 18px; gap: 10px; }
 .s01-cards .note__body { font-size: 16px; }
@@ -568,3 +568,6 @@ html[data-motion="off"] .scene-surface .stage { height: 100dvh; min-height: 100d
 .plus2 { align-self: flex-start; }
 .fut-plot { pointer-events: none; }
 .fut-br { pointer-events: auto; }
+/* reduced motion: S01 has no scrub, so the hero sits above the statement instead of over it */
+html[data-motion="off"] .hero-title { top: 72px; translate: -50% 0; font-size: 56px; }
+@media (max-width: 767px) { html[data-motion="off"] .hero-title { top: 48px; font-size: 32px; } html[data-motion="off"] .s01-statement { top: 160px; } }
