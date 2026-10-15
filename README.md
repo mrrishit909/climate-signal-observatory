@@ -81,3 +81,7 @@ Every number on the site carries one of these tags, visible in the UI.
 Fonts are self-hosted through `@fontsource-variable` with no runtime font requests: Newsreader (display, SIL OFL 1.1) and JetBrains Mono (interface and data, SIL OFL 1.1). The visual system is inspired by a reference site; none of its fonts, logos, images or code are used.
 
 Code: author's own work; no license file has been added yet (open question).
+
+## Code licence status
+
+No code licence has been selected for this repository. It is public so the work can be viewed; public visibility does not itself grant any right to copy, modify, redistribute or reuse the code, text or design. All rights are reserved by the author until a licence file is added. Third-party data keeps its own licence and attribution terms, listed in `docs/DATA_SOURCES.md`.
